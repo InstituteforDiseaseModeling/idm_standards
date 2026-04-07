@@ -1,10 +1,10 @@
 # Python style guide
 
-In general, Starsim models follow Google's [style guide](https://google.github.io/styleguide/pyguide.html). If you simply follow that, you can't go too wrong. However, there are a few "house style" differences, which are described here.
+In general, IDM models follow Google's [style guide](https://google.github.io/styleguide/pyguide.html). If you simply follow that, you can't go too wrong. However, there are a few "house style" differences, which are described here.
 
-**Note**: Although the examples given here refer to Covasim and mainly use Covasim examples, they apply to all Starsim models.
+**Note**: Although the examples given here refer to Covasim and mainly use Covasim examples, they apply to all IDM models.
 
-Starsim uses `pylint` to ensure style conventions. To check if your styles are compliant, run `./tests/check_style`.
+IDM uses `pylint` to ensure style conventions. To check if your styles are compliant, run `./tests/check_style`.
 
 
 ## Google style guide summary
@@ -33,7 +33,7 @@ While we encourage you to read the whole Google style guide, here's the quick ve
 
 ## House style
 
-As noted above, Starsim follows Google's style guide (GSG), **with these exceptions** (numbers refer to Google's style guide):
+As noted above, IDM follows Google's style guide (GSG), **with these exceptions** (numbers refer to Google's style guide):
 
 ### 2.8 Default Iterators and Operators ([GSG28](https://google.github.io/styleguide/pyguide.html#28-default-iterators-and-operators))
 
@@ -122,7 +122,7 @@ If you're writing code like `count_days`, or standard Starsim modules (e.g. inte
 
 **Reason**: Line lengths of 80 characters are due to [historical limitations](https://en.wikipedia.org/wiki/Characters_per_line). Think of lines >80 characters as bad, but breaking a line as being equally bad. Decide whether a long line would be better implemented some other way -- for example, rather than breaking a >80 character list comprehension over multiple lines, use a `for` loop instead. Always keep literal strings together (do not use implicit string concatenation).
 
-Line comments are encouraged in Starsim, and these can be as long as needed; they should not be broken over multiple lines to avoid breaking the flow of the code. A 50-character line with a 150 character line comment after it is completely fine. The rationale is that long line comments only need to be read very occasionally; if they are broken up over multiple lines, then they have to be scrolled past *every single time*. Since scrolling vertically is such a common task, it is important to minimize the amount of effort required (i.e., minimizing lines) while not sacrificing clarity. Vertically compact code also means more will fit on your screen (and thence your brain).
+Line comments are encouraged at IDM, and these can be as long as needed; they should not be broken over multiple lines to avoid breaking the flow of the code. A 50-character line with a 150 character line comment after it is completely fine. The rationale is that long line comments only need to be read very occasionally; if they are broken up over multiple lines, then they have to be scrolled past *every single time*. Since scrolling vertically is such a common task, it is important to minimize the amount of effort required (i.e., minimizing lines) while not sacrificing clarity. Vertically compact code also means more will fit on your screen (and thence your brain).
 
 Examples:
 
@@ -226,22 +226,20 @@ omicron_vax_prob = dict(low=0.05, high=0.1) # Per-day probability of receiving O
 
 **Difference**: Imports should be ordered logically rather than alphabetically.
 
-**Reason**: Starsim modules shouldn't need a long list of imports. Sort imports as in Google's style guide (from most-generic to most-specific libraries), but second-order sorting should also be done logically, rather than alphabetically. For example:
+**Reason**: IDM modules shouldn't need a long list of imports. Sort imports as in Google's style guide (from most-generic to most-specific libraries), but second-order sorting should also be done logically, rather than alphabetically. For example:
 
 ```python
 import os
 import shutil
 import numpy as np
 import pandas as pd
-import pylab as pl
+import matpoltlib.pyplot as plt
 import seaborn as sns
 from .covasim import defaults as cvd
 from .covasim import plotting as cvpl
 ```
 
-Note the logical groupings -- standard library imports first, then numeric libraries, with Numpy coming before pandas since it's lower level (i.e., Numpy is a dependency of pandas); then external plotting libraries; and finally internal imports. (In this particular example, Google's import order would be identical, but for a different reason -- `numpy` would come before `seaborn` because it's first alphabetically, not because it's lower level.)
-
-Note also the use of `import pylab as pl` instead of the more common `import matplotlib.pyplot as plt`. These are functionally identical; the former is used simply because it is easier to type, but this convention may change to the more standard Matplotlib import in future.
+Note the logical groupings -- standard library imports first, then numeric libraries, with NumPy coming before pandas since it's lower level (i.e., NumPy is a dependency of pandas); then external plotting libraries; and finally internal imports. (In this particular example, Google's import order would be identical, but for a different reason -- `numpy` would come before `seaborn` because it's first alphabetically, not because it's lower level.)
 
 ### 3.14 Statements ([GSG314](https://google.github.io/styleguide/pyguide.html#314-statements))
 
@@ -308,7 +306,7 @@ except ValueError: baz(foo)
 
 **Difference**: Names should be consistent with other libraries and with how the user interacts with the code.
 
-**Reason**: Starsim interacts with other libraries, especially Numpy and Matplotlib, and should not redefine these libraries' names. For example, Google naming convention would prefer `fig_size` to `figsize`, but Matplotlib uses `figsize`, so this should also be the name preferred by Starsim. (This applies if the variable name is *only* used by source libraries. If it's used by both, e.g. `start_day` used both directly by Covasim and by `sc.date()`, it's OK to use the Google style convention.)
+**Reason**: IDM code interacts with other libraries, especially Numpy and Matplotlib, and should not redefine these libraries' names. For example, Google naming convention would prefer `fig_size` to `figsize`, but Matplotlib uses `figsize`, so this should also be the name preferred by IDM. (This applies if the variable name is *only* used by source libraries. If it's used by both, e.g. `start_day` used both directly by Covasim and by `sc.date()`, it's OK to use the Google style convention.)
 
 If an object is technically a class but is used more like a function (e.g. `cv.change_beta()`), it should be named as if it were a function. A class is "used like a function" if the user is not expected to interact with it after creation, as is the case with most interventions. Thus `cv.BaseVaccinate` is a class that is intended to be used *as a class* (primarily for subclassing). `cv.vaccinate_prob()` is also a class, but intended to be used like a function; `cv.vaccinate()` is a function which returns an instance of `cv.vaccinate_prob` or `cv.vaccinate_num`. Because `cv.vaccinate()` and `cv.vaccinate_prob()` can be used interchangeably, they are named according to the same convention.
 
@@ -330,7 +328,7 @@ vp = 0.3
 
 Underscores in variable names are generally preferred, but there are exceptions (e.g. `figsize` mentioned above). Always ask whether part of a multi-part name is providing necessary clarity (and if it's not, omit it). For example, if an intervention called `antigen_test()` uses a single variable for probability, call that variable `prob` rather than `test_prob`.
 
-Why is it important to keep variable names short? Because it makes the code closer to math, which is how most Starsim users think. Consider these two examples that both implement the same functionality:
+Why is it important to keep variable names short? Because it makes the code closer to math, which is how most IDM users think. Consider these two examples that both implement the same functionality:
 
 ```python
 #%% Version 1 -- short, meaningful names

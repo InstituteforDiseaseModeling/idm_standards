@@ -11,14 +11,14 @@
       "name": "idm-docs-plugin",
       "source": "./plugins/idm-docs-plugin",
       "description": "Score and improve documentation against IDM documentation guidelines",
-      "version": "1.0_2026.04.07",
+      "version": "0.0_2026.04.07",
       "keywords": ["quality", "scoring", "software", "documentation"]
     },
     {
       "name": "idm-engineering-plugin",
       "source": "./plugins/idm-engineering-plugin",
       "description": "Score and improve scientific research code quality, usability, and safety against IDM engineering quality tiers",
-      "version": "1.0_2026.04.07",
+      "version": "1.2_2026.03.31",
       "keywords": ["quality", "scoring", "scientific", "python", "r", "engineering"]
     }
   ]

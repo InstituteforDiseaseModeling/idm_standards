@@ -1,10 +1,10 @@
-# Starsim design philosophy
+# IDM design philosophy
 
-Starsim's overall design philosophy is "**Common tasks should be simple**, while uncommon tasks can't always be simple, but still should be possible".
+IDM's overall design philosophy is "**Common tasks should be simple**, while uncommon tasks can't always be simple, but still should be possible".
 
 ## Writing for the right audience
 
-The audience for Starsim is *scientists*, not software developers. Assume that the average Starsim user dislikes coding and wants something that *just works*. Implications of this include:
+The audience for IDM is *scientists*, not software developers. Assume that the average IDM user dislikes coding and wants something that *just works*. Implications of this include:
 
 - Commands should be short, simple, and obvious, e.g. `cv.Sim().run().plot()`.
 - Be as flexible as possible with user inputs. If a user could only mean one thing, do that. If the user provides `[0, 7, 14]` but the function needs an array instead of a list, convert the list to an array automatically (`sc.toarray()` exists for exactly this reason).

@@ -1,13 +1,13 @@
-# Starsim testing style guide
+# IDM testing style guide
 
 It's very dull to write a test for a completed feature that you know will pass. So use test-driven development (TDD) instead: before you write the feature, start with the test and use it to brainstorm the feature's API. Then you can trick yourself that you're doing cool design architecture instead of writing a boring test. We're not militant about using TDD, but it really, truly is a good idea.
 
-Starsim uses `pytest` for its test suite, run in parallel via `pytest-xdist`. (Do not use `unittest` -- we have not found it to be particularly useful!) Tests live in the `tests/` folder and follow a consistent set of conventions described below. The overriding principle is: **tests should be runnable both by pytest and as standalone scripts**, so that developers can interactively explore and debug results. All tests should be run on GitHub Actions for every pull request, and PRs should only be merged if all tests pass.
+IDM uses `pytest` for its test suite, run in parallel via `pytest-xdist`. (Do not use `unittest` -- we have not found it to be particularly useful!) Tests live in the `tests/` folder and follow a consistent set of conventions described below. The overriding principle is: **tests should be runnable both by pytest and as standalone scripts**, so that developers can interactively explore and debug results. All tests should be run on GitHub Actions for every pull request, and PRs should only be merged if all tests pass.
 
 
 ## Philosophy
 
-Before getting into the mechanics, here are the core principles that should guide how you write tests for Starsim projects.
+Before getting into the mechanics, here are the core principles that should guide how you write tests for IDM projects.
 
 ### Tests are examples
 
@@ -230,7 +230,7 @@ with pytest.raises(TypeError):
 
 ### Testing scientific correctness
 
-Many Starsim tests check that epi dynamics go in the expected direction. The key pattern is: vary one parameter and confirm the result changes as expected:
+Many IDM tests check that epi dynamics go in the expected direction. The key pattern is: vary one parameter and confirm the result changes as expected:
 
 ```python
 par_effects = dict(
@@ -268,7 +268,7 @@ Having more tests is not always better: they can be confusing, create technical 
 
 ## Triple-mode execution
 
-The most distinctive Starsim testing convention is that every test file is designed to run as a GitHub action, as a pytest module, *and* as a standalone script.
+The most distinctive IDM testing convention is that every test file is designed to run as a GitHub action, as a pytest module, *and* as a standalone script.
 
 ### GitHub Actions mode
 
@@ -313,7 +313,7 @@ The `SCIRIS_BACKEND=agg` environment variable is set in the test runner scripts 
 
 - **`tests/pytest.ini`** -- typically required; silences unnecessary pytest warnings.
 - **`tests/.coveragerc`** -- optional; used to fine-tune coverage reports.
-. **`./.pylintrc`** -- implements the [Starsim Python style guide](2_python.md) to silence unnecessary linting warnings.
+. **`./.pylintrc`** -- implements the [IDM Python style guide](2_python.md) to silence unnecessary linting warnings.
 
 
 ## Parting words

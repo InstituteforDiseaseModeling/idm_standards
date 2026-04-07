@@ -1,11 +1,11 @@
-# Starsim documentation style guide
+# IDM documentation style guide
 
 People are probably (...hopefully!) going to be spending much more time reading the docs you write than reading the code you write. So make them good! Good docs make the difference between a tool that people adopt versus one they try out but quickly abandon. And just because LLMs are now reading your docs too, that isn't an excuse to be lazy and write something a human would find frustrating to wade through. Good docs should be succinct but comprehensive -- a devilish tradeoff to say the least!
 
 
 ## Audience
 
-We identify five different "personas" as the audience for Starsim (and Starsim-related) tools:
+We identify five different "personas" as the audience for IDM (and IDM-related) tools:
 
 | Name | Who they are | What they need |
 | ---- | ------------ | -------------- |

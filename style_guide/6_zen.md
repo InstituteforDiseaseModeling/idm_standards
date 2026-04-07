@@ -1,4 +1,4 @@
-# Zen of Starsim†
+# Zen of IDM†
 
 The more common a task is, the easier it should be to do.
 
