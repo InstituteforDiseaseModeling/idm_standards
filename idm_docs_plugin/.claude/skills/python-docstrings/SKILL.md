@@ -5,7 +5,16 @@ description: Guidelines for writing Python docstrings in this project. Always us
 
 # Python docstring guidelines
 
-This project uses **Google-style docstrings** rendered by [mkdocstrings](https://mkdocstrings.github.io/) with the Material for MkDocs theme. Every public class, method, and function should have a docstring that helps a disease-modeling researcher understand not just *what* the object does, but *where it fits* in their workflow. Use American English spelling and usage.
+Use **Google-style docstrings**. Every public class, method, and function should have a docstring that helps a disease-modeling researcher understand not just *what* the object does, but *where it fits* in their workflow. Use American English spelling and usage.
+
+If using Material for MkDocs to build documentation, the plugin [mkdocstrings](https://mkdocstrings.github.io/) renders docstrings as API reference content. Local modules are documented automatically; to include external packages, use the `mkdocs-gen-files` plugin and associated Python script.
+
+If using Quarto to build documentation, list all modules in the quarto.yml config file for them to be documented. Configure the docstring parser format as follows:
+
+```yaml
+quartodoc:
+  parser: google
+```
 
 ---
 
@@ -53,7 +62,9 @@ def some_function(arg1, arg2):
 
 ## Cross-references to other Python objects
 
-The project uses the [`autorefs`](https://mkdocstrings.github.io/autorefs/) plugin so you can link to any documented Python object directly from docstring prose.
+### MkDocs syntax
+
+MkDocs projects use the [`autorefs`](https://mkdocstrings.github.io/autorefs/) plugin so you can link to any documented Python object directly from docstring prose.
 
 **Syntax:**
 
@@ -74,6 +85,10 @@ Use these links in the **description prose** to guide a reader toward related co
 - [`State`][laser.generic.shared.State] — enum of agent health states (SUSCEPTIBLE, EXPOSED, INFECTIOUS, RECOVERED)
 - [`ValuesMap`][laser.generic.utils.ValuesMap] — time-varying per-node parameter container
 
+### Quarto syntax
+
+Cross-references use the format [Arr](#starsim.Arr).
+
 ---
 
 ## Researcher workflow context
@@ -90,12 +105,12 @@ A researcher using this library follows a predictable workflow. Your docstring s
 ```
 
 In the description prose, state clearly:
-- **Which stage** this object belongs to (initialisation, per-tick step, post-run analysis)
+- **Which stage** this object belongs to (initialisation, per-timestep, post-run analysis)
 - **What comes before it** in the component list, if ordering matters
 - **What it produces** that downstream components or analysis code will consume
 
 Example phrasing:
-> "Add this component to `model.components` *before* any transmission component. It initialises the `S` array consumed by [`SIR.Transmission`][laser.generic.SIR.Transmission] at every tick."
+> "Add this component to `model.components` *before* any transmission component. It initialises the `S` array consumed by [`SIR.Transmission`][laser.generic.SIR.Transmission] at every timestep."
 
 ---
 
