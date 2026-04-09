@@ -175,7 +175,7 @@ This section describes additional tools, processes, and documents to help achiev
 
 ## Tools
 
-* [Project-Improver](https://github.com/starsimhub/starsim_ai/tree/main/plugins/project-improver) is a Claude plugin created directly from this document that will evaluate a project using these guidelines, come up with a plan for making improvements, and then (if asked) implement this plan.
+* [IDM-Eng-Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) is a Claude plugin created directly from this document that will evaluate a project using these guidelines, come up with a plan for making improvements, and then (if asked) implement this plan.
 
 ## Style guides
 
