@@ -8,6 +8,8 @@ allowed-tools: Read, Grep, Glob, Bash, Edit, Write
 
 Unifies all Diataxis documentation guidance into one Skill. Claude activates this Skill whenever documentation is written, reviewed, or improved, and new topics are added within the table of contents. It then "lazy loads" the exact documentation type guidance by opening the reference docs linked below.
 
+Diataxis framework by Daniele Procida. See [diataxis.fr](https://diataxis.fr/colophon/) for full attribution. Framework for the skill and reference file based on the work by [thewodapp](https://github.com/wodsmith/thewodapp).
+
 ## Critical workflow
 
 **REQUIRED**: Before writing or reviewing ANY documentation, you MUST load the relevant documentation type reference file(s) using the Read tool.
