@@ -10,4 +10,4 @@ This document describes how to collaborate and work using GitHub.
 4. Run tests (if relevant)
 5. Commit changes
 6. Push changes to GitHub (remote branch)
-7, Make a pull request onto the original branch (e.g. `main` or the release candidate)
+7. Make a pull request onto the original branch (e.g. `main` or the release candidate)
