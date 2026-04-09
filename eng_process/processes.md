@@ -1,6 +1,6 @@
 # Processes
 
-The processes listed here can help projects achieve the guidelines listed above. In fact, [studies have shown](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10372494) that "process-based metrics are more predictive of defects than code quality metrics." However, as above, the processes should always be in service of the project and its aims, and should never become a burden; not all processes are applicable to all projects.
+The processes listed here can help projects achieve the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md). In fact, [studies have shown](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10372494) that "process-based metrics are more predictive of defects than code quality metrics." However, these processes should always be in service of the project and its aims, and should never become a burden; not all processes are applicable to all projects.
 
 1. **Project planning & design**  
    1. Identify project scope, project goals, and audience, with clearly defined success criteria.  
