@@ -49,12 +49,12 @@ Both provide knowledge (cognition), but for fundamentally different contexts:
 - State what something **is** and what it **does**, and **when** to use it, not how to use it
 - Be complete, make sure to include relevant dependencies for model parameters
 
-**Mirror the Machinery:**
+**Mirror the machinery:**
 - Structure content to mirror the product's structure itself, not user tasks
 - Document the architecture as it exists
 - Help users navigate code and documentation in parallel
 
-### 2. Adopt Standard Patterns
+### 2. Adopt standard patterns
 
 "Reference material is useful when it is consistent."
 
@@ -124,7 +124,7 @@ Both provide knowledge (cognition), but for fundamentally different contexts:
 
 ## Content to include
 
-### Essential Elements
+### Essential elements
 
 **For functions/methods:**
 - Name and signature

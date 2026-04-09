@@ -20,7 +20,7 @@ Unifies all Diataxis documentation guidance into one Skill. Claude activates thi
    - Understanding & context → Read `references/explanation.md`
 3. **Apply the documentation type's principles** from the loaded reference
 4. Write or review documentation according to that type's standards
-4. Add the topic to the documentation set table of contents and include cross-references
+5. Add the topic to the documentation set table of contents and include cross-references → Read `references/toc.md`
 
 **DO NOT attempt to write or review documentation without first loading the appropriate reference file(s).**
 
@@ -105,7 +105,7 @@ Both provide knowledge, but for different contexts:
 3. Improve it according to that type's principles
 4. Repeat
 
-**Let structure emerge:** As you improve individual pieces, patterns will emerge that suggest organizational structure. The top-level structure forms from the inside out.
+**Let structure emerge:** As you improve individual pieces, patterns will emerge that suggest organizational structure. The top-level structure forms from the inside out. For guidance on organizing the TOC, read `references/toc.md`.
 
 ## Documentation type references (load on demand)
 
@@ -113,6 +113,7 @@ Both provide knowledge, but for different contexts:
 - **[How-to guides](references/how-to-guides.md)** - Task-oriented directions for accomplishing specific goals
 - **[Reference](references/reference.md)** - Information-oriented technical descriptions for authoritative lookup
 - **[Explanation](references/explanation.md)** - Understanding-oriented discussions providing context and answering "why?"
+- **[Table of contents](references/toc.md)** - Guidance on organizing documentation topics within the TOC and adding cross-references
 
 ## Key principles
 

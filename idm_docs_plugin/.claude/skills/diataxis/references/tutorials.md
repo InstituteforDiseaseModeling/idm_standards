@@ -34,7 +34,7 @@ This is the **most commonly confused distinction** in documentation. Both contai
 
 **Key insight**: You will revise tutorials far more than other docs. Unlike how-to guides (which only change when the product changes), you may completely rewrite a tutorial because you found a better learning experience.
 
-## The 11 Core Principles
+## The 11 core principles
 
 ### 1. Don't try to teach
 
@@ -75,16 +75,16 @@ This is the **most commonly confused distinction** in documentation. Both contai
 ### 4. Maintain narrative expectations
 
 **Guide what to expect:**
-- Use phrases like "You will notice that&"
+- Use phrases like "You will notice that [observation]"
 - Show actual expected output
 - Warn about likely confusion points
 - Provide reassurance throughout
 
 **Example patterns:**
-- "The output should look like&"
-- "Notice that the prompt has changed to&"
-- "You should now see&"
-- "This may take a few moments&"
+- "The output should look like [specific output]"
+- "Notice that the prompt has changed to [new prompt value]"
+- "You should now see [expected output]"
+- "This may take a few moments"
 
 ### 5. Point out what learners should notice
 
@@ -97,14 +97,14 @@ This is the **most commonly confused distinction** in documentation. Both contai
 - Don't assume learners notice things independently
 
 **Examples:**
-- "Notice that the prompt now shows (venv)"
-- "The terminal output indicates success with&"
-- "Observe how the interface has changed&"
+- "Notice that the prompt now shows `(venv)`"
+- "The terminal output indicates success with [success indicator]"
+- "Observe how the interface has changed [specific change]"
 
 ### 6. Target the feeling of doing
 
 **Flow state creation:**
-- Build tasks that connect: purpose � action � thinking � result
+- Build tasks that connect: purpose -> action -> thinking -> result
 - Create rhythmic, pleasurable progression
 - Enable the satisfaction of skilled practice
 - Let competence feel rewarding
@@ -202,12 +202,12 @@ These common patterns sabotage learning:
 
 | Pattern | Purpose | Example |
 |---------|---------|---------|
-| "We..." | Affirm tutor-learner collaboration | "In this tutorial, we will build&" |
+| "We..." | Affirm tutor-learner collaboration | "In this tutorial, we will build [what is being built]" |
 | Imperative sequence | Remove ambiguity | "First, do x. Now, do y. Next, do z." |
-| Minimal justification | Provide just enough rationale | "We must do x before y because& (see Explanation)" |
-| Expected output | Set clear expectations | "The output should look like: [example]" |
-| Observation cues | Guide attention | "Notice that& Remember that& Let's check&" |
-| Achievement acknowledgment | Affirm accomplishment | "You have built a secure, three-layer application" |
+| Minimal justification | Provide just enough rationale | "We must do x before y because [reason] (see Explanation)" |
+| Expected output | Set clear expectations | "The output should look like: [example output]" |
+| Observation cues | Guide attention | "Notice that [observation]" / "Remember that [key point]" / "Let's check [what to clarify]" |
+| Achievement acknowledgment | Affirm accomplishment | "You have [accomplished the goal]" |
 
 ## Voice and tone
 
@@ -274,6 +274,7 @@ Teaching a person to cook illustrates tutorial principles perfectly:
 - Changes ripple across entire narrative
 - Product evolution requires ongoing updates
 - Breaking changes are especially problematic
+- Use executable formats (e.g. Jupyter notebooks) to automatically catch breakage during builds
 
 ### No instructor present
 
@@ -324,3 +325,7 @@ Don't write tutorials when users need to:
 - [ ] No choices or decision points
 - [ ] Complete learning experience from start to finish
 - [ ] Links to how-to guides, reference, and explanation as needed
+
+## Format and implementation
+
+Where possible, write tutorials as Jupyter notebooks or other executable formats. This allows tutorials to be run automatically during documentation builds, surfacing broken steps or outdated outputs before learners encounter them. This directly supports the principle of perfect reliability.

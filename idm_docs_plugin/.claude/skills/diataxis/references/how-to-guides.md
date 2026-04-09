@@ -167,9 +167,9 @@ This is the **most commonly confused distinction** in documentation. Both contai
 - "When a happens, perform b"
 
 **Opening patterns:**
-- "This guide shows you how to..."
-- "Follow these steps to..."
-- "To [accomplish goal], you need to..."
+- "This guide shows you how to [specific task]"
+- "Follow these steps to [accomplish the goal]"
+- "To [accomplish goal], you need to [do these tasks]"
 
 **Reference to other materials:**
 - "Refer to the x reference guide for full options"
@@ -179,7 +179,7 @@ This is the **most commonly confused distinction** in documentation. Both contai
 ### Imperative tone
 
 - Direct, action-oriented language
-- "Configure the settings..."
+- "Configure the settings "
 - "Run the command..."
 - "Add the following code..."
 
@@ -216,7 +216,7 @@ This is the **most commonly confused distinction** in documentation. Both contai
 - No tangential information
 - Stay on the path to goal completion
 
-## The eecipe model
+## The Recipe model
 
 Cooking recipes exemplify strong how-to documentation:
 

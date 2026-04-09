@@ -2,7 +2,7 @@
 
 ## Overview
 
-Explanation is **understanding-oriented** documentation that deepens reader comprehension through reflective, discursive treatment of topics. It answers: "Can you tell me about&?"
+Explanation is **understanding-oriented** documentation that deepens reader comprehension through reflective, discursive treatment of topics. It answers: "Can you tell me about [topic]?"
 
 ## Core purpose
 
@@ -18,7 +18,7 @@ Both provide knowledge (cognition), but for fundamentally different contexts:
 
 | Test Question | If Yes → Explanation | If No → Reference |
 |---------------|---------------------|-------------------|
-| Could you imagine **reading this in while not actively working**? | ✓ | |
+| Could you imagine **reading this while not actively working**? | ✓ | |
 | Does it primarily answer **"why?" questions**? | ✓ | |
 | Would someone turn to this **while actively working**? | | ✓ |
 | Is it **lists, tables, or technical specs**? | | ✓ |
@@ -87,13 +87,13 @@ Discussion topics should include:
 
 Effective explanation employs constructions like:
 
-- **Justification**: "The reason for x is because historically, y&"
-- **Professional judgment**: "W is better than z, because&"
-- **Contextual comparison**: "An x is analogous to w. However&"
-- **Weighing alternatives**: "Some users prefer w. This can be good, but&"
+- **Justification**: "The reason for x is because historically, [historical context]"
+- **Professional judgment**: "W is better than z, because [reasoning]"
+- **Contextual comparison**: "An x is analogous to w. However, [key difference]"
+- **Weighing alternatives**: "Some users prefer w. This can be good, but [trade off or caveat]"
 - **Unfolding mechanics**: "An x interacts with y as follows&"
-- **Historical context**: "Originally, the system used x, but this evolved to y when&"
-- **Design rationale**: "We chose this approach because&"
+- **Historical context**: "Originally, the system used x, but this evolved to y when [trigger or reason]"
+- **Design rationale**: "We chose this approach because [reasoning]"
 
 ## Critical attitudes
 
