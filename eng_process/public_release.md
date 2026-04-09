@@ -8,7 +8,7 @@ In general, we want code to be public, so the world can benefit from it. However
 
 1. It contains sensitive data or results, so is not allowed to be made public.
 2. We are not confident yet that the results are correct, so it could potentially be misleading or dangerous to make it public.
-3. It is neither sensitive or dangerous, but it is of interest to so few people that making it public would create noise rather than signal.
+3. It is neither sensitive nor dangerous, but it is of interest to so few people that making it public would create noise rather than signal.
 
 If your code doesn't fall into any of these three categories, consider making it public.
 
