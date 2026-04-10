@@ -2,33 +2,42 @@
 
 ## Overview
 
-The table of contents (TOC) controls the structure and labeling of the documentation site navigation. This reference covers shared principles that apply to all projects, followed by tool-specific implementation guidance for MkDocs with Material theme and Quarto.
+The table of contents (TOC) controls the structure and labeling of the documentation site navigation. This guidance covers shared principles that apply to all projects, followed by tool-specific implementation guidance for Material for MkDocs and Quarto.
+
+Follow the Diataxis guidance when deciding what what topic type to use for information you want to share in the documentation. All topics should aim to be self-contained and describe a single subject, linking away to related topics but not duplicating their content. When content must appear in multiple topics (such as common warnings), create a snippet of reusable text rather than duplicating that content. 
 
 ## Shared principles
 
 ### Section ordering
 
-Order top-level sections to match the user's journey through the documentation:
+Order top-level sections to match the new user's journey through the documentation. For example, a typical TOC might look like:
 
-- Home
-- Software overview (explanation)
-  - Installation (how-to)
+- Home (overview)
+- Installation (how-to)
+- What's new (reference)
+- Tutorials (tutorial)
+  - Get started (tutorial)
+  - Add demographics (tutorial)
+  - Calibrate the model (tutorial)
+- Software/model overview (explanation)
   - Architecture overview (reference)
   - Feature A (explanation)
-    - How to implement (how-to)
+    - How to implement... (how-to)
   - Feature B (explanation)
-    - How to implement (how-to)
-- Explanation/concepts (explanation)
-  - How to implement a concept (how-to)
-- Tutorials (tutorial)
+    - How to implement... (how-to)
 - Reference/API reference (reference)
-- Standard pages
+- Code of conduct (reference)
+- Contribution guide (how-to)
 
-Not every project needs all sections, omit any that don't apply. How-to guides for a particular feature always appear as subsections under a relevant parent section, never as a standalone top-level section. Explanation of concepts appear before tutorials so users have conceptual grounding before hands-on practice.
+Not every project needs all sections; omit any that don't apply. Depending on the complexity of installation, you may include it in the home page or break it out into a separate topic. Place tutorials early because new users often learn better by doing and they provide a quick entry point to increase user retention and confidence. 
+
+The explanation or reference for more complex functionality follows once they have that hands-on grounding in the workflow. You may decide to have a top-level section for the model/software overview with features/themes nested beneath or put individual features/themes at the top level. How-to guides for a particular feature always appear as subsections under a relevant parent section, never as a standalone top-level section. 
+
+Always let user needs drive your organizational decisions. For example, if model users and model extenders are primary personas but have different workflows, you may want to have two top-level sections for "Use the model" and "Extend the model." 
 
 ### Naming conventions
 
-- Use sentence case for nav display labels: `Get started`, `API reference`, `How-to guides`
+- Use sentence case for nav display labels: `Get started`, `API reference`, `How to configure`
 - Use lowercase, hyphenated folder and file names: `get-started/`, `how-to-guides/`
 - Be concise, one to three words per label where possible
 - Match folder names to nav labels where possible: `tutorials/` → `Tutorials:`
@@ -51,13 +60,28 @@ Not every project needs all sections, omit any that don't apply. How-to guides f
   - calibration/one-example-page
 ```
 
-### Standard pages
+### Reused content
 
-Standard pages should appear at the end of the nav. "What's new" or changelog pages are optional and may not exist in all projects. Use these labels when the pages exist:
+All repos should include CONTRIBUTING.md, CODE_OF_CONDUCT.md, CHANGELOG.md, and README.md files at the root. These files can be pulled into the built documentation so you don't need to maintain that content in two places. Use these labels:
 
+- `Contribution guide` / `Contributing`
 - `Code of conduct`
-- `Contribution guide`
 - `What's new` / `Changelog` / `Release notes` (optional, use whichever label the project already uses or prefers)
+- `Home` / `Model name` (reuse README.md if it makes sense to)
+
+**MkDocs syntax:**
+
+```
+{%
+    include-markdown "../README.md"
+%}
+```
+
+**Quarto syntax:**
+
+```
+{{< include ../README.md >}}
+```
 
 ### Cross-references
 
@@ -68,21 +92,55 @@ Add cross-references when:
 - A reference page relates to a how-to guide that shows it in use → link to how-to
 
 **Placement:**
-- Place cross-references at the bottom of a page under a `## See also` heading
-- Use inline cross-references only when the link is essential to understanding the current sentence
+- Use inline cross-references when the link is essential to understanding the current sentence
+- Place more general cross-references at the bottom of a page under a `## See also` heading
 - Do not front-load pages with cross-references — orient the reader first
+
+**MkDocs syntax:**
+
+For simple page links, use standard relative Markdown links:
+
+```markdown
+See [calibration process](../calibration/process.md) for background.
+```
+
+Use the `autorefs` plugin (included in the standard `mkdocs.yml` template) to link by heading anchor, as shown below
+
+```markdown
+This works the same as [Heading text](../calibration/process.md#heading-text).
+```
+
+**Quarto syntax:**
+
+For simple page links, use standard relative Markdown links:
+
+```markdown
+See [calibration process](../calibration/process.qmd) for background.
+```
+
+Quarto has built-in cross-reference support using `@` syntax for figures, tables, and sections:
+
+```markdown
+See @sec-calibration for additional background information.
+```
+
+Label a target section with:
+
+```markdown
+## Calibration {#sec-calibration}
+```
 
 ### Jupyter notebooks
 
 Tutorials written as Jupyter notebooks should be:
 - Placed under a `Notebooks:` subsection within `Tutorials:` if there are non-notebook tutorials. Otherwise they should be within `Tutorials`.
-- Given explicit human-readable labels in the nav — notebook filenames are often not readable on their own
-- Prefixed with zero-padded numbers when sequence matters: `01_intro.ipynb`, `02_next.ipynb`
-- Configured to execute during the documentation build so broken notebooks surface as build failures rather than silent errors (see tool-specific guidance below)
+- Given explicit human-readable labels in the nav — notebook filenames are often not readable on their own.
+- Prefixed with zero-padded numbers when sequence matters: `01_intro.ipynb`, `02_next.ipynb`.
+- Configured to execute during the documentation build so broken notebooks surface as build failures rather than silent errors (see tool-specific guidance below).
 
 ---
 
-## MkDocs Material
+## Material for MkDocs
 
 The TOC is defined in `mkdocs.yml` under the `nav:` key.
 
@@ -113,28 +171,6 @@ Always provide explicit labels for notebooks in the nav:
     - SI model with constant population: tutorials/notebooks/02_SI_wbirths.ipynb
 ```
 
-### Notebook execution
-
-Configure `mkdocs-jupyter` in `mkdocs.yml` to execute notebooks during the build:
-
-```yaml
-plugins:
-  - mkdocs-jupyter:
-      execute: true
-      allow_errors: false
-      include_source: true
-```
-
-`allow_errors: false` ensures a broken notebook fails the build rather than publishing silently broken output.
-
-### Cross-references
-
-Use the `autorefs` plugin (included in the standard `mkdocs.yml` template) to link by heading anchor:
-
-```markdown
-See [calibration process](calibration/process.md) for background before attempting this tutorial.
-```
-
 ### Example nav structures
 
 **Conceptual/explanation-heavy project:**
@@ -142,6 +178,7 @@ See [calibration process](calibration/process.md) for background before attempti
 ```yaml
 nav:
   - Home: index.md
+  - What's new: whatsnew.md
   - Get started:
     - get-started/index.md
     - Topic A:
@@ -154,7 +191,6 @@ nav:
     - calibration/process.md
   - Code of conduct: code_of_conduct.md
   - Contribution guide: contribute.md
-  - What's new: whatsnew.md
 ```
 
 **Code/model-heavy project:**
@@ -162,9 +198,7 @@ nav:
 ```yaml
 nav:
   - Home: index.md
-  - Software overview:
-    - software-overview/index.md
-    - software-overview/architecture.md
+  - What's new: whatsnew.md
   - Get started:
     - get-started/index.md
     - get-started/installation.md
@@ -174,10 +208,12 @@ nav:
     - Notebooks:
       - Tutorial one: tutorials/notebooks/01_tutorial.ipynb
       - Tutorial two: tutorials/notebooks/02_tutorial.ipynb
+  - Software overview:
+    - software-overview/index.md
+    - software-overview/architecture.md
   - API reference: reference/
   - Code of conduct: code_of_conduct.md
   - Contribution guide: contribute.md
-  - What's new: whatsnew.md
 ```
 
 ---
@@ -220,18 +256,6 @@ Each section should have an `index.qmd` as its first entry, serving as the secti
 - Use lowercase, hyphenated folder and file names: `get-started/`, `how-to-guides/`
 - Quarto source files use `.qmd` extension; Jupyter notebooks use `.ipynb` and are supported natively
 
-### Notebook execution
-
-Configure notebook execution in `_quarto.yml`:
-
-```yaml
-execute:
-  execute-notebooks: true
-  error: false
-```
-
-Setting `error: false` fails the build on notebook errors, equivalent to `allow_errors: false` in MkDocs.
-
 ### Explicit labels
 
 As with MkDocs, provide explicit labels for any page whose filename is not human-readable:
@@ -241,26 +265,6 @@ As with MkDocs, provide explicit labels for any page whose filename is not human
   file: tutorials/notebooks/01_SI_nobirths.ipynb
 ```
 
-### Cross-references
-
-Quarto has built-in cross-reference support using `@` syntax for figures, tables, and sections:
-
-```markdown
-See @sec-calibration for background before attempting this tutorial.
-```
-
-Label a target section with:
-
-```markdown
-## Calibration {#sec-calibration}
-```
-
-For plain page links, use standard relative Markdown links:
-
-```markdown
-See [calibration process](../calibration/process.qmd) for background.
-```
-
 ### Example structure
 
 ```yaml
@@ -268,19 +272,19 @@ website:
   sidebar:
     contents:
       - index.qmd
-      - section: Software overview
-        contents:
-          - software-overview/index.qmd
-          - software-overview/architecture.qmd
       - section: Tutorials
         contents:
           - tutorials/index.qmd
           - section: Notebooks
             contents:
-              - text: "Tutorial one"
-                file: tutorials/notebooks/01_tutorial.ipynb
-              - text: "Tutorial two"
-                file: tutorials/notebooks/02_tutorial.ipynb
+              - text: "Get started"
+                file: tutorials/notebooks/01_get_started_tutorial.ipynb
+              - text: "Add demographics"
+                file: tutorials/notebooks/02_demographics_tutorial.ipynb
+      - section: Software overview
+        contents:
+          - software-overview/index.qmd
+          - software-overview/architecture.qmd
       - section: API reference
         contents:
           - reference/index.qmd
