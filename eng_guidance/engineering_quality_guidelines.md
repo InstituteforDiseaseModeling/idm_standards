@@ -7,6 +7,19 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1
 
 Version 1.2 | 2026.03.26
 
+# Introduction
+
+This document provides guidelines on scientific software engineering quality at IDM, and describes the processes and resources that help to achieve them. The aim of these guidelines is to help both researchers and engineers achieve higher [productivity](https://en.wikipedia.org/wiki/Velocity_\(software_development\)) and rigor. They should **never** become an administrative burden, get in the way of getting work done, or be treated as strict requirements.
+
+There are many [software](https://en.wikipedia.org/wiki/Software_quality) [engineering](https://getdx.com/blog/software-quality-metrics/) [quality](https://www.geeksforgeeks.org/software-engineering/software-engineering-software-quality/) [guidelines](https://ieeexplore.ieee.org/document/10372494) already available. Why do we need our own? Because most assume that software is the organization's main product, and are optimized for commercial engineering contexts. At IDM, scientific software is developed in service of our core mission: providing timely, accurate analyses and recommendations that inform real-world decisions to improve global health. This does not make our software less important, but it does mean that quality must be evaluated in terms of how well it supports these goals.
+
+Even when our software is the end product, our users are typically scientists, not professional software engineers. Scientific software must still meet high standards, but it has different constraints and priorities compared to enterprise codebases. For example, much code written at IDM is only ever run a handful of times by a handful of users (but these users may be informing decisions that affect millions of lives, so quality remains critical). Traditional software quality metrics like "customer satisfaction score" or "bugs per 1000 lines of code" are not meaningful when your code has 2 users and 500 lines of code (and yet informs a $30 million decision). This is why we define scientific software quality to fit IDM's business and scientific needs. Specifically, we recognize that IDM produces different [tiers of code](#code-tiers), which need to optimize for different things: "Tier 1" (large-scale reusable library code), "Tier 2" (small-scale reusable code), and "Tier 3" (one-off or exploratory projects). These are described in more detail below.
+
+Finally, note that these are **guidelines**, not requirements. Different people on different teams (especially research vs. software) will have different ideas of what counts as "clear", "simple" and "powerful". There are legitimate reasons to break almost every guideline under some circumstances (often because it must be weighed against another guideline). These guidelines should encourage *you* to think about *your* project, not be used by someone else to judge it.
+
+| Definitions: "Project" is the general term for each body of work, and typically maps onto a single GitHub repository. "Code" is the software component of a project, e.g. the files checked into GitHub; it may include documentation (e.g. docstrings and notebooks), but excludes other components of a project such as the spec, roadmap, etc. "UIs" (user interfaces) are how users interact with your code: this may be a webapp or chatbot, but for us this is most often a set of scripts, and/or your code's APIs ("application programming interfaces", the classes and functions your code provides). |
+| :---- |
+
 # Guidelines
 
 This section lists the full set of guidelines for Tier 1 code. Not all guidelines apply to Tier 2 and Tier 3 code, as described [below](#code-tiers). The guidelines assume code is written in Python or R, but most guidelines apply to any language. These guidelines should be used in conjunction with a detailed style guide, such as those from [Google](https://google.github.io/styleguide/pyguide.html) (Python), [Starsim](https://github.com/starsimhub/styleguide) (Python), or [Tidyverse](https://style.tidyverse.org/) (R).
@@ -102,7 +115,7 @@ Numbers refer to which tiers the guideline is applicable to. "SG" means that fur
       3. Semantic versioning is used, including git tags for each release. \[1,2\]  
       4. Releases are published on PyPI or CRAN. \[1\]
 
-# Code tiers {#code-tiers}
+# Code tiers
 
 This section provides more detail on the minimum software engineering expectations for different types of project. Each tier of code has different quality expectations:
 
@@ -154,3 +167,24 @@ Tier 1 requirements are similar to industry-standard "engineering quality" guide
 3. Safety  
    1. Compliant: as above (no legal or security vulnerabilities)  
    2. Reproducible: all files needed to run the code are checked into GitHub (except data in some cases)
+
+
+# References
+
+This section describes additional tools, processes, and documents to help achieve the guidelines listed above.
+
+## Tools
+
+* [IDM-Eng-Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) is a Claude plugin created directly from this document that will evaluate a project using these guidelines, come up with a plan for making improvements, and then (if asked) implement this plan.
+
+## Style guides
+
+* Google style guides for [Python](https://google.github.io/styleguide/pyguide.html) and [R](https://google.github.io/styleguide/Rguide.html) can be used as a starting point for most projects.  
+* For R, the [Tidyverse style guide](https://style.tidyverse.org/) builds on Google's.  
+* Starsim-based projects should use the [Starsim style guide](https://github.com/starsimhub/styleguide), which is also based on Google's.  
+* IDM has an in-house [style guide](https://docs.idmod.org/projects/doc-guidance/en/latest/), focused primarily on writing docs.
+
+## Further reading
+
+* "[Developer Productivity for Humans](https://ieeexplore.ieee.org/document/10372494)" has an excellent description of the different goals of good software (speed, ease, and quality), and different dimensions of quality (process quality, code quality, system quality, and product quality).  
+* Wikipedia's article on "[Coding best practice](https://en.wikipedia.org/wiki/Coding_best_practices#Software_quality)" nicely lays out many key principles.
