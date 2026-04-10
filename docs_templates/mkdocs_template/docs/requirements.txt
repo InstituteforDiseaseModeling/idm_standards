@@ -1,4 +1,4 @@
-mkdocs-material # doc theme that includes extensive functionality
+mkdocs-material~=9.7.0 # doc theme that includes extensive functionality, pinned to last stable version
 mkdocs-include-markdown-plugin # include files outside /docs
 mkdocs-autorefs # create automatic linkable references to sections, etc.
 python-markdown-math # integrate LaTeX math
