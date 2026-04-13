@@ -1,10 +1,12 @@
 ---
-name: docs-overview
+name: docs-audit
 description: Comprehensive documentation audit for IDM projects. Checks docs completeness against IDM standards (README, tutorials, user guide, API reference, changelog, etc.), then applies the diataxis, persona-check, and python-docstrings skills to evaluate structure, audience fit, and docstring quality. Produces a unified report with strengths, weaknesses, and prioritized recommendations. Use when reviewing, auditing, or scoring project documentation quality.
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, Skill
 ---
 
-# Documentation overview audit
+# Documentation audit
+
+Skill version: 1.0_2026.04.13
 
 This skill performs a comprehensive documentation audit for an IDM project. It checks general completeness against the IDM documentation standards, then delegates to three specialized skills for deeper analysis, and assembles everything into a single prioritized report.
 

@@ -6,6 +6,8 @@ allowed-tools: Read, Grep, Glob, Edit, Write
 
 # Persona documentation check
 
+Skill version: 1.0_2026.04.13
+
 IDM documentation targets five distinct personas, each with different technical backgrounds, needs, and decision-making contexts. Different sections of documentation serve different personas. This skill checks whether each documentation section is written appropriately for its intended audience.
 
 ## Persona-to-section mapping

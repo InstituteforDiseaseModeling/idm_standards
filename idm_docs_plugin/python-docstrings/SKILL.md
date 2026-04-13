@@ -5,6 +5,8 @@ description: Guidelines for writing Python docstrings in this project. Always us
 
 # Python docstring guidelines
 
+Skill version: 1.0_2026.04.13
+
 Use **Google-style docstrings**. Every public class, method, and function should have a docstring that helps a disease-modeling researcher understand not just *what* the object does, but *where it fits* in their workflow. Use American English spelling and usage.
 
 If using Material for MkDocs to build documentation, the plugin [mkdocstrings](https://mkdocstrings.github.io/) renders docstrings as API reference content. Local modules are documented automatically; to include external packages, use the `mkdocs-gen-files` plugin and associated Python script.
