@@ -22,7 +22,7 @@ quartodoc:
 
 ```python
 def some_function(arg1, arg2):
-    """One-line summary ending with a period.
+    """ One-line summary ending with a period.
 
     Two to four sentences of prose explaining what this does and why a researcher
     would reach for it. Mention the disease model context — is this used during
@@ -32,25 +32,28 @@ def some_function(arg1, arg2):
     [`Model`][laser.generic.model.Model] or [`Susceptible`][laser.generic.components.Susceptible].
 
     Args:
-        arg1 (np.ndarray): Description including shape, dtype, and units where
+        arg1 (array): Description including shape, dtype, and units where
             relevant. E.g. "Shape ``(nticks+1, num_nodes)``, dtype float32."
         arg2 (int): Description. State default values explicitly if they matter.
 
     Returns:
-        np.ndarray: What is returned, its shape, dtype, and interpretation.
+        array: What is returned, its shape, dtype, and interpretation.
             For None returns, omit this section entirely.
 
     Raises:
         ValueError: When and why this is raised.
 
-    Example:
-        Show the most common researcher workflow. Use a self-contained snippet
-        that a researcher can run or adapt directly:
+    **Example:**
 
         ```python
+
+        # Show the most common researcher workflow. Use a self-contained snippet
+        # that a researcher can run or adapt directly:
+
         model = Model(scenario, params)
         result = some_function(model.nodes.S[0], model.params.nticks)
         ```
+
 
     Note:
         Reserve for non-obvious caveats — performance warnings, thread safety,
@@ -87,7 +90,7 @@ Use these links in the **description prose** to guide a reader toward related co
 
 ### Quarto syntax
 
-Cross-references use the format [Arr](#starsim.Arr).
+Cross-references typically work directly, e.g. `ss.Arr` automatically links to `starsim.arrays.Arr`. If you need to customize, use the syntax: [Arr](`starsim.arrays.Arr`).
 
 ---
 
