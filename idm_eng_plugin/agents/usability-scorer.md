@@ -50,6 +50,7 @@ Explore the project and score each non-N/A metric as an integer from 0–10.
 - Look for input validation and error messages (`raise ValueError(...)`, `stop(...)`)
 - Check if common workflows require <10 lines of code or are encapsulated in one-line scripts/commands
 - Look for `examples/` or `scripts/` directory with usage demos
+- Check that tests (`tests/`) are simple and readable as usage demos
 
 ### 2. Assess power/flexibility (usability.powerful) — skip if Tier 3
 - Look for configuration options beyond the minimum: keyword arguments, config files
@@ -85,8 +86,8 @@ Explore the project and score each non-N/A metric as an integer from 0–10.
 - Check for key files: `CHANGELOG.md`, contributing guidelines, code of conduct
 - Check for `setup.py`, `pyproject.toml`, `DESCRIPTION` (R) — is it installable?
 - Check `README` for installation instructions — count the steps (should be 1-3 commands)
-- For Tier 1 and 2: check if users know how to get support
-- For Tier 1: check if published on PyPI (`pip install <name>`) or CRAN
+- For Tier 1 and 2: check if users know how to get support (contact information provided)
+- For Tier 1: check if published on PyPI (`pip index versions <name>`) or CRAN
 - For Tier 1: check for AI-optimization markers: skills, MCP servers, CLAUDE.md
 
 ## Scoring
@@ -98,13 +99,13 @@ Use the rubric provided in your prompt. If no explicit rubric is given, use thes
 **simple** (weight: 3):
 - 0: Unclear how to use; no obvious entry point
 - 5: Common cases work but require setup
-- 7: Clean UIs with sensible defaults, good error messages
+- 8: Clean UIs with sensible defaults, good error messages
 - 10: No specific improvements identifiable; intuitive UIs, great errors, one-liner common workflows
 
 **powerful** (weight: 2, N/A for Tier 3):
 - 0: Completely hardcoded
 - 5: Some configurability
-- 7: Most use cases covered; classes easily composed or subclassed
+- 8: Most use cases covered; classes easily composed or subclassed
 - 10: No specific improvements identifiable; all assumptions modifiable; easily composed/subclassed
 
 **performant** (weight: 2):

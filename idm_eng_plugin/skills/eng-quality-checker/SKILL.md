@@ -7,7 +7,7 @@ allowed-tools: Read, Glob, Grep, Bash, Write, Agent, WebFetch
 
 Score a software project against the IDM engineering quality guidelines and write an `engineering_score.md` report.
 
-Skill version: 1.2_2026.03.31
+Skill version: 1.3_2026.04.13
 
 ## Step 0: Record Start Time
 
@@ -26,7 +26,7 @@ The user provides two arguments:
 - **tier**: integer 1, 2, or 3. Default: 2.
 
 **Tier definitions (brief)**:
-- Tier 1: Software library or DPG used by many people for many years
+- Tier 1: Software library or Digital Public Good used by many people for many years
 - Tier 2: Small-scale project used by multiple people or projects
 - Tier 3: One-off/exploratory code used by one person
 
@@ -41,7 +41,6 @@ This file contains:
 - Category weights (quality 40%, usability 40%, safety 20%)
 - Per-metric weights within each category
 - Tier-specific rubrics with 0/mid/10 anchor descriptions
-- N/A metrics for each tier (Tier 3: `powerful` and `accessible` are N/A)
 
 ## Step 3: Dispatch Sub-Agents in Parallel
 
@@ -66,7 +65,7 @@ Tier <tier> rubric for quality (from IDM scoring schema):
 
 Instructions:
 1. Explore the project: read key source files, check for tests, inspect structure, naming, docstrings, code organization, duplication. Determine the main programming language(s) used.
-2. Run e.g. `find <project> -name "*.py"` to discover files for a project in Python.
+2. Run e.g. `find <project> -name "*.py"` to discover files for a project in Python, or `find <project> -name "*.R"` for R.
 3. Check for test files: look for test_*.py, *_test.py, tests/ directory, testthat/ for R. Check if tests are clear enough to double as documentation.
 4. For Tier 1: check for CI/CD config (.github/workflows/, .travis.yml, etc.).
 5. For Tier 1: check whether code is hard to misuse (correct usage is easiest; incorrect usage raises warnings).
@@ -139,10 +138,10 @@ Instructions:
 1. Check for exposed secrets: scan for .env files, hardcoded API keys/tokens/passwords using grep patterns like (api_key|secret|password|token)\s*=\s*['\"][^'"]{8,}.
 2. Check for LICENSE file and identify license type.
 3. Inspect dependency files (pyproject.toml, DESCRIPTION, requirements.txt, setup.py, renv.lock) for restrictive licenses (GPL, AGPL, proprietary).
-4. Check dependency specification: are dependencies specified in pyproject.toml or DESCRIPTION? Are versions pinned?
+4. Check dependency specification: are dependencies specified in pyproject.toml or DESCRIPTION? If relevant for this project (e.g. it produces final results rather than being a tool/library), are versions pinned?
 5. Check random seed handling: if random numbers are used, do same seeds give identical results?
 6. For Tier 1 and 2: check version control — git tags, semantic versioning.
-7. For Tier 1: check if package is on PyPI/CRAN, look for CHANGELOG.
+7. For Tier 1: check if package is on PyPI (curl -I https://pypi.org/pypi/<package>/json) / CRAN (curl -I https://cran.r-project.org/web/packages/<package>/DESCRIPTION), look for CHANGELOG.
 8. Score each metric as an integer 0–10.
 
 Return ONLY a JSON object (no other text):
@@ -239,11 +238,13 @@ Give N/A metrics (Tier 3: `powerful`, `accessible`) a score of 10.
 
 ## Step 6: Generate Recommendations
 
-Before writing the file, synthesize 3–8 concrete, actionable recommendations ranked by impact (score x weight). Each recommendation should:
+Before writing the file, write concrete, actionable recommendations ranked by impact (score x weight). Every time you give a score below 10, write the specific improvement that would raise it. Each recommendation should:
+
 - Name the specific metric it improves
 - Be specific and implementable (e.g., "Add a `tests/` directory with pytest tests for the three main functions" not "add tests")
 - Note if it is quick (minutes), medium (hours), or large (days) effort
 - Note if it cannot be automated (e.g., "Write a user guide" — human effort required)
+
 
 ## Step 7: Write engineering_score.md
 
@@ -251,6 +252,7 @@ Write this file to the **project directory** (not the current working directory 
 
 Before writing, compute the following:
 - **Date**: run `date +%Y-%m-%d` to get the current date.
+- **Version**: Add this skill's name and version (listed at the top of this file) to the report header, e.g., "**Version**: idm-eng-plugin:eng-quality-checker v1.3_2026.04.13".
 - **Time spent**: run `date +%s` to get `END_EPOCH`, then compute `END_EPOCH - START_EPOCH` (recorded in Step 0). Format as an integer number of seconds.
 
 ```markdown
@@ -261,6 +263,7 @@ Before writing, compute the following:
 **Overall Score**: <overall_score>/100
 **Status**: <PASS or FAIL — FAIL if failed=true>
 **Date**: <YYYY-MM-DD>
+**Version**: idm-eng-plugin:eng-quality-checker <version>
 **Time spent**: <seconds>s
 
 ## Summary
@@ -290,22 +293,21 @@ If failed=true, clearly state which metric caused the failure and why.>
 
 ## Recommendations
 
-<Numbered list of 3–8 recommendations, most impactful first. For each:>
+<List of recommendations, most impactful first. For each:>
 1. **[Metric] — [Title]** *(effort: quick/medium/large; automated: yes/no)*
-   <One concrete sentence describing exactly what to do.>
+   <One or more concrete sentences describing exactly what to do.>
 
 ## Full Results
 
 ```yaml
 <the assembled YAML>
 ```
-```
 
 ## Notes
 
 - **General scoring principle**: If no specific improvements can be identified for a metric, score 10/10. If scoring below 10, always list the specific improvements that would raise the score. Don't dock points for theoretical issues — only for concrete, observable problems.
 - **Skip large and binary files**: Do not read files larger than 100 KB, or files with extensions `.csv`, `.pdf`, `.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.svg`, `.ico`, `.tiff`, `.webp`. These are too large or not human-readable source code.
-- If the project is very large, focus on a representative sample: main source files, entry points, README, tests, and CI config.
+- Always read every source file (typically `*.py` or `*.R`) for the project. If there are large documentation files (e.g. `*.ipynb`), only read those if they are smaller than 100 KB.
 - For R projects: look for `DESCRIPTION`, `R/`, `tests/testthat/`, `vignettes/`, `man/` directories.
 - For Python projects: look for `pyproject.toml`, `setup.py`, `src/`, `tests/`, `.github/`.
 - Scientific correctness (quality.correct) is the most heavily weighted metric (28/100 points). Pay particular attention to this.
