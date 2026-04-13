@@ -13,7 +13,7 @@ Use numbered lists for the steps in a procedure for ease of scanning. If you nee
 1.  Define data stratification.
 
     Each observation sheet starts blank and requires you to specify observational data
-    statifiers and the type of data uncertainty that will be specified.
+    stratifiers and the type of data uncertainty that will be specified.
 
     * Year
     * Province

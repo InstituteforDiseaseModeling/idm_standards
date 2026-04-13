@@ -1,6 +1,6 @@
 # IDM documentation guidance
 
-This section describes the standards for writing IDM documentation. You may built documentation using either Material for MkDocs (recommended) or Quarto (if greater R support or interactivity needed). 
+This section describes the standards for writing IDM documentation. You may build documentation using either Material for MkDocs (recommended) or Quarto (if greater R support or interactivity needed). 
 
 Use the template files in coordination with this documentation or the AI-driven plugins. Style guidance for terminology, grammar, and formatting is defined and enforced via the Vale linter.
 
