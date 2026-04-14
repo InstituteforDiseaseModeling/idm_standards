@@ -1,0 +1,7 @@
+extends: existence
+message: "Don't use '%s'. Be more direct and objective."
+ignorecase: true
+level: error
+tokens:
+  - please
+  - thank you

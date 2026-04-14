@@ -1,0 +1,12 @@
+extends: substitution
+message: "Use an em dash (—) instead of hyphens."
+level: warning
+scope: raw
+nonword: true
+
+# `swap` defines what to replace with what
+swap:
+  # Matches: space-hyphen-space
+  # Suggests replacing with: space—space
+  ' - ': '—'
+  '--': '—'
