@@ -96,7 +96,7 @@ Invoke the `python-docstrings` skill. Sample a representative set of public modu
 
 ### Step 4: Assemble the report
 
-Produce a single structured report with these sections:
+Produce a single structured report with these sections and write to `docs_audit.md`:
 
 #### Documentation audit report
 

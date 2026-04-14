@@ -23,12 +23,12 @@ This will be used in Step 7 to compute elapsed time.
 
 The user provides two arguments:
 - **project**: path to a local directory OR a GitHub URL (e.g., `https://github.com/org/repo`). Default: current working directory.
-- **tier**: integer 1, 2, or 3. Default: 2.
+- **tier**: integer 1, 2, or 3. If not supplied, prompt the user to choose (based on the definitions immediately below).
 
 **Tier definitions (brief)**:
-- Tier 1: Software library or Digital Public Good used by many people for many years
+- Tier 1: Software library or digital public good used by many people for many years
 - Tier 2: Small-scale project used by multiple people or projects
-- Tier 3: One-off/exploratory code used by one person
+- Tier 3: One-off or exploratory code used by one person
 
 **If a GitHub URL is given**: Use `gh repo clone <url> /tmp/eng-quality-checker-$(date +%s)` to clone to a temporary directory. Set `project` to that path.
 
@@ -258,13 +258,13 @@ Before writing, compute the following:
 ```markdown
 # Project Engineering Score
 
-**Project**: `<project_path>`
-**Tier**: <tier> (<tier name>)
-**Overall Score**: <overall_score>/100
-**Status**: <PASS or FAIL — FAIL if failed=true>
-**Date**: <YYYY-MM-DD>
-**Version**: idm-eng-plugin:eng-quality-checker <version>
-**Time spent**: <seconds>s
+- **Project**: `<project_path>`
+- **Tier**: <tier> (<tier name>)
+- **Overall Score**: <overall_score>/100
+- **Status**: <PASS or FAIL — FAIL if failed=true>
+- **Date**: <YYYY-MM-DD>
+- **Version**: idm-eng-plugin:eng-quality-checker <version>
+- **Time spent**: <seconds>s
 
 ## Summary
 
