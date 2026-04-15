@@ -52,6 +52,7 @@ nav:
       - Model user: personas/model-user.md
       - Policy influencer: personas/policy-influencer.md
       - Policy maker: personas/policy-maker.md
+    - Style and grammar: vale.md
   - Engineering guidance:
     - Philosophy: ../eng_guidance/1_philosophy.md
     - Python: ../eng_guidance/2_python.md
