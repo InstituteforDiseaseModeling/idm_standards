@@ -22,7 +22,6 @@ FPsim
 HPVsim
 stochasticity
 Diataxis
-Diataxis
 API
 LMIC
 HPC

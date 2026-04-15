@@ -6,8 +6,7 @@ action:
   name: replace
 swap:
   "(?:poisson)": Poisson
-  "(?:boolean)": Boolean 
+  "(?:boolean)": Boolean
   "(?:bayesian)": Bayesian
   "(?:Gamma)": gamma
   "(?:Beta)": beta
-  

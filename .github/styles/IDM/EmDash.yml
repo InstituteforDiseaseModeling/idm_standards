@@ -7,6 +7,6 @@ nonword: true
 # `swap` defines what to replace with what
 swap:
   # Matches: space-hyphen-space
-  # Suggests replacing with: space—space
+  # Suggests replacing with: em dash (no surrounding spaces)
   ' - ': '—'
   '--': '—'
