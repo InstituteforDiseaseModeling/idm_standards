@@ -1,5 +1,6 @@
 # mkdocs build files
 site/* 
+.cache/*
 
 # vscode files
 .vscode/*
