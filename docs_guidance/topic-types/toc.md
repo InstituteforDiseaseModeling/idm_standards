@@ -4,7 +4,7 @@
 
 The table of contents (TOC) controls the structure and labeling of the documentation site navigation. This guidance covers shared principles that apply to all projects, followed by tool-specific implementation guidance for Material for MkDocs and Quarto.
 
-Follow the Diataxis guidance when deciding what what topic type to use for information you want to share in the documentation. All topics should aim to be self-contained and describe a single subject, linking away to related topics but not duplicating their content. When content must appear in multiple topics (such as common warnings), create a snippet of reusable text rather than duplicating that content. 
+Follow the Diataxis guidance when deciding what what topic type to use for information you want to share in the documentation. All topics should aim to be self-contained and describe a single subject, linking away to related topics but not duplicating their content. When content must appear in multiple topics (such as common warnings), create a snippet of reusable text rather than duplicating that content.
 
 ## Shared principles
 
