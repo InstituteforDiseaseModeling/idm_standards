@@ -3,10 +3,6 @@ project:
   output-dir: _site
   render: # Need to specify README.md explicitly since excluded by default
     - README.md
-    - getting_started/index.md
-    - eng_guidance/index.md
-    - eng_process/index.md
-    - docs_guidance/index.md
     - "*.md"
     - "!docs_templates/"
     - "!idm_docs_plugin/"
