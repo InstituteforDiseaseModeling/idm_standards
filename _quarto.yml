@@ -117,6 +117,7 @@ format:
       dark: solar
     code-copy: true
     toc: true
+    toc-expand: true
     toc-depth: 3
     highlight-style: github
     include-in-header:
