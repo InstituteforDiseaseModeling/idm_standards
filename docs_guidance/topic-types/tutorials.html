@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tutorials – IDM Standards</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../docs_guidance/images/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-9a023c9ade86a60361e96e3e3f11bc54.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3f919fa540d154c91af5bcec4cb053ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-467acb9c33399826122cd724fa77dab0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NK4K647');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript></noscript></head><body class="nav-sidebar floating nav-fixed"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK4K647" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+<!-- End Google Tag Manager (noscript) -->
+
+<meta name="google-site-verification" content="L6w2tbHp4xFTm04T0CdrrzqX_T9PH-bpQnGGYuwuAE4">
+
+
+
+
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../docs_guidance/images/idm-logo-transparent.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">IDM Standards</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="https://github.com/InstituteforDiseaseModeling/idm_standards" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="mailto:idm@gatesfoundation.org" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope"></i></a>
+    <a href="https://idmod.org" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-globe"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../docs_guidance/README.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../../docs_guidance/topic-types/README.md">Topic types</a></li><li class="breadcrumb-item"><a href="../../docs_guidance/topic-types/tutorials.html">Tutorials</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../getting_started/README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../getting_started/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../getting_started/ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI-assisted development</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../getting_started/comms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communication and culture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../eng_guidance/README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Engineering guidance</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_guidance/1_philosophy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Philosophy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_guidance/2_python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_guidance/3_tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_guidance/4_documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_guidance/5_other.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Other</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_guidance/6_zen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Zen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_guidance/engineering_quality_guidelines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality guidelines</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../eng_process/README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Engineering processes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_process/github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_process/processes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../eng_process/public_release.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Public release</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../docs_guidance/README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docs guidance</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/mkdocs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MkDocs overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home page</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation page</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../docs_guidance/topic-types/README.md" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Topic types</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/topic-types/toc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of contents</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/topic-types/tutorials.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tutorials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/topic-types/howto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How-to</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/topic-types/reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/topic-types/explanation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explanation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/topic-types/notebook.ipynb" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example notebook</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../docs_guidance/personas/README.md" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Personas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/personas/model-builder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model builder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/personas/model-extender.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model extender</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/personas/model-user.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model user</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/personas/policy-influencer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Policy influencer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/personas/policy-maker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Policy maker</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/vale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Style and grammar</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tutorial-documentation-reference" id="toc-tutorial-documentation-reference" class="nav-link active" data-scroll-target="#tutorial-documentation-reference">Tutorial documentation reference</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#core-definition" id="toc-core-definition" class="nav-link" data-scroll-target="#core-definition">Core definition</a></li>
+  <li><a href="#the-teachers-contract" id="toc-the-teachers-contract" class="nav-link" data-scroll-target="#the-teachers-contract">The teacher’s contract</a></li>
+  <li><a href="#critical-distinction-tutorial-vs-how-to-guide" id="toc-critical-distinction-tutorial-vs-how-to-guide" class="nav-link" data-scroll-target="#critical-distinction-tutorial-vs-how-to-guide">Critical distinction: Tutorial vs how-to guide</a></li>
+  <li><a href="#the-11-core-principles" id="toc-the-11-core-principles" class="nav-link" data-scroll-target="#the-11-core-principles">The 11 core principles</a>
+  <ul class="collapse">
+  <li><a href="#dont-try-to-teach" id="toc-dont-try-to-teach" class="nav-link" data-scroll-target="#dont-try-to-teach">1. Don’t try to teach</a></li>
+  <li><a href="#show-the-destination-upfront" id="toc-show-the-destination-upfront" class="nav-link" data-scroll-target="#show-the-destination-upfront">2. Show the destination upfront</a></li>
+  <li><a href="#deliver-visible-results-early-and-often" id="toc-deliver-visible-results-early-and-often" class="nav-link" data-scroll-target="#deliver-visible-results-early-and-often">3. Deliver visible results early and often</a></li>
+  <li><a href="#maintain-narrative-expectations" id="toc-maintain-narrative-expectations" class="nav-link" data-scroll-target="#maintain-narrative-expectations">4. Maintain narrative expectations</a></li>
+  <li><a href="#point-out-what-learners-should-notice" id="toc-point-out-what-learners-should-notice" class="nav-link" data-scroll-target="#point-out-what-learners-should-notice">5. Point out what learners should notice</a></li>
+  <li><a href="#target-the-feeling-of-doing" id="toc-target-the-feeling-of-doing" class="nav-link" data-scroll-target="#target-the-feeling-of-doing">6. Target the feeling of doing</a></li>
+  <li><a href="#encourage-repetition" id="toc-encourage-repetition" class="nav-link" data-scroll-target="#encourage-repetition">7. Encourage repetition</a></li>
+  <li><a href="#ruthlessly-minimize-explanation" id="toc-ruthlessly-minimize-explanation" class="nav-link" data-scroll-target="#ruthlessly-minimize-explanation">8. Ruthlessly minimize explanation</a></li>
+  <li><a href="#focus-on-the-concrete" id="toc-focus-on-the-concrete" class="nav-link" data-scroll-target="#focus-on-the-concrete">9. Focus on the concrete</a></li>
+  <li><a href="#ignore-options-and-alternatives" id="toc-ignore-options-and-alternatives" class="nav-link" data-scroll-target="#ignore-options-and-alternatives">10. Ignore options and alternatives</a></li>
+  <li><a href="#aspire-to-perfect-reliability" id="toc-aspire-to-perfect-reliability" class="nav-link" data-scroll-target="#aspire-to-perfect-reliability">11. Aspire to perfect reliability</a></li>
+  </ul></li>
+  <li><a href="#anti-pedagogical-temptations-to-avoid" id="toc-anti-pedagogical-temptations-to-avoid" class="nav-link" data-scroll-target="#anti-pedagogical-temptations-to-avoid">Anti-pedagogical temptations to avoid</a></li>
+  <li><a href="#language-patterns" id="toc-language-patterns" class="nav-link" data-scroll-target="#language-patterns">Language patterns</a></li>
+  <li><a href="#voice-and-tone" id="toc-voice-and-tone" class="nav-link" data-scroll-target="#voice-and-tone">Voice and tone</a>
+  <ul class="collapse">
+  <li><a href="#collaborative-we" id="toc-collaborative-we" class="nav-link" data-scroll-target="#collaborative-we">Collaborative “we”</a></li>
+  <li><a href="#confident-reassuring" id="toc-confident-reassuring" class="nav-link" data-scroll-target="#confident-reassuring">Confident, reassuring</a></li>
+  <li><a href="#active-and-present" id="toc-active-and-present" class="nav-link" data-scroll-target="#active-and-present">Active and present</a></li>
+  </ul></li>
+  <li><a href="#tutorial-vs.-how-to-guide-distinction" id="toc-tutorial-vs.-how-to-guide-distinction" class="nav-link" data-scroll-target="#tutorial-vs.-how-to-guide-distinction">Tutorial vs.&nbsp;how-to guide distinction</a></li>
+  <li><a href="#the-cooking-analogy" id="toc-the-cooking-analogy" class="nav-link" data-scroll-target="#the-cooking-analogy">The cooking analogy</a></li>
+  <li><a href="#special-challenges-of-tutorials" id="toc-special-challenges-of-tutorials" class="nav-link" data-scroll-target="#special-challenges-of-tutorials">Special challenges of tutorials</a>
+  <ul class="collapse">
+  <li><a href="#maintenance-burden" id="toc-maintenance-burden" class="nav-link" data-scroll-target="#maintenance-burden">Maintenance burden</a></li>
+  <li><a href="#no-instructor-present" id="toc-no-instructor-present" class="nav-link" data-scroll-target="#no-instructor-present">No instructor present</a></li>
+  <li><a href="#design-complexity" id="toc-design-complexity" class="nav-link" data-scroll-target="#design-complexity">Design complexity</a></li>
+  </ul></li>
+  <li><a href="#when-to-write-tutorials" id="toc-when-to-write-tutorials" class="nav-link" data-scroll-target="#when-to-write-tutorials">When to write tutorials</a></li>
+  <li><a href="#when-not-to-write-tutorials" id="toc-when-not-to-write-tutorials" class="nav-link" data-scroll-target="#when-not-to-write-tutorials">When NOT to write tutorials</a></li>
+  <li><a href="#checklist-for-writing-tutorials" id="toc-checklist-for-writing-tutorials" class="nav-link" data-scroll-target="#checklist-for-writing-tutorials">Checklist for writing tutorials</a></li>
+  <li><a href="#format-and-implementation" id="toc-format-and-implementation" class="nav-link" data-scroll-target="#format-and-implementation">Format and implementation</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../docs_guidance/README.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../../docs_guidance/topic-types/README.md">Topic types</a></li><li class="breadcrumb-item"><a href="../../docs_guidance/topic-types/tutorials.html">Tutorials</a></li></ol></nav></header>
+
+
+
+
+<section id="tutorial-documentation-reference" class="level1">
+<h1>Tutorial documentation reference</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>A tutorial is a <strong>learning-oriented, practical activity</strong> where students learn by doing meaningful tasks toward achievable goals. It’s a lesson, not a task completion guide.</p>
+</section>
+<section id="core-definition" class="level2">
+<h2 class="anchored" data-anchor-id="core-definition">Core definition</h2>
+<p>Tutorials are experiences that enable learning through doing. The tutorial author bears primary responsibility for the learner’s success. Tutorials prioritize skill and knowledge acquisition, not task completion.</p>
+</section>
+<section id="the-teachers-contract" class="level2">
+<h2 class="anchored" data-anchor-id="the-teachers-contract">The teacher’s contract</h2>
+<p>Nearly all responsibility falls on the teacher. The student’s only obligation is attentiveness and following directions.</p>
+<p><strong>The exercise must be:</strong> - <strong>Meaningful</strong>: Provides sense of achievement - <strong>Successful</strong>: Completable by the learner - <strong>Logical</strong>: Coherent progression that makes sense - <strong>Usefully complete</strong>: Exposes all necessary actions, concepts, and tools</p>
+</section>
+<section id="critical-distinction-tutorial-vs-how-to-guide" class="level2">
+<h2 class="anchored" data-anchor-id="critical-distinction-tutorial-vs-how-to-guide">Critical distinction: Tutorial vs how-to guide</h2>
+<p>This is the <strong>most commonly confused distinction</strong> in documentation. Both contain steps, but they serve fundamentally different purposes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 31%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Tutorial</th>
+<th>How-to guide</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>User knowledge</strong></td>
+<td>Learner may not know enough to even ask the right questions</td>
+<td>Already knows what they want to achieve</td>
+</tr>
+<tr class="even">
+<td><strong>Approach</strong></td>
+<td>Concrete and particular—specific, known tools and materials we’ve set before the learner</td>
+<td>General: many things unknowable in advance or different in each case</td>
+</tr>
+<tr class="odd">
+<td><strong>Path structure</strong></td>
+<td>Single line, no choices or alternatives</td>
+<td>Forks and branches, different routes to same destination</td>
+</tr>
+<tr class="even">
+<td><strong>Completeness</strong></td>
+<td>Must be complete end-to-end guide</td>
+<td>Doesn’t need to be complete—starts/ends at reasonable points</td>
+</tr>
+<tr class="odd">
+<td><strong>Safety</strong></td>
+<td>Must be safe—no harm can come, always possible to go back and start again</td>
+<td>Cannot promise safety—often only one chance to get it right</td>
+</tr>
+<tr class="even">
+<td><strong>Responsibility</strong></td>
+<td>Teacher has responsibility: if learner gets in trouble, teacher must fix it</td>
+<td>User has responsibility for getting in and out of trouble</td>
+</tr>
+<tr class="odd">
+<td><strong>Focus</strong></td>
+<td>Study—learning skills</td>
+<td>Work—accomplishing tasks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: You will revise tutorials far more than other docs. Unlike how-to guides (which only change when the product changes), you may completely rewrite a tutorial because you found a better learning experience.</p>
+</section>
+<section id="the-11-core-principles" class="level2">
+<h2 class="anchored" data-anchor-id="the-11-core-principles">The 11 core principles</h2>
+<section id="dont-try-to-teach" class="level3">
+<h3 class="anchored" data-anchor-id="dont-try-to-teach">1. Don’t try to teach</h3>
+<p>“Your job, as a teacher, is to provide the learner with an experience that will allow them to learn.”</p>
+<ul>
+<li>Focus on enabling learning through doing, not explanation</li>
+<li>Provide experiences, not lectures</li>
+<li>Let understanding emerge from practice</li>
+<li>The learner learns by doing, not by being told</li>
+</ul>
+</section>
+<section id="show-the-destination-upfront" class="level3">
+<h3 class="anchored" data-anchor-id="show-the-destination-upfront">2. Show the destination upfront</h3>
+<p><strong>Orient the learner:</strong> - Inform learners what they’ll accomplish at the start - Example: “In this tutorial we will create and run a simulation” - Avoid presumptuous “you will learn” phrasing - Give learners confidence in where they’re heading</p>
+<p><strong>Why this matters:</strong> - Reduces anxiety and uncertainty - Provides context for upcoming steps - Helps learners see the value of the journey</p>
+</section>
+<section id="deliver-visible-results-early-and-often" class="level3">
+<h3 class="anchored" data-anchor-id="deliver-visible-results-early-and-often">3. Deliver visible results early and often</h3>
+<p><strong>Rapid feedback loops:</strong> - Every step must produce comprehensible results - Learners should see changes after each action - Enable cause-and-effect connections repeatedly - Build confidence through immediate success</p>
+<p><strong>The power of results:</strong> - Validates that learners are on track - Reinforces correct actions - Maintains engagement and motivation - Allows learners to verify their progress</p>
+</section>
+<section id="maintain-narrative-expectations" class="level3">
+<h3 class="anchored" data-anchor-id="maintain-narrative-expectations">4. Maintain narrative expectations</h3>
+<p><strong>Guide what to expect:</strong> - Use phrases like “You will notice that [observation]” - Show actual expected output - Warn about likely confusion points - Provide reassurance throughout</p>
+<p><strong>Example patterns:</strong> - “The output should look like [specific output]” - “Notice that the prompt has changed to [new prompt value]” - “You should now see [expected output]” - “This may take a few moments”</p>
+</section>
+<section id="point-out-what-learners-should-notice" class="level3">
+<h3 class="anchored" data-anchor-id="point-out-what-learners-should-notice">5. Point out what learners should notice</h3>
+<p>“Learning requires reflection.”</p>
+<p><strong>Active observation guidance:</strong> - Explicitly highlight environmental changes - Point out important details - Draw attention to significant results - Don’t assume learners notice things independently</p>
+<p><strong>Examples:</strong> - “Notice that the prompt now shows <code>(venv)</code>” - “The terminal output indicates success with [success indicator]” - “Observe how the interface has changed [specific change]”</p>
+</section>
+<section id="target-the-feeling-of-doing" class="level3">
+<h3 class="anchored" data-anchor-id="target-the-feeling-of-doing">6. Target the feeling of doing</h3>
+<p><strong>Flow state creation:</strong> - Build tasks that connect: purpose -&gt; action -&gt; thinking -&gt; result - Create rhythmic, pleasurable progression - Enable the satisfaction of skilled practice - Let competence feel rewarding</p>
+<p><strong>The doing experience:</strong> - Learners should feel actively engaged - Each step should feel purposeful - Progress should feel natural and inevitable - Success should feel earned but achievable</p>
+</section>
+<section id="encourage-repetition" class="level3">
+<h3 class="anchored" data-anchor-id="encourage-repetition">7. Encourage repetition</h3>
+<p><strong>Repetition reinforces learning:</strong> - Allow steps to be repeated where possible - Users naturally repeat successful steps - Repetition confirms reliability - Reinforcement builds confidence</p>
+<p><strong>Why repetition works:</strong> - Solidifies new skills through practice - Allows learners to internalize patterns - Builds muscle memory for workflows - Increases retention</p>
+</section>
+<section id="ruthlessly-minimize-explanation" class="level3">
+<h3 class="anchored" data-anchor-id="ruthlessly-minimize-explanation">8. Ruthlessly minimize explanation</h3>
+<p>“A tutorial is not the place for explanation.”</p>
+<p><strong>Keep explanations brief:</strong> - Learners are focused on correct execution - Explanation distracts from doing - Provide links to deeper explanation rather than embedding it - Brief justifications only when absolutely necessary</p>
+<p><strong>The distraction problem:</strong> - Explanation breaks the flow - Diverts attention from the task - Cognitive load increases - Learners lose the thread</p>
+</section>
+<section id="focus-on-the-concrete" class="level3">
+<h3 class="anchored" data-anchor-id="focus-on-the-concrete">9. Focus on the concrete</h3>
+<p><strong>Concrete before abstract:</strong> - Lead “from step to concrete step” - Use specific examples, not generalizations - The mind learns concrete-to-abstract, never the reverse - General patterns emerge naturally from concrete practice</p>
+<p><strong>Concrete examples:</strong> - Use actual file names, not placeholders - Show real commands, not templates - Demonstrate with specific values - Let abstraction emerge through experience</p>
+</section>
+<section id="ignore-options-and-alternatives" class="level3">
+<h3 class="anchored" data-anchor-id="ignore-options-and-alternatives">10. Ignore options and alternatives</h3>
+<p><strong>Single path only:</strong> - Exclude alternative commands or approaches - No optional steps or variations - Don’t discuss different API methods - Keep guidance focused on one successful path</p>
+<p><strong>Why single path:</strong> - Prevents decision paralysis - Reduces cognitive load - Ensures tutorial reliability - Allows focus on learning, not choosing</p>
+</section>
+<section id="aspire-to-perfect-reliability" class="level3">
+<h3 class="anchored" data-anchor-id="aspire-to-perfect-reliability">11. Aspire to perfect reliability</h3>
+<p>“Confidence builds incrementally and shatters quickly.”</p>
+<p><strong>Zero tolerance for failure:</strong> - Every promised result must materialize - Tutorial must work every single time - Test extensively with actual users - Discover and eliminate hidden gaps</p>
+<p><strong>The confidence factor:</strong> - One failure destroys trust - Learners blame themselves for tutorial problems - Unreliable tutorials create lasting negative impressions - Perfect reliability is non-negotiable</p>
+</section>
+</section>
+<section id="anti-pedagogical-temptations-to-avoid" class="level2">
+<h2 class="anchored" data-anchor-id="anti-pedagogical-temptations-to-avoid">Anti-pedagogical temptations to avoid</h2>
+<p>These common patterns sabotage learning:</p>
+<ol type="1">
+<li><strong>Abstraction and generalization</strong>: Stay concrete</li>
+<li><strong>Explanation and exposition</strong>: Link to it, don’t embed it</li>
+<li><strong>Presenting choices</strong>: Provide one clear path</li>
+<li><strong>Information overload</strong>: Ruthlessly minimize content</li>
+</ol>
+</section>
+<section id="language-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="language-patterns">Language patterns</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“We…”</td>
+<td>Affirm tutor-learner collaboration</td>
+<td>“In this tutorial, we will build [what is being built]”</td>
+</tr>
+<tr class="even">
+<td>Imperative sequence</td>
+<td>Remove ambiguity</td>
+<td>“First, do x. Now, do y. Next, do z.”</td>
+</tr>
+<tr class="odd">
+<td>Minimal justification</td>
+<td>Provide just enough rationale</td>
+<td>“We must do x before y because [reason] (see Explanation)”</td>
+</tr>
+<tr class="even">
+<td>Expected output</td>
+<td>Set clear expectations</td>
+<td>“The output should look like: [example output]”</td>
+</tr>
+<tr class="odd">
+<td>Observation cues</td>
+<td>Guide attention</td>
+<td>“Notice that [observation]” / “Remember that [key point]” / “Let’s check [what to clarify]”</td>
+</tr>
+<tr class="even">
+<td>Achievement acknowledgment</td>
+<td>Affirm accomplishment</td>
+<td>“You have [accomplished the goal]”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="voice-and-tone" class="level2">
+<h2 class="anchored" data-anchor-id="voice-and-tone">Voice and tone</h2>
+<section id="collaborative-we" class="level3">
+<h3 class="anchored" data-anchor-id="collaborative-we">Collaborative “we”</h3>
+<ul>
+<li>“We will create a new file”</li>
+<li>“Now we’ll add the configuration”</li>
+<li>“Let’s run the command together”</li>
+<li>Emphasizes partnership in learning</li>
+</ul>
+</section>
+<section id="confident-reassuring" class="level3">
+<h3 class="anchored" data-anchor-id="confident-reassuring">Confident, reassuring</h3>
+<ul>
+<li>Maintain certainty throughout</li>
+<li>Assure learners they’re on the right track</li>
+<li>Acknowledge achievements</li>
+<li>Build confidence incrementally</li>
+</ul>
+</section>
+<section id="active-and-present" class="level3">
+<h3 class="anchored" data-anchor-id="active-and-present">Active and present</h3>
+<ul>
+<li>Use present tense for actions</li>
+<li>Keep learners engaged in the moment</li>
+<li>Focus on immediate next step</li>
+<li>Maintain forward momentum</li>
+</ul>
+</section>
+</section>
+<section id="tutorial-vs.-how-to-guide-distinction" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-vs.-how-to-guide-distinction">Tutorial vs.&nbsp;how-to guide distinction</h2>
+<p><strong>Tutorials:</strong> - Emphasis on <strong>acquisition and study</strong> - For learning new skills - Teacher bears responsibility - Complete learning journey - Appropriate for novices - Focus on education</p>
+<p><strong>How-to guides:</strong> - Facilitate <strong>task completion</strong> - For applying known skills - User bears responsibility - Focused problem-solving - Assume competence - Focus on productivity</p>
+</section>
+<section id="the-cooking-analogy" class="level2">
+<h2 class="anchored" data-anchor-id="the-cooking-analogy">The cooking analogy</h2>
+<p>Teaching a person to cook illustrates tutorial principles perfectly:</p>
+<p><strong>Success criteria:</strong> - Person learns skills and gains pleasure - Not about perfect culinary output - Learning happens “through the activities” together - Not from instruction alone</p>
+<p><strong>Incomplete is acceptable:</strong> - If the person achieved something - If the person enjoyed it - Skills will develop over time - Foundation matters most</p>
+</section>
+<section id="special-challenges-of-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="special-challenges-of-tutorials">Special challenges of tutorials</h2>
+<section id="maintenance-burden" class="level3">
+<h3 class="anchored" data-anchor-id="maintenance-burden">Maintenance burden</h3>
+<ul>
+<li>Tutorials cascade through documentation</li>
+<li>Changes ripple across entire narrative</li>
+<li>Product evolution requires ongoing updates</li>
+<li>Breaking changes are especially problematic</li>
+<li>Use executable formats (e.g.&nbsp;Jupyter notebooks) to automatically catch breakage during builds</li>
+</ul>
+</section>
+<section id="no-instructor-present" class="level3">
+<h3 class="anchored" data-anchor-id="no-instructor-present">No instructor present</h3>
+<ul>
+<li>Can’t correct mistakes in real-time</li>
+<li>Can’t check understanding</li>
+<li>Can’t adapt to learner needs</li>
+<li>Must anticipate all problems</li>
+</ul>
+</section>
+<section id="design-complexity" class="level3">
+<h3 class="anchored" data-anchor-id="design-complexity">Design complexity</h3>
+<ul>
+<li>Balancing “what to learn” and “what to do”</li>
+<li>Requires careful sequencing</li>
+<li>Must maintain perfect reliability</li>
+<li>Needs extensive testing with real users</li>
+</ul>
+</section>
+</section>
+<section id="when-to-write-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-write-tutorials">When to write tutorials</h2>
+<p>Write tutorials when users need to: - Get their first hands-on experience - Learn fundamental concepts through practice - Build confidence with a new tool or system - Understand basic workflows - Achieve an early success that motivates further learning</p>
+</section>
+<section id="when-not-to-write-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="when-not-to-write-tutorials">When NOT to write tutorials</h2>
+<p>Don’t write tutorials when users need to: - Complete a specific task (use how-to guides) - Look up technical information (use reference) - Understand why things work (use explanation) - Apply skills they already have (use how-to guides)</p>
+</section>
+<section id="checklist-for-writing-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="checklist-for-writing-tutorials">Checklist for writing tutorials</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Learning-oriented, not task-oriented</label></li>
+<li><label><input type="checkbox">Shows destination at the beginning</label></li>
+<li><label><input type="checkbox">Every step produces visible results</label></li>
+<li><label><input type="checkbox">Maintains narrative expectations throughout</label></li>
+<li><label><input type="checkbox">Points out what learners should notice</label></li>
+<li><label><input type="checkbox">Creates the feeling of doing</label></li>
+<li><label><input type="checkbox">Allows repetition where possible</label></li>
+<li><label><input type="checkbox">Minimizes explanation (links to it instead)</label></li>
+<li><label><input type="checkbox">Focuses on concrete steps, not abstractions</label></li>
+<li><label><input type="checkbox">Ignores options and alternatives</label></li>
+<li><label><input type="checkbox">Tested for perfect reliability</label></li>
+<li><label><input type="checkbox">Uses “we” language to build partnership</label></li>
+<li><label><input type="checkbox">Acknowledges learner achievements</label></li>
+<li><label><input type="checkbox">No choices or decision points</label></li>
+<li><label><input type="checkbox">Complete learning experience from start to finish</label></li>
+<li><label><input type="checkbox">Links to how-to guides, reference, and explanation as needed</label></li>
+</ul>
+</section>
+<section id="format-and-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="format-and-implementation">Format and implementation</h2>
+<p>Where possible, write tutorials as Jupyter notebooks or other executable formats. This allows tutorials to be run automatically during documentation builds, surfacing broken steps or outdated outputs before learners encounter them. This directly supports the principle of perfect reliability.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/InstituteforDiseaseModeling\.github\.io\/idm_standards\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2026 Gates Foundation. All rights reserved.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.gatesfoundation.org/Privacy-and-Cookies-Notice">
+<p>Privacy and Cookies Notice</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.gatesfoundation.org/Terms-of-Use">
+<p>Terms of Use</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
