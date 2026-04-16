@@ -1,0 +1,129 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.md
+    - getting_started/
+    - eng_guidance/
+    - eng_process/
+    - docs_guidance/
+
+website:
+  title: IDM Standards
+  repo-url: https://github.com/InstituteforDiseaseModeling/idm_standards
+  repo-actions: [issue]
+  favicon: docs_guidance/images/favicon.ico
+  page-footer:
+    left: "Copyright &copy; 2026 Gates Foundation. All rights reserved."
+    right:
+      - text: "Privacy and Cookies Notice"
+        href: https://www.gatesfoundation.org/Privacy-and-Cookies-Notice
+      - text: "Terms of Use"
+        href: https://www.gatesfoundation.org/Terms-of-Use
+  navbar:
+    logo: docs_guidance/images/idm-logo-transparent.png
+    tools:
+      - icon: github
+        href: https://github.com/InstituteforDiseaseModeling/idm_standards
+      - icon: envelope
+        href: mailto:idm@gatesfoundation.org
+      - icon: globe
+        href: https://idmod.org
+  sidebar:
+    style: docked
+    contents:
+      - text: Home
+        file: index.md
+      - section: Getting started
+        contents:
+          - getting_started/index.md
+          - text: Installing Python
+            file: getting_started/python.md
+          - text: AI-assisted development
+            file: getting_started/ai.md
+          - text: Communication and culture
+            file: getting_started/comms.md
+      - section: Engineering guidance
+        contents:
+          - eng_guidance/index.md
+          - text: Philosophy
+            file: eng_guidance/1_philosophy.md
+          - text: Python
+            file: eng_guidance/2_python.md
+          - text: Tests
+            file: eng_guidance/3_tests.md
+          - text: Documentation
+            file: eng_guidance/4_documentation.md
+          - text: Other
+            file: eng_guidance/5_other.md
+          - text: Zen
+            file: eng_guidance/6_zen.md
+          - text: Quality guidelines
+            file: eng_guidance/engineering_quality_guidelines.md
+      - section: Engineering processes
+        contents:
+          - eng_process/index.md
+          - text: GitHub
+            file: eng_process/github.md
+          - text: Processes
+            file: eng_process/processes.md
+          - text: Public release
+            file: eng_process/public_release.md
+      - section: Docs guidance
+        contents:
+          - docs_guidance/index.md
+          - text: MkDocs overview
+            file: docs_guidance/mkdocs.md
+          - text: Quarto overview
+            file: docs_guidance/quarto.md
+          - text: Home page
+            file: docs_guidance/home.md
+          - text: Installation page
+            file: docs_guidance/install.md
+          - section: Topic types
+            contents:
+              - docs_guidance/topic-types/index.md
+              - text: Table of contents
+                file: docs_guidance/topic-types/toc.md
+              - text: Tutorials
+                file: docs_guidance/topic-types/tutorials.md
+              - text: How-to
+                file: docs_guidance/topic-types/howto.md
+              - text: Reference
+                file: docs_guidance/topic-types/reference.md
+              - text: Explanation
+                file: docs_guidance/topic-types/explanation.md
+              - text: Example notebook
+                file: docs_guidance/topic-types/notebook.ipynb
+          - section: Personas
+            contents:
+              - docs_guidance/personas/index.md
+              - text: Model builder
+                file: docs_guidance/personas/model-builder.md
+              - text: Model extender
+                file: docs_guidance/personas/model-extender.md
+              - text: Model user
+                file: docs_guidance/personas/model-user.md
+              - text: Policy influencer
+                file: docs_guidance/personas/policy-influencer.md
+              - text: Policy maker
+                file: docs_guidance/personas/policy-maker.md
+          - text: Style and grammar
+            file: docs_guidance/vale.md
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    mainfont: Roboto
+    monofont: Roboto Mono
+    code-copy: true
+    toc: true
+    toc-depth: 3
+    highlight-style: github
+    include-in-header:
+      - docs_guidance/customization/analytics.html
+
+execute:
+  enabled: true

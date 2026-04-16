@@ -80,7 +80,7 @@ All repos should include CONTRIBUTING.md, CODE_OF_CONDUCT.md, CHANGELOG.md, and 
 **Quarto syntax:**
 
 ```
-{{< include ../README.md >}}
+{{{< include ../README.md >}}}
 ```
 
 ### Cross-references

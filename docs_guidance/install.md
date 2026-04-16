@@ -4,20 +4,23 @@ Depending on the structure of the rest of the content, you may want to include e
 
 If installation is a simple process, such as a `pip` install, and there is a recommended path for getting started with a project or package  we recommend including the installation instructions as part of the Home page. 
 
-**MkDocs syntax:**
+Content tabs can be a neat way to present different instructions for different operating systems or Python installations. For example:
 
-MkDocs content tabs can be a neat way to present different instructions for different operating systems or Python installations. For example:
+::: {.panel-tabset}
 
-=== "Python"
+## Python
 
-    ```
-    python -m venv <env-name>
-    ```
-=== "Anaconda"
+```
+python -m venv <env-name>
+```
 
-    ```
-    conda create -n <env-name>
-    ```
+## Anaconda
+
+```
+conda create -n <env-name>
+```
+
+:::
 
 ## Tutorials
 

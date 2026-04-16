@@ -1,6 +1,6 @@
-# mkdocs build files
-site/* 
-.cache/*
+# quarto build files
+_site/*
+/.quarto/
 
 # vscode files
 .vscode/*

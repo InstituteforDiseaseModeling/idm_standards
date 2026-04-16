@@ -15,7 +15,7 @@ It's generally a good practice to automatically reuse the README.md file for the
 **Quarto syntax:**
 
 ```text
-{{< include ../README.md >}}
+{{{< include ../README.md >}}}
 ```
 
 ## README guidance
