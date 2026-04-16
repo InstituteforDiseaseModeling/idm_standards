@@ -32,7 +32,7 @@ theme:
       accent: light blue
 
 nav:
-  - Home: index.md
+  - Home: README.md
   - Getting started:
     - getting_started/README.md
     - Installing Python: getting_started/1_python.md
@@ -54,7 +54,7 @@ nav:
     - Processes: eng_process/processes.md
     - Public release: eng_process/public_release.md
   - Docs guidance:
-    - docs_guidance/index.md
+    - docs_guidance/README.md
     - MkDocs overview: docs_guidance/mkdocs.md
     - Quarto overview: docs_guidance/quarto.md
     - Home page: docs_guidance/home.md
