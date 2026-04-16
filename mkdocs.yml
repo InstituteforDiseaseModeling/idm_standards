@@ -60,8 +60,8 @@ nav:
     - Home page: docs_guidance/home.md
     - Installation page: docs_guidance/install.md
     - TOC organization and topic types:
-      - docs_guidance/topic-types/index.md
-      - Tutorial: docs_guidance/topic-types/tutorial.md
+      - docs_guidance/topic-types/toc.md
+      - Tutorial: docs_guidance/topic-types/tutorials.md
       - Example notebook: docs_guidance/topic-types/notebook.ipynb
       - How-to: docs_guidance/topic-types/howto.md
       - Reference: docs_guidance/topic-types/reference.md

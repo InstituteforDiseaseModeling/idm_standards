@@ -1,56 +1,268 @@
-# Reference topic
+# Reference documentation reference
 
-The purpose of a reference topic is to describe the technical nuts and bolts of a package or project: the API, classes, functions, interface, etc. The content is oriented towards information, not action or understanding. For additional information on how to structure reference, see [Diataxis](https://diataxis.fr/reference/) or the Diataxis skills included in the docs plugin. 
+## Overview
 
-## Python
+Reference guides provide **technical descriptions** that are **information-oriented**. They contain propositional/theoretical knowledge for users to consult during work, not to learn from sequentially.
 
-Both Material for MkDocs and Quarto can automatically create API reference topics from Python docstrings. The templates provide the configuration for achieving this.
+## Core purpose
 
-### Docstring format
+Reference documentation serves as the authoritative source of technical truth about the product. Users consult it to look up specific information they need while working, not to learn sequentially or complete tasks.
 
-Include a description of the module, including its purpose and functionality. We use Google style docstrings. Most common text editors and IDEs can be configured to automatically create stubbed out docstrings in the Google format.
+## Critical distinction: Reference vs explanation
 
-To refer to other Python objects, such as methods or classes, in the docstring
-you can create a link using the following syntax, where the first part is the link text to be displayed and the second part is the Python object to link to, including the module name `[Arr][starsim.Arr]`. There is a simple example of a function definition and docstring below:
+Both provide knowledge (cognition), but for fundamentally different contexts:
 
-```
-def example_function(param1, param2):       
-    """
-    Include a description of what the function does, including enough context to understand how it fits into a broader research workflow. For example, if there are similar functions that are recommended for use in conjunction with this one, those should be mentioned as well. Note that this docstring is in Google style format. Including 
+| Test question | If yes → reference | If no → explanation |
+|---------------|-------------------|---------------------|
+| Would someone turn to this **while actively working**? | ✓ | |
+| Is it **lists, tables, or technical specs**? | ✓ | |
+| Could you imagine **reading this while not actively working**? | | ✓ |
+| Does it primarily answer **"why?" questions**? | | ✓ |
 
-    Args:
-        param1 (int): The first number.
-        param2 (int): The second number.
+**Key insight**: A tidal chart with tables of figures is clearly reference. An article explaining why there are tides and how they behave is clearly explanation.
 
-    Returns:
-        int: The sum of the two numbers.
+**Reference examples:**
+- API endpoint documentation
+- Configuration option lists
+- Error code tables
+- Command syntax specifications
+- Migration model formulations
 
-    Examples:
-        Include an introduction to help readers understand more complex usage
-        examples. Including the right angle brackets in the examples will include
-        the example for testing via doctest, which is useful for ensuring that the
-        examples are correct and that the code behaves as expected.
-        >>> example_function(2, 3)
-        5
-        >>> example_function(-1, 1)
-        0
-    """
-    return param1 + param2
-```
-For more information, see the following resources, listed in order of relevance:
+**Explanation examples:**
+- "How contact heterogeneity shapes transmission dynamics"
+- "Why age-stratification matters for intervention modeling"
+- "Network vs. compartmental approaches to transmission modeling"
 
-* [Google style docstring examples](https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html)
-* [PEP 257 docstring conventions](https://www.python.org/dev/peps/pep-0257/)
-* [PEP 484 annotation](https://www.python.org/dev/peps/pep-0484/)
-* [Google style guide on docstrings](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) (Note that we do not follow Google's guidance to use descriptive instead of imperative verbs, choosing to follow the PEP 257 guidance instead.)
-* [Python 3 documentation](https://docs.python.org/3/)
-  
-## R
+## Key principles
 
-The [roxygen2](https://roxygen2.r-lib.org/articles/roxygen2.html) package automatically produces API reference documentation from R comments. Roxygen2 generates .Rd files in the man/ directory of documentation written in RStudio. You can also use `knitr` to convert Rmarkdown files to Markdown so they can be integrated into a MkDocs project.
+### 1. Describe and only describe
 
-You can use [pkgdown](https://pkgdown.r-lib.org/), MkDocs, or Quarto to build those files into HTML documentation. While `pkgdown` is often the default tool used for R packages, we recommend MkDocs or Quarto for consistency across IDM documentation.
+**Austere, uncompromising style:**
+- Maintain **neutral, objective, factual** language
+- Use an **austere and uncompromising** style
+- Prioritize accuracy, precision, completeness, and clarity
+- No opinions, no marketing, no speculation
 
-### MkDocs
+**Pure description:**
+- Avoid instruction, explanation, opinion, or discussion
+- Link to tutorials, how-to guides, or explanation rather than embedding them
+- State what something **is** and what it **does**, and **when** to use it, not how to use it
+- Be complete, make sure to include relevant dependencies for model parameters
 
-You can use then convert the R package documentation from .Rd to .md for integration into MkDocs using `rdmarkdown` and `rdconvert`. Follow the rest of the guidance here about using MkDocs for writing, building, and hosting documentation. We recommend this over the previous workflow to write all documentation in RStudio both for consistency across documentation projects and the limitations of the content structure in RStudio.
+**Mirror the machinery:**
+- Structure content to mirror the product's structure itself, not user tasks
+- Document the architecture as it exists
+- Help users navigate code and documentation in parallel
+
+### 2. Adopt standard patterns
+
+"Reference material is useful when it is consistent."
+
+**Consistency requirements:**
+- Use standardized formatting throughout
+- Place information where users expect it
+- Maintain familiar formats across all reference pages
+- Create predictable patterns users can rely on
+
+**Standard elements:**
+- Function/method signatures
+- Parameter descriptions
+- Return values
+- Error conditions
+- Examples of usage
+
+### 3. Respect the structure of the machinery
+
+**Structural alignment:**
+- Documentation structure should mirror the product's structure
+- Users navigate them in parallel
+- Helps readers understand relationships between components logically
+- Reflects the internal architecture and organization
+
+**Common reference structures:**
+- APIs and endpoints
+- Classes and methods
+- Commands and subcommands
+- Configuration options
+- Data structures
+- Error codes and messages
+
+### 4. Provide examples
+
+**Illustrative, not pedagogical:**
+- Use examples to illustrate usage succinctly
+- Show context without explaining or teaching
+- Demonstrate syntax and format
+- Keep examples minimal and focused
+
+**Example characteristics:**
+- Brief and to the point
+- Show actual usage in context
+- Include input and output where relevant
+- Include necessary dependencies, especially for related model parameters
+- No explanatory narrative
+
+## Language patterns
+
+### Do use:
+
+- **Factual statements**: "This function seeds the infection in a simulation."
+- **Declarative descriptions**: "The `authenticate()` method returns a User object or None"
+- **Lists of capabilities**: "This command accepts the following options..."
+- **Directive warnings**: "You must use a. You must not apply b unless c."
+- **Technical specifications**: "Accepts integers between 0 and 255"
+- **Behavioral descriptions**: "When x occurs, the system responds with y"
+
+### Avoid:
+
+- Marketing claims ("best", "powerful", "easy")
+- Instructions ("First, do this, then do that")
+- Recipes or step-by-step procedures
+- Opinions or recommendations ("you should", "it's better to")
+- Explanations of why things work this way
+- Speculation about future changes
+
+## Content to include
+
+### Essential elements
+
+**For functions/methods:**
+- Name and signature
+- Purpose (what it does including necessary context, but not how to use it)
+- Parameters with types and descriptions
+- Return values and types
+- Required dependencies
+- Exceptions/errors that may occur
+- Brief usage example
+
+**For commands:**
+- Command syntax
+- Available options and flags
+- Arguments and their formats
+- Output format
+- Exit codes
+- Error conditions
+
+**For APIs:**
+- Endpoints and methods
+- Request format and parameters
+- Response format and codes
+- Authentication requirements
+- Rate limits
+- Error responses
+
+**For configuration:**
+- Setting names
+- Valid values and types
+- Default values
+- Scope and applicability
+- Dependencies and interactions
+
+### Warnings and constraints
+
+Include appropriate warnings about:
+- **Requirements**: Prerequisites, dependencies
+- **Restrictions**: What cannot be done
+- **Limitations**: Boundaries and constraints
+- **Deprecated features**: Status and migration paths
+- **Breaking changes**: Version-specific behavior
+
+## Structure and organization
+
+### Logical hierarchy
+
+- Organize by component, not by use case
+- Follow the product's internal organization
+- Group related items together
+- Use consistent navigation patterns
+
+### Findability
+
+- Make information easy to locate
+- Use clear, predictable headings
+- Provide navigation aids (TOC, search, cross-references)
+- Link related items and link to related topics
+
+### Completeness
+
+- Document **everything** in the public API
+- Include all parameters, options, and configurations
+- Don't omit things because they "should be obvious"
+- Cover edge cases and special behaviors
+
+## Metaphors and models
+
+### Map analogy
+
+Reference functions like a **map**:
+- Conveys necessary information about territory
+- Users don't need to verify it firsthand
+- Provides authoritative information
+- Users consult it during their journey
+
+### Food packaging label
+
+Like nutrition labels:
+- Presents information in standardized, lawful format
+- Never mixes marketing with factual content
+- Users know exactly where to find specific information
+- Consistency enables quick scanning
+
+## Common mistakes to avoid
+
+1. **Mixing in instructions**
+   - Don't include "how to" steps
+   - Link to how-to guides instead
+
+2. **Including explanations**
+   - Don't explain why things work this way
+   - Link to explanation documentation instead
+
+3. **Marketing language**
+   - Avoid subjective claims
+   - Stick to objective facts
+
+4. **Inconsistent structure**
+   - Maintain the same format throughout
+   - Don't reorganize by user needs
+
+5. **Incomplete coverage**
+   - Document everything, not just common cases
+   - Include all parameters and options
+
+6. **Opinion and recommendation**
+   - Don't tell users what they should do
+   - Present facts, not guidance
+
+## When to write reference
+
+Write reference documentation for:
+- APIs, functions, methods, and classes
+- Commands and their options
+- Configuration settings
+- Data structures and formats
+- Error codes and messages
+- Technical specifications
+
+## When NOT to write reference
+
+Don't use reference format for:
+- Teaching concepts (use tutorials)
+- Guiding through tasks (use how-to guides)
+- Explaining design decisions (use explanation)
+- Getting started experiences (use tutorials)
+
+## Checklist for writing reference
+
+- [ ] Uses neutral, objective language
+- [ ] Describes what things are and do, not how to use them
+- [ ] Structure mirrors the product's internal organization
+- [ ] Follows consistent patterns throughout
+- [ ] Includes all parameters, options, and configurations
+- [ ] Provides brief usage examples
+- [ ] Contains appropriate warnings and constraints
+- [ ] No instructions, explanations, or opinions
+- [ ] Easy to scan and find specific information
+- [ ] Complete coverage of public API/interface
+- [ ] Cross-references to related items
+- [ ] Links to tutorials, how-to guides, and explanation as needed
