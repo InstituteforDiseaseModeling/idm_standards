@@ -1,16 +1,16 @@
-site_name: IMD standards # update to your project name
-site_url: https://InstituteforDiseaseModeling.github.io/idm_standards/ update to your project URL for the correct modeling framework
-repo_name: InstituteforDiseaseModeling/idm_standards # update to your repo name
-repo_url: https://github.com/InstituteforDiseaseModeling/idm_standards # update to your repo URL
-docs_dir: docs_guidance # so we can include both eng_guidance and docs_guidance without nesting those folders
+site_name: IDM Standards
+site_url: https://InstituteforDiseaseModeling.github.io/idm_standards/
+repo_name: InstituteforDiseaseModeling/idm_standards
+repo_url: https://github.com/InstituteforDiseaseModeling/idm_standards
+docs_dir: docs
 theme:
   name: material
   custom_dir: docs_guidance/customization/overrides
   font:
     text: Roboto
     code: Roboto Mono
-  logo: images/idm-logo-transparent.png
-  favicon: images/favicon.ico
+  logo: docs_guidance/images/idm-logo-transparent.png
+  favicon: docs_guidance/images/favicon.ico
   features:
     - navigation.footer # include a footer with links to privacy, terms, etc.
     - content.code.copy # enable copy buttons for code blocks
@@ -32,40 +32,54 @@ theme:
       accent: light blue
 
 nav:
-  - Docs guidance:
-    - Docs guidance: index.md
-    - MkDocs overview: mkdocs.md
-    - Quarto overview: quarto.md
-    - Home: home.md
-    - Installation: install.md
-    - TOC organization and topic types:
-      - topic-types/index.md
-      - Tutorial: topic-types/tutorial.md
-      - Example notebook: topic-types/notebook.ipynb
-      - How-to: topic-types/howto.md
-      - Reference: topic-types/reference.md
-      - Explanation: topic-types/explanation.md
-    - Personas:
-      - personas/index.md
-      - Model builder: personas/model-builder.md
-      - Model extender: personas/model-extender.md
-      - Model user: personas/model-user.md
-      - Policy influencer: personas/policy-influencer.md
-      - Policy maker: personas/policy-maker.md
-    - Style and grammar: vale.md
+  - Home: README.md
+  - Getting started:
+    - getting_started/README.md
+    - Installing Python: getting_started/python.md
+    - AI-assisted development: getting_started/ai.md
+    - Communication and culture: getting_started/comms.md
   - Engineering guidance:
-    - Philosophy: ../eng_guidance/1_philosophy.md
-    - Python: ../eng_guidance/2_python.md
-    - Tests: ../eng_guidance/3_tests.md
-    - Documentation: ../eng_guidance/4_documentation.md
-    - Other: ../eng_guidance/5_other.md
-    - Zen: ../eng_guidance/6_zen.md
+    - eng_guidance/README.md
+    - Philosophy: eng_guidance/1_philosophy.md
+    - Python: eng_guidance/2_python.md
+    - Tests: eng_guidance/3_tests.md
+    - Documentation: eng_guidance/4_documentation.md
+    - Other: eng_guidance/5_other.md
+    - Zen: eng_guidance/6_zen.md
+    - Quality guidelines: eng_guidance/engineering_quality_guidelines.md
+  - Engineering processes:
+    - eng_process/README.md
+    - GitHub: eng_process/github.md
+    - Processes: eng_process/processes.md
+    - Public release: eng_process/public_release.md
+  - Docs guidance:
+    - docs_guidance/README.md
+    - MkDocs overview: docs_guidance/mkdocs.md
+    - Quarto overview: docs_guidance/quarto.md
+    - Home page: docs_guidance/home.md
+    - Installation page: docs_guidance/install.md
+    - Topic types:
+      - docs_guidance/topic-types/README.md
+      - Table of contents: docs_guidance/topic-types/toc.md
+      - Tutorials: docs_guidance/topic-types/tutorials.md
+      - How-to: docs_guidance/topic-types/howto.md
+      - Reference: docs_guidance/topic-types/reference.md
+      - Explanation: docs_guidance/topic-types/explanation.md
+      - Example notebook: docs_guidance/topic-types/notebook.ipynb
+    - Personas:
+      - docs_guidance/personas/README.md
+      - Model builder: docs_guidance/personas/model-builder.md
+      - Model extender: docs_guidance/personas/model-extender.md
+      - Model user: docs_guidance/personas/model-user.md
+      - Policy influencer: docs_guidance/personas/policy-influencer.md
+      - Policy maker: docs_guidance/personas/policy-maker.md
+    - Style and grammar: docs_guidance/vale.md
 
-# icons, semantic markup, emojis 
+# icons, semantic markup, emojis
 markdown_extensions:
   - toc:
       toc_depth: 3
-  - attr_list # enables HTMl and CSS classes to inline elements
+  - attr_list # enables HTML and CSS classes to inline elements
   - md_in_html # enables grids
   - admonition # warnings, etc.
   - def_list
@@ -83,7 +97,7 @@ markdown_extensions:
       linenums: true
       default_lang: 'python'
   - pymdownx.inlinehilite # syntax highlighting for inline code
-  - pymdownx.superfences # enables code, diagram fences to be nested in lists, etc.e
+  - pymdownx.superfences # enables code, diagram fences to be nested in lists, etc.
   - pymdownx.details # collapsible elements
   - pymdownx.tabbed: # tabbed content that can be toggled
       alternate_style: true
@@ -93,7 +107,13 @@ markdown_extensions:
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra_css:
-  - customization/css/extra.css # custom CSS for footer spacing
+  - docs_guidance/customization/css/extra.css # custom CSS for footer spacing
+
+validation:
+  nav:
+    not_found: warn
+    absolute_links: info
+    omitted_files: info # glossary.md is auto-appended, not navigated
 
 plugins:
   - search # search functionality
@@ -116,7 +136,7 @@ extra:
       href: "https://www.gatesfoundation.org/Terms-of-Use"
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/InstituteforDiseaseModeling/modeling-hub # update to your repo
+      link: https://github.com/InstituteforDiseaseModeling/idm_standards
     - icon: fontawesome/regular/envelope
       link: mailto:idm@gatesfoundation.org
     - icon: octicons/globe-24
@@ -141,6 +161,6 @@ extra:
         - icon: material/emoticon-sad-outline
           name: This page could be improved
           data: 0
-          note: >- 
+          note: >-
             Thanks for your feedback! Help us improve this page by
             using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.

@@ -19,7 +19,7 @@ Diataxis framework by Daniele Procida. See [diataxis.fr](https://diataxis.fr/col
 1. **Use the compass** to identify the documentation type needed (see below)
 2. **Read the matching reference file(s)** BEFORE writing/reviewing:
    - Learning experiences → Read `references/tutorials.md`
-   - Task-oriented guides → Read `references/how-to-guides.md`
+   - Task-oriented guides → Read `references/howto.md`
    - Information lookup → Read `references/reference.md`
    - Understanding & context → Read `references/explanation.md`
 3. **Apply the documentation type's principles** from the loaded reference
@@ -114,7 +114,7 @@ Both provide knowledge, but for different contexts:
 ## Documentation type references (load on demand)
 
 - **[Tutorials](references/tutorials.md)** - Learning-oriented experiences enabling skill acquisition through guided practice
-- **[How-to guides](references/how-to-guides.md)** - Task-oriented directions for accomplishing specific goals
+- **[How-to guides](references/howto.md)** - Task-oriented directions for accomplishing specific goals
 - **[Reference](references/reference.md)** - Information-oriented technical descriptions for authoritative lookup
 - **[Explanation](references/explanation.md)** - Understanding-oriented discussions providing context and answering "why?"
 - **[Table of contents](references/toc.md)** - Guidance on organizing documentation topics within the TOC and adding cross-references
