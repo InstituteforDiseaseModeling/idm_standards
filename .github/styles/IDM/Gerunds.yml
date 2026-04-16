@@ -1,0 +1,10 @@
+extends: existence
+message: "Avoid using gerunds ('-ing' words) in headings. Use imperative voice verbs like 'Configure' or 'Run' instead."
+level: warning
+scope: heading
+ignorecase: true
+
+# Flag any -ing word in a heading, except listed false positives.
+# Add/remove exceptions in the (?! ... ) group as needed.
+tokens:
+  - '\b(?!thing\b|something\b|docstring\b|nothing\b|anything\b|king\b|ring\b|spring\b|evening\b|morning\b|ceiling\b|building\b)[A-Za-z-]+ing\b'

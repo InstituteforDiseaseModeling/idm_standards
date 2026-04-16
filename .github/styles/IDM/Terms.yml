@@ -1,0 +1,18 @@
+extends: substitution
+message: "Prefer '%s' over '%s'."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  "(?:individual-based)": agent-based
+  "(?:time step)": timestep
+  "(?:click on)": click
+  "(?:wish)": want
+  "(?:wishes)": wants
+  "(?:is comprised of)": comprises
+  "(?:is comprised of)": is composed of
+  "(?:utilize)": use
+  "(?:multi-variate)": multivariate
+  "(?:&)": and
+  "(?:bed net)": bednet

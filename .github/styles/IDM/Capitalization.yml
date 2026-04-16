@@ -1,0 +1,12 @@
+extends: substitution
+message: "Prefer '%s' over '%s'."
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  "(?:poisson)": Poisson
+  "(?:boolean)": Boolean
+  "(?:bayesian)": Bayesian
+  "(?:Gamma)": gamma
+  "(?:Beta)": beta
