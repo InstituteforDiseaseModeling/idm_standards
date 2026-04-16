@@ -114,7 +114,7 @@ website:
 format:
   html:
     theme:
-      light: flatly
+      light: cosmo
       dark: darkly
     code-copy: true
     toc: true
