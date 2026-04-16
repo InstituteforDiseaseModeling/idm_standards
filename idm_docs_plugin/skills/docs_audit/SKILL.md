@@ -16,6 +16,8 @@ This skill performs a comprehensive documentation audit for an IDM project. It c
 
 Determine which project to audit. If the user specified a project, use that. Otherwise, use the current working directory.
 
+If the user provided any specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "focus on the API reference" or "pay special attention to the README", make sure to emphasize those areas in your audit.
+
 Scan for documentation artifacts:
 
 - `README.md` at the repo root
@@ -33,7 +35,7 @@ Record what exists and what is missing.
 
 ### Step 2: Check general completeness
 
-Evaluate the project's documentation against the IDM documentation standards in `eng_guidance/4_documentation.md`. Check for:
+Evaluate the project's documentation against the IDM documentation standards in [`eng_guidance/4_documentation.md`](https://github.com/InstituteforDiseaseModeling/idm_standards/blob/main/eng_guidance/4_documentation.md). Check for:
 
 **README.md contents:**
 - What the package does (clear, concise description)
@@ -44,9 +46,9 @@ Evaluate the project's documentation against the IDM documentation standards in 
 
 **Required repo-level files:**
 - LICENSE (MIT)
-- Changelog / what's new
-- Contributing guide
-- Code of conduct
+- Changelog / what's new (for tier 1 / tier 2 projects only)
+- Contributing guide (for tier 1)
+- Code of conduct (for tier 1)
 
 **Folder-level READMEs:**
 - Check whether major directories have `README.md` files explaining their purpose

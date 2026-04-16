@@ -122,13 +122,13 @@ import pytest
 # TODO: import from your module
 # from mymodule import MyClass, my_function
 
-def test_basic(self):
+def test_basic():
     """TODO: Test basic expected behavior."""
     # result = my_function(...)
     # assert result == expected
     pass
 
-def test_edge_case(self):
+def test_edge_case():
     """TODO: Test edge case."""
     pass
 

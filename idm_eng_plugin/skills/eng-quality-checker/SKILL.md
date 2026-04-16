@@ -32,6 +32,9 @@ The user provides two arguments:
 
 **If a GitHub URL is given**: Use `gh repo clone <url> /tmp/eng-quality-checker-$(date +%s)` to clone to a temporary directory. Set `project` to that path.
 
+If the user provided any other specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "ignore missing docstrings", make sure to not penalize the project for that in the scoring and omit it from the recommendations.
+
+
 ## Step 2: Read the Scoring Schema
 
 Read the full schema from:
