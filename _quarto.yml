@@ -116,8 +116,6 @@ format:
     theme:
       light: flatly
       dark: darkly
-    mainfont: Roboto
-    monofont: Roboto Mono
     code-copy: true
     toc: true
     toc-depth: 3
