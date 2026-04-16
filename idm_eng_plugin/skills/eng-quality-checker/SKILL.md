@@ -9,7 +9,7 @@ Score a software project against the IDM engineering quality guidelines and writ
 
 Skill version: 1.3_2026.04.13
 
-## Step 0: Record Start Time
+## Step 0: Record start time
 
 Before doing anything else, run the following bash command and save the result as `START_EPOCH`:
 
@@ -19,7 +19,7 @@ date +%s
 
 This will be used in Step 7 to compute elapsed time.
 
-## Step 1: Parse Arguments
+## Step 1: Parse arguments
 
 The user provides two arguments:
 - **project**: path to a local directory OR a GitHub URL (e.g., `https://github.com/org/repo`). Default: current working directory.
@@ -35,7 +35,7 @@ The user provides two arguments:
 If the user provided any other specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "ignore missing docstrings", make sure to not penalize the project for that in the scoring and omit it from the recommendations.
 
 
-## Step 2: Read the Scoring Schema
+## Step 2: Read the scoring schema
 
 Read the full schema from:
 `$CLAUDE_PLUGIN_ROOT/skills/eng-quality-checker/scoring-schema.yaml`
@@ -45,7 +45,7 @@ This file contains:
 - Per-metric weights within each category
 - Tier-specific rubrics with 0/mid/10 anchor descriptions
 
-## Step 3: Dispatch Sub-Agents in Parallel
+## Step 3: Dispatch sub-agents in parallel
 
 Launch all three agents **simultaneously** using the Agent tool with `subagent_type: "general-purpose"`:
 
@@ -157,7 +157,7 @@ Return ONLY a JSON object (no other text):
 
 **Important**: Before dispatching, replace `<project>`, `<tier>`, and `<paste ... rubric here>` with actual values from Step 1 and Step 2.
 
-## Step 4: Compute Overall Score
+## Step 4: Compute overall score
 
 After all three agents return results, calculate:
 
@@ -183,7 +183,7 @@ overall_score = round(quality_raw * 4 + usability_raw * 4 + safety_raw * 2)
 
 Set `failed: true` in the final JSON if either `quality.correct.failed` or `safety.compliant.failed` is true.
 
-## Step 5: Assemble Full Results
+## Step 5: Assemble full results
 
 Construct the result object with this exact schema:
 
@@ -239,7 +239,7 @@ safety:
 
 Give N/A metrics (Tier 3: `powerful`, `accessible`) a score of 10.
 
-## Step 6: Generate Recommendations
+## Step 6: Generate recommendations
 
 Before writing the file, write concrete, actionable recommendations ranked by impact (score x weight). Every time you give a score below 10, write the specific improvement that would raise it. Each recommendation should:
 

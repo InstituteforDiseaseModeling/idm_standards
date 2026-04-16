@@ -19,7 +19,9 @@ IDM documentation targets five distinct personas, each with different technical 
 | Overview, case studies, etc. | policy-influencer, model-user |
 | Tutorials | model-user, model-extender, model-builder |
 | User guide | model-extender, model-builder |
-| API reference (docstrings) | model-builder |
+| API reference (docstrings) | model-extender, model-builder |
+
+For technical projects without direct policy relevance, the docs landing page or beginning of the readme does NOT need to be accessible to policy-makers and policy-influencers, but should still be written in plain language where possible.
 
 ## Workflow
 

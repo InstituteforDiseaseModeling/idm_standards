@@ -51,13 +51,14 @@ Evaluate the project's documentation against the IDM documentation standards in 
 - Code of conduct (for tier 1)
 
 **Folder-level READMEs:**
-- Check whether major directories have `README.md` files explaining their purpose
+- Check whether major directories have `README.md` files explaining their purpose (not necessary if explained in top-level README)
 
 **Documentation site / docs folder:**
+- For Tier 1 / Tier 2 projects only
 - Tutorials (at minimum: a hello-world tutorial and a slightly more advanced one)
-- User guide (for complex projects where tutorials + API reference aren't enough)
-- API reference (auto-generated from docstrings via quartodoc or mkdocstrings)
-- Documentation build configuration (`mkdocs.yml` or `_quarto.yml`)
+- User guide, how-to, explanations, or other similar explanations of functionality (for complex projects where tutorials + API reference aren't enough)
+- API reference (auto-generated from docstrings via quartodoc, mkdocstrings, or the R equivalents)
+- Documentation build configuration (`mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml`)
 
 **API reference setup:**
 - Interlinks configured for cross-references to standard libraries
@@ -71,25 +72,25 @@ Apply each of the three sub-skills by invoking them. For each, follow the skill'
 
 #### 3a: Diataxis audit
 
-Invoke the `diataxis` skill. Evaluate:
-- Whether the four Diataxis documentation types are represented (tutorials, how-to guides, reference, explanation)
+Invoke the idm_docs_plugin:diataxis skill. Evaluate:
+- Whether the major documentation types are represented (API reference,tutorials, and for complex projects, a user guide/how-to guides/explanations)
 - Whether existing docs are correctly categorized (e.g., a "tutorial" that is actually a how-to guide)
 - Whether there is cross-contamination between types (e.g., reference material embedded in tutorials)
 - How well the table of contents / navigation organizes content by type
 
 #### 3b: Persona audit
 
-Invoke the `persona-check` skill. Evaluate:
+Invoke the idm_docs_plugin:personas skill. Evaluate:
 - Whether documentation sections are written for their target personas
-- Whether the landing page / top of README serves policy-maker and policy-influencer personas
+- Whether the landing page / top of README serves policy-maker and policy-influencer personas (for policy-relevant projects, e.g. Tier 1 projects)
 - Whether tutorials serve model-user, model-extender, and model-builder personas
 - Whether technical depth matches audience expectations
 - Whether LMIC context is acknowledged where appropriate
 
 #### 3c: Python docstrings audit
 
-Invoke the `python-docstrings` skill. Sample a representative set of public modules, classes, and functions (at least 10-15 if the project is large enough) and evaluate:
-- Whether public objects have docstrings
+Invoke the idm_docs_plugin:python-docstrings skill. Read all public modules, classes, and functions and evaluate:
+- Whether public objects have docstrings (small/private objects can be ignored)
 - Whether docstrings follow Google style
 - Whether docstrings include: one-line summary, parameter descriptions, return values, usage examples
 - Whether docstrings provide researcher workflow context
