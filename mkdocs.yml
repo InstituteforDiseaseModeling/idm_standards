@@ -110,8 +110,10 @@ extra_css:
   - docs_guidance/customization/css/extra.css # custom CSS for footer spacing
 
 validation:
-  not_in_nav: info # glossary.md is auto-appended, not navigated
-  absolute_links: info
+  nav:
+    not_found: warn
+    absolute_links: info
+    omitted_files: info # glossary.md is auto-appended, not navigated
 
 plugins:
   - search # search functionality
