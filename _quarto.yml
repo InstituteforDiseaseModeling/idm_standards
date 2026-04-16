@@ -30,7 +30,6 @@ website:
       - icon: globe
         href: https://idmod.org
   sidebar:
-    style: docked
     contents:
       - text: Home
         file: index.md
@@ -115,7 +114,7 @@ format:
   html:
     theme:
       light: cosmo
-      dark: darkly
+      dark: solar
     code-copy: true
     toc: true
     toc-depth: 3
