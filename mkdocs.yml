@@ -49,7 +49,7 @@ nav:
     - Zen: eng_guidance/6_zen.md
     - Quality guidelines: eng_guidance/engineering_quality_guidelines.md
   - Engineering processes:
-    - eng_process/index.md
+    - eng_process/README.md
     - GitHub: eng_process/github.md
     - Processes: eng_process/processes.md
     - Public release: eng_process/public_release.md
