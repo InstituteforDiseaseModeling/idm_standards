@@ -59,15 +59,15 @@ nav:
     - Quarto overview: docs_guidance/quarto.md
     - Home page: docs_guidance/home.md
     - Installation page: docs_guidance/install.md
-    - TOC organization and topic types:
-      - docs_guidance/topic-types/toc.md
+    - Topic types:
+      - docs_guidance/topic-types/README.md
       - Tutorial: docs_guidance/topic-types/tutorials.md
       - Example notebook: docs_guidance/topic-types/notebook.ipynb
       - How-to: docs_guidance/topic-types/howto.md
       - Reference: docs_guidance/topic-types/reference.md
       - Explanation: docs_guidance/topic-types/explanation.md
     - Personas:
-      - docs_guidance/personas/index.md
+      - docs_guidance/personas/README.md
       - Model builder: docs_guidance/personas/model-builder.md
       - Model extender: docs_guidance/personas/model-extender.md
       - Model user: docs_guidance/personas/model-user.md

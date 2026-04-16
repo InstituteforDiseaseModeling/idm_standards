@@ -114,7 +114,7 @@ Both provide knowledge, but for different contexts:
 ## Documentation type references (load on demand)
 
 - **[Tutorials](references/tutorials.md)** - Learning-oriented experiences enabling skill acquisition through guided practice
-- **[How-to guides](references/how-to-guides.md)** - Task-oriented directions for accomplishing specific goals
+- **[How-to guides](references/howto.md)** - Task-oriented directions for accomplishing specific goals
 - **[Reference](references/reference.md)** - Information-oriented technical descriptions for authoritative lookup
 - **[Explanation](references/explanation.md)** - Understanding-oriented discussions providing context and answering "why?"
 - **[Table of contents](references/toc.md)** - Guidance on organizing documentation topics within the TOC and adding cross-references
