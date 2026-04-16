@@ -34,8 +34,8 @@ website:
       - text: Home
         file: index.md
       - section: Getting started
+        file: getting_started/index.md
         contents:
-          - getting_started/index.md
           - text: Installing Python
             file: getting_started/python.md
           - text: AI-assisted development
@@ -43,8 +43,8 @@ website:
           - text: Communication and culture
             file: getting_started/comms.md
       - section: Engineering guidance
+        file: eng_guidance/index.md
         contents:
-          - eng_guidance/index.md
           - text: Philosophy
             file: eng_guidance/1_philosophy.md
           - text: Python
@@ -60,8 +60,8 @@ website:
           - text: Quality guidelines
             file: eng_guidance/engineering_quality_guidelines.md
       - section: Engineering processes
+        file: eng_process/index.md
         contents:
-          - eng_process/index.md
           - text: GitHub
             file: eng_process/github.md
           - text: Processes
@@ -69,8 +69,8 @@ website:
           - text: Public release
             file: eng_process/public_release.md
       - section: Docs guidance
+        file: docs_guidance/index.md
         contents:
-          - docs_guidance/index.md
           - text: MkDocs overview
             file: docs_guidance/mkdocs.md
           - text: Quarto overview
@@ -80,8 +80,8 @@ website:
           - text: Installation page
             file: docs_guidance/install.md
           - section: Topic types
+            file: docs_guidance/topic-types/index.md
             contents:
-              - docs_guidance/topic-types/index.md
               - text: Table of contents
                 file: docs_guidance/topic-types/toc.md
               - text: Tutorials
@@ -95,8 +95,8 @@ website:
               - text: Example notebook
                 file: docs_guidance/topic-types/notebook.ipynb
           - section: Personas
+            file: docs_guidance/personas/index.md
             contents:
-              - docs_guidance/personas/index.md
               - text: Model builder
                 file: docs_guidance/personas/model-builder.md
               - text: Model extender
