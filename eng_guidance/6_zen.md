@@ -46,8 +46,8 @@ Ask yourself: will your code ultimately help save lives? If not, does it have pu
 
 ---
 
-† Inspired by the Zen of Python: https://www.python.org/dev/peps/pep-0020/
+† Inspired by the Zen of Python: <https://www.python.org/dev/peps/pep-0020/>
 
-‡ https://en.wikiquote.org/wiki/Frank_Westheimer
+‡ <https://en.wikiquote.org/wiki/Frank_Westheimer>
 
 Contributors: Ace Thompson, Charles Eliot, Cliff Kerr, Dan Klein, Dina Mistry, Edward Wenger, Mary Fisher
