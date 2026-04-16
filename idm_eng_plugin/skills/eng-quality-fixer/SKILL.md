@@ -7,7 +7,7 @@ allowed-tools: Read, Glob, Grep, Bash, Write, Edit
 
 Read recommendations from `engineering_score.md` and implement prioritized improvements to the project.
 
-Skill version: 1.2_2026.03.31
+Skill version: 1.3_2026.04.13
 
 ## Step 1: Find and Read the Score Report
 
@@ -36,11 +36,12 @@ Present the plan to the user **before making any changes**:
 ### Will implement automatically:
 1. [Metric: clear] Add docstrings to 5 public functions in model.py (quick)
 2. [Metric: accessible] Add MIT LICENSE file (quick)
-3. [Metric: reproducible] Add version pinning to requirements.txt (quick)
-4. [Metric: documented] Expand README with installation and usage sections (medium)
-5. [Metric: concise] Refactor duplicated data loading code into a helper function (medium)
+3. [Metric: documented] Expand README with installation and usage sections (medium)
+4. [Metric: concise] Refactor duplicated data loading code into a helper function (medium)
 
 ### Will scaffold (you complete):
+5. [Metric: reproducible] Add version pinning to requirements.txt (quick)
+   → You'll need to decide what to pin
 6. [Metric: correct] Create tests/ directory with pytest structure and 3 example tests (medium)
    → You'll need to fill in the test logic and expected values
 7. [Metric: accessible] Create pyproject.toml for pip installability (medium)
@@ -80,22 +81,23 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ```
 
 #### Adding/improving docstrings (Python)
-Follow NumPy/Google docstring style. For a function:
+Follow Google docstring style. For a function:
 ```python
 def function_name(param1, param2):
-    """Short one-line description.
+    """ Short one-line description.
 
-    Parameters
-    ----------
-    param1 : type
-        Description of param1.
-    param2 : type
-        Description of param2.
+    Longer description, if needed.
 
-    Returns
-    -------
-    type
-        Description of return value.
+    Args:
+        param1 (type):  Description of param1.
+        param2 (type):  Description of param2.
+
+    Returns:
+        type: Description of return value.
+
+    **Example**:
+    
+        function_name(param1, param2) # Give short usage example
     """
 ```
 
@@ -112,14 +114,6 @@ Use roxygen2 style:
 #' result <- function_name(1, 2)
 ```
 
-#### Adding version pins to requirements.txt
-Read the current `requirements.txt`. For each unpinned dependency (e.g., `numpy`), add a lower-bound pin based on the current commonly-used version. Use `>=` not `==` to avoid over-pinning:
-```
-numpy>=1.24
-pandas>=2.0
-scipy>=1.11
-```
-
 #### Scaffolding a test file (Python)
 Create `tests/test_<module>.py`:
 ```python
@@ -128,21 +122,20 @@ import pytest
 # TODO: import from your module
 # from mymodule import MyClass, my_function
 
+def test_basic():
+    """TODO: Test basic expected behavior."""
+    # result = my_function(...)
+    # assert result == expected
+    pass
 
-class TestMyFunction:
-    """Tests for my_function."""
+def test_edge_case():
+    """TODO: Test edge case."""
+    pass
 
-    def test_basic(self):
-        """TODO: Test basic expected behavior."""
-        # result = my_function(...)
-        # assert result == expected
-        pass
-
-    def test_edge_case(self):
-        """TODO: Test edge case."""
-        pass
+if __name__ == "__main__":
+    pytest.main(['-x', '-v', __file__]) # Run tests as script
 ```
-Also create `tests/__init__.py` (empty) and check for a `pytest.ini` or add to `pyproject.toml`.
+Also check for a `pytest.ini` or add to `pyproject.toml`.
 
 #### Scaffolding a pyproject.toml
 ```toml
@@ -167,14 +160,14 @@ Repository = "<TODO: GitHub URL>"
 
 #### Improving README
 Add missing sections. A Tier 3 (one-off) README needs at minimum:
-- `## Overview` — what the project does (1–3 sentences)
+- `## Overview` — what the project does (1–3 sentences, accessible to a general audience)
 - `## Installation` — how to set it up
 - `## Usage` — how to run it (minimal example)
 
 A Tier 1 and 2 README additionally needs:
 - `## Requirements`
 - `## Project structure` — brief description of key files/folders
-- `## Contributing` (Tier 1 library)
+- `## Contributing` (Tier 1 library, unless separate CONTRIBUTING.md file exists)
 
 #### Fixing code duplication
 Identify the duplicate code, extract it into a well-named helper function, and replace the duplicates with calls to that function. Only refactor when it clearly improves readability — do not create unnecessary abstractions.
@@ -212,6 +205,5 @@ Re-run `/idm-eng-plugin:eng-quality-checker` to get an updated score.
 ## Notes
 
 - Only make changes that are clearly safe and reversible. If a change could break existing functionality, note it and ask the user to verify.
-- Do not rewrite working code just to make it "better" — focus strictly on the recommendations.
 - If the project is R-based, adapt all Python-specific patterns to R equivalents.
 - If the `failed` flag is `true` in the score report, prioritize the failure-causing metric first and be explicit about what was done to address it.

@@ -49,7 +49,7 @@ Work through these steps systematically:
 - Find main entry points (e.g., `main.py`, `run.py`, `__init__.py`, `R/`)
 
 ### 2. Assess correctness (quality.correct)
-- Read 3–5 key source files to understand what the code does
+- Read ALL source files to understand what the code does
 - Look for: obvious bugs, off-by-one errors, wrong statistical formulas, incorrect array indexing, misuse of random seeds, hardcoded assumptions that seem wrong
 - Check for "magic numbers": unexplained numeric constants in the code that should be documented with a source (e.g., a rate constant of `0.0037` with no comment or citation)
 - **For Tier 1 and 2**: find test files (`test_*.py`, `*_test.py`, `tests/`, `testthat/`)
@@ -63,9 +63,9 @@ Work through these steps systematically:
 
 ### 3. Assess clarity (quality.clear)
 - Review the overall file/folder structure — does it make logical sense?
-- Check 3–5 function/class names — are they descriptive?
-- Read a representative function — is the logic easy to follow?
-- Look for comments and docstrings on key functions
+- Check ALL function/class names — are they descriptive?
+- Read ALL functions — are there any cases where the logic is hard to follow?
+- Look for comments and docstrings on ALL functions
 - Check for style guide adherence (consistent naming conventions)
 - **For Tier 1**: look for a style guide reference or linter config (`.flake8`, `pyproject.toml [tool.ruff]`, `.lintr`)
 
@@ -85,14 +85,14 @@ Use the rubric provided in your prompt. If no explicit rubric is given, use thes
 - 0: Obvious bugs or scientifically wrong results; FAIL
 - 5: Tests present but limited coverage
 - 7: Good tests covering main workflows, but no CI/CD or limited peer review
-- 8: Good tests with CI/CD, active peer review, cited in publications; minor coverage gaps or bugs
+- 9: Good tests with CI/CD, active peer review, cited in publications; minor coverage gaps or bugs
 - 10: Comprehensive tests with CI/CD; peer-reviewed; no magic numbers; hard to misuse; no known bugs
 
 **clear** (weight: 2):
 - 0: Unreadable, confusing names, no structure
 - 5: Good structure but sparse docstrings
 - 7: Good structure with docstrings on most functions, but incomplete coverage
-- 9: Well-organized modular structure, comprehensive docstrings, consistent naming; only minor gaps
+- 9: Well-organized modular structure, comprehensive docstrings on all but trivial functions, consistent naming; only minor gaps
 - 10: Perfect modularity, full docstrings on all public APIs, style-compliant
 
 **concise** (weight: 1):

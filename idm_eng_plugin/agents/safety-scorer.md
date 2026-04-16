@@ -76,11 +76,11 @@ Also check for `.env` files with secrets, `config.py` with credentials, or AWS/A
 
 **Check dependency specification** (all tiers):
 - `pyproject.toml`: check `[project] dependencies` for version specs
-- `requirements.txt`: are versions pinned or bounded? (`numpy>=1.20`, `numpy==1.24.3`)
+- `requirements.txt` or `pyproject.toml`: for non-library/tool projects, are versions optionally pinned or bounded? (`numpy>=1.20`, `numpy==1.24.3`)
 - `setup.py`: check `install_requires`
 - R: check `DESCRIPTION` Imports/Depends, `renv.lock`
 - **For Tier 1 (library code)**: dependencies should be specified but version pins (>=) are optional — libraries typically use loose bounds. Do not penalize for missing pins.
-- **For Tier 2 and 3 (research/non-library code)**: pinned versions, environment files, or lock files are expected when reproducibility matters.
+- **For Tier 2 and 3 (research/non-library code)**: pinned versions, environment files, or lock files are expected if (and only if) reproducibility matters.
 
 **Check for lock files** (for Tier 2 and 3 research code):
 - Python: `poetry.lock`, `uv.lock`, `Pipfile.lock`, `requirements-lock.txt`
@@ -101,7 +101,7 @@ git tag -l 2>/dev/null | tail -10
 **Check for PyPI/CRAN publication** (for Tier 1):
 - Look for `pyproject.toml` with `[build-system]` or `setup.cfg`
 - Check `DESCRIPTION` for `Version:` field (R)
-- Use your knowledge: is this a known published package?
+- Use your knowledge: is this a known published package? You can check on PyPI (`curl -I https://pypi.org/pypi/<package>/json`) or CRAN (`curl -I https://cran.r-project.org/web/packages/<package>/DESCRIPTION`)
 
 ## Scoring
 
