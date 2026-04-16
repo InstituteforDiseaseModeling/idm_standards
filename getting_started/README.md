@@ -2,9 +2,9 @@
 
 Welcome to [IDM](https://idmodorg.org) team! This guide covers everything you need to get set up and start participating.
 
-- [**Python**](python.md) -- Setting up Python
-- [**AI**](ai.md) -- Getting started with AI-assisted development
-- [**Communication**](comms.md) -- Communication channels and culture
+- [**Python**](python.md) – Setting up Python
+- [**AI**](ai.md) – Getting started with AI-assisted development
+- [**Communication**](comms.md) – Communication channels and culture
 
 Please also see the other pages for additional guidelines around engineering, documentation, processes, etc.
 
