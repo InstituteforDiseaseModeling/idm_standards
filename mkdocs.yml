@@ -35,10 +35,9 @@ nav:
   - Home: README.md
   - Getting started:
     - getting_started/README.md
-    - Installing Python: getting_started/1_python.md
-    - AI-assisted development: getting_started/2_ai.md
-    - Coding guidelines: getting_started/3_guidelines.md
-    - Communication and culture: getting_started/4_comms.md
+    - Installing Python: getting_started/python.md
+    - AI-assisted development: getting_started/ai.md
+    - Communication and culture: getting_started/comms.md
   - Engineering guidance:
     - eng_guidance/README.md
     - Philosophy: eng_guidance/1_philosophy.md
