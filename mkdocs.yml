@@ -61,11 +61,12 @@ nav:
     - Installation page: docs_guidance/install.md
     - Topic types:
       - docs_guidance/topic-types/README.md
-      - Tutorial: docs_guidance/topic-types/tutorials.md
-      - Example notebook: docs_guidance/topic-types/notebook.ipynb
+      - Table of contents: docs_guidance/topic-types/toc.md
+      - Tutorials: docs_guidance/topic-types/tutorials.md
       - How-to: docs_guidance/topic-types/howto.md
       - Reference: docs_guidance/topic-types/reference.md
       - Explanation: docs_guidance/topic-types/explanation.md
+      - Example notebook: docs_guidance/topic-types/notebook.ipynb
     - Personas:
       - docs_guidance/personas/README.md
       - Model builder: docs_guidance/personas/model-builder.md
