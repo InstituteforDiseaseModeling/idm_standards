@@ -1,12 +1,16 @@
 project:
   type: website
   output-dir: _site
-  render:
-    - index.md
-    - getting_started/
-    - eng_guidance/
-    - eng_process/
-    - docs_guidance/
+  render: # Need to specify README.md explicitly since excluded by default
+    - README.md
+    - getting_started/README.md
+    - eng_guidance/README.md
+    - eng_process/README.md
+    - docs_guidance/README.md
+    - "*.md"
+    - "!docs_templates/"
+    - "!idm_docs_plugin/"
+    - "!idm_eng_plugin/"
 
 website:
   title: IDM Standards
@@ -32,9 +36,9 @@ website:
   sidebar:
     contents:
       - text: Home
-        file: index.md
+        file: README.md
       - section: Getting started
-        file: getting_started/index.md
+        file: getting_started/README.md
         contents:
           - text: Installing Python
             file: getting_started/python.md
@@ -43,7 +47,7 @@ website:
           - text: Communication and culture
             file: getting_started/comms.md
       - section: Engineering guidance
-        file: eng_guidance/index.md
+        file: eng_guidance/README.md
         contents:
           - text: Philosophy
             file: eng_guidance/1_philosophy.md
@@ -60,7 +64,7 @@ website:
           - text: Quality guidelines
             file: eng_guidance/engineering_quality_guidelines.md
       - section: Engineering processes
-        file: eng_process/index.md
+        file: eng_process/README.md
         contents:
           - text: GitHub
             file: eng_process/github.md
@@ -69,7 +73,7 @@ website:
           - text: Public release
             file: eng_process/public_release.md
       - section: Docs guidance
-        file: docs_guidance/index.md
+        file: docs_guidance/README.md
         contents:
           - text: MkDocs overview
             file: docs_guidance/mkdocs.md
@@ -80,7 +84,7 @@ website:
           - text: Installation page
             file: docs_guidance/install.md
           - section: Topic types
-            file: docs_guidance/topic-types/index.md
+            file: docs_guidance/topic-types/README.md
             contents:
               - text: Table of contents
                 file: docs_guidance/topic-types/toc.md
@@ -95,7 +99,7 @@ website:
               - text: Example notebook
                 file: docs_guidance/topic-types/notebook.ipynb
           - section: Personas
-            file: docs_guidance/personas/index.md
+            file: docs_guidance/personas/README.md
             contents:
               - text: Model builder
                 file: docs_guidance/personas/model-builder.md
