@@ -2,19 +2,17 @@
 
 Include an introductory paragraph describing broadly what the project or package is and what the intended usage is. Don't forget to include the broader context about how it fits into disease modeling tools.
 
-It's generally a good practice to automatically reuse the README.md file for the repo in your documentation home page. 
+It's generally a good practice to automatically reuse the README.md file for the repo in your documentation home page.
 
 **MkDocs syntax:**
 
-```
-{%
-    include-markdown "../README.md"
-%}
-```
+`{%`<br>
+`    include-markdown "../README.md"`<br>
+`%}`
 
 **Quarto syntax:**
 
-```
+```text
 {{< include ../README.md >}}
 ```
 
@@ -22,7 +20,7 @@ It's generally a good practice to automatically reuse the README.md file for the
 
 In the package README, include the following:
 
-A summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications. 
+A summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications.
 
 ### Requirements
 
