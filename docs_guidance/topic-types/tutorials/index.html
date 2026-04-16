@@ -1,0 +1,2983 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://InstituteforDiseaseModeling.github.io/idm_standards/docs_guidance/topic-types/tutorials/">
+      
+      
+        <link rel="prev" href="../toc/">
+      
+      
+        <link rel="next" href="../howto/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Tutorials - IDM Standards</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../customization/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NK4K647');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK4K647"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<meta name="google-site-verification" content="L6w2tbHp4xFTm04T0CdrrzqX_T9PH-bpQnGGYuwuAE4" />
+
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-documentation-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="IDM Standards" class="md-header__button md-logo" aria-label="IDM Standards" data-md-component="logo">
+      
+  <img src="../../images/idm-logo-transparent.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDM Standards
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/InstituteforDiseaseModeling/idm_standards" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    InstituteforDiseaseModeling/idm_standards
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="IDM Standards" class="md-nav__button md-logo" aria-label="IDM Standards" data-md-component="logo">
+      
+  <img src="../../images/idm-logo-transparent.png" alt="logo">
+
+    </a>
+    IDM Standards
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/InstituteforDiseaseModeling/idm_standards" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    InstituteforDiseaseModeling/idm_standards
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../getting_started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI-assisted development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/comms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Communication and culture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../eng_guidance/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering guidance
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering guidance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_guidance/1_philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Philosophy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_guidance/2_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_guidance/3_tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_guidance/4_documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_guidance/5_other/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_guidance/6_zen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_guidance/engineering_quality_guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../eng_process/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering processes
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering processes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_process/github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_process/processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../eng_process/public_release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Public release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs guidance
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs guidance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quarto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quarto overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic types
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topic types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../toc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table of contents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-teachers-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The teacher's contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-distinction-tutorial-vs-how-to-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critical distinction: Tutorial vs how-to guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-11-core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 11 core principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The 11 core principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dont-try-to-teach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Don't try to teach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-show-the-destination-upfront" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Show the destination upfront
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deliver-visible-results-early-and-often" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Deliver visible results early and often
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-maintain-narrative-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Maintain narrative expectations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-point-out-what-learners-should-notice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Point out what learners should notice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-target-the-feeling-of-doing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Target the feeling of doing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-encourage-repetition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Encourage repetition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-ruthlessly-minimize-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Ruthlessly minimize explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-focus-on-the-concrete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Focus on the concrete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-ignore-options-and-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Ignore options and alternatives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-aspire-to-perfect-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Aspire to perfect reliability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-pedagogical-temptations-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-pedagogical temptations to avoid
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-and-tone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice and tone
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voice and tone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collaborative-we" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collaborative "we"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confident-reassuring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confident, reassuring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-and-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active and present
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-vs-how-to-guide-distinction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial vs. how-to guide distinction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cooking-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The cooking analogy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-challenges-of-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Special challenges of tutorials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Special challenges of tutorials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maintenance burden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-instructor-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No instructor present
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-write-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to write tutorials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-not-to-write-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to write tutorials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-for-writing-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist for writing tutorials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-and-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format and implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../howto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How-to
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../personas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Personas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Personas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/model-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/model-extender/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model extender
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/model-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model user
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/policy-influencer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy influencer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/policy-maker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy maker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Style and grammar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-teachers-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The teacher's contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-distinction-tutorial-vs-how-to-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critical distinction: Tutorial vs how-to guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-11-core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 11 core principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The 11 core principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dont-try-to-teach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Don't try to teach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-show-the-destination-upfront" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Show the destination upfront
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deliver-visible-results-early-and-often" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Deliver visible results early and often
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-maintain-narrative-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Maintain narrative expectations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-point-out-what-learners-should-notice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Point out what learners should notice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-target-the-feeling-of-doing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Target the feeling of doing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-encourage-repetition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Encourage repetition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-ruthlessly-minimize-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Ruthlessly minimize explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-focus-on-the-concrete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Focus on the concrete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-ignore-options-and-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Ignore options and alternatives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-aspire-to-perfect-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Aspire to perfect reliability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-pedagogical-temptations-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-pedagogical temptations to avoid
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-and-tone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice and tone
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voice and tone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collaborative-we" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collaborative "we"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confident-reassuring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confident, reassuring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-and-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active and present
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-vs-how-to-guide-distinction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial vs. how-to guide distinction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cooking-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The cooking analogy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-challenges-of-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Special challenges of tutorials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Special challenges of tutorials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maintenance burden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-instructor-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No instructor present
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-write-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to write tutorials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-not-to-write-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to write tutorials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-for-writing-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist for writing tutorials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-and-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format and implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tutorial-documentation-reference">Tutorial documentation reference</h1>
+<h2 id="overview">Overview</h2>
+<p>A tutorial is a <strong>learning-oriented, practical activity</strong> where students learn by doing meaningful tasks toward achievable goals. It's a lesson, not a task completion guide.</p>
+<h2 id="core-definition">Core definition</h2>
+<p>Tutorials are experiences that enable learning through doing. The tutorial author bears primary responsibility for the learner's success. Tutorials prioritize skill and knowledge acquisition, not task completion.</p>
+<h2 id="the-teachers-contract">The teacher's contract</h2>
+<p>Nearly all responsibility falls on the teacher. The student's only obligation is attentiveness and following directions.</p>
+<p><strong>The exercise must be:</strong>
+- <strong>Meaningful</strong>: Provides sense of achievement
+- <strong>Successful</strong>: Completable by the learner
+- <strong>Logical</strong>: Coherent progression that makes sense
+- <strong>Usefully complete</strong>: Exposes all necessary actions, concepts, and tools</p>
+<h2 id="critical-distinction-tutorial-vs-how-to-guide">Critical distinction: Tutorial vs how-to guide</h2>
+<p>This is the <strong>most commonly confused distinction</strong> in documentation. Both contain steps, but they serve fundamentally different purposes:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Tutorial</th>
+<th>How-to guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User knowledge</strong></td>
+<td>Learner may not know enough to even ask the right questions</td>
+<td>Already knows what they want to achieve</td>
+</tr>
+<tr>
+<td><strong>Approach</strong></td>
+<td>Concrete and particular—specific, known tools and materials we've set before the learner</td>
+<td>General: many things unknowable in advance or different in each case</td>
+</tr>
+<tr>
+<td><strong>Path structure</strong></td>
+<td>Single line, no choices or alternatives</td>
+<td>Forks and branches, different routes to same destination</td>
+</tr>
+<tr>
+<td><strong>Completeness</strong></td>
+<td>Must be complete end-to-end guide</td>
+<td>Doesn't need to be complete—starts/ends at reasonable points</td>
+</tr>
+<tr>
+<td><strong>Safety</strong></td>
+<td>Must be safe—no harm can come, always possible to go back and start again</td>
+<td>Cannot promise safety—often only one chance to get it right</td>
+</tr>
+<tr>
+<td><strong>Responsibility</strong></td>
+<td>Teacher has responsibility: if learner gets in trouble, teacher must fix it</td>
+<td>User has responsibility for getting in and out of trouble</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Study—learning skills</td>
+<td>Work—accomplishing tasks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: You will revise tutorials far more than other docs. Unlike how-to guides (which only change when the product changes), you may completely rewrite a tutorial because you found a better learning experience.</p>
+<h2 id="the-11-core-principles">The 11 core principles</h2>
+<h3 id="1-dont-try-to-teach">1. Don't try to teach</h3>
+<p>"Your job, as a teacher, is to provide the learner with an experience that will allow them to learn."</p>
+<ul>
+<li>Focus on enabling learning through doing, not explanation</li>
+<li>Provide experiences, not lectures</li>
+<li>Let understanding emerge from practice</li>
+<li>The learner learns by doing, not by being told</li>
+</ul>
+<h3 id="2-show-the-destination-upfront">2. Show the destination upfront</h3>
+<p><strong>Orient the learner:</strong>
+- Inform learners what they'll accomplish at the start
+- Example: "In this tutorial we will create and run a simulation"
+- Avoid presumptuous "you will learn" phrasing
+- Give learners confidence in where they're heading</p>
+<p><strong>Why this matters:</strong>
+- Reduces anxiety and uncertainty
+- Provides context for upcoming steps
+- Helps learners see the value of the journey</p>
+<h3 id="3-deliver-visible-results-early-and-often">3. Deliver visible results early and often</h3>
+<p><strong>Rapid feedback loops:</strong>
+- Every step must produce comprehensible results
+- Learners should see changes after each action
+- Enable cause-and-effect connections repeatedly
+- Build confidence through immediate success</p>
+<p><strong>The power of results:</strong>
+- Validates that learners are on track
+- Reinforces correct actions
+- Maintains engagement and motivation
+- Allows learners to verify their progress</p>
+<h3 id="4-maintain-narrative-expectations">4. Maintain narrative expectations</h3>
+<p><strong>Guide what to expect:</strong>
+- Use phrases like "You will notice that [observation]"
+- Show actual expected output
+- Warn about likely confusion points
+- Provide reassurance throughout</p>
+<p><strong>Example patterns:</strong>
+- "The output should look like [specific output]"
+- "Notice that the prompt has changed to [new prompt value]"
+- "You should now see [expected output]"
+- "This may take a few moments"</p>
+<h3 id="5-point-out-what-learners-should-notice">5. Point out what learners should notice</h3>
+<p>"Learning requires reflection."</p>
+<p><strong>Active observation guidance:</strong>
+- Explicitly highlight environmental changes
+- Point out important details
+- Draw attention to significant results
+- Don't assume learners notice things independently</p>
+<p><strong>Examples:</strong>
+- "Notice that the prompt now shows <code>(venv)</code>"
+- "The terminal output indicates success with [success indicator]"
+- "Observe how the interface has changed [specific change]"</p>
+<h3 id="6-target-the-feeling-of-doing">6. Target the feeling of doing</h3>
+<p><strong>Flow state creation:</strong>
+- Build tasks that connect: purpose -&gt; action -&gt; thinking -&gt; result
+- Create rhythmic, pleasurable progression
+- Enable the satisfaction of skilled practice
+- Let competence feel rewarding</p>
+<p><strong>The doing experience:</strong>
+- Learners should feel actively engaged
+- Each step should feel purposeful
+- Progress should feel natural and inevitable
+- Success should feel earned but achievable</p>
+<h3 id="7-encourage-repetition">7. Encourage repetition</h3>
+<p><strong>Repetition reinforces learning:</strong>
+- Allow steps to be repeated where possible
+- Users naturally repeat successful steps
+- Repetition confirms reliability
+- Reinforcement builds confidence</p>
+<p><strong>Why repetition works:</strong>
+- Solidifies new skills through practice
+- Allows learners to internalize patterns
+- Builds muscle memory for workflows
+- Increases retention</p>
+<h3 id="8-ruthlessly-minimize-explanation">8. Ruthlessly minimize explanation</h3>
+<p>"A tutorial is not the place for explanation."</p>
+<p><strong>Keep explanations brief:</strong>
+- Learners are focused on correct execution
+- Explanation distracts from doing
+- Provide links to deeper explanation rather than embedding it
+- Brief justifications only when absolutely necessary</p>
+<p><strong>The distraction problem:</strong>
+- Explanation breaks the flow
+- Diverts attention from the task
+- Cognitive load increases
+- Learners lose the thread</p>
+<h3 id="9-focus-on-the-concrete">9. Focus on the concrete</h3>
+<p><strong>Concrete before abstract:</strong>
+- Lead "from step to concrete step"
+- Use specific examples, not generalizations
+- The mind learns concrete-to-abstract, never the reverse
+- General patterns emerge naturally from concrete practice</p>
+<p><strong>Concrete examples:</strong>
+- Use actual file names, not placeholders
+- Show real commands, not templates
+- Demonstrate with specific values
+- Let abstraction emerge through experience</p>
+<h3 id="10-ignore-options-and-alternatives">10. Ignore options and alternatives</h3>
+<p><strong>Single path only:</strong>
+- Exclude alternative commands or approaches
+- No optional steps or variations
+- Don't discuss different API methods
+- Keep guidance focused on one successful path</p>
+<p><strong>Why single path:</strong>
+- Prevents decision paralysis
+- Reduces cognitive load
+- Ensures tutorial reliability
+- Allows focus on learning, not choosing</p>
+<h3 id="11-aspire-to-perfect-reliability">11. Aspire to perfect reliability</h3>
+<p>"Confidence builds incrementally and shatters quickly."</p>
+<p><strong>Zero tolerance for failure:</strong>
+- Every promised result must materialize
+- Tutorial must work every single time
+- Test extensively with actual users
+- Discover and eliminate hidden gaps</p>
+<p><strong>The confidence factor:</strong>
+- One failure destroys trust
+- Learners blame themselves for tutorial problems
+- Unreliable tutorials create lasting negative impressions
+- Perfect reliability is non-negotiable</p>
+<h2 id="anti-pedagogical-temptations-to-avoid">Anti-pedagogical temptations to avoid</h2>
+<p>These common patterns sabotage learning:</p>
+<ol>
+<li><strong>Abstraction and generalization</strong>: Stay concrete</li>
+<li><strong>Explanation and exposition</strong>: Link to it, don't embed it</li>
+<li><strong>Presenting choices</strong>: Provide one clear path</li>
+<li><strong>Information overload</strong>: Ruthlessly minimize content</li>
+</ol>
+<h2 id="language-patterns">Language patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"We..."</td>
+<td>Affirm tutor-learner collaboration</td>
+<td>"In this tutorial, we will build [what is being built]"</td>
+</tr>
+<tr>
+<td>Imperative sequence</td>
+<td>Remove ambiguity</td>
+<td>"First, do x. Now, do y. Next, do z."</td>
+</tr>
+<tr>
+<td>Minimal justification</td>
+<td>Provide just enough rationale</td>
+<td>"We must do x before y because [reason] (see Explanation)"</td>
+</tr>
+<tr>
+<td>Expected output</td>
+<td>Set clear expectations</td>
+<td>"The output should look like: [example output]"</td>
+</tr>
+<tr>
+<td>Observation cues</td>
+<td>Guide attention</td>
+<td>"Notice that [observation]" / "Remember that [key point]" / "Let's check [what to clarify]"</td>
+</tr>
+<tr>
+<td>Achievement acknowledgment</td>
+<td>Affirm accomplishment</td>
+<td>"You have [accomplished the goal]"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="voice-and-tone">Voice and tone</h2>
+<h3 id="collaborative-we">Collaborative "we"</h3>
+<ul>
+<li>"We will create a new file"</li>
+<li>"Now we'll add the configuration"</li>
+<li>"Let's run the command together"</li>
+<li>Emphasizes partnership in learning</li>
+</ul>
+<h3 id="confident-reassuring">Confident, reassuring</h3>
+<ul>
+<li>Maintain certainty throughout</li>
+<li>Assure learners they're on the right track</li>
+<li>Acknowledge achievements</li>
+<li>Build confidence incrementally</li>
+</ul>
+<h3 id="active-and-present">Active and present</h3>
+<ul>
+<li>Use present tense for actions</li>
+<li>Keep learners engaged in the moment</li>
+<li>Focus on immediate next step</li>
+<li>Maintain forward momentum</li>
+</ul>
+<h2 id="tutorial-vs-how-to-guide-distinction">Tutorial vs. how-to guide distinction</h2>
+<p><strong>Tutorials:</strong>
+- Emphasis on <strong>acquisition and study</strong>
+- For learning new skills
+- Teacher bears responsibility
+- Complete learning journey
+- Appropriate for novices
+- Focus on education</p>
+<p><strong>How-to guides:</strong>
+- Facilitate <strong>task completion</strong>
+- For applying known skills
+- User bears responsibility
+- Focused problem-solving
+- Assume competence
+- Focus on productivity</p>
+<h2 id="the-cooking-analogy">The cooking analogy</h2>
+<p>Teaching a person to cook illustrates tutorial principles perfectly:</p>
+<p><strong>Success criteria:</strong>
+- Person learns skills and gains pleasure
+- Not about perfect culinary output
+- Learning happens "through the activities" together
+- Not from instruction alone</p>
+<p><strong>Incomplete is acceptable:</strong>
+- If the person achieved something
+- If the person enjoyed it
+- Skills will develop over time
+- Foundation matters most</p>
+<h2 id="special-challenges-of-tutorials">Special challenges of tutorials</h2>
+<h3 id="maintenance-burden">Maintenance burden</h3>
+<ul>
+<li>Tutorials cascade through documentation</li>
+<li>Changes ripple across entire narrative</li>
+<li>Product evolution requires ongoing updates</li>
+<li>Breaking changes are especially problematic</li>
+<li>Use executable formats (e.g. Jupyter notebooks) to automatically catch breakage during builds</li>
+</ul>
+<h3 id="no-instructor-present">No instructor present</h3>
+<ul>
+<li>Can't correct mistakes in real-time</li>
+<li>Can't check understanding</li>
+<li>Can't adapt to learner needs</li>
+<li>Must anticipate all problems</li>
+</ul>
+<h3 id="design-complexity">Design complexity</h3>
+<ul>
+<li>Balancing "what to learn" and "what to do"</li>
+<li>Requires careful sequencing</li>
+<li>Must maintain perfect reliability</li>
+<li>Needs extensive testing with real users</li>
+</ul>
+<h2 id="when-to-write-tutorials">When to write tutorials</h2>
+<p>Write tutorials when users need to:
+- Get their first hands-on experience
+- Learn fundamental concepts through practice
+- Build confidence with a new tool or system
+- Understand basic workflows
+- Achieve an early success that motivates further learning</p>
+<h2 id="when-not-to-write-tutorials">When NOT to write tutorials</h2>
+<p>Don't write tutorials when users need to:
+- Complete a specific task (use how-to guides)
+- Look up technical information (use reference)
+- Understand why things work (use explanation)
+- Apply skills they already have (use how-to guides)</p>
+<h2 id="checklist-for-writing-tutorials">Checklist for writing tutorials</h2>
+<ul>
+<li>[ ] Learning-oriented, not task-oriented</li>
+<li>[ ] Shows destination at the beginning</li>
+<li>[ ] Every step produces visible results</li>
+<li>[ ] Maintains narrative expectations throughout</li>
+<li>[ ] Points out what learners should notice</li>
+<li>[ ] Creates the feeling of doing</li>
+<li>[ ] Allows repetition where possible</li>
+<li>[ ] Minimizes explanation (links to it instead)</li>
+<li>[ ] Focuses on concrete steps, not abstractions</li>
+<li>[ ] Ignores options and alternatives</li>
+<li>[ ] Tested for perfect reliability</li>
+<li>[ ] Uses "we" language to build partnership</li>
+<li>[ ] Acknowledges learner achievements</li>
+<li>[ ] No choices or decision points</li>
+<li>[ ] Complete learning experience from start to finish</li>
+<li>[ ] Links to how-to guides, reference, and explanation as needed</li>
+</ul>
+<h2 id="format-and-implementation">Format and implementation</h2>
+<p>Where possible, write tutorials as Jupyter notebooks or other executable formats. This allows tutorials to be run automatically during documentation builds, surfacing broken steps or outdated outputs before learners encounter them. This directly supports the principle of perfect reliability.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! If you like, provide additional information by using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../toc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Table of contents">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Table of contents
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../howto/" class="md-footer__link md-footer__link--next" aria-label="Next: How-to">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                How-to
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright">
+    
+    <div class="md-copyright__highlight">
+        Copyright &copy; 2026 Gates Foundation. All rights reserved.
+        
+        <a href="https://www.gatesfoundation.org/Privacy-and-Cookies-Notice" target="_blank" rel="noopener" style="TEXT-DECORATION: underline">Privacy and Cookies Notice</a>
+        
+        <a href="https://www.gatesfoundation.org/Terms-of-Use" target="_blank" rel="noopener" style="TEXT-DECORATION: underline">Terms of Use</a>
+        
+    </div>
+    
+    
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/InstituteforDiseaseModeling/idm_standards" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:idm@gatesfoundation.org" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M61.4 64C27.5 64 0 91.5 0 125.4c0 .9 0 1.7.1 2.6H0v256c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V128h-.1c0-.9.1-1.7.1-2.6 0-33.9-27.5-61.4-61.4-61.4zM464 192.3V384c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192.3l154.8 117.4c31.4 23.9 74.9 23.9 106.4 0zM48 125.4c0-7.4 6-13.4 13.4-13.4h389.2c7.4 0 13.4 6 13.4 13.4 0 4.2-2 8.2-5.3 10.7L280.2 271.5c-14.3 10.8-34.1 10.8-48.4 0L53.3 136.1c-3.3-2.5-5.3-6.5-5.3-10.7"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://idmod.org" target="_blank" rel="noopener" title="idmod.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1m3.241 10.5zc-.1-2.708-.992-4.904-1.89-6.452a14 14 0 0 0-1.304-1.88L12 3.11l-.047.059c-.354.425-.828 1.06-1.304 1.88-.898 1.547-1.79 3.743-1.89 6.451Zm-12.728 0h4.745c.1-3.037 1.1-5.49 2.093-7.204.39-.672.78-1.233 1.119-1.673C6.11 3.329 2.746 7 2.513 11.5m18.974 0C21.254 7 17.89 3.329 13.53 2.623c.339.44.729 1.001 1.119 1.673.993 1.714 1.993 4.167 2.093 7.204ZM8.787 13c.182 2.478 1.02 4.5 1.862 5.953q.574.993 1.304 1.88l.047.057.047-.059c.354-.425.828-1.06 1.304-1.88.842-1.451 1.679-3.471 1.862-5.951Zm-1.504 0H2.552a9.505 9.505 0 0 0 7.918 8.377 16 16 0 0 1-1.119-1.673C8.413 18.085 7.47 15.807 7.283 13m9.434 0c-.186 2.807-1.13 5.085-2.068 6.704-.39.672-.78 1.233-1.118 1.673A9.506 9.506 0 0 0 21.447 13Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="http://www.youtube.com/@institutefordiseasemodelin1987" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/company/institute-disease-modeling" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer", "content.code.copy", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
