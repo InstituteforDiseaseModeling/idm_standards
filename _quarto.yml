@@ -4,6 +4,7 @@ project:
   render: # Need to specify README.md explicitly since excluded by default
     - README.md
     - "*.md"
+    - "*.ipynb"
     - "!docs_templates/"
     - "!idm_docs_plugin/"
     - "!idm_eng_plugin/"
