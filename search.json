@@ -842,7 +842,7 @@
     "href": "README.html",
     "title": "IDM Standards",
     "section": "",
-    "text": "IDM’s central hub for software quality standards, development practices, and tooling.\n\n\nNew to IDM? Start with the getting started guides:\n\nPython setup – setting up your development environment\nAI tools – getting started with Claude Code and plugins\nCommunication – GitHub, Teams, meetings, and team culture\n\n\n\n\nThe engineering guidance covers IDM’s conventions for writing research software:\n\nPhilosophy – design principles and priorities\nPython – Python style conventions (Google style + IDM house rules)\nTests – testing practices for scientific code\nDocumentation – standards for READMEs, docstrings, and tutorials\nOther – miscellaneous principles (e.g., data security)\nZen – short principles and credos\nEngineering quality guidelines – 10 metrics across 3 categories (quality, usability, safety) applied to 3 code tiers\n\n\n\n\nThe docs templates provide starter templates for project documentation:\n\nMkDocs template – recommended for most projects\nQuarto template – for projects needing interactivity\n\n\n\n\nThis repo includes two Claude Code plugins for automating quality checks:\n\nIDM Engineering Plugin (v1.2) – scores and improves code against the engineering quality guidelines. Use /idm-eng-plugin:eng-quality-checker to score a project and /idm-eng-plugin:eng-quality-fixer to auto-fix issues.\nIDM Docs Plugin (v0.0) – checks documentation against IDM standards (work in progress).\n\nInstall via the Claude Code marketplace (configured in .claude-plugin/marketplace.json).",
+    "text": "IDM’s central hub for software quality standards, development practices, and tooling. This content is available as a repo and as published docs.\n\n\nNew to IDM? Start with the getting started guides:\n\nPython setup – setting up your development environment\nAI tools – getting started with Claude Code and plugins\nCommunication – GitHub, Teams, meetings, and team culture\n\n\n\n\nThe engineering guidance covers IDM’s conventions for writing research software:\n\nPhilosophy – design principles and priorities\nPython – Python style conventions (Google style + IDM house rules)\nTests – testing practices for scientific code\nDocumentation – standards for READMEs, docstrings, and tutorials\nOther – miscellaneous principles (e.g., data security)\nZen – short principles and credos\nEngineering quality guidelines – principles for writing good code\n\n\n\n\nThe docs guidance covers IDM’s approach to documentation:\n\nStyle and grammar – style and grammar checking\nMkDocs overview – how to build docs with MkDocs\nQuarto overview – how to build docs with Quarto\nHome page – how to write a good home (landing) page\nInstallation page – how to write a good installation page\nTopic types – how to structure your content as tutorials, explanations, how-to guides, etc.\nPersonas – how to write for different audiences\n\n\n\n\nThis repo includes two Claude Code plugins for automating quality checks:\n\nIDM Engineering Plugin (v1.2) – scores and improves code against the engineering quality guidelines. Use /idm-eng-plugin:eng-quality-checker to score a project and /idm-eng-plugin:eng-quality-fixer to auto-fix issues.\nIDM Docs Plugin (v0.0) – checks documentation against IDM standards (work in progress).\n\nInstall via the Claude Code marketplace (configured in .claude-plugin/marketplace.json).",
     "crumbs": [
       "Home"
     ]
@@ -862,17 +862,17 @@
     "href": "README.html#engineering-guidance",
     "title": "IDM Standards",
     "section": "",
-    "text": "The engineering guidance covers IDM’s conventions for writing research software:\n\nPhilosophy – design principles and priorities\nPython – Python style conventions (Google style + IDM house rules)\nTests – testing practices for scientific code\nDocumentation – standards for READMEs, docstrings, and tutorials\nOther – miscellaneous principles (e.g., data security)\nZen – short principles and credos\nEngineering quality guidelines – 10 metrics across 3 categories (quality, usability, safety) applied to 3 code tiers",
+    "text": "The engineering guidance covers IDM’s conventions for writing research software:\n\nPhilosophy – design principles and priorities\nPython – Python style conventions (Google style + IDM house rules)\nTests – testing practices for scientific code\nDocumentation – standards for READMEs, docstrings, and tutorials\nOther – miscellaneous principles (e.g., data security)\nZen – short principles and credos\nEngineering quality guidelines – principles for writing good code",
     "crumbs": [
       "Home"
     ]
   },
   {
-    "objectID": "README.html#documentation-templates",
-    "href": "README.html#documentation-templates",
+    "objectID": "README.html#documentation-guidance",
+    "href": "README.html#documentation-guidance",
     "title": "IDM Standards",
     "section": "",
-    "text": "The docs templates provide starter templates for project documentation:\n\nMkDocs template – recommended for most projects\nQuarto template – for projects needing interactivity",
+    "text": "The docs guidance covers IDM’s approach to documentation:\n\nStyle and grammar – style and grammar checking\nMkDocs overview – how to build docs with MkDocs\nQuarto overview – how to build docs with Quarto\nHome page – how to write a good home (landing) page\nInstallation page – how to write a good installation page\nTopic types – how to structure your content as tutorials, explanations, how-to guides, etc.\nPersonas – how to write for different audiences",
     "crumbs": [
       "Home"
     ]
