@@ -423,6 +423,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../docs_guidance/vale.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Style and grammar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../docs_guidance/mkdocs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MkDocs overview</span></a>
   </div>
@@ -533,12 +539,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/vale.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Style and grammar</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -564,22 +564,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <section id="style-and-grammar" class="level1">
 <h1>Style and grammar</h1>
-<p>Style and grammar standards are defined and applied using the Vale linter. We follow most Microsoft Manual of Style standards with some specific standards defined for IDM and our audience. Follow the instructions below to install and run Vale.</p>
-<p><strong>In VSCode:</strong></p>
+<p>IDM style and grammar standards are defined using the Vale linter. We follow most Microsoft Manual of Style standards with some specific standards defined for IDM and our audience. Follow the instructions below to install and run Vale to apply these standards locally.</p>
+<p>If desired, you can configure a GitHub action to run Vale on all pull requests in a repository. For more information, see https://github.com/vale-cli/vale-action.</p>
+<p><strong>Save IDM standards locally</strong></p>
+<ol type="1">
+<li>Clone the <a href="https://github.com/InstituteforDiseaseModeling/idm_standards">idm_standards</a> repository.</li>
+</ol>
+<p><strong>Install Vale</strong></p>
+<ol type="1">
+<li>Download the appropriate <a href="https://github.com/vale-cli/vale/releases">Vale release</a> for your operating system.</li>
+<li>Extract the files and save to your Program Files.</li>
+</ol>
+<p><strong>Run in VSCode</strong></p>
 <ol type="1">
 <li>Open the VS Code Marketplace or use the Extensions view (Ctrl+Shift+X).</li>
 <li>Search for and install “Vale VSCode” by Chris Chinchilla.</li>
-<li>Restart VS Code after installation.</li>
-<li>If not already present in your repo, copy the Vale styles (.github/styles) and configuration file (vale.ini) from the https://github.com/InstituteforDiseaseModeling/idm_standards/ into your repo, maintaining the location.</li>
-<li>If you store the files in a different location, you may need to update the location under <strong>File &gt; Preferences &gt; Settings</strong>.</li>
-<li>Open any supported file type (.qmd, .md, and .ipynb) and Vale will automatically hightlight issues with wavy lines in the editor.</li>
+<li>Under <strong>File &gt; Preferences &gt; Settings &gt; Extensions &gt; Vale</strong> set <strong>Vale CLI:Config</strong> to your path to idm_standards/vale.ini.</li>
+<li>Add the path to the vale.exe in Program Files to your global VSCode settings.json.</li>
+<li>Restart VSCode after installation.</li>
+<li>Open any supported file type (.qmd, .md, and .ipynb) and Vale will automatically highlight issues with wavy lines in the editor.</li>
 </ol>
-<p><strong>At the command line:</strong></p>
+<p><strong>Run at the command line:</strong></p>
 <ol type="1">
-<li>Install the Vale binary using your preferred package manager (https://vale.sh/docs/install).</li>
-<li>If not already present in your repo, copy the Vale styles (.github/styles) and configuration file (vale.ini) from the https://github.com/InstituteforDiseaseModeling/idm_standards/ into your repo, maintaining the location. DO NOT run <code>vale sync</code> because this will overwrite the customized IDM settings.</li>
-<li>Run <code>vale ls-vars</code> to verify that the styles and config paths are correct.</li>
-<li>Run <code>vale my_file.md</code> to inspect individual files and generate a report. See full CLI options at https://vale.sh/docs/cli.</li>
+<li>Set the environment variables for <code>VALE_CONFIG_PATH</code> and <code>VALE_STYLES_PATH</code> to vale.ini and .github/styles in the idm_standards repo.</li>
+<li>Navigate to the location where you saved the vale.exe.</li>
+<li>Run <code>vale ls-vars</code> to verify that the styles and configuration paths are correct.</li>
+<li>Run <code>vale my_file.md</code> to inspect individual files and generate a report. See full CLI options at <a href="https://vale.sh/docs/cli">vale.sh</a>.</li>
 </ol>
 
 
