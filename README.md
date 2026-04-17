@@ -39,6 +39,6 @@ The [docs guidance](docs_guidance/) covers IDM's approach to documentation:
 This repo includes two Claude Code plugins for automating quality checks:
 
 - **[IDM Engineering Plugin](idm_eng_plugin/)** (v1.2) -- scores and improves code against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md). Use `/idm-eng-plugin:eng-quality-checker` to score a project and `/idm-eng-plugin:eng-quality-fixer` to auto-fix issues.
-- **[IDM Docs Plugin](idm_docs_plugin/)** (v0.0) -- checks documentation against IDM standards (work in progress).
+- **[IDM Docs Plugin](idm_docs_plugin/)** (v1.0) -- checks and improves documentation against IDM standards. Use `/idm-docs-plugin:docs_audit` for a full audit, `/idm-docs-plugin:diataxis` for structure review, `/idm-docs-plugin:personas` for audience fit, and `/idm-docs-plugin:python-docstrings` for docstring quality.
 
 Install via the Claude Code marketplace (configured in [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json)).
