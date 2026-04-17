@@ -1,6 +1,6 @@
 # IDM Standards
 
-IDM's central hub for software quality standards, development practices, and tooling.
+IDM's central hub for software quality standards, development practices, and tooling. This content is available as a [repo](https://github.com/InstituteforDiseaseModeling/idm_standards) and as [published docs](https://institutefordiseasemodeling.github.io/idm_standards).
 
 ## Getting started
 
@@ -20,14 +20,19 @@ The [engineering guidance](eng_guidance/) covers IDM's conventions for writing r
 - [Documentation](eng_guidance/4_documentation.md) -- standards for READMEs, docstrings, and tutorials
 - [Other](eng_guidance/5_other.md) -- miscellaneous principles (e.g., data security)
 - [Zen](eng_guidance/6_zen.md) -- short principles and credos
-- [Engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md) -- 10 metrics across 3 categories (quality, usability, safety) applied to 3 code tiers
+- [Engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md) -- principles for writing good code
 
-## Documentation templates
+## Documentation guidance
 
-The [docs templates](docs_templates/) provide starter templates for project documentation:
+The [docs guidance](docs_guidance/) covers IDM's approach to documentation:
 
-- [MkDocs template](docs_templates/mkdocs_template/) -- recommended for most projects
-- [Quarto template](docs_templates/quarto_template/) -- for projects needing interactivity
+- [Style and grammar](docs_guidance/vale.md) -- style and grammar checking
+- [MkDocs overview](docs_guidance/mkdocs.md) -- how to build docs with MkDocs
+- [Quarto overview](docs_guidance/quarto.md) -- how to build docs with Quarto
+- [Home page](docs_guidance/home.md) -- how to write a good home (landing) page
+- [Installation page](docs_guidance/install.md) -- how to write a good installation page
+- [Topic types](docs_guidance/topic-types/) -- how to structure your content as tutorials, explanations, how-to guides, etc.
+- [Personas](docs_guidance/personas/) -- how to write for different audiences
 
 ## Claude Code plugins
 
