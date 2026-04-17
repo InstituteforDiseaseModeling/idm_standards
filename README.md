@@ -6,10 +6,9 @@ IDM's central hub for software quality standards, development practices, and too
 
 New to IDM? Start with the [getting started](getting_started/) guides:
 
-- [Python setup](getting_started/1_python.md) -- setting up your development environment
-- [AI tools](getting_started/2_ai.md) -- getting started with Claude Code and plugins
-- [Coding guidelines](getting_started/3_guidelines.md) -- reference to our engineering guidance and conventions
-- [Communication](getting_started/4_comms.md) -- GitHub, Teams, meetings, and team culture
+- [Python setup](getting_started/python.md) -- setting up your development environment
+- [AI tools](getting_started/ai.md) -- getting started with Claude Code and plugins
+- [Communication](getting_started/comms.md) -- GitHub, Teams, meetings, and team culture
 
 ## Engineering guidance
 

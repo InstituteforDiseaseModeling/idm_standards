@@ -1,0 +1,4 @@
+jupyter # needed for rendering Jupyter notebooks with Quarto
+
+# include all packages needed for running Jupyter notebooks
+starsim # this is included only for the purpose of the example notebook

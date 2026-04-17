@@ -6,16 +6,16 @@ It's generally a good practice to automatically reuse the README.md file for the
 
 **MkDocs syntax:**
 
-`{%`
-
-`    include-markdown "../README.md"`
-
-`%}`
+```text
+{%
+    include-markdown "../README.md"
+%}
+```
 
 **Quarto syntax:**
 
 ```text
-{{< include ../README.md >}}
+{{{< include ../README.md >}}}
 ```
 
 ## README guidance
