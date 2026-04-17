@@ -71,6 +71,8 @@ website:
       - section: Docs guidance
         file: docs_guidance/index.md
         contents:
+          - text: Style and grammar
+            file: docs_guidance/vale.md
           - text: MkDocs overview
             file: docs_guidance/mkdocs.md
           - text: Quarto overview
@@ -107,8 +109,6 @@ website:
                 file: docs_guidance/personas/policy-influencer.md
               - text: Policy maker
                 file: docs_guidance/personas/policy-maker.md
-          - text: Style and grammar
-            file: docs_guidance/vale.md
 
 format:
   html:
