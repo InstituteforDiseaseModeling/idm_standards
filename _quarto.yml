@@ -77,25 +77,22 @@ website:
             file: docs_guidance/mkdocs.md
           - text: Quarto overview
             file: docs_guidance/quarto.md
-          - text: Home page
-            file: docs_guidance/home.md
-          - text: Installation page
-            file: docs_guidance/install.md
-          - section: Topic types
+          - section: Topic types and structure
             file: docs_guidance/topic-types/index.md
             contents:
               - text: Table of contents
                 file: docs_guidance/topic-types/toc.md
-              - text: Tutorials
-                file: docs_guidance/topic-types/tutorials.md
+              - text: Tutorial
+                file: docs_guidance/topic-types/tutorial.md
+                contents:
+                  - text: Example notebook
+                    file: docs_guidance/topic-types/notebook.ipynb
               - text: How-to
                 file: docs_guidance/topic-types/howto.md
               - text: Reference
                 file: docs_guidance/topic-types/reference.md
               - text: Explanation
                 file: docs_guidance/topic-types/explanation.md
-              - text: Example notebook
-                file: docs_guidance/topic-types/notebook.ipynb
           - section: Personas
             file: docs_guidance/personas/index.md
             contents:
