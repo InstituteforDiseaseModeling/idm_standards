@@ -27,6 +27,7 @@ exceptions:
   - EMOD
   - LASER
   - ODE
+  - TOC
 
 # --- Microsoft’s defaults (keep/copy from the package) ---
   - API
