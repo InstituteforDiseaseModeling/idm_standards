@@ -4,9 +4,12 @@ project:
   render: # Need to specify README.md explicitly since excluded by default
     - README.md
     - "*.md"
+    - "*.ipynb"
     - "!docs_templates/"
     - "!idm_docs_plugin/"
     - "!idm_eng_plugin/"
+    - "idm_eng_plugin/README.md"
+    - "idm_docs_plugin/README.md"
 
 website:
   title: IDM Standards
@@ -106,6 +109,13 @@ website:
                 file: docs_guidance/personas/policy-influencer.md
               - text: Policy maker
                 file: docs_guidance/personas/policy-maker.md
+      - section: Claude plugins
+        file: eng_process/index.md
+        contents:
+          - text: Engineering plugin
+            file: idm_eng_plugin/README.md
+          - text: Docs plugin
+            file: idm_docs_plugin/README.md
 
 format:
   html:
