@@ -12,6 +12,7 @@ You should build or preview the documentation locally before submitting document
     ```
     pip install -r docs/requirements.txt
     ```
+    
 ### Preview the docs in a browser
 
 1. Run a local server with:

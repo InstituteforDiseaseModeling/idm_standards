@@ -1,16 +1,8 @@
-# Explanation documentation reference
+# Explanation
 
-## Overview
+Explanation is **understanding-oriented** documentation that deepens reader comprehension through reflective, discursive treatment of conceptual topics. It answers: "Can you tell me about [topic]?"
 
-Explanation is **understanding-oriented** documentation that deepens reader comprehension through reflective, discursive treatment of topics. It answers: "Can you tell me about [topic]?"
-
-## Core purpose
-
-Explanation operates at a higher, broader perspective than tutorials, how-to guides, or reference material. It focuses on theoretical knowledge and context rather than immediate application, best consumed away from active work (not during task execution).
-
-## Distance from practice
-
-Explanation is "characterized by its distance from the active concerns of the practitioner." While potentially less urgent than other documentation types, it remains equally important for building robust understanding.
+Explanation operates at a higher, broader perspective than tutorials, how-tos, or reference material. It focuses on theoretical knowledge and context rather than immediate application, best consumed away from active work (not during task execution).
 
 ## Critical distinction: Explanation vs reference
 
@@ -23,16 +15,18 @@ Both provide knowledge (cognition), but for fundamentally different contexts:
 | Would someone turn to this **while actively working**? | | ✓ |
 | Is it **lists, tables, or technical specs**? | | ✓ |
 
-**Key insight**: A tidal chart with tables of figures is clearly reference. An article explaining why there are tides and how they behave is clearly explanation.
+**Key insight**: A tables of command-line options for git is reference. A topic explaining conceptually how git works is explanation.
 
 **Explanation examples:**
+
 - "Compartmental vs agent-based models: assumptions, trade-offs, and appropriate use" (why you would select one)
 - "The trade-off between agent resolution and computational tractability"
 - "How population heterogeneity shapes transmission dynamics"
 - "The relationship between network structure and epidemic spread"
 
 **Reference examples (NOT explanation):**
-- API endpoint documentation
+
+- API documentation
 - Configuration option lists
 - Error code tables
 - Command syntax specifications
@@ -42,6 +36,7 @@ Both provide knowledge (cognition), but for fundamentally different contexts:
 ### Make connections
 
 - Link topics to related concepts, even beyond immediate scope
+- Link to how-to or reference content related to the concepts discussed
 - Weave understanding across domains
 - Draw relationships between different parts of the system
 - Connect to broader technical or domain concepts
@@ -49,6 +44,7 @@ Both provide knowledge (cognition), but for fundamentally different contexts:
 ### Provide context
 
 Explanation should illuminate:
+
 - **Design decisions**: Why was this approach chosen?
 - **Historical reasons**: How did this evolve over time?
 - **Technical constraints**: What limitations influenced this design?
@@ -58,6 +54,7 @@ Explanation should illuminate:
 ### Address the bigger picture
 
 Discussion topics should include:
+
 - **History and evolution**: How did we get here?
 - **Choices and alternatives**: What other approaches exist?
 - **Reasons and justifications**: Why this way and not another?
@@ -66,51 +63,25 @@ Discussion topics should include:
 
 ## Structural principles
 
+Within the table of contents organization, explanation topics often serve as the parent topics for user guides that include related explanation and how-to topics for a given subject.
+
 ### Maintain clear boundaries
 
 - Prevent explanation from absorbing instructional or reference content
 - Keep material focused on the defined topic area
 - Use "why questions" as prompts to define scope
-- Don't let explanation become a tutorial or how-to guide
+- Don't let explanation become a tutorial or how-to
 - Don't include detailed technical specifications (that's reference material)
 
 ### Naming convention
 
 - Use titles that allow an implicit "About" prefix
+
   - Good: "User authentication" (reads as "About user authentication")
   - Good: "The request-response cycle"
   - Good: "Database normalization"
 - Reflects the discursive nature of the material
 - Avoids action-oriented or task-oriented phrasing
-
-## Language patterns
-
-Effective explanation employs constructions like:
-
-- **Justification**: "The reason for x is because historically, [historical context]"
-- **Professional judgment**: "W is better than z, because [reasoning]"
-- **Contextual comparison**: "An x is analogous to w. However, [key difference]"
-- **Weighing alternatives**: "Some users prefer w. This can be good, but [trade off or caveat]"
-- **Unfolding mechanics**: "An x interacts with y as follows&"
-- **Historical context**: "Originally, the system used x, but this evolved to y when [trigger or reason]"
-- **Design rationale**: "We chose this approach because [reasoning]"
-
-## Critical attitudes
-
-### Embrace opinion and perspective
-
-- Acknowledge that understanding emerges from particular viewpoints
-- Present alternative approaches and counter-examples
-- Offer professional judgment and reasoned opinions
-- Think of explanation as **discussion** rather than instruction
-- It's acceptable to express preference with justification
-
-### Voice and tone
-
-- More discursive and reflective than other documentation types
-- Can be contemplative and exploratory
-- Allows for nuance and complexity
-- Can acknowledge uncertainty or multiple valid approaches
 
 ## Common mistakes to avoid
 
@@ -119,56 +90,11 @@ Effective explanation employs constructions like:
    - Without explanation, users have fragmented, surface-level knowledge
 
 2. **Don't allow instructional content to infiltrate**
-   - Keep "how to do things" in how-to guides
+   - Keep "how to do things" in how-to topics
    - Don't provide step-by-step instructions
-   - Link to tutorials/guides rather than embedding them
+   - Link to related reference or how-tos rather than embedding them
 
 3. **Don't allow technical reference to infiltrate**
    - Keep detailed API specs, parameters, and technical descriptions in reference
    - Link to reference material rather than duplicating it
 
-4. **Don't leave scope undefined**
-   - Use guiding questions to bound the topic
-   - Define what is and isn't covered
-   - Stay focused on the defined subject area
-
-## Reference model
-
-Harold McGee's *On Food and Cooking* exemplifies explanation perfectly:
-- Explores cooking through history, society, and science
-- **Contains no recipes** (those would be how-to guides)
-- Changes how practitioners think about their craft
-- Provides understanding rather than directing immediate action
-- Readers consume it away from the kitchen for learning
-
-## When to write explanation
-
-Write explanation documentation when users need to:
-- Understand the "why" behind design decisions
-- Grasp the broader context of a system or feature
-- Learn about alternatives and trade-offs
-- Build mental models of how components relate
-- Understand historical evolution and rationale
-- Prepare for advanced work requiring deep understanding
-
-## When NOT to write explanation
-
-Don't write explanation when users need to:
-- Learn by doing (use tutorials)
-- Accomplish a specific task (use how-to guides)
-- Look up technical details (use reference)
-- Get started quickly (use tutorials or how-to guides)
-
-## Checklist for writing explanation
-
-- [ ] Focuses on understanding, not action
-- [ ] Provides context and connections
-- [ ] Explores alternatives and trade-offs
-- [ ] Explains the "why" behind decisions
-- [ ] Can be read away from active work
-- [ ] Contains no step-by-step instructions
-- [ ] Contains no detailed technical specifications
-- [ ] Discusses broader concepts and relationships
-- [ ] Title works with implicit "About" prefix
-- [ ] Acknowledges multiple perspectives where appropriate
-- [ ] Links to tutorials, how-to guides, and reference as needed

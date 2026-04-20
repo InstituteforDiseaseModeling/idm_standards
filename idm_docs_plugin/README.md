@@ -60,3 +60,7 @@ Checks Google-style formatting, completeness, and consistency with MkDocs/Quarto
 # From the IDM marketplace: https://github.com/InstituteforDiseaseModeling/idm_standards
 # Add to .claude-plugin/marketplace.json or install via Claude Code settings
 ```
+
+## Update
+
+Use the internal skill `/update-docs-plugin` to update the `idm_docs_plugin` based on changes to the `docs_guidance` folder.
