@@ -1,16 +1,18 @@
 ---
 name: diataxis
-description: Centralizes Diataxis documentation framework guidance so Claude can write, review, or improve documentation following the four distinct topic types (tutorials, how-to guides, reference, explanation). Also includes guidance on how to organize those topics within the table of contents (TOC).
+description: Centralizes IDM's documentation topic-type guidance (borrowed from Diátaxis) so Claude can write, review, or improve documentation following the four distinct topic types (tutorials, how-tos, reference, explanation). Also includes guidance on how to organize those topics within the table of contents (TOC), including IDM's "user guide" grouping of how-to and explanation topics by subject matter.
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write
 ---
 
 # Documentation skill
 
-Skill version: 1.0_2026.04.13
+Skill version: 1.1_2026.04.20
 
-Unifies all Diataxis documentation guidance into one Skill. Claude activates this Skill whenever documentation is written, reviewed, or improved, and new topics are added within the table of contents. It then "lazy loads" the exact documentation type guidance by opening the reference docs linked below.
+Unifies all of IDM's topic-type documentation guidance (borrowed from Diátaxis) into one Skill. Claude activates this Skill whenever documentation is written, reviewed, or improved, and new topics are added within the table of contents. It then "lazy loads" the exact documentation type guidance by opening the reference docs linked below.
 
-Diataxis framework by Daniele Procida. See [diataxis.fr](https://diataxis.fr/colophon/) for full attribution. Framework for the skill and reference file based on the work by [thewodapp](https://github.com/wodsmith/thewodapp).
+IDM's guidance borrows heavily from the Diátaxis framework but diverges on TOC organization: tutorials and reference live at the top level, while how-to and explanation topics are grouped into "user guides" by subject matter (with explanation topics typically as the parent). See `references/toc.md` for details.
+
+Diátaxis framework by Daniele Procida. See [diataxis.fr](https://diataxis.fr/colophon/) for full attribution. Framework for the skill and reference file based on the work by [thewodapp](https://github.com/wodsmith/thewodapp).
 
 ## Critical workflow
 
@@ -19,7 +21,7 @@ Diataxis framework by Daniele Procida. See [diataxis.fr](https://diataxis.fr/col
 1. **Use the compass** to identify the documentation type needed (see below)
 2. **Read the matching reference file(s)** BEFORE writing/reviewing:
    - Learning experiences → Read `references/tutorials.md`
-   - Task-oriented guides → Read `references/howto.md`
+   - Task-oriented how-tos → Read `references/howto.md`
    - Information lookup → Read `references/reference.md`
    - Understanding & context → Read `references/explanation.md`
 3. **Apply the documentation type's principles** from the loaded reference
@@ -49,7 +51,7 @@ The compass is your primary decision-making tool. Consider the user's goals and 
                     (Study)                  (Work)
               ┌─────────────────────┬─────────────────────┐
               │                     │                     │
-   ACTION     │     TUTORIALS       │    HOW-TO GUIDES    │
+   ACTION     │     TUTORIALS       │      HOW-TOS        │
    (Doing)    │   Learning-oriented │    Task-oriented    │
               │   "Teach me"        │    "Help me do X"   │
               │                     │                     │
@@ -74,12 +76,12 @@ The compass is your primary decision-making tool. Consider the user's goals and 
 
 ## Key distinctions (critical!)
 
-### Tutorial vs how-to Guide
+### Tutorial vs how-to
 
 Both contain steps, but serve fundamentally different purposes:
 
-| Aspect | Tutorial | How-to guide |
-|--------|----------|--------------|
+| Aspect | Tutorial | How-to |
+|--------|----------|--------|
 | **User** | Learner, may not know enough to ask questions | Competent practitioner who knows their goal |
 | **Responsibility** | Teacher bears responsibility for success | User bears responsibility for outcomes |
 | **Approach** | Concrete, specific, controlled environment | General, adaptable to real-world variation |
@@ -111,18 +113,27 @@ Both provide knowledge, but for different contexts:
 
 **Let structure emerge:** As you improve individual pieces, patterns will emerge that suggest organizational structure. The top-level structure forms from the inside out. For guidance on organizing the TOC, read `references/toc.md`.
 
+## IDM TOC organization (divergence from Diátaxis)
+
+IDM's TOC structure follows the user journey rather than strictly separating the four topic types at the top level:
+
+- **Top level**: tutorials and reference/API reference — users actively look for these as discoverable entry points
+- **User guides**: how-to and explanation topics grouped by subject matter (e.g., "Demographics user guide", "Calibration user guide"), with explanation topics typically serving as the parent page for a group
+
+This is the **key divergence from Diátaxis** and is intentional: researcher workflows are less predictable than typical software workflows, and grouping by subject matter helps users find related conceptual and task-oriented content together. When organizing a TOC, always read `references/toc.md` for full guidance.
+
 ## Documentation type references (load on demand)
 
 - **[Tutorials](references/tutorials.md)** - Learning-oriented experiences enabling skill acquisition through guided practice
-- **[How-to guides](references/howto.md)** - Task-oriented directions for accomplishing specific goals
+- **[How-tos](references/howto.md)** - Task-oriented directions for accomplishing specific goals
 - **[Reference](references/reference.md)** - Information-oriented technical descriptions for authoritative lookup
 - **[Explanation](references/explanation.md)** - Understanding-oriented discussions providing context and answering "why?"
 - **[Table of contents](references/toc.md)** - Guidance on organizing documentation topics within the TOC and adding cross-references
 
 ## Key principles
 
-1. **Different contexts need different documentation** - Users learning need tutorials; users working need how-to guides or reference; users seeking understanding need explanation
+1. **Different contexts need different documentation** - Users learning need tutorials; users working need how-tos or reference; users seeking understanding need explanation
 2. **Separation of concerns** - Keep documentation types distinct to prevent confusion
 3. **User-centered approach** - Consider what the user is trying to accomplish and in what context
-4. **Iterative improvement** - Enhance documentation incrementally by applying Diataxis principles
+4. **Iterative improvement** - Enhance documentation incrementally by applying IDM's topic-type principles
 5. **Purpose-driven structure** - Each type has specific characteristics that make it effective for its intended purpose

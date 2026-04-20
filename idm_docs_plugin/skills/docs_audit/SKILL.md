@@ -6,7 +6,7 @@ allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, Skill
 
 # Documentation audit
 
-Skill version: 1.0_2026.04.13
+Skill version: 1.1_2026.04.20
 
 This skill performs a comprehensive documentation audit for an IDM project. It checks general completeness against the IDM documentation standards, then delegates to three specialized skills for deeper analysis, and assembles everything into a single prioritized report.
 
@@ -73,10 +73,10 @@ Apply each of the three sub-skills by invoking them. For each, follow the skill'
 #### 3a: Diataxis audit
 
 Invoke the idm_docs_plugin:diataxis skill. Evaluate:
-- Whether the major documentation types are represented (API reference,tutorials, and for complex projects, a user guide/how-to guides/explanations)
-- Whether existing docs are correctly categorized (e.g., a "tutorial" that is actually a how-to guide)
+- Whether the major documentation types are represented (API reference, tutorials, and for complex projects, user guides grouping how-to and explanation topics by subject matter)
+- Whether existing docs are correctly categorized (e.g., a "tutorial" that is actually a how-to)
 - Whether there is cross-contamination between types (e.g., reference material embedded in tutorials)
-- How well the table of contents / navigation organizes content by type
+- How well the table of contents / navigation organizes content — tutorials and reference at top level, how-to and explanation grouped into user guides (IDM's divergence from Diátaxis)
 
 #### 3b: Persona audit
 

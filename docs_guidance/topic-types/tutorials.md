@@ -1,4 +1,4 @@
-# Tutorial
+# Tutorials
 
 A tutorial is a **learning-oriented, practical activity** where students learn by doing meaningful tasks toward achievable goals. It's a lesson, not a task completion guide.
 

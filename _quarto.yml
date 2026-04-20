@@ -82,8 +82,8 @@ website:
             contents:
               - text: Table of contents
                 file: docs_guidance/topic-types/toc.md
-              - text: Tutorial
-                file: docs_guidance/topic-types/tutorial.md
+              - text: Tutorials
+                file: docs_guidance/topic-types/tutorials.md
                 contents:
                   - text: Example notebook
                     file: docs_guidance/topic-types/notebook.ipynb

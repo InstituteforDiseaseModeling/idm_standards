@@ -7,7 +7,7 @@ IDM documentation borrows much of the guidance from the [Diátaxis](https://diat
 |             |  (Study)              |    (Work)             |
 +-------------+-----------------------+-----------------------+
 |             |                       |                       |
-|  ACTION     |  TUTORIAL             |    HOW-TO             |
+|  ACTION     |  TUTORIALS            |    HOW-TO             |
 |  (Doing)    |  (Learning-oriented)  |    (Task-oriented)    |
 |             |                       |                       |
 +-------------+-----------------------+-----------------------+
@@ -17,7 +17,7 @@ IDM documentation borrows much of the guidance from the [Diátaxis](https://diat
 |             |    oriented)          |     oriented)         |
 +-------------+-----------------------+-----------------------+
 
-- **[Tutorial](tutorial.md)** -- Learning-oriented experiences that guide a beginner through a series of steps to build skills and confidence.
+- **[Tutorials](tutorials.md)** -- Learning-oriented experiences that guide a beginner through a series of steps to build skills and confidence.
 - **[How-to](howto.md)** -- Task-oriented directions that help a practitioner accomplish a specific goal.
 - **[Reference](reference.md)** -- Information-oriented technical descriptions for looking up specifications, parameters, and APIs.
 - **[Explanation](explanation.md)** -- Understanding-oriented discussions that provide context, background, and answer "why?" questions.
