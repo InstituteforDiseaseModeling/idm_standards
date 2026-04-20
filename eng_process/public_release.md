@@ -13,7 +13,7 @@ In general, we want code to be public so the world can benefit from it. Public c
 
 However, there are three main reasons why something *isn't* public:
 
-1. It contains sensitive data or results, so is not allowed to be made public.
+1. It contains sensitive data or results, so it is not allowed to be made public.
 2. We are not confident yet that the results are correct, so it could potentially be misleading or dangerous to make it public.
 3. It is neither sensitive nor dangerous, but it is of interest to so few people that making it public would create noise rather than signal.
 
@@ -30,12 +30,12 @@ Quality expectations depend on the project's *tier*, which reflects its scope, i
 | **Typical timeline** | >12 months | >3 months | <3 months |
 | **Public by default?** | Yes | Usually | Sometimes |
 
-Tier 1 code must meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md).
+Tier 1 should meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety with any exceptions clearly identified and justified. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md).
 
 Regardless of tier, **all public code must be:**
 
 - **Correct**: The code does what it claims to do. Peer review and colleague second opinions strengthen this.
-- **Tested**: Appropriate test coverage for the tier. For non-trivial code, "it looked right when I ran it" is not sufficient.
+- **Tested**: Appropriate test coverage for the tier. Tier 1 and Tier 2 code are expected to have automated tests appropriate to their scope; Tier 3 code may instead be validated through usage when that is appropriate for the work. For non-trivial code, "it looked right when I ran it" is not sufficient.
 - **Documented**: Every public repo needs at minimum a README explaining purpose, installation, and basic usage.
 - **Safe**: *Under no circumstances* make a repo public if it contains sensitive data, personally identifiable information (PII), API keys, or other secrets.
 
@@ -78,7 +78,7 @@ Making a project public is a commitment, not a one-time action. Public repositor
 
 - **Technical debt**: Proactively managed to keep the codebase healthy over time.
 - **Releases**: Frequent releases, especially for bug fixes.
-- **Support**: User questions and bug reports addressed within 24 hours.
+- **Support**: User questions and bug reports receive a first response within 24 hours, with resolution time depending on severity.
 - **Docs sync**: Documentation kept in sync with code.
 
 For Tier 1 projects, this typically requires dedicated engineering time on an ongoing basis. For Tier 2 and Tier 3 projects, maintenance can be lighter, but should still be explicitly planned and resourced before release.
