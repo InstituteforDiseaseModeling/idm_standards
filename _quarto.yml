@@ -9,6 +9,7 @@ project:
     - "!idm_docs_plugin/"
     - "!idm_eng_plugin/"
     - "idm_eng_plugin/README.md"
+    - "idm_eng_plugin/plugins_readme.md"
     - "idm_docs_plugin/README.md"
 
 website:
@@ -110,7 +111,7 @@ website:
               - text: Policy maker
                 file: docs_guidance/personas/policy-maker.md
       - section: Claude plugins
-        file: eng_process/index.md
+        file: idm_eng_plugin/plugins_readme.md
         contents:
           - text: Engineering plugin
             file: idm_eng_plugin/README.md
