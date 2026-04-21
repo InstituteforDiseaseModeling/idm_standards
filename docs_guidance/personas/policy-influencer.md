@@ -38,5 +38,5 @@ Timing is critical: funding cycles, board meetings, and planning processes creat
 
 ## Targeted content
 
- It's important to address policy influencer needs primarily in dashboards, presentations to GF program teams, and on the idmod.org website. In the software documentation, provide enough context on the home page and modeling framework landing pages for policy influencers to understand how the models can be applied to policy questions. 
+ It's important to address policy influencer needs primarily in dashboards, presentations to GF program teams, and on the idmod.org website. In the software documentation, provide some context on the home page and modeling framework landing pages for policy influencers to understand broadly how the models apply to policy questions. However, policy influencers are not the target audience for software documentation.
  
