@@ -75,7 +75,7 @@ website:
         file: docs_guidance/index.md
         contents:
           - text: Style and grammar
-            file: docs_guidance/vale.md
+            file: docs_guidance/style.md
           - text: MkDocs overview
             file: docs_guidance/mkdocs.md
           - text: Quarto overview
