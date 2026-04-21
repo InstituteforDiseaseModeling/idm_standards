@@ -1,4 +1,6 @@
-# Public release
+# Considerations for Public Release
+
+Christopher Lorton, Cliff Kerr, Claude - April 2026
 
 This document describes the requirements and procedure for making a repository public. It is written for managers and directors who are deciding whether to make a project public and what resources that decision requires.
 
