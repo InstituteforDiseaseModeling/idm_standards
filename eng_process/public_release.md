@@ -23,9 +23,9 @@ If your project satisfies one or more of the criteria above and does not fall in
 
 ## Quality Expectations
 
-Quality expectations depend on the project's _tier_*_, which reflects its scope, intended audience, and expected lifetime. The [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md) define the three tiers. Briefly, they are:
+Quality expectations depend on the project's _tier_, which reflects its scope, intended audience, and expected lifetime. The [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md) define the three tiers. Briefly, they are:
 
-**Tier 1**: laser-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (>10) users, internal and external
+**Tier 1**: laser-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external
 **Tier 2**: small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external
 **Tier 3**: one-off or exploratory code (e.g., code for a paper or presentation) with a few (1-5) users, primarily internal
 
