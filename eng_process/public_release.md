@@ -4,7 +4,7 @@ Christopher Lorton, Cliff Kerr, Claude - April 2026
 
 This document describes the requirements and procedure for making a repository public. It is written for managers and directors who are deciding whether to make a project public and what resources that decision requires.
 
-## Public/Private Considerations
+## Public/private considerations
 
 We want to make a project/code public if it meets one or more of the following criteria:
 
@@ -21,7 +21,7 @@ There are three main reasons why a project _is not_ made public:
 
 If your project satisfies one or more of the criteria above and does not fall into any of these three disqualifying categories, consider making it public.
 
-## Quality Expectations
+## Quality expectations
 
 Quality expectations depend on the project's _tier_, which reflects its scope, intended audience, and expected lifetime. The [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md) define the three tiers. Briefly, they are:
 
@@ -37,18 +37,19 @@ Regardless of tier, **all public code must be:**
 - **Tested**: Appropriate test coverage for the tier. Tier 1 and Tier 2 code are expected to have automated tests appropriate to their scope; Tier 3 code may instead be validated through usage when that is appropriate for the work. For non-trivial code, "it looked right when I ran it" is not sufficient.
 - **Documented**: Every public repo needs at minimum a README explaining purpose, installation, and basic usage.
 - **Safe**: *Under no circumstances* make a repo public if it contains sensitive data, personally identifiable information (PII), API keys, or other secrets.
+- **Licensed**: By default we are using the [MIT License](https://opensource.org/license/MIT).
 
-## Quality Assessment
+## Quality assessments
 
 Before a project goes public, the team should perform the following actions to assess the state of a project with respect to the quality expectations and identify any gaps:
 
-1. **Run automated review**: Use the [IDM Engineering Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) — a Claude Code plugin built directly from the engineering guidelines — to score the project and generate a prioritized list of gaps and improvements. _Estimate: 1 person, <1 day._
-2. **Perform peer code review**: At least one engineer who did not write the code reviews it against the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md). _Estimate: 1 person, 1 day – 1+ weeks depending on project size._
-3. **Perform documentation review**: The content team reviews docs for clarity and completeness. _Estimate: 1 person, 1 day – 1+ weeks depending on project size._
+1. **Run automated review** (all tiers): Use the [IDM Engineering Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) — a Claude Code plugin built directly from the engineering guidelines — to score the project and generate a prioritized list of gaps and improvements. _Estimate: 1 person, 1 hour._
+2. **Perform peer code review** (T1 and T2, recommended for T3): At least one engineer who did not write the code reviews it against the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md). _Estimate: 1 person, 1 day – 1+ weeks depending on project size._
+3. **Perform documentation review** (T1 and T2, recommended for T3): The content team reviews docs for clarity and completeness. _Estimate: 1 person, 1 day – 1+ weeks depending on project size._
 4. **Get stakeholder sign-off**: All stakeholders confirm the project meets its success criteria. _Estimate: 1 day – 1 week depending on number of stakeholders and project size._
-5. **Run history scan**: Verify the full commit history (not just the current state) contains no secrets, API keys, or sensitive data that were accidentally committed and later deleted. If found, these must be excised from history before the repo is made public. _Estimate: 1 person, <1 day._
+5. **Run history scan**: Verify the full commit history (not just the current state) contains no secrets, API keys, or sensitive data that were accidentally committed and later deleted. If found, these must be excised from history before the repo is made public. _Estimate: 1 person, 1 hour._
 
-## Time and Team Size Estimates for Public Release Quality
+## Time and team size estimates for public release quality assurance
 
 Effort depends heavily on the project's current state and target tier. Rough guidance:
 
@@ -58,7 +59,7 @@ Effort depends heavily on the project's current state and target tier. Rough gui
 
 The [IDM Engineering Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) can provide a more specific estimate based on an actual assessment of the project.
 
-## The Release Process
+## The release process
 
 Once a project is ready to go public, follow the [launch checklist](processes.md) from the engineering processes guide:
 
@@ -66,13 +67,13 @@ Once a project is ready to go public, follow the [launch checklist](processes.md
 2.	Full codebase is reviewed by an engineer and AI tool against the quality guidelines.<br>_Estimate: “box checked” based on the QA work._
 3.	Docs are reviewed by the content team for clarity and completeness.<br>_Estimate: “box checked” based on the QA work._
 4.	Ensure the main branch is the primary entry point (not a long-lived feature branch).<br>_Estimate: “box checked” based on preparation for review and testing._
-5.	Publish to PyPI or CRAN if the project is a reusable library.<br>_Estimate: extra-small task, <1 day._
+5.	Publish to PyPI or CRAN if the project is a reusable library.<br>_Estimate: extra-small task, 1 hour._
 6.	Optionally pair with an AI tool (plugin, MCP server, or chatbot) to make the project more accessible.<br>_Estimate: **could be non-trivial – several days to several weeks.**_
 7.	Optionally pair with a dedicated documentation website.<br>_Estimate: small task, <1 week with coordination with EIT._
 8.	Announce via social media, websites, and partner channels as appropriate.<br>_Estimate: small task, <1 week for content development and coordination with comms._
 
 
-## Ongoing Maintenance Commitments
+## Ongoing maintenance commitments
 
 Making a project public is a commitment, not a one-time action. Public repositories have users who depend on them. Plan for:
 
