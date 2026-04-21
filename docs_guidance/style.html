@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>vale – IDM Standards</title>
+<title>style – IDM Standards</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -283,7 +283,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../docs_guidance/vale.html">Style and grammar</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../docs_guidance/style.html">Style and grammar</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -423,7 +423,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/vale.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs_guidance/style.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Style and grammar</span></a>
   </div>
 </li>
@@ -567,12 +567,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#style-and-grammar" id="toc-style-and-grammar" class="nav-link active" data-scroll-target="#style-and-grammar">Style and grammar</a></li>
+  <li><a href="#style-and-grammar" id="toc-style-and-grammar" class="nav-link active" data-scroll-target="#style-and-grammar">Style and grammar</a>
+  <ul class="collapse">
+  <li><a href="#vale-linter-usage" id="toc-vale-linter-usage" class="nav-link" data-scroll-target="#vale-linter-usage">Vale linter usage</a></li>
+  <li><a href="#style-guidance" id="toc-style-guidance" class="nav-link" data-scroll-target="#style-guidance">Style guidance</a>
+  <ul class="collapse">
+  <li><a href="#mstp" id="toc-mstp" class="nav-link" data-scroll-target="#mstp">MSTP</a></li>
+  <li><a href="#differences-from-mstp" id="toc-differences-from-mstp" class="nav-link" data-scroll-target="#differences-from-mstp">Differences from MSTP</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../docs_guidance/vale.html">Style and grammar</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../docs_guidance/style.html">Style and grammar</a></li></ol></nav></header>
 
 
 
@@ -582,6 +590,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h1>Style and grammar</h1>
 <p>IDM style and grammar standards are defined using the Vale linter. We follow most Microsoft Manual of Style standards with some specific standards defined for IDM and our audience. Follow the instructions below to install and run Vale to apply these standards locally.</p>
 <p>If desired, you can configure a GitHub action to run Vale on all pull requests in a repository. For more information, see https://github.com/vale-cli/vale-action.</p>
+<section id="vale-linter-usage" class="level2">
+<h2 class="anchored" data-anchor-id="vale-linter-usage">Vale linter usage</h2>
 <p><strong>Save IDM standards locally</strong></p>
 <ol type="1">
 <li>Clone the <a href="https://github.com/InstituteforDiseaseModeling/idm_standards">idm_standards</a> repository.</li>
@@ -607,8 +617,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Run <code>vale ls-vars</code> to verify that the styles and configuration paths are correct.</li>
 <li>Run <code>vale my_file.md</code> to inspect individual files and generate a report. See full CLI options at <a href="https://vale.sh/docs/cli">vale.sh</a>.</li>
 </ol>
+</section>
+<section id="style-guidance" class="level2">
+<h2 class="anchored" data-anchor-id="style-guidance">Style guidance</h2>
+<p>We generally follow the <a href="https://docs.microsoft.com/en-us/style-guide/welcome/">Microsoft Manual of Style (MSTP)</a> in our documentation. This topic summarizes some notable rules in MSTP, and notes where we diverge from their guidance.</p>
+<section id="mstp" class="level3">
+<h3 class="anchored" data-anchor-id="mstp">MSTP</h3>
+<p>A few of the most notable rules to be aware of are listed below.</p>
+<p><strong>Overview</strong></p>
+<ul>
+<li>Use American English spelling and punctuation.</li>
+<li>Use the Oxford comma (serial comma).</li>
+<li>Use sentence case for topic titles and headings (capitalize only the first word and proper nouns).</li>
+<li>Verb tense and voice
+<ul>
+<li>In general, use present tense and active voice.</li>
+<li>Use primarily second-person imperative. For example, “create a configuration” or “run a simulation.”</li>
+<li>Use first-person (I or we) sparingly. For example, “We recommend…” is more natural than “It is recommended that.”</li>
+</ul></li>
+<li>Be direct and use simple sentence structure.
+<ul>
+<li>Avoid jargon</li>
+<li>Don’t use i.e.&nbsp;or e.g.&nbsp;as they can cause problems for non-native English speakers or machine translation.</li>
+</ul></li>
+</ul>
+<p><strong>Procedures</strong></p>
+<p>Procedure guidelines are extensive (see chapter 6.) The primary points to follow are:</p>
+<ul>
+<li>Sentences must provide the context and then the action. For example, “In the <strong>Print</strong> dialog box, click <strong>All</strong>.”</li>
+<li>Each step must encompass a single action, unless they are short and occur in the same place.</li>
+<li>Additionally, you “click”, you don’t “click on.”</li>
+<li>Use imperative mood. In other words, verbs should take the form of commands. For example, “Enter your password” not “The user enters their password.”</li>
+<li>Separate UI elements with <strong>&gt;</strong> and not <strong>,</strong>. For example, “Select <strong>Explore &gt; Experiments</strong>”.</li>
+</ul>
+</section>
+<section id="differences-from-mstp" class="level3">
+<h3 class="anchored" data-anchor-id="differences-from-mstp">Differences from MSTP</h3>
+<p>Our house style guide differs from MSTP guidance in the following ways.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>Use bold, not italics, for parameter names.</li>
+<li>Parameter values, which are often in all-caps, are in plain text.</li>
+</ul>
+<p><strong>Placeholder text</strong></p>
+<ul>
+<li>Surround placeholder text with angle brackets.</li>
+<li>For example, text where users are expected to enter their username <code>C:/Users/&lt;username&gt;</code>.</li>
+</ul>
+<p><strong>Titles and headings</strong></p>
+<ul>
+<li>For procedural content, MSTP generally recommends imperative mood but says there’s a lot of variation across groups. For tutorials, we use imperative mood; for example, “Run a simulation” not “Running a simulation.” The one exception is “Getting started” for the first tutorial. For how-tos, we lead with “how to;” For example, “How to run a simulation.”</li>
+</ul>
+<p><strong>Species names</strong></p>
+<ul>
+<li>Italicize species names. For example, <em>A. funestus</em> and <em>A. gambiae</em>.</li>
+<li>A note on mosquito names: for scientific naming convention, the first time you mention a species you give its full name (<em>Anopheles funestus</em>), and then the second time you can abbreviate the genus (<em>A. funestus</em>). However, there are two “A” mosquito genera that are commonly discussed in the disease literature (<em>Aedes</em> and <em>Anopheles</em>), so it’s convention to use the first two letters of the genus name when abbreviating: <em>An. funestus</em> and <em>Ae. aegypti</em>. For other organisms, you’ll just use the first letter and not the first two.</li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
