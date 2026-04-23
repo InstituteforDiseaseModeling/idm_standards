@@ -1,6 +1,6 @@
 ---
 name: docs-audit
-description: Comprehensive documentation audit for IDM projects. Checks docs completeness against IDM standards (README, tutorials, user guide, API reference, changelog, etc.), then applies the diataxis, persona-check, and python-docstrings skills to evaluate structure, audience fit, and docstring quality. Produces a unified report with strengths, weaknesses, and prioritized recommendations. Use when reviewing, auditing, or scoring project documentation quality.
+description: Comprehensive documentation audit for IDM projects. Checks docs completeness against IDM standards (README, tutorials, API reference, changelog, etc.), then applies the diataxis, persona-check, and python-docstrings skills to evaluate structure, audience fit, and docstring quality. Produces a unified report with strengths, weaknesses, and prioritized recommendations. Use when reviewing, auditing, or scoring project documentation quality.
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, Skill
 ---
 
@@ -55,8 +55,8 @@ Evaluate the project's documentation against the IDM documentation standards in 
 
 **Documentation site / docs folder:**
 - For Tier 1 / Tier 2 projects only
-- Tutorials (at minimum: a hello-world tutorial and a slightly more advanced one)
-- User guide, how-to, explanations, or other similar explanations of functionality (for complex projects where tutorials + API reference aren't enough)
+- Tutorials (at minimum: a getting started or hello word tutorial and a slightly more advanced one)
+- User guide sections consisting of how-to and explanation topics or other similar explanations of functionality (for complex projects where tutorials + API reference aren't enough)
 - API reference (auto-generated from docstrings via quartodoc, mkdocstrings, or the R equivalents)
 - Documentation build configuration (`mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml`)
 
@@ -96,6 +96,14 @@ Invoke the idm_docs_plugin:python-docstrings skill. Read all public modules, cla
 - Whether docstrings provide researcher workflow context
 - Whether cross-references to related objects are present
 - Overall docstring coverage (rough percentage of public objects with adequate docstrings)
+
+#### 3d: Template audit
+
+Evaluate the `mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml` configuration file against the template provided in docs_templates and note divergences. If Jupyter notebooks are not set to execute during the doc build or if errors are allowed to pass, this is a high priority to fix. 
+
+### 3e: Grammar and style audit
+
+Run the Vale linter using the vale.ini configuration and styles under .github/styles. Evaluate how well the documentation follows the style and grammar rules, particularly where violated rules are considered errors.
 
 ### Step 4: Assemble the report
 
