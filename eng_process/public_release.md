@@ -61,7 +61,7 @@ Effort depends heavily on the project's current state and target tier. Rough gui
 
 - **Tier 3 → public**: If the code is already correct and has a README, the main effort is typically documenting and removing any sensitive content. _Estimate: 1 person, 0.5–2 days._
 - **Tier 2 → public**: Typically requires adding tests, improving documentation (README + example scripts or tutorial), ensuring reproducibility (pinned dependencies), and passing a code review. _Estimate: several people, 2–5 days for a project in decent shape; more if significant gaps exist._
-- **Tier 1 → public**: Full Tier 1 quality is a significant ongoing investment. Projects intended for public Tier 1 release should be designed to that standard from the start; retrofitting rarely is cost-effective. _Estimate: multi-preson team, weeks to months depending on gaps._
+- **Tier 1 → public**: Full Tier 1 quality is a significant ongoing investment. Projects intended for public Tier 1 release should be designed to that standard from the start; retrofitting rarely is cost-effective. _Estimate: multi-person team, weeks to months depending on gaps._
 
 The [IDM Engineering Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) can provide a more specific estimate based on an actual assessment of the project.
 
