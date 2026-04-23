@@ -4,6 +4,12 @@ Christopher Lorton, Cliff Kerr, Claude - April 2026
 
 This document describes the requirements and procedure for making a repository public. It is written for managers and directors who are deciding whether to make a project public and what resources that decision requires.
 
+Goals:
+- provide guidance on making projects public and when _not_ to make them public
+- lay out expectations for quality for public projects
+- highlight resources for assessing quality and addressing quality issues
+- provide estimates on team and time commitments for making projects public
+
 ## Public/private considerations
 
 We want to make a project/code public if it meets one or more of the following criteria:
@@ -25,8 +31,8 @@ If your project satisfies one or more of the criteria above and does not fall in
 
 Quality expectations depend on the project's _tier_, which reflects its scope, intended audience, and expected lifetime. The [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md) define the three tiers. Briefly, they are:
 
-**Tier 1**: laser-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external
-**Tier 2**: small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external
+**Tier 1**: large-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external<br>
+**Tier 2**: small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external<br>
 **Tier 3**: one-off or exploratory code (e.g., code for a paper or presentation) with a few (1-5) users, primarily internal
 
 Tier 1 should meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety with any exceptions clearly identified and justified. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md).
@@ -83,3 +89,10 @@ Making a project public is a commitment, not a one-time action. Public repositor
 - **Docs sync**: Documentation kept in sync with code.
 
 For Tier 1 projects, this typically requires dedicated engineering time on an ongoing basis. For Tier 2 and Tier 3 projects, maintenance can be lighter, but should still be explicitly planned and resourced before release.
+
+## Roles and expectations
+
+- management: go/no go decision for making projects public including allocating time and resources for meeting IDM quality expectations
+- research: sign-off on correctness, review research code, breadth and depth of test coverage, and accuracy of documentation for research usage
+- software: help with or run automated tools for quality assessment and addressing quality gaps, assist with code reviews, help with implementing necessary test coverage, generate technical documentation
+- documentation: review documentation for quality and completeness according to tier expectations and public comms as appropriate
