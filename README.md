@@ -18,7 +18,7 @@ The [engineering guidance](eng_guidance/) covers IDM's conventions for writing r
 - [Python](eng_guidance/2_python.md) -- Python style conventions (Google style + IDM house rules)
 - [Tests](eng_guidance/3_tests.md) -- testing practices for scientific code
 - [Documentation](eng_guidance/4_documentation.md) -- standards for READMEs, docstrings, and tutorials
-- [Other](eng_guidance/5_other.md) -- miscellaneous principles (e.g., data security)
+- [Other](eng_guidance/5_other.md) -- miscellaneous principles (for example, data security)
 - [Zen](eng_guidance/6_zen.md) -- short principles and credos
 - [Engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md) -- principles for writing good code
 

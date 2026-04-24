@@ -26,7 +26,7 @@ Output: a unified report with strengths, weaknesses, and prioritized recommendat
 /idm-docs-plugin:diataxis                      # review docs in current directory
 ```
 
-Applies the Diataxis framework to identify and fix structural issues (for exmaple, tutorials mixed with reference material).
+Applies the Diataxis framework to identify and fix structural issues (for example, tutorials mixed with reference material).
 
 ### Check audience fit
 
