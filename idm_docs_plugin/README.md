@@ -4,10 +4,10 @@ A Claude Code plugin that checks and improves documentation against the [IDM doc
 
 ## Features
 
-- **Docs Audit** (`/idm-docs-plugin:docs_audit`): Comprehensive documentation audit that checks completeness against IDM standards, then applies the diataxis, persona-check, and python-docstrings skills to produce a unified report with prioritized recommendations.
+- **Docs audit** (`/idm-docs-plugin:docs_audit`): Comprehensive documentation audit that checks completeness against IDM standards, then applies the diataxis, persona-check, and python-docstrings skills to produce a unified report with prioritized recommendations.
 - **Diataxis** (`/idm-docs-plugin:diataxis`): Guides writing, reviewing, or improving documentation using the [Diataxis framework](https://diataxis.fr) (tutorials, how-to guides, reference, explanation).
 - **Persona Check** (`/idm-docs-plugin:personas`): Checks that documentation is written appropriately for its target IDM personas (policy-maker, policy-influencer, model-user, model-extender, model-builder).
-- **Python Docstrings** (`/idm-docs-plugin:python-docstrings`): Guidelines for writing Google-style Python docstrings consistent with IDM conventions and MkDocs/Quarto rendering.
+- **Python docstrings** (`/idm-docs-plugin:python-docstrings`): Guidelines for writing Google-style Python docstrings consistent with IDM conventions and MkDocs/Quarto rendering.
 
 ## Usage
 
@@ -26,7 +26,7 @@ Output: a unified report with strengths, weaknesses, and prioritized recommendat
 /idm-docs-plugin:diataxis                      # review docs in current directory
 ```
 
-Applies the Diataxis framework to identify and fix structural issues (e.g., tutorials mixed with reference material).
+Applies the Diataxis framework to identify and fix structural issues (for example, tutorials mixed with reference material).
 
 ### Check audience fit
 
@@ -44,7 +44,7 @@ Evaluates whether each documentation section is written for the right audience.
 
 Checks Google-style formatting, completeness, and consistency with MkDocs/Quarto rendering.
 
-## IDM Personas
+## IDM personas
 
 | Persona | Description |
 | --- | --- |
