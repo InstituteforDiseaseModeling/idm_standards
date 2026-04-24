@@ -567,10 +567,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#public-release" id="toc-public-release" class="nav-link active" data-scroll-target="#public-release">Public release</a>
+  <li><a href="#considerations-for-public-release" id="toc-considerations-for-public-release" class="nav-link active" data-scroll-target="#considerations-for-public-release">Considerations for Public Release</a>
   <ul class="collapse">
-  <li><a href="#principles" id="toc-principles" class="nav-link" data-scroll-target="#principles">Principles</a></li>
-  <li><a href="#guidance" id="toc-guidance" class="nav-link" data-scroll-target="#guidance">Guidance</a></li>
+  <li><a href="#publicprivate-considerations" id="toc-publicprivate-considerations" class="nav-link" data-scroll-target="#publicprivate-considerations">Public/private considerations</a></li>
+  <li><a href="#quality-expectations" id="toc-quality-expectations" class="nav-link" data-scroll-target="#quality-expectations">Quality expectations</a></li>
+  <li><a href="#quality-assessments" id="toc-quality-assessments" class="nav-link" data-scroll-target="#quality-assessments">Quality assessments</a></li>
+  <li><a href="#time-and-team-size-estimates-for-public-release-quality-assurance" id="toc-time-and-team-size-estimates-for-public-release-quality-assurance" class="nav-link" data-scroll-target="#time-and-team-size-estimates-for-public-release-quality-assurance">Time and team size estimates for public release quality assurance</a></li>
+  <li><a href="#the-release-process" id="toc-the-release-process" class="nav-link" data-scroll-target="#the-release-process">The release process</a></li>
+  <li><a href="#ongoing-maintenance-commitments" id="toc-ongoing-maintenance-commitments" class="nav-link" data-scroll-target="#ongoing-maintenance-commitments">Ongoing maintenance commitments</a></li>
+  <li><a href="#roles-and-expectations" id="toc-roles-and-expectations" class="nav-link" data-scroll-target="#roles-and-expectations">Roles and expectations</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -582,28 +587,95 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<section id="public-release" class="level1">
-<h1>Public release</h1>
-<p>This document describes the procedure for making a repo public.</p>
-<section id="principles" class="level2">
-<h2 class="anchored" data-anchor-id="principles">Principles</h2>
-<p>In general, we want code to be public, so the world can benefit from it. However, there are three main reasons why something <em>isn’t</em> public:</p>
+<section id="considerations-for-public-release" class="level1">
+<h1>Considerations for Public Release</h1>
+<p>Christopher Lorton, Cliff Kerr, Claude - April 2026</p>
+<p>This document describes the requirements and procedure for making a repository public. It is written for managers and directors who are deciding whether to make a project public and what resources that decision requires.</p>
+<p>Goals: - provide guidance on making projects public and when <em>not</em> to make them public - lay out expectations for quality for public projects - highlight resources for assessing quality and addressing quality issues - provide estimates on team and time commitments for making projects public</p>
+<section id="publicprivate-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="publicprivate-considerations">Public/private considerations</h2>
+<p>We want to make a project/code public if it meets one or more of the following criteria:</p>
+<ul>
+<li>It amplifies IDM’s scientific impact by enabling others to build on our work</li>
+<li>It builds trust through transparency in scientific methods</li>
+<li>It attracts collaborators, contributors, and feedback that improve quality</li>
+<li>It fulfills our mission to share knowledge for global health benefit</li>
+</ul>
+<p>There are three main reasons why a project <em>is not</em> made public:</p>
 <ol type="1">
-<li>It contains sensitive data or results, so is not allowed to be made public.</li>
+<li>It contains sensitive data or results, so it is not allowed to be made public.</li>
 <li>We are not confident yet that the results are correct, so it could potentially be misleading or dangerous to make it public.</li>
 <li>It is neither sensitive nor dangerous, but it is of interest to so few people that making it public would create noise rather than signal.</li>
 </ol>
-<p>If your code doesn’t fall into any of these three categories, consider making it public.</p>
+<p>If your project satisfies one or more of the criteria above and does not fall into any of these three disqualifying categories, consider making it public.</p>
 </section>
-<section id="guidance" class="level2">
-<h2 class="anchored" data-anchor-id="guidance">Guidance</h2>
-<p>Before being made public, code should follow the relevant <a href="../eng_guidance/engineering_quality_guidelines.html">engineering guidelines</a>. These differ depending on the “tier” of project, e.g.&nbsp;simple plotting or data analysis scripts have less strict requirements than large-scale reusable disease models.</p>
-<p>However, all code should be:</p>
+<section id="quality-expectations" class="level2">
+<h2 class="anchored" data-anchor-id="quality-expectations">Quality expectations</h2>
+<p>Quality expectations depend on the project’s <em>tier</em>, which reflects its scope, intended audience, and expected lifetime. The <a href="../eng_guidance/engineering_quality_guidelines.html">engineering quality guidelines</a> define the three tiers. Briefly, they are:</p>
+<p><strong>Tier 1</strong>: large-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external<br> <strong>Tier 2</strong>: small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external<br> <strong>Tier 3</strong>: one-off or exploratory code (e.g., code for a paper or presentation) with a few (1-5) users, primarily internal</p>
+<p>Tier 1 should meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety with any exceptions clearly identified and justified. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the <a href="../eng_guidance/engineering_quality_guidelines.html">engineering quality guidelines</a>.</p>
+<p>Regardless of tier, <strong>all public code must be:</strong></p>
 <ul>
-<li><strong>Correct</strong>. The best guard against code being incorrect is still your brain. Use it. It also doesn’t hurt to ask a colleague, even if that colleague is an LLM, for a second opinion.</li>
-<li><strong>Tested</strong>. It’s not usually enough to <em>think</em> your code is correct; unless it is doing something trivial (e.g.&nbsp;plotting), there is usually room to write at least some tests for it.</li>
-<li><strong>Documented</strong>. Not every repo needs full docs, but all should have a README at minimum.</li>
-<li><strong>Safe</strong>. As noted above, <em>under no circumstances</em> make a repo public if it contains sensitive data, such as personally identifiable information (PII), API keys, etc.</li>
+<li><strong>Correct</strong>: The code does what it claims to do. Peer review and colleague second opinions strengthen this.</li>
+<li><strong>Tested</strong>: Appropriate test coverage for the tier. Tier 1 and Tier 2 code are expected to have automated tests appropriate to their scope; Tier 3 code may instead be validated through usage when that is appropriate for the work. For non-trivial code, “it looked right when I ran it” is not sufficient.</li>
+<li><strong>Documented</strong>: Every public repo needs at minimum a README explaining purpose, installation, and basic usage.</li>
+<li><strong>Safe</strong>: <em>Under no circumstances</em> make a repo public if it contains sensitive data, personally identifiable information (PII), API keys, or other secrets.</li>
+<li><strong>Licensed</strong>: By default we are using the <a href="https://opensource.org/license/MIT">MIT License</a>.</li>
+</ul>
+</section>
+<section id="quality-assessments" class="level2">
+<h2 class="anchored" data-anchor-id="quality-assessments">Quality assessments</h2>
+<p>Before a project goes public, the team should perform the following actions to assess the state of a project with respect to the quality expectations and identify any gaps:</p>
+<ol type="1">
+<li><strong>Run automated review</strong> (all tiers): Use the <a href="https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin">IDM Engineering Plugin</a> — a Claude Code plugin built directly from the engineering guidelines — to score the project and generate a prioritized list of gaps and improvements. <em>Estimate: 1 person, 1 hour.</em></li>
+<li><strong>Perform peer code review</strong> (T1 and T2, recommended for T3): At least one engineer who did not write the code reviews it against the <a href="../eng_guidance/engineering_quality_guidelines.html">engineering quality guidelines</a>. <em>Estimate: 1 person, 1 day – 1+ weeks depending on project size.</em></li>
+<li><strong>Perform documentation review</strong> (T1 and T2, recommended for T3): The content team reviews docs for clarity and completeness. <em>Estimate: 1 person, 1 day – 1+ weeks depending on project size.</em></li>
+<li><strong>Get stakeholder sign-off</strong>: All stakeholders confirm the project meets its success criteria. <em>Estimate: 1 day – 1 week depending on number of stakeholders and project size.</em></li>
+<li><strong>Run history scan</strong>: Verify the full commit history (not just the current state) contains no secrets, API keys, or sensitive data that were accidentally committed and later deleted. If found, these must be excised from history before the repo is made public. <em>Estimate: 1 person, 1 hour.</em></li>
+</ol>
+</section>
+<section id="time-and-team-size-estimates-for-public-release-quality-assurance" class="level2">
+<h2 class="anchored" data-anchor-id="time-and-team-size-estimates-for-public-release-quality-assurance">Time and team size estimates for public release quality assurance</h2>
+<p>Effort depends heavily on the project’s current state and target tier. Rough guidance:</p>
+<ul>
+<li><strong>Tier 3 → public</strong>: If the code is already correct and has a README, the main effort is typically documenting and removing any sensitive content. <em>Estimate: 1 person, 0.5–2 days.</em></li>
+<li><strong>Tier 2 → public</strong>: Typically requires adding tests, improving documentation (README + example scripts or tutorial), ensuring reproducibility (pinned dependencies), and passing a code review. <em>Estimate: several people, 2–5 days for a project in decent shape; more if significant gaps exist.</em></li>
+<li><strong>Tier 1 → public</strong>: Full Tier 1 quality is a significant ongoing investment. Projects intended for public Tier 1 release should be designed to that standard from the start; retrofitting rarely is cost-effective. <em>Estimate: multi-person team, weeks to months depending on gaps.</em></li>
+</ul>
+<p>The <a href="https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin">IDM Engineering Plugin</a> can provide a more specific estimate based on an actual assessment of the project.</p>
+</section>
+<section id="the-release-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-release-process">The release process</h2>
+<p>Once a project is ready to go public, follow the <a href="../eng_process/processes.html">launch checklist</a> from the engineering processes guide:</p>
+<ol type="1">
+<li>All stakeholders confirm the project meets its success criteria.<br><em>Estimate: “box checked” based on quality assessment (QA) above.</em></li>
+<li>Full codebase is reviewed by an engineer and AI tool against the quality guidelines.<br><em>Estimate: “box checked” based on the QA work.</em></li>
+<li>Docs are reviewed by the content team for clarity and completeness.<br><em>Estimate: “box checked” based on the QA work.</em></li>
+<li>Ensure the main branch is the primary entry point (not a long-lived feature branch).<br><em>Estimate: “box checked” based on preparation for review and testing.</em></li>
+<li>Publish to PyPI or CRAN if the project is a reusable library.<br><em>Estimate: extra-small task, 1 hour.</em></li>
+<li>Optionally pair with an AI tool (plugin, MCP server, or chatbot) to make the project more accessible.<br><em>Estimate: <strong>could be non-trivial – several days to several weeks.</strong></em></li>
+<li>Optionally pair with a dedicated documentation website.<br><em>Estimate: small task, &lt;1 week with coordination with EIT.</em></li>
+<li>Announce via social media, websites, and partner channels as appropriate.<br><em>Estimate: small task, &lt;1 week for content development and coordination with comms.</em></li>
+</ol>
+</section>
+<section id="ongoing-maintenance-commitments" class="level2">
+<h2 class="anchored" data-anchor-id="ongoing-maintenance-commitments">Ongoing maintenance commitments</h2>
+<p>Making a project public is a commitment, not a one-time action. Public repositories have users who depend on them. Plan for:</p>
+<ul>
+<li><strong>Technical debt</strong>: Proactively managed to keep the codebase healthy over time.</li>
+<li><strong>Releases</strong>: Frequent releases, especially for bug fixes.</li>
+<li><strong>Support</strong>: User questions and bug reports receive a first response within 24 hours, with resolution time depending on severity.</li>
+<li><strong>Docs sync</strong>: Documentation kept in sync with code.</li>
+</ul>
+<p>For Tier 1 projects, this typically requires dedicated engineering time on an ongoing basis. For Tier 2 and Tier 3 projects, maintenance can be lighter, but should still be explicitly planned and resourced before release.</p>
+</section>
+<section id="roles-and-expectations" class="level2">
+<h2 class="anchored" data-anchor-id="roles-and-expectations">Roles and expectations</h2>
+<ul>
+<li>management: go/no go decision for making projects public including allocating time and resources for meeting IDM quality expectations</li>
+<li>research: sign-off on correctness, review research code, breadth and depth of test coverage, and accuracy of documentation for research usage</li>
+<li>software: help with or run automated tools for quality assessment and addressing quality gaps, assist with code reviews, help with implementing necessary test coverage, generate technical documentation</li>
+<li>documentation: review documentation for quality and completeness according to tier expectations and public comms as appropriate</li>
 </ul>
 
 
