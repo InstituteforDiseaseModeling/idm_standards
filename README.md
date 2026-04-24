@@ -42,3 +42,22 @@ This repo includes two Claude Code plugins for automating quality checks:
 - **[IDM Docs Plugin](idm_docs_plugin/)** (v1.0) -- checks and improves documentation against IDM standards. Use `/idm-docs-plugin:docs_audit` for a full audit, `/idm-docs-plugin:diataxis` for structure review, `/idm-docs-plugin:personas` for audience fit, and `/idm-docs-plugin:python-docstrings` for docstring quality.
 
 Install via the Claude Code marketplace (configured in [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json)).
+
+### Installation with Claude Code
+
+To install, add this repo as a marketplace inside Claude Code using either of the methods below (it will be available in both places regardless of installation method). If you see a permissions error, you may need to enable Admin by Request.
+
+**CLI**
+
+1. Run `/plugin marketplace add https://github.com/InstituteforDiseaseModeling/idm_standards`.
+2. Run `/plugin`, from the **Discover** tab, install one or both plugins.
+
+**VSCode extension**
+
+1. In the Claude Code chat window, type `/plugin` in the Claude Code chat and select **Manage plugins > Marketplaces**.
+2. Enter `https://github.com/InstituteforDiseaseModeling/idm_standards` and click **Add**.
+3. In **Plugins** select one or both plugins and click **Install**.
+
+### Installation with other LLMs
+
+Although these plugins were built for Claude Code, they will work with any LLM via [OpenSkills](https://github.com/numman-ali/openskills).
