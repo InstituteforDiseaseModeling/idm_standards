@@ -572,7 +572,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
   <li><a href="#engineering-guidance" id="toc-engineering-guidance" class="nav-link" data-scroll-target="#engineering-guidance">Engineering guidance</a></li>
   <li><a href="#documentation-guidance" id="toc-documentation-guidance" class="nav-link" data-scroll-target="#documentation-guidance">Documentation guidance</a></li>
-  <li><a href="#claude-code-plugins" id="toc-claude-code-plugins" class="nav-link" data-scroll-target="#claude-code-plugins">Claude Code plugins</a></li>
+  <li><a href="#claude-code-plugins" id="toc-claude-code-plugins" class="nav-link" data-scroll-target="#claude-code-plugins">Claude Code plugins</a>
+  <ul class="collapse">
+  <li><a href="#installation-with-claude-code" id="toc-installation-with-claude-code" class="nav-link" data-scroll-target="#installation-with-claude-code">Installation with Claude Code</a></li>
+  <li><a href="#installation-with-other-llms" id="toc-installation-with-other-llms" class="nav-link" data-scroll-target="#installation-with-other-llms">Installation with other LLMs</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -604,7 +608,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><a href="./eng_guidance/2_python.html">Python</a> – Python style conventions (Google style + IDM house rules)</li>
 <li><a href="./eng_guidance/3_tests.html">Tests</a> – testing practices for scientific code</li>
 <li><a href="./eng_guidance/4_documentation.html">Documentation</a> – standards for READMEs, docstrings, and tutorials</li>
-<li><a href="./eng_guidance/5_other.html">Other</a> – miscellaneous principles (e.g., data security)</li>
+<li><a href="./eng_guidance/5_other.html">Other</a> – miscellaneous principles (for example, data security)</li>
 <li><a href="./eng_guidance/6_zen.html">Zen</a> – short principles and credos</li>
 <li><a href="./eng_guidance/engineering_quality_guidelines.html">Engineering quality guidelines</a> – principles for writing good code</li>
 </ul>
@@ -630,8 +634,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><strong><a href="idm_docs_plugin/">IDM Docs Plugin</a></strong> (v1.0) – checks and improves documentation against IDM standards. Use <code>/idm-docs-plugin:docs_audit</code> for a full audit, <code>/idm-docs-plugin:diataxis</code> for structure review, <code>/idm-docs-plugin:personas</code> for audience fit, and <code>/idm-docs-plugin:python-docstrings</code> for docstring quality.</li>
 </ul>
 <p>Install via the Claude Code marketplace (configured in <a href=".claude-plugin/marketplace.json">.claude-plugin/marketplace.json</a>).</p>
+<section id="installation-with-claude-code" class="level3">
+<h3 class="anchored" data-anchor-id="installation-with-claude-code">Installation with Claude Code</h3>
+<p>To install, add this repo as a marketplace inside Claude Code using either of the methods below (it will be available in both places regardless of installation method). If you see a permissions error, you may need to enable Admin by Request.</p>
+<p><strong>CLI</strong></p>
+<ol type="1">
+<li>Run <code>/plugin marketplace add https://github.com/InstituteforDiseaseModeling/idm_standards</code>.</li>
+<li>Run <code>/plugin</code>, from the <strong>Discover</strong> tab, install one or both plugins.</li>
+</ol>
+<p><strong>VSCode extension</strong></p>
+<ol type="1">
+<li>In the Claude Code chat window, type <code>/plugin</code> in the Claude Code chat and select <strong>Manage plugins &gt; Marketplaces</strong>.</li>
+<li>Enter <code>https://github.com/InstituteforDiseaseModeling/idm_standards</code> and click <strong>Add</strong>.</li>
+<li>In <strong>Plugins</strong> select one or both plugins and click <strong>Install</strong>.</li>
+</ol>
+</section>
+<section id="installation-with-other-llms" class="level3">
+<h3 class="anchored" data-anchor-id="installation-with-other-llms">Installation with other LLMs</h3>
+<p>Although these plugins were built for Claude Code, they will work with any LLM via <a href="https://github.com/numman-ali/openskills">OpenSkills</a>.</p>
 
 
+</section>
 </section>
 </section>
 
