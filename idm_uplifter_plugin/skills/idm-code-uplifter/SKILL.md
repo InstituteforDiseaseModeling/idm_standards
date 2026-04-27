@@ -1,6 +1,6 @@
 ---
-name: code-uplifter
-description: Fan-out per-file code review for an entire project. Dispatches the code-reviewer agent in parallel waves over a set of files and aggregates the findings into uplifter_report.md. Use when the user asks to "uplift the codebase", "run the uplifter", "review all files", or invokes the /idm-uplifter-plugin:code-uplifter command.
+name: idm-code-uplifter
+description: Fan-out per-file code review for an entire project. Dispatches the idm-code-reviewer agent in parallel waves over a set of files and aggregates the findings into uplifter_report.md. Use when the user asks to "uplift the codebase", "run the uplifter", "review all files", or invokes the /idm-uplifter-plugin:idm-code-uplifter command.
 argument-hint: "[project_path] [wave_size]"
 allowed-tools: Read, Glob, Grep, Bash, Write, Agent
 ---
@@ -68,7 +68,7 @@ If `uplifter_report.md` already exists at the project root, ask the user whether
 Split the file list into chunks of `wave_size`. For each chunk:
 
 1. Send a single message containing one `Agent` tool call per file in the chunk, all in parallel. Each call:
-   - Uses `subagent_type: "code-reviewer"`.
+   - Uses `subagent_type: "idm-code-reviewer"`.
    - Has a short `description` like `Review <relative/path>`.
    - Has a `prompt` of the form:
 

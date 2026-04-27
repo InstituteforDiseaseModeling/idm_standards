@@ -1,15 +1,15 @@
 ---
 description: >
   Reviews a single source file against a fixed checklist and returns a structured
-  markdown findings block. Dispatched in parallel by the code-uplifter skill, one
+  markdown findings block. Dispatched in parallel by the idm-code-uplifter skill, one
   invocation per file. Read-only — never modifies code.
 
   Examples:
   <example>
-  Context: code-uplifter skill is running and dispatching reviewers in a wave
+  Context: idm-code-uplifter skill is running and dispatching reviewers in a wave
   user: "Review src/foo.py"
-  assistant: "I'll use the code-reviewer agent to review src/foo.py and return findings."
-  <commentary>Per-file review task — dispatch code-reviewer agent.</commentary>
+  assistant: "I'll use the idm-code-reviewer agent to review src/foo.py and return findings."
+  <commentary>Per-file review task — dispatch idm-code-reviewer agent.</commentary>
   </example>
 tools:
   - Read
