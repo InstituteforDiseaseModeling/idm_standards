@@ -1,0 +1,5 @@
+{
+  "name": "idm-uplifter-plugin",
+  "version": "0.1_2026.04.27",
+  "description": "Run a fan-out code review across many files in parallel and aggregate findings into a single report"
+}
