@@ -89,5 +89,5 @@ Severity tags: `HIGH`, `MED`, `LOW`. If no findings, the agent returns the heade
 
 These default in the SKILL.md but can be overridden by the user at invocation time:
 - Wave size (default 8)
-- File extensions to include (default `.py`, `.ts`, `.tsx`, `.js`, `.jsx`)
+- File extensions to include (default `.py`, `.ipynb`, `.R`, `.md`, `.qmd`)
 - Output report path (default `uplifter_report.md` at repo root)
