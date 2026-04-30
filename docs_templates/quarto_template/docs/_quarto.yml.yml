@@ -1,0 +1,124 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.md"
+    - "*.ipynb"
+
+website:
+  title: Package name # Update with package name
+  repo-url: https://github.com/InstituteforDiseaseModeling/repo
+  repo-actions: [issue]
+  favicon: images/favicon.ico
+  google-analytics: "GTM-NK4K647"
+  page-navigation: true
+  search:
+    type: overlay
+
+  page-footer:
+    left: "Copyright &copy; 2026 Gates Foundation. All rights reserved."
+    right:
+      - text: "Privacy and Cookies Notice"
+        href: https://www.gatesfoundation.org/Privacy-and-Cookies-Notice
+      - text: "Terms of Use"
+        href: https://www.gatesfoundation.org/Terms-of-Use
+  navbar:
+    logo: images/idm-logo-transparent.png
+    tools:
+      - icon: github
+        href: https://github.com/InstituteforDiseaseModeling/idm_standards
+      - icon: envelope
+        href: mailto:idm@gatesfoundation.org
+      - icon: globe
+        href: https://idmod.org
+      - icon: youtube
+        href: http://www.youtube.com/@institutefordiseasemodelin1987
+      - icon: linkedin
+        href: https://linkedin.com/company/institute-disease-modeling
+  sidebar:
+    - id: main
+      collapse-level: 3
+      contents:
+        - text: Home
+          file: index.md
+        - text: What's new
+          file: whats-new.md
+        - section: Tutorials
+          file: tutorials/index.md
+          contents:
+            - text: Getting started
+              file: tutorials/get-started.md
+        - section: Model overview
+          file: model/index.md
+          contents:
+            - text: Model architecture
+              file: model/architecture.md
+        - section: API reference
+          file: eng_process/index.md
+          contents:
+            - text: GitHub
+              file: eng_process/github.md
+        - text: Code of conduct
+          file: code-of-conduct.md_in_html
+        - text: Contributing
+          file: contributing.md
+    - id: api
+      collapse-level: 2
+      contents:
+        - href: index.md
+          text: Home
+        - href: api/index.qmd
+          text: API reference # Individual submodules must be listed in the sidebar
+        - section: Module
+          contents:
+            - api/submodule1.qmd
+            - api/submodule2.qmd
+
+quartodoc:
+  package: package-name
+  title: API reference
+  style: pkgdown
+  dir: api
+  parser: google
+  render_interlinks: true
+  sections:
+    - title: Module name
+      desc: Module description
+      contents:
+        - submodule1
+        - submodule2
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: solar
+    code-copy: true
+    toc: true
+    toc-expand: true
+    toc-depth: 3
+    highlight-style: github
+    include-in-header:
+      - customization/analytics.html
+
+filters:
+  - interlinks
+
+interlinks: # Add other relevant packages
+  fast: false
+  sources:
+    python:
+      url: https://docs.python.org/3/
+    numpy:
+      url: https://numpy.org/doc/stable/
+  autolink: true
+  aliases:
+    numpy: [np]
+
+execute:
+  enabled: true
+  freeze: auto
+  cache: true
+  error: false
+  echo: true
+  warning: true

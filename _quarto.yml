@@ -74,12 +74,14 @@ website:
       - section: Docs guidance
         file: docs_guidance/index.md
         contents:
-          - text: Style and grammar
-            file: docs_guidance/style.md
           - text: MkDocs overview
             file: docs_guidance/mkdocs.md
           - text: Quarto overview
             file: docs_guidance/quarto.md
+          - text: Repo READMEs
+            file: docs_guidance/readmes.md
+          - text: Style and grammar
+            file: docs_guidance/style.md
           - section: Topic types and structure
             file: docs_guidance/topic-types/index.md
             contents:

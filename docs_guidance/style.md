@@ -1,14 +1,14 @@
 # Style and grammar
 
-IDM style and grammar standards are defined using the Vale linter. We follow most Microsoft Manual of Style standards with some specific standards defined for IDM and our audience. Follow the instructions below to install and run Vale to apply these standards locally. 
+IDM style and grammar standards are defined using the Vale linter. We follow most Microsoft Manual of Style standards with some specific standards defined for IDM and our audience. Follow the instructions below to install and run Vale to apply these standards locally.
 
-If desired, you can configure a GitHub action to run Vale on all pull requests in a repository. For more information, see https://github.com/vale-cli/vale-action. 
+If desired, you can configure a GitHub action to run Vale on all pull requests in a repository. For more information, see https://github.com/vale-cli/vale-action.
 
 ## Vale linter usage
 
 **Save IDM standards locally**
 
-1. Clone the [idm_standards](https://github.com/InstituteforDiseaseModeling/idm_standards) repository. 
+1. Clone the [idm_standards](https://github.com/InstituteforDiseaseModeling/idm_standards) repository.
 
 **Install Vale**
 
@@ -21,7 +21,7 @@ If desired, you can configure a GitHub action to run Vale on all pull requests i
 2. Search for and install "Vale VSCode" by Chris Chinchilla.
 3. Under **File > Preferences > Settings > Extensions > Vale** set **Vale CLI:Config** to your path to idm_standards/vale.ini.
 4. Add the path to the vale.exe in Program Files to your global VSCode settings.json.
-5. Restart VSCode after installation. 
+5. Restart VSCode after installation.
 6. Open any supported file type (.qmd, .md, and .ipynb) and Vale will automatically highlight issues with wavy lines in the editor.
 
 **Run at the command line:**
@@ -41,7 +41,7 @@ A few of the most notable rules to be aware of are listed below.
 
 **Overview**
 
-*  Use American English spelling and punctuation. 
+*  Use American English spelling and punctuation.
 *  Use the Oxford comma (serial comma).
 *  Use sentence case for topic titles and headings (capitalize only the first word and proper nouns).
 *  Verb tense and voice
@@ -50,7 +50,7 @@ A few of the most notable rules to be aware of are listed below.
    *  Use first-person (I or we) sparingly. For example, "We recommend…" is more natural
       than "It is recommended that."
 *  Be direct and use simple sentence structure.
-   *  Avoid jargon
+   *  Avoid jargon.
    *  Don't use i.e. or e.g. as they can cause problems for non-native English speakers or machine translation.
 
 **Procedures**
@@ -80,8 +80,9 @@ Our house style guide differs from MSTP guidance in the following ways.
 
 **Titles and headings**
 
-*  For procedural content, MSTP generally recommends imperative mood but says there's a lot
-   of variation across groups. For tutorials, we use imperative mood; for example, "Run a simulation" not "Running a simulation." The one exception is "Getting started" for the first tutorial. For how-tos, we lead with "how to;" For example, "How to run a simulation."
+*  For procedural content, MSTP generally recommends imperative mood but says there's a lot of variation across groups.
+* For tutorials, we use imperative mood; for example, "Run a simulation" not "Running a simulation." The one exception is "Getting started" for the first tutorial.
+* For how-tos, we lead with "how to;" For example, "How to run a simulation."
 
 **Species names**
 
