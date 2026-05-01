@@ -121,7 +121,7 @@ format:
   html:
     theme:
       light: cosmo
-      dark: solar
+      dark: cyborg
     code-copy: true
     toc: true
     toc-expand: true

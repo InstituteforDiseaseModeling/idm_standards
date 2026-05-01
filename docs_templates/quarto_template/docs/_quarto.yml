@@ -4,10 +4,11 @@ project:
   render:
     - "*.md"
     - "*.ipynb"
+    - "*.qmd"
 
 website:
-  title: Package name # Update with package name
-  repo-url: https://github.com/InstituteforDiseaseModeling/repo
+  title: <Package name> # Update with package name
+  repo-url: https://github.com/InstituteforDiseaseModeling/<repo>
   repo-actions: [issue]
   favicon: images/favicon.ico
   google-analytics: "GTM-NK4K647"
@@ -26,7 +27,7 @@ website:
     logo: images/idm-logo-transparent.png
     tools:
       - icon: github
-        href: https://github.com/InstituteforDiseaseModeling/idm_standards
+        href: https://github.com/InstituteforDiseaseModeling/<repo>
       - icon: envelope
         href: mailto:idm@gatesfoundation.org
       - icon: globe
@@ -42,7 +43,7 @@ website:
         - text: Home
           file: index.md
         - text: What's new
-          file: whats-new.md
+          file: whatsnew.md
         - section: Tutorials
           file: tutorials/index.md
           contents:
@@ -53,13 +54,10 @@ website:
           contents:
             - text: Model architecture
               file: model/architecture.md
-        - section: API reference
-          file: eng_process/index.md
-          contents:
-            - text: GitHub
-              file: eng_process/github.md
+        - text: API reference
+          file: api/index.md
         - text: Code of conduct
-          file: code-of-conduct.md_in_html
+          file: code-of-conduct.md
         - text: Contributing
           file: contributing.md
     - id: api
@@ -69,30 +67,30 @@ website:
           text: Home
         - href: api/index.qmd
           text: API reference # Individual submodules must be listed in the sidebar
-        - section: Module
+        - section: <Module>
           contents:
-            - api/submodule1.qmd
-            - api/submodule2.qmd
+            - api/<submodule1>.qmd
+            - api/<submodule2>.qmd
 
 quartodoc:
-  package: package-name
+  package: <package-name>
   title: API reference
   style: pkgdown
   dir: api
   parser: google
   render_interlinks: true
   sections:
-    - title: Module name
-      desc: Module description
+    - title: <Module name>
+      desc: <Module description>
       contents:
-        - submodule1
-        - submodule2
+        - <submodule1>
+        - <submodule2>
 
 format:
   html:
     theme:
       light: cosmo
-      dark: solar
+      dark: cyborg
     code-copy: true
     toc: true
     toc-expand: true
