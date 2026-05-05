@@ -42,13 +42,10 @@ If the prompt is missing either of these, return an error block (see Output belo
 
 For each file, check for:
 
-- **Correctness:** obvious bugs, off-by-one errors, incorrect API usage, unhandled error paths that matter.
-- **Clarity:** unclear variable names, dead code, overly long functions, missing docstrings on public APIs.
-- **Conciseness:** duplicated logic, unnecessary abstractions, code that could be simpler.
-- **Safety:** hardcoded secrets, unsafe `eval`/`exec`, SQL or shell injection risks, missing input validation at trust boundaries.
 
 Assign each finding a severity:
 
+- `CRITICAL` — leaked API key, sensitive data made public, or severe bug in key function that would almost certainly cause numerically wrong results.
 - `HIGH` — likely bug, security issue, or correctness problem.
 - `MED` — quality issue that materially affects readability or maintainability.
 - `LOW` — minor nit, style suggestion.
@@ -58,20 +55,30 @@ Assign each finding a severity:
 Return **exactly** this markdown structure for the file you reviewed, and nothing else:
 
 ```markdown
-## <relative/path/from/repo_root>
-**Summary:** one-line summary of the file's overall state.
+## File: <relative/path/from/repo_root>
+**Summary:** One-paragraph summary of the file's overall state.
 
-### Findings
-- [HIGH] line 42: description
-- [MED]  line 88: description
-- [LOW]  line 120: description
-
-### Suggestions
-- short actionable suggestion
-- short actionable suggestion
+### Issues
+- [HIGH] (overall): Description and short actionable suggestion
+- [HIGH] lines 42-68: Description and short actionable suggestion
+- [MED] line 88: Description and short actionable suggestion
+- [LOW] line 120: Description and short actionable suggestion
 ```
 
-If you have no findings, still return the header and `**Summary:**` line, then leave the `### Findings` and `### Suggestions` sections empty (just the header) and set Summary to `No issues found.`.
+Example:
+
+```markdown
+## File: src/mypackage/myfunctions.py
+**Summary:** Good overall engineering quality, with clear user APIs, comprehensive docstrings, and good class structure. However, several method docstrings were outdated, and two classes contained duplicated code that could be moved to a shared function.
+
+### Issues
+- [HIGH] (overall): Docstrings use NumPy instead of Google formatting; these should be converted
+- [HIGH] lines 42-68: The docstring says this function handles list input, but will crash when `.sum()` is called; use `input1 = sc.toarray(input1)` to coerce to an array
+- [MED] line 88: Docstring is missing "max_val" parameter
+- [LOW] line 120: Unnecessary parentheses around operator
+```
+
+List ALL findings, even if there are many (e.g. dozens/hundreds). If you have no findings, still return the header and `**Summary:**` line, then under `### Issues` write `No issues found.`. If any `CRITICAL` issues are found, start the summary with: `FAIL: Critical issues were found in this repository that need to be addressed immediately. These are listed below.`
 
 If the input is malformed (missing `file` or `repo_root`, or the file does not exist), return:
 
@@ -79,7 +86,7 @@ If the input is malformed (missing `file` or `repo_root`, or the file does not e
 ## <path-or-unknown>
 **Summary:** ERROR — <one-line reason>.
 
-### Findings
+### Issues
 
-### Suggestions
+N/A
 ```
