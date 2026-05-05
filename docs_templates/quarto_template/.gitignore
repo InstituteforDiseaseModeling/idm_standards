@@ -1,8 +1,6 @@
 # quarto build files
 _site/*
 /.quarto/
-**/*.quarto_ipynb
 
 # vscode files
 .vscode/*
-
