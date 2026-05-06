@@ -36,10 +36,11 @@ The [docs guidance](docs_guidance/) covers IDM's approach to documentation:
 
 ## Claude Code plugins
 
-This repo includes two Claude Code plugins for automating quality checks:
+This repo includes three Claude Code plugins for automating quality checks:
 
-- **[IDM Engineering Plugin](idm_eng_plugin/)** (v1.2) -- scores and improves code against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md). Use `/idm-eng-plugin:eng-quality-checker` to score a project and `/idm-eng-plugin:eng-quality-fixer` to auto-fix issues.
-- **[IDM Docs Plugin](idm_docs_plugin/)** (v1.0) -- checks and improves documentation against IDM standards. Use `/idm-docs-plugin:docs_audit` for a full audit, `/idm-docs-plugin:diataxis` for structure review, `/idm-docs-plugin:personas` for audience fit, and `/idm-docs-plugin:python-docstrings` for docstring quality.
+- **[IDM Engineering Plugin](idm_eng_plugin/)** (v1.3) -- scores and improves code against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md). Use `/idm-eng-plugin:eng-quality-checker` to score a project and `/idm-eng-plugin:eng-quality-fixer` to auto-fix issues.
+- **[IDM Docs Plugin](idm_docs_plugin/)** (v1.1) -- checks and improves documentation against IDM standards. Use `/idm-docs-plugin:docs_audit` for a full audit, `/idm-docs-plugin:diataxis` for structure review, `/idm-docs-plugin:personas` for audience fit, and `/idm-docs-plugin:python-docstrings` for docstring quality.
+- **[IDM Uplifter Plugin](idm_uplifter_plugin/)** (v0.2) -- runs a fan-out per-file code review across an entire project plus a repo-level review, in parallel, and aggregates findings (with a top-of-report summary of CRITICALs and recurring issues) into `uplifter_report.md`. Use `/idm-uplifter-plugin:idm-code-uplifter`.
 
 Install via the Claude Code marketplace (configured in [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json)).
 
@@ -50,13 +51,13 @@ To install, add this repo as a marketplace inside Claude Code using either of th
 **CLI**
 
 1. Run `/plugin marketplace add https://github.com/InstituteforDiseaseModeling/idm_standards`.
-2. Run `/plugin`, from the **Discover** tab, install one or both plugins.
+2. Run `/plugin`, from the **Discover** tab, install any of the plugins.
 
 **VSCode extension**
 
 1. In the Claude Code chat window, type `/plugin` in the Claude Code chat and select **Manage plugins > Marketplaces**.
 2. Enter `https://github.com/InstituteforDiseaseModeling/idm_standards` and click **Add**.
-3. In **Plugins** select one or both plugins and click **Install**.
+3. In **Plugins** select the plugins you want and click **Install**.
 
 ### Installation with other LLMs
 
