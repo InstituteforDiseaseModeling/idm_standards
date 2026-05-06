@@ -25,7 +25,7 @@
       "name": "idm-uplifter-plugin",
       "source": "./idm_uplifter_plugin",
       "description": "Run a fan-out code review across many files in parallel and aggregate findings into a single report",
-      "version": "0.1_2026.05.06",
+      "version": "0.2_2026.05.06",
       "keywords": ["code-review", "uplift", "parallel", "refactor"]
     }
   ]

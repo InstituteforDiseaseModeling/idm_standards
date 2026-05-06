@@ -1,13 +1,13 @@
 ---
 name: idm-code-uplifter
-description: Fan-out per-file code review for an entire project. Dispatches the idm-code-reviewer agent in parallel waves over a set of files and aggregates the findings into uplifter_report.md. Use when the user asks to "uplift the codebase", "run the uplifter", "review all files", or invokes the /idm-uplifter-plugin:idm-code-uplifter command.
+description: Fan-out per-file code review for an entire project. Dispatches the idm-code-reviewer agent in parallel waves over a set of files, runs idm-repo-reviewer in parallel for project-level concerns, and aggregates the findings into uplifter_report.md with a summary at the top. Use when the user asks to "uplift the codebase", "run the uplifter", "review all files", or invokes the /idm-uplifter-plugin:idm-code-uplifter command.
 argument-hint: "[project_path] [wave_size]"
 allowed-tools: Read, Glob, Grep, Bash, Write, Agent
 ---
 
-Run a fan-out code review across many files and aggregate the findings into `uplifter_report.md`.
+Run a fan-out code review across many files plus a repo-level review, and aggregate the findings into `uplifter_report.md`.
 
-Skill version: 0.1_2026.05.06
+Skill version: 0.2_2026.05.06
 
 ## Defaults
 
@@ -16,13 +16,21 @@ These can be overridden by anything the user says when invoking the skill:
 - **Wave size:** `8` parallel agents per wave.
 - **File extensions:** `.py`, `.ipynb`, `.R`, `.md`, `.qmd`.
 - **Excluded directories:** `.git`, `node_modules`, `dist`, `build`, `.venv`, `venv`, `__pycache__`, `_site`.
+- **Per-file size cap:** ~200 KB or ~5000 lines (larger files are skipped and noted in failures).
 - **Output path:** `uplifter_report.md` at the project root.
+- **Resume cache:** `.uplifter_cache/` at the project root (per-file blocks; safe to delete).
 
 If the user supplies different values (e.g., "use a wave size of 4", "include `.js` files", "write to `review.md`"), follow their instruction.
 
+## Scope rules (do not violate)
+
+- All file reads, globs, greps, and bash commands must operate **inside the resolved project root**. Never read or list files elsewhere on disk (no `~`, no `/etc`, no other projects, no parents of the project root).
+- Pass the project root as `<repo_root>` to every agent so they enforce the same constraint.
+- Do not modify any file in the project. The only writes are to the output report and the resume cache directory.
+
 ## Step 1: Resolve the project path
 
-The first argument is the project path. If not supplied, default to the current working directory. Resolve it to an absolute path and confirm the directory exists.
+The first argument is the project path. If not supplied, default to the current working directory. Resolve it to an absolute path and confirm the directory exists. From here on, this is `repo_root`.
 
 ## Step 2: Choose file-selection mode
 
@@ -35,111 +43,86 @@ Ask the user:
 
 ## Step 3a: Discover files (all-files mode)
 
-Use `Glob` to find files under the project path matching the configured extensions. Then filter out anything inside an excluded directory.
+Use `Glob` *rooted at `repo_root`* to find files matching the configured extensions. Then filter out anything inside an excluded directory.
 
-A simple pattern: run `Glob` once per extension (e.g., `**/*.py`), union the results, and drop any path whose components contain an excluded directory name.
+A simple pattern: run `Glob` once per extension (e.g., `**/*.py`) under `repo_root`, union the results, and drop any path whose components contain an excluded directory name.
 
-Also drop anything ignored by git. To check, run from the project root:
+Also drop anything ignored by git. To check, run from `repo_root`:
 
 ```bash
-git check-ignore -v -- <path1> <path2> ...
+git -C <repo_root> check-ignore -v -- <path1> <path2> ...
 ```
 
-(or, equivalently, intersect the discovered list against the output of `git ls-files`). Files that are git-ignored are excluded.
+(or, equivalently, intersect the discovered list against the output of `git -C <repo_root> ls-files`). Files that are git-ignored are excluded.
 
 ## Step 3b: Resolve a user-supplied list
 
-The user provides paths or globs. Expand globs using `Glob`. Verify each resolved path exists. Drop directories (only files are reviewed).
+The user provides paths or globs. Expand globs using `Glob`. Verify each resolved path exists and lies under `repo_root` (reject anything outside). Drop directories (only files are reviewed).
 
 ## Step 4: Confirm scope
 
 Show the user the resolved file count. If the count is greater than 50, ask for explicit confirmation before proceeding:
 
-> "This will dispatch reviews for N files in waves of W. Proceed?"
+> "This will dispatch reviews for N files in waves of W, plus one repo-level review in parallel. Proceed?"
 
-If the count is zero, stop and tell the user no files matched.
+If the count is zero, you can still run the repo-level review alone, but ask the user first.
 
-## Step 5: Check the output path
+## Step 5: Check the output path and resume cache
 
 If `uplifter_report.md` already exists at the project root, ask the user whether to overwrite or write to a different path. Do not silently overwrite.
 
-## Step 6: Dispatch in waves
+Check whether `.uplifter_cache/` exists at `repo_root`. If it does, list the cached per-file blocks and ask the user:
 
-Split the file list into chunks of `wave_size`. For each chunk:
+> "I found N cached review blocks from a previous run. Reuse them (resume), or discard and re-review everything?"
 
-1. Send a single message containing one `Agent` tool call per file in the chunk, all in parallel. Each call:
-   - Uses `subagent_type: "idm-code-reviewer"`.
-   - Has a short `description` like `Review <relative/path>`.
-   - Has a `prompt` of the form:
+- **Resume**: skip any file whose cached block exists and whose source file `mtime` is older than the cache file's `mtime`. Re-review the rest. Always re-run the repo-level review (it's cheap relative to total cost and is a single block).
+- **Discard**: delete `.uplifter_cache/` and review every selected file fresh.
 
-     ```
-     Review the following file and return the structured markdown block per your instructions.
+If the directory does not exist, create it.
 
-     file: <absolute path>
-     repo_root: <absolute project root>
-     ```
+Cache filenames are derived by taking the file's path relative to `repo_root` and replacing path separators with `__` (e.g. `src/foo/bar.py` → `.uplifter_cache/src__foo__bar.py.md`). Same scheme for the repo block: `.uplifter_cache/__repo__.md`.
 
-2. Wait for all agents in the wave to finish.
-3. Append each returned markdown block to an in-memory list, in the same order the files were dispatched. If an agent failed (errored or returned malformed output), record the file path and error in a separate `failures` list — do not abort the run.
+## Step 6: Dispatch reviews in parallel waves
+
+For the **first wave**, send a single message containing:
+
+1. One `Agent` call with `subagent_type: "idm-repo-reviewer"`, `description: "Repo-level review"`, and prompt:
+
+   ```
+   <repo_root>/absolute/path/to/repo</repo_root>
+   ```
+
+2. Up to `wave_size` `Agent` calls with `subagent_type: "idm-code-reviewer"`, one per file in this wave (skipping any file whose cache is being reused). Each call has `description: "Review <relative/path>"` and prompt:
+
+   ```
+   <file>/absolute/path/to/file</file>
+   <repo_root>/absolute/path/to/repo</repo_root>
+   ```
+
+For each subsequent wave, dispatch up to `wave_size` `idm-code-reviewer` calls in a single message.
+
+After each wave finishes:
+
+1. For each returned block, write it immediately to its cache file (so the run is resumable). For the repo block, write `.uplifter_cache/__repo__.md`.
+2. If an agent failed (errored or returned malformed output), record the file path and a one-line error reason in a `failures` list — do not abort the run.
+3. Append the cache-file path to an in-memory `dispatch_order` list, in the order files were dispatched. (The repo block is always first.)
 
 Then proceed to the next wave.
 
-## Step 7: Repo-level review
+## Step 7: Synthesize a summary
 
-Per-file agents only evaluate the `files:` section of `metrics.yaml`. You — the skill — are responsible for the `repo:` section, which covers project-wide concerns (README, tests, CI, licenses, secrets, releases, etc.).
+Once all waves are complete (and the repo block is in the cache), parse the cached blocks to build a summary:
 
-Read `${CLAUDE_PLUGIN_ROOT}/agents/metrics.yaml` and walk the `repo:` tree. Each leaf is `category > dimension > key: description` (e.g. `quality > correct > ci: "Tests are incorporated in an automated pipeline..."`).
+- **Total files reviewed**, total failures, wave size.
+- **Severity counts** across all blocks: how many `CRITICAL`, `HIGH`, `MED`, `LOW` issues.
+- **All CRITICALs** lifted to the top, with file path and line number, in their original wording.
+- **Top recurring criteria**: the 10 `category.dimension.key` tags that appear most often in `### Issues`, with the count of files that flagged each. Skip if there are fewer than 5 distinct recurring criteria.
 
-For every criterion, gather comprehensive evidence and make an explicit judgment. Use every tool available to you — `Glob`, `Grep`, `Read`, `Bash` — to inspect the project thoroughly. Read the full README, the full CHANGELOG, the full top-level config files (`pyproject.toml`, `setup.py`, `package.json`, `DESCRIPTION`, `environment.yml`, `requirements*.txt`, `poetry.lock`, etc.). Inspect every CI workflow file in full. Walk `tests/` to assess coverage and style. Read `LICENSE` in full and cross-check it against declared dependencies' licenses. Run `git log`, `git tag --list`, `git remote -v` as needed to assess versioning, release history, and hosting. Read `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `ROADMAP.md`, issue/PR templates, and any `docs/` content. Inspect `.gitignore` and `.gitattributes` for what is and isn't tracked.
-
-Suggested checks per criterion (non-exhaustive — apply judgment and add more as needed):
-
-- `quality.correct.spec` → read the full README and any `docs/` index; assess whether the scientific/technical scope is clearly and correctly described.
-- `quality.correct.validated` → search README/docs for validation, peer-review citations, comparisons to published results, or benchmark suites.
-- `quality.correct.test-coverage` → enumerate test files, run coverage if a coverage config exists, and look for obvious gaps (untested public APIs).
-- `quality.correct.test-style` → read several test files end-to-end; assess whether they are mostly unit vs. end-to-end and whether they exercise scientific behavior.
-- `quality.correct.ci` → list every workflow under `.github/workflows/` (or equivalent) and read each in full; confirm tests actually run.
-- `quality.clear.structure` → walk the top two or three directory levels; assess whether the layout matches conventions for the project's language/ecosystem.
-- `quality.concise.duplication` → spot-check for duplicated modules, parallel implementations, or near-identical config files.
-- `usability.simple.workflows` → assess whether common tasks (install, run, test) are one-liners; read any `Makefile` / `justfile` / top-level scripts.
-- `usability.performant.fast` / `usability.performant.profiled` → look for benchmark scripts, profiling docs, or performance regression tests.
-- `usability.documented.*` → read the full README, the docs site config (`mkdocs.yml`, `_config.yml`, `conf.py`), and a representative sample of doc pages; assess audience fit, tutorial presence, and UI clarity.
-- `usability.accessible.github` → check `git remote -v` and confirm the repo lives in an appropriate org.
-- `usability.accessible.key-files` → check for `LICENSE`, `CHANGELOG.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `ROADMAP.md`.
-- `usability.accessible.installation` → follow the README's install instructions mentally; confirm they're 1–3 commands and don't require special environments.
-- `usability.accessible.support` → look for issue templates, support docs, a discussions link, or contact info.
-- `usability.accessible.ai-friendly` → check for `CLAUDE.md`, `.claude/`, `AGENTS.md`, skills, MCP server configs, or other AI-assistant scaffolding.
-- `safety.compliant.data-permission` → if any data is bundled or downloaded, search README/docs for permission/citation/license info.
-- `safety.compliant.secrets` → grep the entire tracked tree for likely-secret patterns (`API_KEY=`, `SECRET=`, `TOKEN=`, `BEGIN PRIVATE KEY`, AWS access-key prefixes, common provider patterns) and review any matches. **Do not scan binary blobs** — restrict text scans to text-extension files (use `git ls-files` and filter, or skip large/binary files explicitly).
-- `safety.compliant.licenses` → read `LICENSE`; for each declared dependency, identify its license and flag incompatibilities with this project's license.
-- `safety.reproducible.dependencies` → confirm dependencies are pinned in a lock file or environment file appropriate for the language; for non-library code, a lock file is required.
-- `safety.reproducible.versioning` → run `git tag --list` and read `CHANGELOG.md` in full; assess whether semver is followed and whether tags exist for each release.
-- `safety.reproducible.published` → check whether the package is on PyPI / CRAN / npm / etc. as appropriate (look for `pyproject.toml` `[project]` metadata, a publish workflow, or visible release artifacts).
-
-Use the same severity scale and tagging convention as the per-file agent. If a check is genuinely impossible from inside the repo (e.g. you cannot reach the public internet), say so explicitly rather than guessing. Do not modify any files.
-
-Produce a single repo-level findings block in this format (mirrors the per-file agent's output):
-
-```markdown
-## Repo
-**Summary:** One-paragraph summary of the project's overall state at the repo level.
-
-### Issues
-- [HIGH] quality.correct.ci (overall): No CI pipeline detected; add a GitHub Actions workflow that runs the test suite on push/PR.
-- [MED] usability.accessible.key-files (overall): CHANGELOG is missing.
-- [LOW] safety.reproducible.versioning (overall): No git tags found; adopt semantic versioning and tag releases.
-
-### Assessments
-- quality.correct.spec: README clearly describes the project purpose and scope.
-- quality.correct.ci: No workflows under `.github/workflows/`.
-- ...one bullet per criterion in metrics.yaml's `repo:` section...
-```
-
-Every criterion under `repo:` must appear once in the `### Assessments` section, even if the assessment is "N/A" or "Not applicable to this project". If a `CRITICAL` issue is found at the repo level (e.g. an exposed API key), prefix the summary with `FAIL: Critical issues were found in this repository that need to be addressed immediately. These are listed below.` — same convention as the per-file agent.
+This synthesis is done by reading the cached blocks and counting — no additional agent dispatch.
 
 ## Step 8: Write the report
 
-Write the report file (default `uplifter_report.md`) at the project root with this structure:
+Assemble and write the report file (default `uplifter_report.md`) at `repo_root` with this structure:
 
 ```markdown
 # Uplifter Report
@@ -147,7 +130,22 @@ Write the report file (default `uplifter_report.md`) at the project root with th
 - **Generated:** <UTC timestamp>
 - **Project:** <absolute path>
 - **Files reviewed:** <count>
+- **Failures:** <count>
 - **Wave size:** <wave_size>
+
+## Summary
+
+**Severity counts:** CRITICAL: X, HIGH: Y, MED: Z, LOW: W.
+
+**Critical issues:**
+- <file:line> [criterion] — <wording>
+- ...
+(or "None." if no CRITICALs)
+
+**Top recurring criteria:**
+- `quality.clear.comments` — N files
+- `usability.documented.docstrings` — M files
+- ...
 
 ## Index
 
@@ -158,11 +156,11 @@ Write the report file (default `uplifter_report.md`) at the project root with th
 
 ---
 
-<repo-level findings block from Step 7>
+<contents of .uplifter_cache/__repo__.md>
 
 ---
 
-<concatenated per-file blocks, in dispatch order>
+<concatenated per-file blocks, in dispatch_order>
 
 ---
 
@@ -171,10 +169,10 @@ Write the report file (default `uplifter_report.md`) at the project root with th
 <one bullet per failed file with a short error reason; omit this section entirely if there were no failures>
 ```
 
-Anchors are GitHub-flavored markdown anchors derived from the `## Repo` and per-file `## <relative/path>` headers.
+Anchors are GitHub-flavored markdown anchors derived from the `## Repo` and per-file `## File: <relative/path>` headers. **Resolve collisions** by appending `-2`, `-3`, etc. to subsequent duplicates, and use the same suffix in the corresponding `## File:` header anchor link in the Index.
 
 ## Step 9: Tell the user where the report is
 
 Print a short summary message:
 
-> "Uplifter run complete. N files reviewed (F failed). Report written to `<output path>`."
+> "Uplifter run complete. N files reviewed (F failed). Report written to `<output path>`. Cache kept at `.uplifter_cache/` for incremental re-runs; delete it for a clean rerun."
