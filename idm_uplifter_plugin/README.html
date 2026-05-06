@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – IDM Standards</title>
+<title>readme – IDM Standards</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,7 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../eng_guidance/index.html">Engineering guidance</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_uplifter_plugin/README.html">Uplifter plugin</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -163,7 +163,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../eng_guidance/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../eng_guidance/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Engineering guidance</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -388,7 +388,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../idm_uplifter_plugin/README.html" class="sidebar-item-text sidebar-link">
+  <a href="../idm_uplifter_plugin/README.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Uplifter plugin</span></a>
   </div>
 </li>
@@ -404,31 +404,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#idm-engineering-guidance" id="toc-idm-engineering-guidance" class="nav-link active" data-scroll-target="#idm-engineering-guidance">IDM engineering guidance</a></li>
+  <li><a href="#idm_uplifter_plugin" id="toc-idm_uplifter_plugin" class="nav-link active" data-scroll-target="#idm_uplifter_plugin">idm_uplifter_plugin</a>
+  <ul class="collapse">
+  <li><a href="#what-it-does" id="toc-what-it-does" class="nav-link" data-scroll-target="#what-it-does">What it does</a></li>
+  <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_uplifter_plugin/README.html">Uplifter plugin</a></li></ol></nav></header>
 
 
 
 
-<section id="idm-engineering-guidance" class="level1">
-<h1>IDM engineering guidance</h1>
-<p>This repository contains style and community guidelines for IDM projects. The engineering guidance is divided into the following sections:</p>
+<section id="idm_uplifter_plugin" class="level1">
+<h1>idm_uplifter_plugin</h1>
+<p>Runs a fan-out code review across the files in a project plus a repo-level review, and aggregates the findings into a single markdown report with a summary at the top.</p>
+<section id="what-it-does" class="level2">
+<h2 class="anchored" data-anchor-id="what-it-does">What it does</h2>
+<p>Given a project, the <code>idm-code-uplifter</code> skill:</p>
 <ol type="1">
-<li><a href="../eng_guidance/1_philosophy.html">Design philosophy</a>: common tasks should be simple, audience is scientists, and workload/readability matter.</li>
-<li><a href="../eng_guidance/2_python.html">Python style</a>: Google style plus house rules, including no type annotations, longer lines, etc.</li>
-<li><a href="../eng_guidance/3_tests.html">Testing</a>: focus on scientific correctness, and support triple execution (standalone scripts + pytest + GitHub Actions).</li>
-<li><a href="../eng_guidance/4_documentation.html">Documentation</a>: readmes, auto-generated API reference, and tutorials.</li>
-<li><a href="../eng_guidance/5_other.html">Other principles</a>: for example, be very careful not include sensitive data in repos.</li>
-<li><a href="../eng_guidance/6_zen.html">Zen of IDM</a>: short principles and credos for research and software (simplicity, docs, tests, change).</li>
+<li>Asks whether to review <strong>all</strong> source files or a <strong>user-supplied list</strong>.</li>
+<li>Confirms the resolved file count.</li>
+<li>Dispatches the <code>idm-code-reviewer</code> subagent in batched parallel waves (default wave size: 8) plus the <code>idm-repo-reviewer</code> subagent for project-level concerns, all in parallel.</li>
+<li>Streams each completed block to a partial report so a re-run can resume rather than redo work.</li>
+<li>Synthesizes a top-of-report summary (CRITICALs, severity counts, recurring criteria) and writes the final <code>uplifter_report.md</code> at the project root.</li>
 </ol>
-<p>Note: although not part of the engineering guidance, the <a href="../eng_guidance/engineering_quality_guidelines.html">IDM software engineering quality guidelines</a> are also included here for completeness. The engineering guidance and the engineering quality guidelines together give a (pretty) complete picture of what good IDM code looks like.</p>
-<p><em>Version: 2.1 | Last updated: 2026-04-02</em></p>
+<p>All agents are restricted to the target project directory; they do not read files elsewhere on disk.</p>
+</section>
+<section id="components" class="level2">
+<h2 class="anchored" data-anchor-id="components">Components</h2>
+<ul>
+<li><code>skills/idm-code-uplifter/SKILL.md</code> — orchestrator skill.</li>
+<li><code>agents/idm-code-reviewer.md</code> — per-file reviewer agent. The <code>files:</code> review checklist is inlined in the agent.</li>
+<li><code>agents/idm-repo-reviewer.md</code> — repo-level reviewer agent. The <code>repo:</code> checklist is inlined in the agent.</li>
+</ul>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<p>Invoke the skill from Claude Code:</p>
+<blockquote class="blockquote">
+<p>“Run the uplifter on this repo.”</p>
+</blockquote>
+<p>or via the slash command form:</p>
+<blockquote class="blockquote">
+<p><code>/idm-uplifter-plugin:idm-code-uplifter</code></p>
+</blockquote>
+</section>
+<section id="configuration" class="level2">
+<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<p>These defaults live in <code>skills/idm-code-uplifter/SKILL.md</code> and can be overridden at invocation time:</p>
+<ul>
+<li>Wave size (default <code>8</code>)</li>
+<li>File extensions to include (default <code>.py</code>, <code>.ipynb</code>, <code>.R</code>, <code>.md</code>, <code>.qmd</code>)</li>
+<li>Output report path (default <code>uplifter_report.md</code> at repo root)</li>
+<li>Per-file size cap (default 200 KB / 5000 lines — larger files are skipped and noted in the failures section)</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
