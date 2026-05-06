@@ -84,7 +84,60 @@ Split the file list into chunks of `wave_size`. For each chunk:
 
 Then proceed to the next wave.
 
-## Step 7: Write the report
+## Step 7: Repo-level review
+
+Per-file agents only evaluate the `files:` section of `metrics.yaml`. You — the skill — are responsible for the `repo:` section, which covers project-wide concerns (README, tests, CI, licenses, secrets, releases, etc.).
+
+Read `${CLAUDE_PLUGIN_ROOT}/agents/metrics.yaml` and walk the `repo:` tree. Each leaf is `category > dimension > key: description` (e.g. `quality > correct > ci: "Tests are incorporated in an automated pipeline..."`).
+
+For every criterion, gather comprehensive evidence and make an explicit judgment. Use every tool available to you — `Glob`, `Grep`, `Read`, `Bash` — to inspect the project thoroughly. Read the full README, the full CHANGELOG, the full top-level config files (`pyproject.toml`, `setup.py`, `package.json`, `DESCRIPTION`, `environment.yml`, `requirements*.txt`, `poetry.lock`, etc.). Inspect every CI workflow file in full. Walk `tests/` to assess coverage and style. Read `LICENSE` in full and cross-check it against declared dependencies' licenses. Run `git log`, `git tag --list`, `git remote -v` as needed to assess versioning, release history, and hosting. Read `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `ROADMAP.md`, issue/PR templates, and any `docs/` content. Inspect `.gitignore` and `.gitattributes` for what is and isn't tracked.
+
+Suggested checks per criterion (non-exhaustive — apply judgment and add more as needed):
+
+- `quality.correct.spec` → read the full README and any `docs/` index; assess whether the scientific/technical scope is clearly and correctly described.
+- `quality.correct.validated` → search README/docs for validation, peer-review citations, comparisons to published results, or benchmark suites.
+- `quality.correct.test-coverage` → enumerate test files, run coverage if a coverage config exists, and look for obvious gaps (untested public APIs).
+- `quality.correct.test-style` → read several test files end-to-end; assess whether they are mostly unit vs. end-to-end and whether they exercise scientific behavior.
+- `quality.correct.ci` → list every workflow under `.github/workflows/` (or equivalent) and read each in full; confirm tests actually run.
+- `quality.clear.structure` → walk the top two or three directory levels; assess whether the layout matches conventions for the project's language/ecosystem.
+- `quality.concise.duplication` → spot-check for duplicated modules, parallel implementations, or near-identical config files.
+- `usability.simple.workflows` → assess whether common tasks (install, run, test) are one-liners; read any `Makefile` / `justfile` / top-level scripts.
+- `usability.performant.fast` / `usability.performant.profiled` → look for benchmark scripts, profiling docs, or performance regression tests.
+- `usability.documented.*` → read the full README, the docs site config (`mkdocs.yml`, `_config.yml`, `conf.py`), and a representative sample of doc pages; assess audience fit, tutorial presence, and UI clarity.
+- `usability.accessible.github` → check `git remote -v` and confirm the repo lives in an appropriate org.
+- `usability.accessible.key-files` → check for `LICENSE`, `CHANGELOG.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `ROADMAP.md`.
+- `usability.accessible.installation` → follow the README's install instructions mentally; confirm they're 1–3 commands and don't require special environments.
+- `usability.accessible.support` → look for issue templates, support docs, a discussions link, or contact info.
+- `usability.accessible.ai-friendly` → check for `CLAUDE.md`, `.claude/`, `AGENTS.md`, skills, MCP server configs, or other AI-assistant scaffolding.
+- `safety.compliant.data-permission` → if any data is bundled or downloaded, search README/docs for permission/citation/license info.
+- `safety.compliant.secrets` → grep the entire tracked tree for likely-secret patterns (`API_KEY=`, `SECRET=`, `TOKEN=`, `BEGIN PRIVATE KEY`, AWS access-key prefixes, common provider patterns) and review any matches. **Do not scan binary blobs** — restrict text scans to text-extension files (use `git ls-files` and filter, or skip large/binary files explicitly).
+- `safety.compliant.licenses` → read `LICENSE`; for each declared dependency, identify its license and flag incompatibilities with this project's license.
+- `safety.reproducible.dependencies` → confirm dependencies are pinned in a lock file or environment file appropriate for the language; for non-library code, a lock file is required.
+- `safety.reproducible.versioning` → run `git tag --list` and read `CHANGELOG.md` in full; assess whether semver is followed and whether tags exist for each release.
+- `safety.reproducible.published` → check whether the package is on PyPI / CRAN / npm / etc. as appropriate (look for `pyproject.toml` `[project]` metadata, a publish workflow, or visible release artifacts).
+
+Use the same severity scale and tagging convention as the per-file agent. If a check is genuinely impossible from inside the repo (e.g. you cannot reach the public internet), say so explicitly rather than guessing. Do not modify any files.
+
+Produce a single repo-level findings block in this format (mirrors the per-file agent's output):
+
+```markdown
+## Repo
+**Summary:** One-paragraph summary of the project's overall state at the repo level.
+
+### Issues
+- [HIGH] quality.correct.ci (overall): No CI pipeline detected; add a GitHub Actions workflow that runs the test suite on push/PR.
+- [MED] usability.accessible.key-files (overall): CHANGELOG is missing.
+- [LOW] safety.reproducible.versioning (overall): No git tags found; adopt semantic versioning and tag releases.
+
+### Assessments
+- quality.correct.spec: README clearly describes the project purpose and scope.
+- quality.correct.ci: No workflows under `.github/workflows/`.
+- ...one bullet per criterion in metrics.yaml's `repo:` section...
+```
+
+Every criterion under `repo:` must appear once in the `### Assessments` section, even if the assessment is "N/A" or "Not applicable to this project". If a `CRITICAL` issue is found at the repo level (e.g. an exposed API key), prefix the summary with `FAIL: Critical issues were found in this repository that need to be addressed immediately. These are listed below.` — same convention as the per-file agent.
+
+## Step 8: Write the report
 
 Write the report file (default `uplifter_report.md`) at the project root with this structure:
 
@@ -98,9 +151,14 @@ Write the report file (default `uplifter_report.md`) at the project root with th
 
 ## Index
 
+- [Repo](#repo)
 - [<relative/path/1>](#<anchor-1>)
 - [<relative/path/2>](#<anchor-2>)
 ...
+
+---
+
+<repo-level findings block from Step 7>
 
 ---
 
@@ -113,9 +171,9 @@ Write the report file (default `uplifter_report.md`) at the project root with th
 <one bullet per failed file with a short error reason; omit this section entirely if there were no failures>
 ```
 
-Anchors are GitHub-flavored markdown anchors derived from the per-file `## <relative/path>` headers.
+Anchors are GitHub-flavored markdown anchors derived from the `## Repo` and per-file `## <relative/path>` headers.
 
-## Step 8: Tell the user where the report is
+## Step 9: Tell the user where the report is
 
 Print a short summary message:
 
