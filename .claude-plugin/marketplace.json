@@ -20,6 +20,13 @@
       "description": "Score and improve scientific research code quality, usability, and safety against IDM engineering quality tiers",
       "version": "1.3_2026.04.13",
       "keywords": ["quality", "scoring", "scientific", "python", "r", "engineering"]
+    },
+    {
+      "name": "idm-uplifter-plugin",
+      "source": "./idm_uplifter_plugin",
+      "description": "Run a fan-out code review across many files in parallel and aggregate findings into a single report",
+      "version": "0.1_2026.05.06",
+      "keywords": ["code-review", "uplift", "parallel", "refactor"]
     }
   ]
 }

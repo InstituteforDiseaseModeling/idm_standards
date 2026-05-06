@@ -7,7 +7,7 @@ allowed-tools: Read, Glob, Grep, Bash, Write, Agent
 
 Run a fan-out code review across many files and aggregate the findings into `uplifter_report.md`.
 
-Skill version: 0.1_2026.04.27
+Skill version: 0.1_2026.05.06
 
 ## Defaults
 
