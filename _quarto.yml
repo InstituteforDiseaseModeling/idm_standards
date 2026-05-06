@@ -8,8 +8,10 @@ project:
     - "!docs_templates/"
     - "!idm_docs_plugin/"
     - "!idm_eng_plugin/"
+    - "!idm_uplifter_plugin/"
     - "idm_eng_plugin/README.md"
     - "idm_docs_plugin/README.md"
+    - "idm_uplifter_plugin/README.md"
 
 website:
   title: IDM Standards
@@ -116,6 +118,8 @@ website:
             file: idm_eng_plugin/README.md
           - text: Docs plugin
             file: idm_docs_plugin/README.md
+          - text: Uplifter plugin
+            file: idm_uplifter_plugin/README.md
 
 format:
   html:
