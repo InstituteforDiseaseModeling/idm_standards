@@ -24,6 +24,8 @@ In the package README, include the following:
 
 A summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications.
 
+*Note:* IDM used to require a disclaimer to be included in the README, but these are no longer needed and should be removed. However, please ensure that the license is correct and up to date (MIT license in a `LICENSE` file).
+
 ### Requirements
 
 Software/hardware requirements.
@@ -43,10 +45,6 @@ An overview of the core model code, classes, and submodules.
 ### Contributing
 
 Any instructions on how to provide code contributions or reach out for support.
-
-### Disclaimer
-
-The code in this repository was developed by <IDM to support our research on flexible agent-based modeling>. We've made it publicly available under the MIT License to provide others with a better understanding of our research and an opportunity to build upon it for their own work. We make no representations that the code works as intended or that we will provide support, address issues that are found, or accept pull requests. You are welcome to create your own fork and modify the code to suit your own modeling needs as permitted under the MIT License.
 
 ## Learn more 
 
