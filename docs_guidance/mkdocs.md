@@ -12,14 +12,14 @@ You should build or preview the documentation locally before submitting document
     ```
     pip install -r docs/requirements.txt
     ```
-    
+
 ### Preview the docs in a browser
 
 1. Run a local server with:
    ```
    mkdocs serve --watch .
    ```
-   
+
     The `watch` option will rebuild on changes outside the docs/ folder, such as docstring changes.
 
 2. Open a browser window at http://127.0.0.1:8000/<project>. This will rebuild to reflect changes each time a source file is updated and saved.

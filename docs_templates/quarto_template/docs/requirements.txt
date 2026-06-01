@@ -1,0 +1,6 @@
+quartodoc
+jupyter
+jupyter-cache
+jupytext
+
+# include all packages needed for running Jupyter notebooks
