@@ -118,7 +118,7 @@ This is the **most commonly confused distinction** in documentation. Both contai
 - Unreliable tutorials create lasting negative impressions
 - Perfect reliability is non-negotiable
 
-**Format and implementation** 
+**Format and implementation**
 
 Where possible, write tutorials as Jupyter notebooks or other executable formats. This allows tutorials to be run automatically during documentation builds, surfacing broken steps or outdated outputs before learners encounter them. This directly supports the principle of perfect reliability.
 
