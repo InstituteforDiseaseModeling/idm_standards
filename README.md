@@ -16,6 +16,7 @@ The [engineering guidance](eng_guidance/) covers IDM's conventions for writing r
 
 - [Philosophy](eng_guidance/1_philosophy.md) -- design principles and priorities
 - [Python](eng_guidance/2_python.md) -- Python style conventions (Google style + IDM house rules)
+- [R](eng_guidance/2b_r.md) -- R style and engineering practice (Tidyverse style + IDM expectations)
 - [Tests](eng_guidance/3_tests.md) -- testing practices for scientific code
 - [Documentation](eng_guidance/4_documentation.md) -- standards for READMEs, docstrings, and tutorials
 - [Other](eng_guidance/5_other.md) -- miscellaneous principles (for example, data security)
@@ -34,13 +35,16 @@ The [docs guidance](docs_guidance/) covers IDM's approach to documentation:
 - [Topic types](docs_guidance/topic-types/) -- how to structure your content as tutorials, explanations, how-to guides, etc.
 - [Personas](docs_guidance/personas/) -- how to write for different audiences
 
-## Claude Code plugins
+## Claude Code plugin
 
-This repo includes three Claude Code plugins for automating quality checks:
+This repo includes the **[IDM-Standards plugin](idm_standards_plugin/)** (v2.0) for automating quality checks against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md) and IDM documentation standards. Its skills:
 
-- **[IDM Engineering Plugin](idm_eng_plugin/)** (v1.3) -- scores and improves code against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md). Use `/idm-eng-plugin:eng-quality-checker` to score a project and `/idm-eng-plugin:eng-quality-fixer` to auto-fix issues.
-- **[IDM Docs Plugin](idm_docs_plugin/)** (v1.1) -- checks and improves documentation against IDM standards. Use `/idm-docs-plugin:docs_audit` for a full audit, `/idm-docs-plugin:diataxis` for structure review, `/idm-docs-plugin:personas` for audience fit, and `/idm-docs-plugin:python-docstrings` for docstring quality.
-- **[IDM Uplifter Plugin](idm_uplifter_plugin/)** (v0.2) -- runs a fan-out per-file code review across an entire project plus a repo-level review, in parallel, and aggregates findings (with a top-of-report summary of CRITICALs and recurring issues) into `uplifter_report.md`. Use `/idm-uplifter-plugin:idm-code-uplifter`.
+- `/idm-standards:audit-code` -- score a project and write `code_audit.md` (routes to `audit-r-code` for R projects); `/idm-standards:fix-code` applies the recommendations.
+- `/idm-standards:audit-docs` -- full documentation audit (`docs_audit.md`), composing `audit-diataxis`, `audit-personas`, and `audit-docstrings`.
+- `/idm-standards:audit-project` -- run code and/or docs audits with one set of questions; `/idm-standards:fix-project` applies fixes across both.
+- `/idm-standards:audit-code-exhaustive` -- fan-out per-file review aggregated into `code_audit_exhaustive.md`.
+
+> **Migrating from v1.x?** The former `idm-eng-plugin`, `idm-docs-plugin`, and `idm-uplifter-plugin` are now this single plugin, and the skills were renamed (e.g. `eng-quality-checker` → `audit-code`). Uninstall the old three and install `idm-standards`.
 
 Install via the Claude Code marketplace (configured in [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json)).
 

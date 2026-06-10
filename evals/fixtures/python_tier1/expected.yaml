@@ -1,0 +1,34 @@
+# Expected audit behavior for the Python Tier 1 fixture (a clean library).
+# The runner asserts on bounds and presence/absence patterns, not exact scores.
+project_subdir: project
+language: python
+tier: 1
+strictness: 1
+
+overall_score:
+  min: 70          # clean, documented, tested library — should score well
+  max: 100
+
+metrics:
+  correct:    {min: 6}   # good tests, but no CI and no peer-review evidence
+  documented: {min: 7}
+  reproducible: {min: 6}
+
+# Recommendation text (case-insensitive substring match against the
+# Recommendations + Proposed solutions sections).
+must_appear:
+  - changelog            # no CHANGELOG.md present — legitimate Tier 1 gap
+  # Use a specific phrase: bare "ci" is a substring of "concise"/"reproducible" in
+  # the metric table and would match every report.
+  - continuous integration   # no .github/workflows — legitimate Tier 1 gap
+
+# THE KEY TIER-1 ASSERTION: a library must never be told to add a lock file.
+must_not_appear:
+  - lock file
+  - lockfile
+  - "requirements_locked"
+  - "pylock.toml"
+  - "pip freeze"
+  - "pin dependencies"
+  - "pin the dependencies"
+  - "pinned versions"

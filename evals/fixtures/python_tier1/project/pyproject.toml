@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wavetool"
+version = "1.2.0"
+description = "Utilities for damped harmonic oscillator analysis"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+]
+
+[project.urls]
+Repository = "https://github.com/example/wavetool"

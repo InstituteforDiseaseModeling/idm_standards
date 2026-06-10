@@ -1,0 +1,5 @@
+{
+  "name": "idm-standards",
+  "version": "2.0_2026.06.10",
+  "description": "Audit and improve scientific research code and documentation against IDM engineering and documentation standards: code quality scoring, automated fixes, exhaustive per-file review, and docs audits"
+}

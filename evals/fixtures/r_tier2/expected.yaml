@@ -1,0 +1,30 @@
+# Expected audit behavior for the R Tier 2 fixture (shared research code).
+# Deliberate flaws: no tests/testthat/ (material); README claims renv but there is
+# no renv.lock / renv/ (material reproducibility gap).
+project_subdir: project
+language: r
+tier: 2
+strictness: 1
+
+# Routing assertion: an R project must be audited by audit-r-code, so the report's
+# Version line should name audit-r-code.
+report_version_contains: audit-r-code
+
+overall_score:
+  min: 40
+  max: 85
+
+metrics:
+  correct:      {max: 8}   # no tests
+  reproducible: {max: 8}   # renv referenced but not actually set up
+
+must_appear:
+  - test                   # missing testthat tests
+  - renv                   # R-appropriate reproducibility suggestion
+
+# The Python lock artifacts must NOT be suggested for an R project.
+must_not_appear:
+  - "requirements_locked"
+  - "pylock.toml"
+  - "pip freeze"
+  - "pip lock"
