@@ -8,25 +8,11 @@
   },
   "plugins": [
     {
-      "name": "idm-docs-plugin",
-      "source": "./idm_docs_plugin",
-      "description": "Score and improve documentation against IDM documentation guidelines",
-      "version": "1.1_2026.04.20",
-      "keywords": ["quality", "scoring", "documentation", "diataxis", "personas", "docstrings"]
-    },
-    {
-      "name": "idm-eng-plugin",
-      "source": "./idm_eng_plugin",
-      "description": "Score and improve scientific research code quality, usability, and safety against IDM engineering quality tiers",
-      "version": "1.3_2026.04.13",
-      "keywords": ["quality", "scoring", "scientific", "python", "r", "engineering"]
-    },
-    {
-      "name": "idm-uplifter-plugin",
-      "source": "./idm_uplifter_plugin",
-      "description": "Run a fan-out code review across many files in parallel and aggregate findings into a single report",
-      "version": "0.2_2026.05.06",
-      "keywords": ["code-review", "uplift", "parallel", "refactor"]
+      "name": "idm-standards",
+      "source": "./idm_standards_plugin",
+      "description": "Audit and improve scientific research code and documentation against IDM engineering and documentation standards: code quality scoring, automated fixes, exhaustive per-file review, and docs audits",
+      "version": "2.0_2026.06.10",
+      "keywords": ["quality", "scoring", "scientific", "python", "r", "engineering", "documentation", "diataxis", "personas", "docstrings", "code-review", "audit"]
     }
   ]
 }

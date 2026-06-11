@@ -5,7 +5,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1
 
 1 Institute for Disease Modeling;  2 Burnet Institute; 3 Open Source Pledge; 4 Google (former)
 
-Version 1.2 | 2026.03.26
+Version 1.3 | 2026.06.10
 
 # Introduction
 
@@ -110,10 +110,11 @@ Numbers refer to which tiers the guideline is applicable to. "SG" means that fur
         2. No API keys or secrets are exposed in the repository. \[1,2,3\]  
         3. Code does not have any dependencies that have proprietary/restrictive licenses that our use violates. \[1,2,3\]  
     2. **Reproducible:** If the results cannot be reproduced later, it wastes time and harms reputation.  
-        1. Dependencies are specified (in `pyproject.toml` or `DESCRIPTION`); if reproducibility is important (e.g. for research projects / non-library code), pinned versions, an environment file, or a lock file is included. \[1,2,3\]  
-        2. If random numbers are used, the same seeds give numerically identical results (where possible). \[1,2,3\]  
-        3. Semantic versioning is used, including git tags for each release. \[1,2\]  
-        4. Releases are published on PyPI or CRAN. \[1\]
+        1. Dependencies are specified (in `pyproject.toml` or `DESCRIPTION`), as loosely as possible; library code should *not* include a lock file (though an optional `pylock.toml` is acceptable). \[1,2,3\]  
+        2. If reproducibility of results is important (e.g. for research projects / non-library code), exact versions are captured: for simple projects, via `pip freeze > requirements_locked.txt`; for more advanced projects, via `pip lock` (producing `pylock.toml`) or `renv.lock` (R). Which to use — including "none" — is the project owner's choice. \[2,3\]  
+        3. If random numbers are used, the same seeds give numerically identical results (where possible). \[1,2,3\]  
+        4. Semantic versioning is used, including git tags for each release. \[1,2\]  
+        5. Releases are published on PyPI or CRAN. \[1\]
 
 # Code tiers
 
@@ -175,7 +176,7 @@ This section describes additional tools, processes, and documents to help achiev
 
 ## Tools
 
-* [IDM-Eng-Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) is a Claude plugin created directly from this document that will evaluate a project using these guidelines, come up with a plan for making improvements, and then (if asked) implement this plan.
+* The [IDM-Standards plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_standards_plugin) is a Claude plugin whose `audit-code` and `fix-code` skills are created directly from this document: they evaluate a project using these guidelines, come up with a plan for making improvements, and then (if asked) implement this plan.
 
 ## Style guides
 

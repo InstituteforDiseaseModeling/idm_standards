@@ -6,12 +6,9 @@ project:
     - "*.md"
     - "*.ipynb"
     - "!docs_templates/"
-    - "!idm_docs_plugin/"
-    - "!idm_eng_plugin/"
-    - "!idm_uplifter_plugin/"
-    - "idm_eng_plugin/README.md"
-    - "idm_docs_plugin/README.md"
-    - "idm_uplifter_plugin/README.md"
+    - "!idm_standards_plugin/"
+    - "!evals/"
+    - "idm_standards_plugin/README.md"
 
 website:
   title: IDM Standards
@@ -54,6 +51,8 @@ website:
             file: eng_guidance/1_philosophy.md
           - text: Python
             file: eng_guidance/2_python.md
+          - text: R
+            file: eng_guidance/2b_r.md
           - text: Tests
             file: eng_guidance/3_tests.md
           - text: Documentation
@@ -114,12 +113,8 @@ website:
       - section: Claude plugins
         file: plugins_readme.md
         contents:
-          - text: Engineering plugin
-            file: idm_eng_plugin/README.md
-          - text: Docs plugin
-            file: idm_docs_plugin/README.md
-          - text: Uplifter plugin
-            file: idm_uplifter_plugin/README.md
+          - text: IDM-Standards plugin
+            file: idm_standards_plugin/README.md
 
 format:
   html:

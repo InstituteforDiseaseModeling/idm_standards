@@ -1,0 +1,10 @@
+Package: malariafit
+Title: Fit a Simple Malaria Transmission Model to Prevalence Data
+Version: 0.3.0
+Authors@R: person("Jane", "Researcher", email = "jane@example.org", role = c("aut", "cre"))
+Description: Shared research code that calibrates a Ross-Macdonald style malaria
+    transmission model to cross-sectional prevalence surveys for a single country.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports:
+    stats

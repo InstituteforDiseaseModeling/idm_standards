@@ -49,7 +49,7 @@ Regardless of tier, **all public code must be:**
 
 Before a project goes public, the team should perform the following actions to assess the state of a project with respect to the quality expectations and identify any gaps:
 
-1. **Run automated review** (all tiers): Use the [IDM Engineering Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) — a Claude Code plugin built directly from the engineering guidelines — to score the project and generate a prioritized list of gaps and improvements. _Estimate: 1 person, 1 hour._
+1. **Run automated review** (all tiers): Use the [IDM-Standards plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_standards_plugin) — a Claude Code plugin built directly from the engineering guidelines — to score the project (`/idm-standards:audit-code`) and generate a prioritized list of gaps and improvements. _Estimate: 1 person, 1 hour._
 2. **Perform peer code review** (T1 and T2, recommended for T3): At least one engineer who did not write the code reviews it against the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md). _Estimate: 1 person, 1 day – 1+ weeks depending on project size._
 3. **Perform documentation review** (T1 and T2, recommended for T3): The content team reviews docs for clarity and completeness. _Estimate: 1 person, 1 day – 1+ weeks depending on project size._
 4. **Get stakeholder sign-off**: All stakeholders confirm the project meets its success criteria. _Estimate: 1 day – 1 week depending on number of stakeholders and project size._
@@ -60,10 +60,10 @@ Before a project goes public, the team should perform the following actions to a
 Effort depends heavily on the project's current state and target tier. Rough guidance:
 
 - **Tier 3 → public**: If the code is already correct and has a README, the main effort is typically documenting and removing any sensitive content. _Estimate: 1 person, 0.5–2 days._
-- **Tier 2 → public**: Typically requires adding tests, improving documentation (README + example scripts or tutorial), ensuring reproducibility (pinned dependencies), and passing a code review. _Estimate: several people, 2–5 days for a project in decent shape; more if significant gaps exist._
+- **Tier 2 → public**: Typically requires adding tests, improving documentation (README + example scripts or tutorial), ensuring reproducibility (capturing exact dependency versions where results matter), and passing a code review. _Estimate: several people, 2–5 days for a project in decent shape; more if significant gaps exist._
 - **Tier 1 → public**: Full Tier 1 quality is a significant ongoing investment. Projects intended for public Tier 1 release should be designed to that standard from the start; retrofitting rarely is cost-effective. _Estimate: multi-person team, weeks to months depending on gaps._
 
-The [IDM Engineering Plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin) can provide a more specific estimate based on an actual assessment of the project.
+The [IDM-Standards plugin](https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_standards_plugin) can provide a more specific estimate based on an actual assessment of the project.
 
 ## The release process
 

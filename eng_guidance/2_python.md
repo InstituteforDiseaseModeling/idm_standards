@@ -392,12 +392,17 @@ Pinning dependencies (e.g. `numpy==1.23.0`) allows for exact reproducibility in 
 
 Where possible, provide exact dependency _guidance_, not _requirements_. The dependencies in `pyproject.toml` should be as general as possible (e.g. `numpy`), with upward-pinned dependencies if and only if older versions really are guaranteed not to work (e.g. `pandas>=2.0.0`).
 
-If you are building reusable library code where the functionality rather than the results matters (e.g., Starsim itself), this is usually enough. However, if your code produces numerical results where reproducibility matters (e.g., results for a publication), you _should_  provide pinned dependencies. In addition to the unpinned `pyproject.toml`, you have three options, from least to most strict:
+If you are building reusable library code where the functionality rather than the results matters (e.g., Starsim itself, or any Tier 1 project), this is usually enough: libraries should *not* include a lock file, since their job is to work with a range of dependency versions, not to freeze one. (A `pylock.toml` is acceptable if a library project finds one useful, but it is never expected.)
 
+However, if your code produces numerical results where reproducibility matters (e.g., results for a publication — typically Tier 2 or 3 projects), you _should_ capture exact versions. In addition to the unpinned `pyproject.toml`, you have several options, from simplest to most thorough:
+
+- You can export all the packages in your current environment with `pip freeze > requirements_locked.txt` (always include a suffix like "locked" or "frozen" to make it clear to users that these are not _necessary_ requirements). This is usually the right choice for simple projects (e.g. Tier 3).
+- You can generate a standard lock file with `pip lock` (which produces `pylock.toml`, the standardized lock format from [PEP 751](https://peps.python.org/pep-0751/); requires pip ≥25.1). This is usually the right choice for more advanced projects (e.g. Tier 2).
 - In `pyproject.toml`, under `[project.optional-dependencies]`, add a `lock` section with pinned dependencies based on the latest-tested version.
-- You can export all the packages in your current environment with `pip freeze > requirements_locked.txt` (always include a suffix like "locked" or "frozen" to make it clear to users that these are not _necessary_ requirements).
 - If you're using `conda`, you can export your current environment, e.g. `conda export > environment.yaml`.
-- If you're using `uv`, you can use `uv lock --upgrade`.
+- If you're using `uv`, you can use `uv lock --upgrade` (or `uv export -o pylock.toml` for the standard format).
+
+Which option (if any) to use is the project owner's call — reproducibility needs differ, and "no lock artifact" is a legitimate choice for code whose results don't need to be exactly reproduced.
 
 
 ## Parting words

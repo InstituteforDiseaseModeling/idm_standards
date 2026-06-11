@@ -1,0 +1,273 @@
+# IDM Software Engineering Quality Scoring Schema — R projects
+# Based on: IDM Software Engineering Quality Guidelines + eng_guidance/2b_r.md
+# Style authority: Tidyverse style guide (https://style.tidyverse.org/)
+#
+# OVERALL SCORE (0-100):
+#   quality_raw    = (correct*7 + clear*2 + concise*1) / 10
+#   usability_raw  = (simple*3 + powerful*2 + performant*2 + documented*2 + accessible*1) / 10
+#   safety_raw     = (compliant*6 + reproducible*4) / 10
+#   overall_score  = round(quality_raw*40 + usability_raw*40 + safety_raw*20)
+#
+# N/A metrics (Tier 3: powerful, accessible): omit from JSON; normalize weights within category.
+# FAILURE: Set failed=true and score=0 if quality.correct or safety.compliant has a serious violation.
+#
+# IDM tier ordering: Tier 1 = package/library, Tier 2 = shared research code, Tier 3 = one-off.
+
+category_weights:
+  quality: 0.40
+  usability: 0.40
+  safety: 0.20
+
+metrics:
+  quality:
+    correct:  {within_weight: 7, fail_on_serious: true}
+    clear:    {within_weight: 2}
+    concise:  {within_weight: 1}
+  usability:
+    simple:      {within_weight: 3}
+    powerful:    {within_weight: 2, na_for_tiers: [3]}
+    performant:  {within_weight: 2}
+    documented:  {within_weight: 2}
+    accessible:  {within_weight: 1, na_for_tiers: [3]}
+  safety:
+    compliant:    {within_weight: 6, fail_on_serious: true}
+    reproducible: {within_weight: 4}
+
+# ─── TIER 1: R package / library ──────────────────────────────────────────────
+tier1:
+  quality:
+    correct:
+      description: "Works correctly with comprehensive testthat coverage, R CMD check 0/0/0, CI, peer-reviewed, no magic numbers, hard to misuse"
+      rubric:
+        0:  "Obvious bugs affecting scientific validity"
+        3:  "Appears to work but no tests"
+        5:  "Some testthat tests but limited coverage; magic numbers present"
+        7:  "Good tests covering main workflows, but no CI (r-lib/actions R-CMD-check) or R CMD check has warnings/notes"
+        8:  "Good tests with CI and clean R CMD check; minor coverage gaps remain"
+        10: "Comprehensive testthat (edition 3) suite with CI across platforms; R CMD check 0 errors/0 warnings/0 notes; tests double as documentation; peer-reviewed; no magic numbers; informative errors on misuse"
+    clear:
+      description: "Standard package structure (R/, man/, tests/, vignettes/), roxygen2 throughout, Tidyverse style"
+      rubric:
+        0:  "No discernible structure, confusing names, unreadable code"
+        3:  "Readable but non-standard layout; clever or dense constructs"
+        5:  "Standard package skeleton but sparse roxygen2 comments"
+        7:  "Good structure with roxygen2 on most exported functions, but incomplete coverage or style inconsistencies"
+        9:  "Well-organized, comprehensive roxygen2, consistent snake_case naming; only minor gaps"
+        10: "Standard skeleton, descriptive names, full roxygen2 on all exports, Tidyverse-style throughout; abstractions only where they reduce complexity"
+    concise:
+      description: "Efficient idiomatic R without compromising clarity; appropriate package use; minimal duplication; lintr/Air clean"
+      rubric:
+        0:  "Severe duplication and pervasive style violations"
+        3:  "Significant duplication; reimplements base/tidyverse functionality"
+        5:  "Some simplifications possible; heavy dependencies introduced for trivial savings"
+        7:  "Mostly concise with some avoidable duplication"
+        9:  "Limited avoidable duplication, good package use, mostly lint-clean"
+        10: "No avoidable duplication, lint-clean (lintr/Air configured), appropriate dependency footprint"
+
+  usability:
+    simple:
+      description: "Exported functions are easy and intuitive, with sensible defaults, validated arguments, and helpful error messages (cli/rlang)"
+      rubric:
+        0:  "Unclear how to use; no coherent exported API"
+        3:  "Basic usage possible but many sharp edges and missing defaults"
+        5:  "Common workflows work but poor validation and cryptic errors"
+        7:  "Clean API with sensible defaults, validated arguments, good error messages"
+        10: "No specific improvements identifiable; intuitive API, great errors, common workflows are one-liners"
+    powerful:
+      description: "Functions are flexible; assumptions modifiable; S3/R6 classes composable and extensible"
+      rubric:
+        0:  "Completely rigid; no flexibility"
+        3:  "Minor configuration options only"
+        5:  "Most common variations supported"
+        7:  "Most use cases covered; classes/generics extensible"
+        10: "No specific improvements identifiable; all assumptions modifiable; easily extended"
+    performant:
+      description: "Vectorized idiomatic R; appropriate algorithms; no growing-in-loop patterns; profiled where slow"
+      rubric:
+        0:  "Wrong algorithms for the task; 10x+ slower than reasonable"
+        3:  "Major inefficiencies (growing vectors in loops, repeated data reads)"
+        5:  "Mostly performant with some notable issues"
+        7:  "Appropriate algorithms, vectorized, but no profiling or benchmarks"
+        9:  "Well-optimized with benchmarks (bench/microbenchmark); only very minor issues"
+        10: "No specific improvements identifiable; profiled (profvis), optimized critical paths; slow frequently-run tasks parallelizable"
+    documented:
+      description: "roxygen2 with @param/@return/@examples on all exports; README; ≥1 vignette; pkgdown site; NEWS.md"
+      rubric:
+        0:  "No documentation of any kind"
+        2:  "README only, no roxygen2; unclear what functions to use"
+        4:  "README and some roxygen2; main functions identifiable"
+        6:  "Good README, roxygen2 with examples on major exports, but no vignette"
+        8:  "README, full roxygen2, vignette(s); pkgdown site present but sparse"
+        10: "Full roxygen2 with runnable examples, vignettes for main workflows, curated pkgdown site, NEWS.md kept current"
+    accessible:
+      description: "Public repo with all key files; installable via CRAN or remotes::install_github(); published"
+      rubric:
+        0:  "Not publicly available"
+        2:  "Public but hard to install or no license"
+        5:  "Installable from GitHub, has license, but missing key files (NEWS.md, contributing guide)"
+        7:  "All key files present, one-command installation"
+        9:  "All files, easy install, community support (issues answered, contributing guide)"
+        10: "No specific improvements identifiable; published on CRAN (or r-universe), easy install, community support"
+
+  safety:
+    compliant:
+      description: "No legal or security vulnerabilities; all dependencies permissively licensed"
+      rubric:
+        0:  "FAIL: Exposed API keys, PII, or proprietary data without permission"
+        2:  "Restrictive licensed dependencies in an otherwise permissive project"
+        5:  "Missing license file or unclear data usage rights"
+        7:  "Fully compliant but missing secondary files (NEWS.md, contributing guide)"
+        10: "MIT (or equivalent) license, no secrets, no restrictive deps, all key community files present"
+    reproducible:
+      description: "Dependencies specified loosely in DESCRIPTION (Imports, not Depends); deterministic seeds; semantic versioning; CRAN/r-universe published. Packages should NOT use renv or include a lock file — never suggest adding one"
+      rubric:
+        0:  "No dependency management or version control"
+        2:  "Git used but dependencies undocumented (no DESCRIPTION)"
+        5:  "Dependencies in DESCRIPTION but no semantic versioning or NEWS.md"
+        7:  "DESCRIPTION with loose Imports, deterministic seeds, semver git tags, but not published"
+        9:  "Semver + git tags, published on CRAN/r-universe, DESCRIPTION correct, deterministic seeds"
+        10: "Full stack: loose Imports (bounds only where genuinely needed), deterministic seeds, semver + tags, published on CRAN/r-universe"
+
+# ─── TIER 2: Shared research code ─────────────────────────────────────────────
+tier2:
+  quality:
+    correct:
+      description: "Works as intended with basic testthat coverage of core scientific functions"
+      rubric:
+        0:  "Code is broken or produces scientifically wrong results"
+        3:  "Works but has known bugs or edge-case failures"
+        5:  "Appears to work but has no tests"
+        7:  "Works with basic testthat tests (testthat::test_dir()) covering main workflows"
+        10: "Works with good test coverage of the core scientific functions, including parameter behavior and edge cases"
+    clear:
+      description: "Functions factored into R/, separate from run scripts; sensible structure; some comments"
+      rubric:
+        0:  "No discernible structure, confusing names"
+        3:  "Readable but one giant script with no factoring"
+        5:  "Some factoring into functions but sparse comments/roxygen2"
+        7:  "Functions in R/ separate from run scripts (numbered, or a targets pipeline), sufficient comments"
+        10: "Clean factoring, descriptive snake_case names, roxygen2 on the main functions"
+    concise:
+      description: "No excessive duplication; uses tidyverse/base idioms rather than reimplementing"
+      rubric:
+        0:  "Extensive duplication; codebase could be 50%+ shorter"
+        5:  "Some duplication or clear missed opportunities for existing packages"
+        10: "No excessive duplication; existing packages used where appropriate"
+
+  usability:
+    simple:
+      description: "Common pathways (run the analysis, reproduce the results) are easy and intuitive"
+      rubric:
+        0:  "Very unclear how to run; no obvious entry point"
+        3:  "Entry point exists but many sharp edges and undocumented setup"
+        5:  "Works for common cases but requires significant manual setup"
+        7:  "Clear entry point (numbered scripts or tar_make()) with sensible defaults"
+        10: "Easy, intuitive entry point; renv::restore() + one command reproduces the analysis"
+    powerful:
+      description: "Some flexibility is allowed"
+      rubric:
+        0:  "Completely hardcoded for one use case"
+        5:  "Some configurability but key assumptions buried in code"
+        10: "Key parameters and assumptions exposed as arguments/config without editing code"
+    performant:
+      description: "No obvious/major inefficiencies"
+      rubric:
+        0:  "Major obvious inefficiencies (growing data frames in loops, O(n²) where O(n) exists)"
+        5:  "Mostly acceptable but some notable inefficiencies"
+        10: "No obvious/major inefficiencies for the scale of the problem"
+    documented:
+      description: "README(s) covering purpose, install (renv::restore()), how to run, structure; roxygen2 on main functions; an example or tutorial"
+      rubric:
+        0:  "No README and no function documentation"
+        3:  "Minimal README only; unclear how to run"
+        5:  "Good README but no function docs or examples"
+        7:  "README plus roxygen2 on main functions, but no worked example"
+        10: "README(s), documented functions, at least one worked example or vignette-style walkthrough"
+    accessible:
+      description: "Code is open source"
+      rubric:
+        0:  "Private repo or no public access"
+        5:  "Public repo but missing license or setup instructions"
+        10: "Public repo with MIT license, reproducible setup in 1-3 commands"
+
+  safety:
+    compliant:
+      description: "No legal or security vulnerabilities"
+      rubric:
+        0:  "FAIL: Exposed secrets, unlicensed data, or proprietary dependency licenses"
+        3:  "Restrictive licensed dependencies (e.g., a GPL-only package in an otherwise MIT project)"
+        5:  "Minor gaps (missing license file, unclear data provenance)"
+        7:  "Compliant with minor uncertainties"
+        10: "Fully compliant: open license, no secrets (credentials via .Renviron/Sys.getenv()), no restrictive dependencies"
+    reproducible:
+      description: "Different people at different times can get the same results. renv (renv.lock committed, renv::status() clean) is the standard; DESCRIPTION + dated P3M snapshot is the lightweight alternative; 'none' is the project owner's recordable choice"
+      rubric:
+        0:  "No version control or dependency documentation; setwd()/absolute paths break portability"
+        3:  "Files versioned but dependencies undocumented; paths not portable"
+        5:  "Dependencies discoverable but exact versions not captured anywhere, despite results reproducibility mattering"
+        7:  "renv healthy (or DESCRIPTION + dated snapshot, or capture explicitly declined); set.seed() where randomness matters; here::here() paths"
+        10: "renv healthy (or declined with reasons recorded), deterministic seeds, portable paths, R version stated, git tags for milestone results"
+
+# ─── TIER 3: One-off / exploratory ────────────────────────────────────────────
+tier3:
+  quality:
+    correct:
+      description: "Works as intended; tested through usage with no formal tests expected"
+      rubric:
+        0:  "Code is obviously broken or produces scientifically incorrect results"
+        5:  "Code appears to work but contains suspicious logic or unverified outputs"
+        7:  "Code appears to work as intended and is consistent with its stated purpose"
+        10: "Code has been validated through real-world or representative usage"
+    clear:
+      description: "Code still makes sense to the author and at least one other person in 1-3 months"
+      rubric:
+        0:  "Confusing names or structure; author and others will struggle to understand it"
+        5:  "Readable but requires significant effort to re-orient after time away"
+        10: "Author and at least one other person would understand it in 1-3 months with minimal effort"
+    concise:
+      description: "No egregious code duplication"
+      rubric:
+        0:  "Large blocks of copy-pasted code with trivial modifications across files"
+        5:  "Some obvious duplication that could be easily factored out"
+        10: "No egregious duplication"
+
+  usability:
+    simple:
+      description: "Common workflows are not too painful"
+      rubric:
+        0:  "Extremely painful to run; requires non-obvious manual setup or setwd() editing"
+        5:  "Workable but awkward"
+        10: "Common workflows run without significant friction"
+    powerful:
+      description: "N/A — no flexibility expected"
+      rubric: "N/A"
+    performant:
+      description: "Total runtime over project lifetime is less than time to refactor"
+      rubric:
+        0:  "Total runtime would clearly exceed the time spent optimizing"
+        5:  "Borderline: could be faster but probably acceptable given project scope"
+        10: "Total runtime over project lifetime is clearly less than time to refactor"
+    documented:
+      description: "A folder readme stating purpose, entry-point script, and run order"
+      rubric:
+        0:  "No readme or folder-level documentation"
+        5:  "Partial readme missing key sections (purpose, how to run)"
+        10: "Clear readme covering purpose, dependencies, and how to run"
+    accessible:
+      description: "N/A — often a private repo"
+      rubric: "N/A"
+
+  safety:
+    compliant:
+      description: "No legal or security vulnerabilities"
+      rubric:
+        0:  "FAIL: Exposed API keys/secrets (e.g. committed .Renviron), PII in repo, or unlicensed proprietary data"
+        3:  "Minor concerns: data files without clear provenance or unclear licensing"
+        7:  "Appears compliant with minor uncertainties"
+        10: "Fully compliant: no secrets, data used with permission, no restrictive deps"
+    reproducible:
+      description: "Key files checked into GitHub (except data in some cases); dependencies discoverable; portable paths; seeds set"
+      rubric:
+        0:  "Key scripts not in version control; setwd()/absolute paths make it unrunnable elsewhere"
+        5:  "Most files present but dependencies not discoverable (no library() calls at top) or paths not portable"
+        10: "All key files checked in (except large data where appropriate); library() calls at the top; portable paths; set.seed() where randomness matters; another person could reproduce the analysis"

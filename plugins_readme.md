@@ -1,25 +1,27 @@
 # Claude plugins
 
-This repo publishes three Claude Code plugins that help apply IDM's engineering and documentation standards. Install any of them from the IDM marketplace at [github.com/InstituteforDiseaseModeling/idm_standards](https://github.com/InstituteforDiseaseModeling/idm_standards).
+This repo publishes the **IDM-Standards** Claude Code plugin, which applies IDM's engineering and documentation standards. Install it from the IDM marketplace at [github.com/InstituteforDiseaseModeling/idm_standards](https://github.com/InstituteforDiseaseModeling/idm_standards).
 
-## Engineering plugin
+> **Note:** as of v2.0 the three former plugins (`idm-eng-plugin`, `idm-docs-plugin`, `idm-uplifter-plugin`) are merged into one plugin, [`idm_standards_plugin`](idm_standards_plugin/README.md), and the skills were renamed verb-first. Uninstall the old three and install `idm-standards`.
 
-[`idm_eng_plugin`](idm_eng_plugin/README.md) scores and improves code against the [IDM Software Engineering Quality Guidelines](eng_guidance/engineering_quality_guidelines.md), across quality, usability, and safety metrics.
+## Skills
 
-- **eng-quality-checker** — scores a project and writes `engineering_score.md` with prioritized recommendations.
-- **eng-quality-fixer** — implements the recommendations from that report.
+[`idm_standards_plugin`](idm_standards_plugin/README.md) scores and improves code against the [IDM Software Engineering Quality Guidelines](eng_guidance/engineering_quality_guidelines.md) and documentation against the [IDM documentation standards](docs_guidance/index.md). One install provides all skills; each is also individually invocable.
 
-## Docs plugin
+**Code**
 
-[`idm_docs_plugin`](idm_docs_plugin/README.md) checks and improves documentation against the [IDM documentation standards](docs_guidance/index.md).
+- **audit-code** — scores a project and writes `code_audit.md` with prioritized recommendations (routes to **audit-r-code** for R projects).
+- **fix-code** — implements the recommendations from that report.
+- **audit-code-exhaustive** — fan-out per-file review across the whole project plus a repo-level review, aggregated into `code_audit_exhaustive.md` (incremental re-runs via `.audit_cache/`).
 
-- **docs_audit** — runs the other three skills and produces a unified report.
-- **diataxis** — reviews structure against the four Diátaxis topic types.
-- **personas** — checks each section is pitched at the right IDM persona.
-- **python-docstrings** — checks Google-style docstrings for completeness.
+**Docs**
 
-## Uplifter plugin
+- **audit-docs** — full documentation audit (`docs_audit.md`); composes the three skills below.
+- **audit-docs-structure** — reviews structure against the four Diátaxis topic types and IDM's TOC organization.
+- **audit-personas** — checks each section is pitched at the right IDM persona.
+- **audit-docstrings** — checks Google-style docstrings for completeness.
 
-[`idm_uplifter_plugin`](idm_uplifter_plugin/README.md) runs a fan-out code review across an entire project. It dispatches a per-file reviewer agent in parallel waves and a repo-level reviewer agent concurrently, then aggregates the findings (with a top-of-report summary of CRITICALs, severity counts, and recurring issues) into `uplifter_report.md`. Re-runs are incremental via a `.uplifter_cache/` directory.
+**Combined**
 
-- **idm-code-uplifter** — orchestrates the run end-to-end (`/idm-uplifter-plugin:idm-code-uplifter`).
+- **audit-project** — runs code and/or docs audits with a single set of questions, summarized in `project_audit.md`.
+- **fix-project** — applies fixes from whichever audit reports exist.

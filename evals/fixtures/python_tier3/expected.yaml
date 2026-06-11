@@ -1,0 +1,38 @@
+# Expected audit behavior for the Python Tier 3 fixture (a one-off analysis script).
+# Deliberate flaws: no README (material), duplicated run_sir/run_sir_noisy (material),
+# cramped formatting / no spaces around operators (stylistic only).
+project_subdir: project
+language: python
+tier: 3
+strictness: 1
+
+overall_score:
+  min: 30
+  max: 80
+
+metrics:
+  documented: {max: 6}   # no README
+  concise:    {max: 8}   # duplicated simulation function
+
+must_appear:
+  - readme               # missing README is a material Tier 3 gap
+
+# At strictness 1, stylistic findings are allowed (not asserted either way).
+# Tier 3 reproducible should not demand a lock file, but unlike Tier 1 a
+# requirements_locked.txt MAY be suggested as an option — so we don't forbid it here.
+must_not_appear: []
+
+# Second run at strictness 2 (material only): stylistic findings must disappear.
+strictness2:
+  strictness: 2
+  must_not_appear:
+    - "pep 8"
+    - "pep8"
+    - "whitespace"
+    - "spaces around"
+    - "formatting"
+    - "naming convention"
+    - "line length"
+  # The material findings should still be present at strictness 2:
+  must_appear:
+    - readme
