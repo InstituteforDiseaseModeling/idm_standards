@@ -80,9 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2eed2ed9e65153ba144c6b5d6bf11392.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-55eca34aa64a4a9bb03536e6e087c529.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -318,7 +318,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_eng_plugin/README.html">Engineering plugin</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_standards_plugin/README.html">IDM-Standards plugin</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -384,6 +384,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="sidebar-item-container"> 
   <a href="../eng_guidance/2_python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../eng_guidance/2b_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -580,20 +586,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../idm_eng_plugin/README.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Engineering plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../idm_docs_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docs plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../idm_uplifter_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uplifter plugin</span></a>
+  <a href="../idm_standards_plugin/README.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">IDM-Standards plugin</span></a>
   </div>
 </li>
       </ul>
@@ -608,17 +602,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#idm-eng-plugin" id="toc-idm-eng-plugin" class="nav-link active" data-scroll-target="#idm-eng-plugin">IDM-Eng-Plugin</a>
+  <li><a href="#idm-standards-plugin" id="toc-idm-standards-plugin" class="nav-link active" data-scroll-target="#idm-standards-plugin">IDM-Standards plugin</a>
   <ul class="collapse">
-  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
-  <li><a href="#quality-tiers" id="toc-quality-tiers" class="nav-link" data-scroll-target="#quality-tiers">Quality Tiers</a></li>
-  <li><a href="#scoring-metrics" id="toc-scoring-metrics" class="nav-link" data-scroll-target="#scoring-metrics">Scoring Metrics</a></li>
+  <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#quality-tiers" id="toc-quality-tiers" class="nav-link" data-scroll-target="#quality-tiers">Quality tiers</a></li>
+  <li><a href="#scoring-metrics-audit-code-audit-r-code" id="toc-scoring-metrics-audit-code-audit-r-code" class="nav-link" data-scroll-target="#scoring-metrics-audit-code-audit-r-code">Scoring metrics (<code>audit-code</code> / <code>audit-r-code</code>)</a></li>
   <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a>
   <ul class="collapse">
-  <li><a href="#score-a-project" id="toc-score-a-project" class="nav-link" data-scroll-target="#score-a-project">Score a project</a></li>
+  <li><a href="#audit-a-project" id="toc-audit-a-project" class="nav-link" data-scroll-target="#audit-a-project">Audit a project</a></li>
   <li><a href="#fix-a-project" id="toc-fix-a-project" class="nav-link" data-scroll-target="#fix-a-project">Fix a project</a></li>
+  <li><a href="#audit-code-and-docs-together" id="toc-audit-code-and-docs-together" class="nav-link" data-scroll-target="#audit-code-and-docs-together">Audit code and docs together</a></li>
+  <li><a href="#exhaustive-per-file-review" id="toc-exhaustive-per-file-review" class="nav-link" data-scroll-target="#exhaustive-per-file-review">Exhaustive per-file review</a></li>
+  <li><a href="#docs-only-skills" id="toc-docs-only-skills" class="nav-link" data-scroll-target="#docs-only-skills">Docs-only skills</a></li>
   </ul></li>
-  <li><a href="#output-format" id="toc-output-format" class="nav-link" data-scroll-target="#output-format">Output Format</a></li>
+  <li><a href="#configuring-recommendations" id="toc-configuring-recommendations" class="nav-link" data-scroll-target="#configuring-recommendations">Configuring recommendations</a></li>
+  <li><a href="#idm-personas" id="toc-idm-personas" class="nav-link" data-scroll-target="#idm-personas">IDM personas</a></li>
   <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#updating-for-internal-use-only" id="toc-updating-for-internal-use-only" class="nav-link" data-scroll-target="#updating-for-internal-use-only">Updating (for internal use only)</a></li>
   </ul></li>
@@ -626,24 +624,89 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_eng_plugin/README.html">Engineering plugin</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_standards_plugin/README.html">IDM-Standards plugin</a></li></ol></nav></header>
 
 
 
 
 
-<section id="idm-eng-plugin" class="level1">
-<h1>IDM-Eng-Plugin</h1>
-<p>A Claude Code plugin that scores and improves scientific research code against the <a href="https://github.com/InstituteforDiseaseModeling">IDM Software Engineering Quality Guidelines</a>.</p>
-<section id="features" class="level2">
-<h2 class="anchored" data-anchor-id="features">Features</h2>
-<ul>
-<li><strong>Engineering Quality Checker</strong> (<code>/idm-eng-plugin:eng-quality-checker</code>): Evaluates a project across 10 metrics in three categories (quality, usability, safety) and produces a scored report with recommendations.</li>
-<li><strong>Engineering Quality Fixer</strong> (<code>/idm-eng-plugin:eng-quality-fixer</code>): Reads the score report and implements prioritized, feasible improvements automatically.</li>
-</ul>
+<section id="idm-standards-plugin" class="level1">
+<h1>IDM-Standards plugin</h1>
+<p>A Claude Code plugin that audits and improves scientific research code and documentation against the <a href="https://institutefordiseasemodeling.github.io/idm_standards">IDM Software Engineering Quality Guidelines</a> and <a href="https://institutefordiseasemodeling.github.io/idm_standards">IDM documentation standards</a>. One install provides the full suite; every skill can also be invoked individually.</p>
+<blockquote class="blockquote">
+<p><strong>Migrating from the old plugins?</strong> This plugin replaces the former <code>idm-eng-plugin</code>, <code>idm-docs-plugin</code>, and <code>idm-uplifter-plugin</code> (as of v2.0). Uninstall those and install <code>idm-standards</code> instead. Skill names changed too — see the table below.</p>
+</blockquote>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Skill</th>
+<th>What it does</th>
+<th>Replaces</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>audit-code</code></td>
+<td>Scores a project across 10 metrics (quality, usability, safety) and writes <code>code_audit.md</code> with prioritized recommendations</td>
+<td><code>eng-quality-checker</code></td>
+</tr>
+<tr class="even">
+<td><code>audit-r-code</code></td>
+<td>The same audit, specialized for R projects (renv, testthat, Tidyverse style); invoked automatically when the project is R</td>
+<td><em>(new)</em></td>
+</tr>
+<tr class="odd">
+<td><code>fix-code</code></td>
+<td>Reads <code>code_audit.md</code> and implements the recommendations</td>
+<td><code>eng-quality-fixer</code></td>
+</tr>
+<tr class="even">
+<td><code>audit-code-exhaustive</code></td>
+<td>Fan-out per-file code review in parallel waves, aggregated into <code>code_audit_exhaustive.md</code></td>
+<td><code>idm-code-uplifter</code></td>
+</tr>
+<tr class="odd">
+<td><code>audit-docs</code></td>
+<td>Comprehensive documentation audit, producing <code>docs_audit.md</code></td>
+<td><code>docs_audit</code></td>
+</tr>
+<tr class="even">
+<td><code>audit-project</code></td>
+<td>Runs code and/or docs audits with a single set of questions, summarized in <code>project_audit.md</code></td>
+<td><em>(new)</em></td>
+</tr>
+<tr class="odd">
+<td><code>fix-project</code></td>
+<td>Applies fixes from whichever audit reports exist</td>
+<td><em>(new)</em></td>
+</tr>
+<tr class="even">
+<td><code>audit-docs-structure</code></td>
+<td>Reviews docs structure against the four topic types (tutorials, how-tos, reference, explanation) and IDM’s TOC organization</td>
+<td><code>diataxis</code></td>
+</tr>
+<tr class="odd">
+<td><code>audit-personas</code></td>
+<td>Checks each docs section is pitched at the right IDM persona</td>
+<td><code>personas</code></td>
+</tr>
+<tr class="even">
+<td><code>audit-docstrings</code></td>
+<td>Guidelines for Google-style Python docstrings</td>
+<td><code>python-docstrings</code></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="quality-tiers" class="level2">
-<h2 class="anchored" data-anchor-id="quality-tiers">Quality Tiers</h2>
+<h2 class="anchored" data-anchor-id="quality-tiers">Quality tiers</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -655,7 +718,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>Software library</td>
+<td>Software library / digital public good</td>
 <td>FPsim, LASER</td>
 </tr>
 <tr class="even">
@@ -670,9 +733,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </tr>
 </tbody>
 </table>
+<p>The audits ask you to confirm the tier (suggesting one based on the codebase), along with a <strong>strictness</strong> level: 1 = report everything; 2 = only findings that materially affect usage (stylistic/convention findings are neither penalized nor reported).</p>
 </section>
-<section id="scoring-metrics" class="level2">
-<h2 class="anchored" data-anchor-id="scoring-metrics">Scoring Metrics</h2>
+<section id="scoring-metrics-audit-code-audit-r-code" class="level2">
+<h2 class="anchored" data-anchor-id="scoring-metrics-audit-code-audit-r-code">Scoring metrics (<code>audit-code</code> / <code>audit-r-code</code>)</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -738,36 +802,113 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <section id="usage" class="level2">
 <h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<section id="score-a-project" class="level3">
-<h3 class="anchored" data-anchor-id="score-a-project">Score a project</h3>
-<pre><code>/idm-eng-plugin:eng-quality-checker                    # score current directory at tier 2
-/idm-eng-plugin:eng-quality-checker . 3                # score current directory at tier 3
-/idm-eng-plugin:eng-quality-checker /path/to/repo 1    # score a local path at tier 1
-/idm-eng-plugin:eng-quality-checker https://github.com/org/repo 2   # score a GitHub repo</code></pre>
-<p>Output: <code>engineering_score.md</code> written to the project directory.</p>
+<section id="audit-a-project" class="level3">
+<h3 class="anchored" data-anchor-id="audit-a-project">Audit a project</h3>
+<pre class="text"><code>/idm-standards:audit-code                                  # audit current directory (confirms tier/strictness)
+/idm-standards:audit-code . 3                              # audit current directory at tier 3
+/idm-standards:audit-code /path/to/repo 1                  # audit a local path at tier 1
+/idm-standards:audit-code https://github.com/org/repo 2    # audit a GitHub repo
+/idm-standards:audit-code . 2 2                            # tier 2, strictness 2 (material findings only)</code></pre>
+<p>Output: <code>code_audit.md</code> written to the project directory. R projects are automatically routed to <code>audit-r-code</code>. Each audit ends by offering to apply the fixes immediately.</p>
 </section>
 <section id="fix-a-project" class="level3">
 <h3 class="anchored" data-anchor-id="fix-a-project">Fix a project</h3>
-<pre><code>/idm-eng-plugin:eng-quality-fixer                     # fix current directory
-/idm-eng-plugin:eng-quality-fixer /path/to/repo       # fix a specific path</code></pre>
-<p>Requires <code>engineering_score.md</code> to exist (run the checker first).</p>
+<pre class="text"><code>/idm-standards:fix-code                                    # fix current directory
+/idm-standards:fix-code /path/to/repo                      # fix a specific path</code></pre>
+<p>Requires <code>code_audit.md</code> to exist (run <code>audit-code</code> first; reports named <code>engineering_score.md</code> from the 1.x plugins also work). Skipped or unfixable items are recorded — with concrete proposed solutions — in a “Proposed solutions” section of the report.</p>
+</section>
+<section id="audit-code-and-docs-together" class="level3">
+<h3 class="anchored" data-anchor-id="audit-code-and-docs-together">Audit code and docs together</h3>
+<pre class="text"><code>/idm-standards:audit-project                               # asks: eng audit, docs audit, or both?
+/idm-standards:fix-project                                 # applies fixes from whichever reports exist</code></pre>
+</section>
+<section id="exhaustive-per-file-review" class="level3">
+<h3 class="anchored" data-anchor-id="exhaustive-per-file-review">Exhaustive per-file review</h3>
+<pre class="text"><code>/idm-standards:audit-code-exhaustive                       # parallel per-file review waves</code></pre>
+<p>Output: <code>code_audit_exhaustive.md</code>; re-runs are incremental via <code>.audit_cache/</code>.</p>
+</section>
+<section id="docs-only-skills" class="level3">
+<h3 class="anchored" data-anchor-id="docs-only-skills">Docs-only skills</h3>
+<pre class="text"><code>/idm-standards:audit-docs                                  # full docs audit → docs_audit.md
+/idm-standards:audit-docs-structure                        # docs structure (topic types + TOC)
+/idm-standards:audit-personas                              # audience fit
+/idm-standards:audit-docstrings                            # Python docstring review</code></pre>
 </section>
 </section>
-<section id="output-format" class="level2">
-<h2 class="anchored" data-anchor-id="output-format">Output Format</h2>
-<p>The checker writes <code>engineering_score.md</code> with: - <strong>Summary</strong>: plain-language overview of results - <strong>Recommendations</strong>: concrete, prioritized, actionable steps - <strong>Full Results</strong>: complete JSON with per-metric scores, weights, and reasons</p>
+<section id="configuring-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="configuring-recommendations">Configuring recommendations</h2>
+<p>Tell the audits which recommendations to make and which to skip by committing a config file to your repo. Create <strong><code>.claude/idm-standards.md</code></strong> with plain-English directives — there are no rule IDs to learn:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">plugin:</span><span class="co"> idm-standards</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">tier:</span><span class="co"> 2</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">strictness:</span><span class="co"> 1</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># IDM Standards configuration</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Don't recommend renaming classes to CamelCase — lowercase (sim, people) is house style.</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Never recommend adding type hints; we don't use them.</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`import *`</span> from sciris and starsim is our convention; don't flag it.</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Lock artifact: none — we opted out. Do not re-recommend.</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Ignore everything under scratch/ and examples/legacy/.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>How it works:</p>
+<ul>
+<li><strong>Flexible naming.</strong> Any file in the repo root or <code>.claude/</code> whose name contains <code>idm</code> + <code>standard(s)</code> and ends in <code>.md</code> is honored — <code>idm-standards.md</code>, <code>.idmstandards.md</code>, <code>_idm_standards.md</code>, <code>idm-standards-config.md</code>, etc. <code>.claude/idm-standards.md</code> is the recommended canonical name.</li>
+<li><strong>Committed = team-wide.</strong> Commit the file so everyone’s audits behave the same. For personal, machine-local preferences, add a git-ignored <code>.claude/idm-standards.local.md</code> (it overrides the team file).</li>
+<li><strong>Suppressed, not hidden.</strong> A directive means a finding is neither penalized, recommended, nor fixed — same as strictness 2 for that item. Every report lists what was suppressed (in a <strong>Suppressed by config</strong> section), so nothing is dropped silently.</li>
+<li><strong>Hard floor.</strong> A directive can <strong>never</strong> waive a serious finding — exposed secrets, committed PII, license violations, or serious scientific-correctness bugs are always scored and reported.</li>
+<li><strong>Frontmatter defaults.</strong> Optional <code>tier</code>/<code>strictness</code> frontmatter pre-fills the audit’s questions (an explicit argument still wins).</li>
+</ul>
+<p>The full spec lives in <a href="reference/user-config.md"><code>reference/user-config.md</code></a>.</p>
+</section>
+<section id="idm-personas" class="level2">
+<h2 class="anchored" data-anchor-id="idm-personas">IDM personas</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Persona</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Policy-maker</td>
+<td>Needs high-level summaries and policy implications</td>
+</tr>
+<tr class="even">
+<td>Policy-influencer</td>
+<td>Needs results, case studies, and model credibility</td>
+</tr>
+<tr class="odd">
+<td>Model-user</td>
+<td>Runs existing models; needs tutorials and user guides</td>
+</tr>
+<tr class="even">
+<td>Model-extender</td>
+<td>Adapts models; needs API reference and how-to guides</td>
+</tr>
+<tr class="odd">
+<td>Model-builder</td>
+<td>Builds models from scratch; needs architecture docs</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From the IDM marketplace: https://github.com/InstituteforDiseaseModeling/idm_standards</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to .claude-plugin/marketplace.json or install via Claude Code settings</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From the IDM marketplace: https://github.com/InstituteforDiseaseModeling/idm_standards</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to .claude-plugin/marketplace.json or install via Claude Code settings</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="updating-for-internal-use-only" class="level2">
 <h2 class="anchored" data-anchor-id="updating-for-internal-use-only">Updating (for internal use only)</h2>
-<ol type="1">
-<li>Download the engineering quality guidelines document as <code>admin/engineering_quality_guidelines.md</code>.</li>
-<li>Copy <code>admin/update_prompt.md</code> into Claude and run.</li>
-</ol>
+<ul>
+<li>Code-audit skills derive from the <a href="../eng_guidance/engineering_quality_guidelines.html">engineering quality guidelines</a>; see <code>admin/update_prompt.md</code>.</li>
+<li>Docs skills derive from the <code>docs_guidance/</code> folder; use the internal skill <code>/update-docs-plugin</code>.</li>
+<li>The eval harness in <code>evals/</code> (repo root) checks skill behavior end-to-end; see <code>evals/README.md</code>.</li>
+<li>User-config discovery and the hard floor are defined once in <code>reference/user-config.md</code>; every audit/fix skill references it. When adding a skill or scorer-dispatch prompt, thread the config through it (discover → inject/apply → report) or that skill will silently ignore the config.</li>
+</ul>
 
 
 </section>

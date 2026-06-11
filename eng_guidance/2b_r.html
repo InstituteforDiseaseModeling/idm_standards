@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>readme – IDM Standards</title>
+<title>b_r – IDM Standards</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -80,9 +45,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2eed2ed9e65153ba144c6b5d6bf11392.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-55eca34aa64a4a9bb03536e6e087c529.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -318,7 +283,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_docs_plugin/README.html">Docs plugin</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../eng_guidance/index.html">Engineering guidance</a></li><li class="breadcrumb-item"><a href="../eng_guidance/2b_r.html">R</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -384,6 +349,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="sidebar-item-container"> 
   <a href="../eng_guidance/2_python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../eng_guidance/2b_r.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -580,20 +551,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../idm_eng_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Engineering plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../idm_docs_plugin/README.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Docs plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../idm_uplifter_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uplifter plugin</span></a>
+  <a href="../idm_standards_plugin/README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDM-Standards plugin</span></a>
   </div>
 </li>
       </ul>
@@ -608,111 +567,89 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#idm-docs-plugin" id="toc-idm-docs-plugin" class="nav-link active" data-scroll-target="#idm-docs-plugin">IDM-Docs-Plugin</a>
+  <li><a href="#r-style-and-engineering-practice" id="toc-r-style-and-engineering-practice" class="nav-link active" data-scroll-target="#r-style-and-engineering-practice">R style and engineering practice</a>
   <ul class="collapse">
-  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a>
-  <ul class="collapse">
-  <li><a href="#audit-a-projects-documentation" id="toc-audit-a-projects-documentation" class="nav-link" data-scroll-target="#audit-a-projects-documentation">Audit a project’s documentation</a></li>
-  <li><a href="#check-documentation-structure" id="toc-check-documentation-structure" class="nav-link" data-scroll-target="#check-documentation-structure">Check documentation structure</a></li>
-  <li><a href="#check-audience-fit" id="toc-check-audience-fit" class="nav-link" data-scroll-target="#check-audience-fit">Check audience fit</a></li>
-  <li><a href="#review-python-docstrings" id="toc-review-python-docstrings" class="nav-link" data-scroll-target="#review-python-docstrings">Review Python docstrings</a></li>
-  </ul></li>
-  <li><a href="#idm-personas" id="toc-idm-personas" class="nav-link" data-scroll-target="#idm-personas">IDM personas</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#update" id="toc-update" class="nav-link" data-scroll-target="#update">Update</a></li>
+  <li><a href="#style" id="toc-style" class="nav-link" data-scroll-target="#style">Style</a></li>
+  <li><a href="#managing-r-dependencies" id="toc-managing-r-dependencies" class="nav-link" data-scroll-target="#managing-r-dependencies">Managing R dependencies</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
+  <li><a href="#project-structure-research-code" id="toc-project-structure-research-code" class="nav-link" data-scroll-target="#project-structure-research-code">Project structure (research code)</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#continuous-integration" id="toc-continuous-integration" class="nav-link" data-scroll-target="#continuous-integration">Continuous integration</a></li>
+  <li><a href="#expectations-by-tier" id="toc-expectations-by-tier" class="nav-link" data-scroll-target="#expectations-by-tier">Expectations by tier</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../plugins_readme.html">Claude plugins</a></li><li class="breadcrumb-item"><a href="../idm_docs_plugin/README.html">Docs plugin</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../eng_guidance/index.html">Engineering guidance</a></li><li class="breadcrumb-item"><a href="../eng_guidance/2b_r.html">R</a></li></ol></nav></header>
 
 
 
 
 
-<section id="idm-docs-plugin" class="level1">
-<h1>IDM-Docs-Plugin</h1>
-<p>A Claude Code plugin that checks and improves documentation against the <a href="https://institutefordiseasemodeling.github.io/idm_standards">IDM documentation standards</a>.</p>
-<section id="features" class="level2">
-<h2 class="anchored" data-anchor-id="features">Features</h2>
+<section id="r-style-and-engineering-practice" class="level1">
+<h1>R style and engineering practice</h1>
+<p>This page is the R counterpart to the <a href="../eng_guidance/2_python.html">Python guidance</a>. It is deliberately short: for style, follow the <a href="https://style.tidyverse.org/">Tidyverse style guide</a> (which builds on the <a href="https://google.github.io/styleguide/Rguide.html">Google R style guide</a>), and that’s most of it. IDM has no house R style rules beyond Tidyverse. What this page adds is IDM’s expectations for R <em>engineering practice</em> — dependencies, testing, project structure, documentation, and CI — organized by <a href="../eng_guidance/engineering_quality_guidelines.html#code-tiers">code tier</a>.</p>
+<section id="style" class="level2">
+<h2 class="anchored" data-anchor-id="style">Style</h2>
 <ul>
-<li><strong>Docs audit</strong> (<code>/idm-docs-plugin:docs_audit</code>): Comprehensive documentation audit that checks completeness against IDM standards, then applies the diataxis, persona-check, and python-docstrings skills to produce a unified report with prioritized recommendations.</li>
-<li><strong>Diataxis</strong> (<code>/idm-docs-plugin:diataxis</code>): Guides writing, reviewing, or improving documentation using the <a href="https://diataxis.fr">Diataxis framework</a> (tutorials, how-to guides, reference, explanation).</li>
-<li><strong>Persona Check</strong> (<code>/idm-docs-plugin:personas</code>): Checks that documentation is written appropriately for its target IDM personas (policy-maker, policy-influencer, model-user, model-extender, model-builder).</li>
-<li><strong>Python docstrings</strong> (<code>/idm-docs-plugin:python-docstrings</code>): Guidelines for writing Google-style Python docstrings consistent with IDM conventions and MkDocs/Quarto rendering.</li>
+<li>Follow the <a href="https://style.tidyverse.org/">Tidyverse style guide</a>: snake_case names, <code>&lt;-</code> for assignment, meaningful function names (verbs), pipes for readable chains.</li>
+<li>Enforce mechanically rather than by hand: <a href="https://lintr.r-lib.org/">lintr</a> for static analysis (a <code>.lintr</code> file at the repo root, via <code>lintr::use_lintr()</code>), and <a href="https://posit-dev.github.io/air/">Air</a> (or <a href="https://styler.r-lib.org/">styler</a>) for formatting. Air is the modern, fast option (the R analogue of <code>ruff format</code>), configured via <code>air.toml</code> (<code>usethis::use_air()</code>).</li>
+<li>As with Python, the aim is not complete uniformity — these tools handle the mechanical part so review can focus on substance.</li>
 </ul>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<section id="audit-a-projects-documentation" class="level3">
-<h3 class="anchored" data-anchor-id="audit-a-projects-documentation">Audit a project’s documentation</h3>
-<pre class="text"><code>/idm-docs-plugin:docs_audit                    # audit current directory
-/idm-docs-plugin:docs_audit /path/to/repo      # audit a specific path</code></pre>
-<p>Output: a unified report with strengths, weaknesses, and prioritized recommendations.</p>
+<section id="managing-r-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="managing-r-dependencies">Managing R dependencies</h2>
+<p>The R equivalents of the <a href="../eng_guidance/2_python.html#managing-python-dependencies">Python dependency guidance</a>:</p>
+<ul>
+<li><strong>Packages (Tier 1)</strong>: dependencies go in <code>DESCRIPTION</code> (<code>Imports</code>, not <code>Depends</code>; <code>Suggests</code> for test/documentation-only dependencies), as loosely as possible — version bounds only when older versions are genuinely known not to work. Packages should <em>not</em> include a lock file.</li>
+<li><strong>Research code where results must be reproducible (Tier 2/3)</strong>: use <a href="https://rstudio.github.io/renv/">renv</a>. A healthy renv setup commits <code>renv.lock</code>, <code>.Rprofile</code>, <code>renv/activate.R</code>, and <code>renv/settings.json</code>, and <code>renv::status()</code> reports the project synchronized. Note that renv does not capture the R version itself beyond recording it — state the R version in the README too.</li>
+<li><strong>Lightweight alternative</strong>: for simple projects where full renv feels heavy, a <code>DESCRIPTION</code> file plus a dated <a href="https://packagemanager.posit.co/">Posit Public Package Manager</a> snapshot URL in the README gives approximate reproducibility at much lower cost. As with Python, “no lock artifact” is a legitimate choice for the project owner if results don’t need exact reproduction.</li>
+<li><strong>packrat is deprecated</strong>: if a project still uses <code>packrat/</code>, migrate with <code>renv::migrate()</code>.</li>
+</ul>
 </section>
-<section id="check-documentation-structure" class="level3">
-<h3 class="anchored" data-anchor-id="check-documentation-structure">Check documentation structure</h3>
-<pre class="text"><code>/idm-docs-plugin:diataxis                      # review docs in current directory</code></pre>
-<p>Applies the Diataxis framework to identify and fix structural issues (for example, tutorials mixed with reference material).</p>
+<section id="testing" class="level2">
+<h2 class="anchored" data-anchor-id="testing">Testing</h2>
+<ul>
+<li>Use <a href="https://testthat.r-lib.org/">testthat</a> (edition 3: <code>Config/testthat/edition: 3</code> in <code>DESCRIPTION</code>). Test files in <code>tests/testthat/test-*.R</code>, mirroring the files in <code>R/</code>.</li>
+<li>testthat also works outside packages via <code>testthat::test_dir()</code> — shared research code should have at least a few tests covering the core scientific functions.</li>
+<li>As with Python, tests should primarily check end-to-end scientific correctness (parameter behavior, edge cases), not just units; see the <a href="../eng_guidance/3_tests.html">testing guidance</a>.</li>
+<li>For packages, <code>R CMD check</code> should pass with 0 errors, 0 warnings, 0 notes.</li>
+</ul>
 </section>
-<section id="check-audience-fit" class="level3">
-<h3 class="anchored" data-anchor-id="check-audience-fit">Check audience fit</h3>
-<pre class="text"><code>/idm-docs-plugin:personas                      # check persona alignment in current directory</code></pre>
-<p>Evaluates whether each documentation section is written for the right audience.</p>
+<section id="project-structure-research-code" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure-research-code">Project structure (research code)</h2>
+<ul>
+<li>One repo = one project: never <code>setwd()</code> or <code>rm(list = ls())</code> in committed code; build all paths with <a href="https://here.r-lib.org/">here</a><code>::here()</code> relative to the project root, never absolute paths.</li>
+<li>Factor reusable functions into <code>R/</code>, separate from the scripts that run the analysis; number run scripts if order matters, or use a <a href="https://docs.ropensci.org/targets/">targets</a> pipeline (<code>_targets.R</code>) for anything with multiple slow, interdependent steps.</li>
+<li>Keep raw data immutable and separate from derived data (e.g.&nbsp;<code>data/raw/</code> vs <code>data/derived/</code>).</li>
+<li><code>set.seed()</code> wherever randomness affects results; keep credentials in <code>.Renviron</code> (gitignored), accessed via <code>Sys.getenv()</code>.</li>
+</ul>
 </section>
-<section id="review-python-docstrings" class="level3">
-<h3 class="anchored" data-anchor-id="review-python-docstrings">Review Python docstrings</h3>
-<pre class="text"><code>/idm-docs-plugin:python-docstrings             # review docstrings in current directory</code></pre>
-<p>Checks Google-style formatting, completeness, and consistency with MkDocs/Quarto rendering.</p>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li>Document functions with <a href="https://roxygen2.r-lib.org/">roxygen2</a> comments; for packages, every exported function needs <code>@param</code>, <code>@return</code>, and a runnable <code>@examples</code>, and <code>NAMESPACE</code> is generated (never hand-edited).</li>
+<li>Packages: README (ideally <code>README.Rmd</code> rendered to <code>README.md</code>), <code>NEWS.md</code> as the changelog, at least one vignette, and a <a href="https://pkgdown.r-lib.org/">pkgdown</a> site.</li>
+<li>Research code: a README with purpose, installation (<code>renv::restore()</code>), how to run, and repo structure — see the <a href="../eng_guidance/4_documentation.html">documentation guidance</a>.</li>
+</ul>
 </section>
+<section id="continuous-integration" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-integration">Continuous integration</h2>
+<ul>
+<li>Use <a href="https://github.com/r-lib/actions">r-lib/actions</a> (v2) for GitHub Actions; install standard workflows with <code>usethis::use_github_action()</code>.</li>
+<li>Packages (Tier 1): <code>R-CMD-check.yaml</code> (the standard 3-OS × R release/devel/oldrel matrix), plus test coverage, lint, and pkgdown workflows.</li>
+<li>Research code (Tier 2): a single workflow that restores the renv library (<code>r-lib/actions/setup-renv</code>) and runs the tests or pipeline is usually enough.</li>
+</ul>
 </section>
-<section id="idm-personas" class="level2">
-<h2 class="anchored" data-anchor-id="idm-personas">IDM personas</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Persona</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Policy-maker</td>
-<td>Needs high-level summaries and policy implications</td>
-</tr>
-<tr class="even">
-<td>Policy-influencer</td>
-<td>Needs results, case studies, and model credibility</td>
-</tr>
-<tr class="odd">
-<td>Model-user</td>
-<td>Runs existing models; needs tutorials and user guides</td>
-</tr>
-<tr class="even">
-<td>Model-extender</td>
-<td>Adapts models; needs API reference and how-to guides</td>
-</tr>
-<tr class="odd">
-<td>Model-builder</td>
-<td>Builds models from scratch; needs architecture docs</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From the IDM marketplace: https://github.com/InstituteforDiseaseModeling/idm_standards</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to .claude-plugin/marketplace.json or install via Claude Code settings</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="update" class="level2">
-<h2 class="anchored" data-anchor-id="update">Update</h2>
-<p>Use the internal skill <code>/update-docs-plugin</code> to update the <code>idm_docs_plugin</code> based on changes to the <code>docs_guidance</code> folder.</p>
+<section id="expectations-by-tier" class="level2">
+<h2 class="anchored" data-anchor-id="expectations-by-tier">Expectations by tier</h2>
+<p>Using the <a href="../eng_guidance/engineering_quality_guidelines.html#code-tiers">IDM code tiers</a> (Tier 1 = library/package, Tier 2 = shared research code, Tier 3 = one-off):</p>
+<ul>
+<li><strong>Tier 3</strong>: git repo; README with purpose and entry point; dependencies discoverable (<code>library()</code> calls at the top of scripts); no <code>setwd()</code>/absolute paths; <code>set.seed()</code> where randomness matters; no secrets in the repo.</li>
+<li><strong>Tier 2</strong>: all of the above, plus healthy renv (or <code>DESCRIPTION</code> + dated snapshot); functions factored into <code>R/</code>; <code>here::here()</code> for paths; some testthat tests; Tidyverse style with lintr; LICENSE file; raw vs derived data separated; CI recommended.</li>
+<li><strong>Tier 1</strong>: all of the above, plus the standard package skeleton (<code>DESCRIPTION</code>, generated <code>NAMESPACE</code>, <code>man/</code>, <code>tests/testthat/</code>, <code>vignettes/</code>, <code>NEWS.md</code>); <code>R CMD check</code> 0/0/0; full CI; pkgdown site; published on CRAN (or <a href="https://r-universe.dev/">r-universe</a> as an interim); no <code>library()</code> calls inside <code>R/</code> (use namespacing or <code>@importFrom</code>).</li>
+</ul>
 
 
 </section>

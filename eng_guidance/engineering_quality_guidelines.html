@@ -45,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2eed2ed9e65153ba144c6b5d6bf11392.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-55eca34aa64a4a9bb03536e6e087c529.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -353,6 +353,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../eng_guidance/2b_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../eng_guidance/3_tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
@@ -545,20 +551,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../idm_eng_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Engineering plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../idm_docs_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docs plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../idm_uplifter_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uplifter plugin</span></a>
+  <a href="../idm_standards_plugin/README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDM-Standards plugin</span></a>
   </div>
 </li>
       </ul>
@@ -607,7 +601,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Cliff Kerr1, Christopher Lorton1, Robyn Stuart1, Romesh Abeysuriya2, Vlad-Stefan Harbuz3,<br>
 Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 <p>1 Institute for Disease Modeling; 2 Burnet Institute; 3 Open Source Pledge; 4 Google (former)</p>
-<p>Version 1.2 | 2026.03.26</p>
+<p>Version 1.3 | 2026.06.10</p>
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -805,7 +799,9 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </ol></li>
 <li><strong>Reproducible:</strong> If the results cannot be reproduced later, it wastes time and harms reputation.
 <ol type="1">
-<li>Dependencies are specified (in <code>pyproject.toml</code> or <code>DESCRIPTION</code>); if reproducibility is important (e.g.&nbsp;for research projects / non-library code), pinned versions, an environment file, or a lock file is included. [1,2,3]<br>
+<li>Dependencies are specified (in <code>pyproject.toml</code> or <code>DESCRIPTION</code>), as loosely as possible; library code should <em>not</em> include a lock file (though an optional <code>pylock.toml</code> is acceptable). [1,2,3]<br>
+</li>
+<li>If reproducibility of results is important (e.g.&nbsp;for research projects / non-library code), exact versions are captured: for simple projects, via <code>pip freeze &gt; requirements_locked.txt</code>; for more advanced projects, via <code>pip lock</code> (producing <code>pylock.toml</code>) or <code>renv.lock</code> (R). Which to use — including “none” — is the project owner’s choice. [2,3]<br>
 </li>
 <li>If random numbers are used, the same seeds give numerically identical results (where possible). [1,2,3]<br>
 </li>
@@ -949,7 +945,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 <section id="tools" class="level2">
 <h2 class="anchored" data-anchor-id="tools">Tools</h2>
 <ul>
-<li><a href="https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_eng_plugin">IDM-Eng-Plugin</a> is a Claude plugin created directly from this document that will evaluate a project using these guidelines, come up with a plan for making improvements, and then (if asked) implement this plan.</li>
+<li>The <a href="https://github.com/institutefordiseasemodeling/idm_standards/tree/main/idm_standards_plugin">IDM-Standards plugin</a> is a Claude plugin whose <code>audit-code</code> and <code>fix-code</code> skills are created directly from this document: they evaluate a project using these guidelines, come up with a plan for making improvements, and then (if asked) implement this plan.</li>
 </ul>
 </section>
 <section id="style-guides" class="level2">

@@ -45,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-2eed2ed9e65153ba144c6b5d6bf11392.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-8513331fe5f76dc3983aad2923734431.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-55eca34aa64a4a9bb03536e6e087c529.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -353,6 +353,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./eng_guidance/2b_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./eng_guidance/3_tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
@@ -545,20 +551,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./idm_eng_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Engineering plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./idm_docs_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docs plugin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./idm_uplifter_plugin/README.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uplifter plugin</span></a>
+  <a href="./idm_standards_plugin/README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDM-Standards plugin</span></a>
   </div>
 </li>
       </ul>
@@ -575,9 +569,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul>
   <li><a href="#claude-plugins" id="toc-claude-plugins" class="nav-link active" data-scroll-target="#claude-plugins">Claude plugins</a>
   <ul class="collapse">
-  <li><a href="#engineering-plugin" id="toc-engineering-plugin" class="nav-link" data-scroll-target="#engineering-plugin">Engineering plugin</a></li>
-  <li><a href="#docs-plugin" id="toc-docs-plugin" class="nav-link" data-scroll-target="#docs-plugin">Docs plugin</a></li>
-  <li><a href="#uplifter-plugin" id="toc-uplifter-plugin" class="nav-link" data-scroll-target="#uplifter-plugin">Uplifter plugin</a></li>
+  <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -591,30 +583,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <section id="claude-plugins" class="level1">
 <h1>Claude plugins</h1>
-<p>This repo publishes three Claude Code plugins that help apply IDM’s engineering and documentation standards. Install any of them from the IDM marketplace at <a href="https://github.com/InstituteforDiseaseModeling/idm_standards">github.com/InstituteforDiseaseModeling/idm_standards</a>.</p>
-<section id="engineering-plugin" class="level2">
-<h2 class="anchored" data-anchor-id="engineering-plugin">Engineering plugin</h2>
-<p><a href="./idm_eng_plugin/README.html"><code>idm_eng_plugin</code></a> scores and improves code against the <a href="./eng_guidance/engineering_quality_guidelines.html">IDM Software Engineering Quality Guidelines</a>, across quality, usability, and safety metrics.</p>
+<p>This repo publishes the <strong>IDM-Standards</strong> Claude Code plugin, which applies IDM’s engineering and documentation standards. Install it from the IDM marketplace at <a href="https://github.com/InstituteforDiseaseModeling/idm_standards">github.com/InstituteforDiseaseModeling/idm_standards</a>.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> as of v2.0 the three former plugins (<code>idm-eng-plugin</code>, <code>idm-docs-plugin</code>, <code>idm-uplifter-plugin</code>) are merged into one plugin, <a href="./idm_standards_plugin/README.html"><code>idm_standards_plugin</code></a>, and the skills were renamed verb-first. Uninstall the old three and install <code>idm-standards</code>.</p>
+</blockquote>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<p><a href="./idm_standards_plugin/README.html"><code>idm_standards_plugin</code></a> scores and improves code against the <a href="./eng_guidance/engineering_quality_guidelines.html">IDM Software Engineering Quality Guidelines</a> and documentation against the <a href="./docs_guidance/index.html">IDM documentation standards</a>. One install provides all skills; each is also individually invocable.</p>
+<p><strong>Code</strong></p>
 <ul>
-<li><strong>eng-quality-checker</strong> — scores a project and writes <code>engineering_score.md</code> with prioritized recommendations.</li>
-<li><strong>eng-quality-fixer</strong> — implements the recommendations from that report.</li>
+<li><strong>audit-code</strong> — scores a project and writes <code>code_audit.md</code> with prioritized recommendations (routes to <strong>audit-r-code</strong> for R projects).</li>
+<li><strong>fix-code</strong> — implements the recommendations from that report.</li>
+<li><strong>audit-code-exhaustive</strong> — fan-out per-file review across the whole project plus a repo-level review, aggregated into <code>code_audit_exhaustive.md</code> (incremental re-runs via <code>.audit_cache/</code>).</li>
 </ul>
-</section>
-<section id="docs-plugin" class="level2">
-<h2 class="anchored" data-anchor-id="docs-plugin">Docs plugin</h2>
-<p><a href="./idm_docs_plugin/README.html"><code>idm_docs_plugin</code></a> checks and improves documentation against the <a href="./docs_guidance/index.html">IDM documentation standards</a>.</p>
+<p><strong>Docs</strong></p>
 <ul>
-<li><strong>docs_audit</strong> — runs the other three skills and produces a unified report.</li>
-<li><strong>diataxis</strong> — reviews structure against the four Diátaxis topic types.</li>
-<li><strong>personas</strong> — checks each section is pitched at the right IDM persona.</li>
-<li><strong>python-docstrings</strong> — checks Google-style docstrings for completeness.</li>
+<li><strong>audit-docs</strong> — full documentation audit (<code>docs_audit.md</code>); composes the three skills below.</li>
+<li><strong>audit-docs-structure</strong> — reviews structure against the four Diátaxis topic types and IDM’s TOC organization.</li>
+<li><strong>audit-personas</strong> — checks each section is pitched at the right IDM persona.</li>
+<li><strong>audit-docstrings</strong> — checks Google-style docstrings for completeness.</li>
 </ul>
-</section>
-<section id="uplifter-plugin" class="level2">
-<h2 class="anchored" data-anchor-id="uplifter-plugin">Uplifter plugin</h2>
-<p><a href="./idm_uplifter_plugin/README.html"><code>idm_uplifter_plugin</code></a> runs a fan-out code review across an entire project. It dispatches a per-file reviewer agent in parallel waves and a repo-level reviewer agent concurrently, then aggregates the findings (with a top-of-report summary of CRITICALs, severity counts, and recurring issues) into <code>uplifter_report.md</code>. Re-runs are incremental via a <code>.uplifter_cache/</code> directory.</p>
+<p><strong>Combined</strong></p>
 <ul>
-<li><strong>idm-code-uplifter</strong> — orchestrates the run end-to-end (<code>/idm-uplifter-plugin:idm-code-uplifter</code>).</li>
+<li><strong>audit-project</strong> — runs code and/or docs audits with a single set of questions, summarized in <code>project_audit.md</code>.</li>
+<li><strong>fix-project</strong> — applies fixes from whichever audit reports exist.</li>
 </ul>
 
 
