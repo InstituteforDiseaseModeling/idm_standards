@@ -20,15 +20,17 @@ With `--roundtrip`, each fixture also runs **audit → fix-code → audit** and 
 
 ```bash
 # from the repo root
-make evals                      # all fixtures, audit-only
-make evals-roundtrip            # all fixtures, including the fix round-trip
+./run_evals                      # all fixtures, audit-only
+./run_evals --roundtrip          # all fixtures, including the fix round-trip
+./run_evals python_tier1         # one fixture
+./run_evals --cli "claude --model claude-fable-5"
+./run_evals --quiet              # suppress the live activity log
 
-# or directly
-python evals/run_evals.py                       # all fixtures
-python evals/run_evals.py python_tier1          # one fixture
-python evals/run_evals.py --roundtrip           # include round-trip
-python evals/run_evals.py --cli "claude --model claude-fable-5"
+# run_evals just wraps the underlying script, so this is equivalent:
+python evals/run_evals.py
 ```
+
+Each headless audit can take a few minutes. By default the harness streams a live activity log — tool calls, subagent dispatches, and elapsed time per event — so you can see progress instead of waiting in silence (it runs the CLI with `--output-format stream-json --verbose` and renders each event as a short indented line). Pass `--quiet` to print only the per-phase PASS/FAIL results.
 
 Requires PyYAML (`pip install pyyaml`) and the `claude` CLI on PATH with the `idm-standards` plugin installed (or run from this repo as a marketplace source).
 
@@ -48,4 +50,4 @@ Because scoring is **nondeterministic**, the assertions are deliberately loose (
    - to test a user config, commit a config file into `fixtures/<name>/project/.claude/idm-standards.md` (the harness's `git add -A` commits it); assert suppression via `must_not_appear` and the hard floor via a metric bound like `compliant: {max: 3}`
    - optional `report_version_contains` (routing assertion)
    - optional `strictness2: {strictness, must_appear, must_not_appear}` for a second-pass strictness check
-3. Run `python evals/run_evals.py <name>` and tune the bounds.
+3. Run `./run_evals <name>` and tune the bounds.

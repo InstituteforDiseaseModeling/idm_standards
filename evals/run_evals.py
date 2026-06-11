@@ -9,21 +9,29 @@ asserts against the expectations.
 
 Because the scorers are LLM-driven and nondeterministic, assertions are on *bounds* and
 *presence/absence patterns*, never exact scores. Runs cost real tokens — this is an
-on-demand harness (``make evals``), not a CI gate. See README.md for cost notes.
+on-demand harness (``./run_evals``), not a CI gate. See README.md for cost notes.
+
+By default the harness streams a live, per-event activity log (tool calls, subagent
+dispatches, elapsed time) from each headless CLI run, so you can see what it's doing
+instead of waiting in silence. Pass ``--quiet`` to suppress it and print only phase results.
 
 Usage:
     python run_evals.py                  # run all fixtures (audit only)
     python run_evals.py python_tier1     # run one fixture
     python run_evals.py --roundtrip      # also run the audit→fix→audit round-trip check
+    python run_evals.py --quiet          # suppress the live activity log
     python run_evals.py --cli "claude"   # override the CLI command
 """
 
 import argparse
+import json
 import re
 import shutil
 import subprocess
 import sys
 import tempfile
+import threading
+import time
 from pathlib import Path
 
 try:
@@ -39,18 +47,83 @@ FIXTURES = HERE / "fixtures"
 AUDIT_SKILL = {"r": "audit-r-code"}
 
 
-def run_skill(cli, project_dir, prompt):
-    """Invoke a slash command headlessly and return the CLI's combined output."""
+TIMEOUT = 1800
+
+
+def _truncate(s, n=70):
+    s = " ".join(str(s).split())
+    return s if len(s) <= n else s[: n - 1] + "…"
+
+
+def _format_event(evt):
+    """Render one stream-json event as a short activity line, or None to skip it."""
+    etype = evt.get("type")
+    if etype == "assistant":
+        lines = []
+        for block in evt.get("message", {}).get("content", []):
+            btype = block.get("type")
+            if btype == "text" and block.get("text", "").strip():
+                lines.append("💬 " + _truncate(block["text"]))
+            elif btype == "tool_use":
+                name = block.get("name", "?")
+                inp = block.get("input", {})
+                # Surface the most informative argument for common tools.
+                hint = (inp.get("command") or inp.get("description")
+                        or inp.get("subagent_type") or inp.get("file_path")
+                        or inp.get("pattern") or inp.get("skill") or "")
+                lines.append(f"🔧 {name}" + (f" — {_truncate(hint, 60)}" if hint else ""))
+        return lines
+    if etype == "result":
+        dur = evt.get("duration_ms")
+        suffix = f" ({dur/1000:.0f}s CLI)" if isinstance(dur, (int, float)) else ""
+        return [f"✓ result{suffix}"]
+    return None
+
+
+def run_skill(cli, project_dir, prompt, label="", verbose=True):
+    """Invoke a slash command headlessly, streaming a live activity log.
+
+    Uses ``--output-format stream-json --verbose`` so the CLI emits events (tool
+    calls, subagent dispatches, the final result) as they happen instead of going
+    silent until completion. Each event is rendered as a short indented line.
+    Returns the CLI's combined raw output.
+    """
     cmd = [
         *cli.split(),
         "-p", prompt,
         "--permission-mode", "acceptEdits",
         "--add-dir", str(project_dir),
+        "--output-format", "stream-json",
+        "--verbose",
     ]
-    proc = subprocess.run(
-        cmd, cwd=project_dir, capture_output=True, text=True, timeout=1800
+    start = time.monotonic()
+    proc = subprocess.Popen(
+        cmd, cwd=project_dir, stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT, text=True, bufsize=1,
     )
-    return proc.stdout + proc.stderr
+    timer = threading.Timer(TIMEOUT, proc.kill)
+    timer.start()
+    captured = []
+    try:
+        for line in proc.stdout:
+            captured.append(line)
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                evt = json.loads(line)
+            except json.JSONDecodeError:
+                if verbose:
+                    print(f"    | {_truncate(line, 100)}")
+                continue
+            rendered = _format_event(evt) if verbose else None
+            for out in rendered or []:
+                print(f"    | [{time.monotonic() - start:5.0f}s] {out}")
+        proc.wait()
+    finally:
+        timer.cancel()
+    print(f"    └─ {label or 'skill'} finished in {time.monotonic() - start:.0f}s")
+    return "".join(captured)
 
 
 def parse_report(report_path):
@@ -132,7 +205,7 @@ def check(expected, report, scope_key=None):
     return (not failures), failures
 
 
-def run_fixture(name, cli, roundtrip):
+def run_fixture(name, cli, roundtrip, verbose=True):
     """Run one fixture; return True if all assertions pass."""
     fixture = FIXTURES / name
     expected = yaml.safe_load((fixture / "expected.yaml").read_text())
@@ -154,7 +227,8 @@ def run_fixture(name, cli, roundtrip):
 
         # --- Primary audit ---
         print(f"[{name}] audit at tier {tier}, strictness {strictness} via {skill} ...")
-        run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness}")
+        run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness}",
+                  label="audit", verbose=verbose)
         report_path = proj / "code_audit.md"
         if not report_path.exists():
             print(f"  FAIL: {report_path.name} not written")
@@ -169,7 +243,8 @@ def run_fixture(name, cli, roundtrip):
         if "strictness2" in expected:
             s2 = expected["strictness2"]["strictness"]
             print(f"[{name}] re-audit at strictness {s2} ...")
-            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {s2}")
+            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {s2}",
+                      label=f"strictness-{s2} audit", verbose=verbose)
             report2 = parse_report(report_path)
             ok2, failures2 = check(expected, report2, scope_key="strictness2")
             all_ok &= ok2
@@ -185,8 +260,10 @@ def run_fixture(name, cli, roundtrip):
             before = report["metrics"].copy()
             before_overall = report["overall"]
             print(f"[{name}] fix-code, then re-audit ...")
-            run_skill(cli, proj, "/idm-standards:fix-code .")
-            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness}")
+            run_skill(cli, proj, "/idm-standards:fix-code .",
+                      label="fix-code", verbose=verbose)
+            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness}",
+                      label="re-audit", verbose=verbose)
             after = parse_report(report_path)
             rt_failures = []
             # (a) overall score must not decrease
@@ -224,10 +301,15 @@ def main():
     ap.add_argument("--cli", default="claude", help="Claude CLI command (default: claude)")
     ap.add_argument("--roundtrip", action="store_true",
                     help="also run the audit→fix→audit round-trip check (slow, costly)")
+    ap.add_argument("--quiet", action="store_true",
+                    help="suppress the live per-event activity log (only print phase results)")
     args = ap.parse_args()
 
     names = args.fixtures or sorted(p.name for p in FIXTURES.iterdir() if p.is_dir())
-    results = {n: run_fixture(n, args.cli, args.roundtrip) for n in names}
+    results = {
+        n: run_fixture(n, args.cli, args.roundtrip, verbose=not args.quiet)
+        for n in names
+    }
 
     print("\n=== Summary ===")
     for n, ok in results.items():

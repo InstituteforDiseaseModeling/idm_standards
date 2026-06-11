@@ -8,7 +8,7 @@ import requests
 #  - run_sir / run_sir_noisy are near-duplicates (a "concise" finding the config suppresses)
 #  - API_KEY is a hardcoded credential (a hard-floor finding the config tries, and must fail, to suppress)
 
-API_KEY = "sk-proj-FAKE1234567890abcdefghijklmnop"  # placeholder; do not commit real keys
+API_KEY = "a3f9c2e1b7d84656f0291a8c4be7d5039fbc18a2"
 
 
 def fetch_beta(region):
