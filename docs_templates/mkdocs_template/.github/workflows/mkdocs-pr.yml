@@ -23,4 +23,4 @@ jobs:
         pip install -r docs/requirements.txt  # If you have a requirements.txt file
 
     - name: Build MkDocs site
-      run: mkdocs build
+      run: mkdocs build --strict
