@@ -40,7 +40,7 @@ The [docs guidance](docs_guidance/) covers IDM's approach to documentation:
 This repo includes the **[IDM-Standards plugin](idm_standards_plugin/)** (v2.0) for automating quality checks against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md) and IDM documentation standards. Its skills:
 
 - `/idm-standards:audit-code` -- score a project and write `code_audit.md` (routes to `audit-r-code` for R projects); `/idm-standards:fix-code` applies the recommendations.
-- `/idm-standards:audit-docs` -- full documentation audit (`docs_audit.md`), composing `audit-diataxis`, `audit-personas`, and `audit-docstrings`.
+- `/idm-standards:audit-docs` -- full documentation audit (`docs_audit.md`), composing `audit-docs-structure`, `audit-personas`, and `audit-docstrings`.
 - `/idm-standards:audit-project` -- run code and/or docs audits with one set of questions; `/idm-standards:fix-project` applies fixes across both.
 - `/idm-standards:audit-code-exhaustive` -- fan-out per-file review aggregated into `code_audit_exhaustive.md`.
 

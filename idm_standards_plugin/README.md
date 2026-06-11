@@ -15,7 +15,7 @@ A Claude Code plugin that audits and improves scientific research code and docum
 | `audit-docs` | Comprehensive documentation audit, producing `docs_audit.md` | `docs_audit` |
 | `audit-project` | Runs code and/or docs audits with a single set of questions, summarized in `project_audit.md` | *(new)* |
 | `fix-project` | Applies fixes from whichever audit reports exist | *(new)* |
-| `audit-diataxis` | Reviews docs structure against the four topic types (tutorials, how-tos, reference, explanation) | `diataxis` |
+| `audit-docs-structure` | Reviews docs structure against the four topic types (tutorials, how-tos, reference, explanation) and IDM's TOC organization | `diataxis` |
 | `audit-personas` | Checks each docs section is pitched at the right IDM persona | `personas` |
 | `audit-docstrings` | Guidelines for Google-style Python docstrings | `python-docstrings` |
 
@@ -88,7 +88,7 @@ Output: `code_audit_exhaustive.md`; re-runs are incremental via `.audit_cache/`.
 
 ```text
 /idm-standards:audit-docs                                  # full docs audit → docs_audit.md
-/idm-standards:audit-diataxis                              # docs structure (topic types)
+/idm-standards:audit-docs-structure                        # docs structure (topic types + TOC)
 /idm-standards:audit-personas                              # audience fit
 /idm-standards:audit-docstrings                            # Python docstring review
 ```

@@ -23,6 +23,7 @@ Respect what the report records:
 - **Strictness**: if the report was generated at strictness 2 (material only), don't introduce fixes for stylistic issues the audit deliberately excluded.
 - **User decisions** in the Proposed solutions section (e.g. "Lock artifact: none — user opted out"): do not re-raise them.
 - **User config**: discover the project's idm-standards config following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Never implement a fix that a config directive suppresses — and the config **wins over the report**: if an older `code_audit.md` (generated before the config existed) still lists a now-suppressed recommendation, skip it. The hard floor still applies: directives can't stop you from fixing a serious finding (exposed secret, license violation, etc.) — those remain fix-or-flag.
+- **Version-control strategy**: if the invoking context (e.g. `fix-project`) passed a version-control strategy, use it and skip the question in Step 3. Otherwise ask it at the start of Step 3.
 
 ## Step 2: Create a Prioritized Implementation Plan
 
@@ -68,6 +69,19 @@ Proceed? (yes/no)
 If config directives suppressed any recommendations from the report, list them under a **"Skipped per your config"** heading in the plan (quoting the directive) rather than dropping them silently — but never skip a serious safety/correctness fix on account of a directive. Wait for the user to confirm before making any changes.
 
 ## Step 3: Implement Approved Changes
+
+### First, choose a version-control strategy
+
+Unless the invoking context already chose one (see Step 1), ask the user **once** with a single AskUserQuestion how to manage version control for these fixes, then follow it for every change below:
+
+- **One branch + PR for everything** (recommended default): create a new branch off the current one, implement all approved fixes as a series of logical commits, then push and open a single PR at the end.
+- **A branch + PR per priority group**: for each group of related fixes (by metric, or by the plan's priority groups), branch off the base, implement and commit just that group, push, and open a focused PR — keeping each review small — then return to the base branch for the next group.
+- **Commit on the current branch, no PR**: make logically-grouped commits on the current branch; don't branch or open a PR.
+- **Edit only, no git**: make the file changes and leave all staging, committing, and branching to the user.
+
+Confirm branch name(s) before creating them, and confirm before pushing or opening any PR (these are outward-facing). Use `gh pr create` for PRs. If the project is not a git repository, skip the branching/PR options, edit the files directly, and tell the user.
+
+### Then implement
 
 Work through the "Will implement" items **one at a time**, in priority order (impact = score x weight, highest first).
 
@@ -116,8 +130,8 @@ def function_name(param1, param2):
     Returns:
         type: Description of return value.
 
-    **Example**:
-    
+    Examples:
+
         function_name(param1, param2) # Give short usage example
     """
 ```

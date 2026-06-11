@@ -45,16 +45,13 @@ def some_function(arg1, arg2):
     Raises:
         ValueError: When and why this is raised.
 
-    **Example:**
-
-        ```python
+    Examples:
 
         # Show the most common researcher workflow. Use a self-contained snippet
         # that a researcher can run or adapt directly:
 
         model = Model(scenario, params)
         result = some_function(model.nodes.S[0], model.params.nticks)
-        ```
 
 
     Note:
@@ -62,6 +59,12 @@ def some_function(arg1, arg2):
         or behaviors that diverge from what the name implies.
     """
 ```
+
+Use the plural, unbolded `Examples:` section header. It must be a plain Google-style
+section header (not `**Example:**`) so that mkdocstrings/quartodoc parse it as a section —
+the bolded form was a Sphinx-only requirement and is not recognized by the MkDocs/Quarto toolchain.
+The example code is just an indented block under the header; do not wrap it in a ```` ```python ````
+fence (an indented block is already rendered as code).
 
 ---
 

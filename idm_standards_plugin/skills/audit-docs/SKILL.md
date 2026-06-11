@@ -1,6 +1,6 @@
 ---
 name: audit-docs
-description: Comprehensive documentation audit for IDM projects. Checks docs completeness against IDM standards (README, tutorials, API reference, changelog, etc.), then applies the audit-diataxis, audit-personas, and audit-docstrings skills to evaluate structure, audience fit, and docstring quality. Produces a unified docs_audit.md report with strengths, weaknesses, and prioritized recommendations. Use when reviewing, auditing, or scoring project documentation quality, or when the user invokes /idm-standards:audit-docs.
+description: Comprehensive documentation audit for IDM projects. Checks docs completeness against IDM standards (README, tutorials, API reference, changelog, etc.), then applies the audit-docs-structure, audit-personas, and audit-docstrings skills to evaluate structure, audience fit, and docstring quality. Produces a unified docs_audit.md report with strengths, weaknesses, and prioritized recommendations. Use when reviewing, auditing, or scoring project documentation quality, or when the user invokes /idm-standards:audit-docs.
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, Skill, AskUserQuestion
 ---
 
@@ -20,7 +20,7 @@ The invocation may also supply a **tier** (1–3, per the IDM code tiers: 1 = li
 
 If the user provided any specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "focus on the API reference" or "pay special attention to the README", make sure to emphasize those areas in your audit.
 
-**Discover the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now), unless the invoking context (e.g. `audit-project`) already passed the directives in. Apply directives scoped to docs (`audit-docs`, `audit-diataxis`, `audit-personas`, `audit-docstrings`, or untagged "all audits" directives) — a suppressed item is neither flagged as a weakness nor recommended. Directives can never waive a license violation or other hard-floor finding (see the reference). Exclude any config file and `.claude/` from the docs being audited.
+**Discover the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now), unless the invoking context (e.g. `audit-project`) already passed the directives in. Apply directives scoped to docs (`audit-docs`, `audit-docs-structure`, `audit-personas`, `audit-docstrings`, or untagged "all audits" directives) — a suppressed item is neither flagged as a weakness nor recommended. Directives can never waive a license violation or other hard-floor finding (see the reference). Exclude any config file and `.claude/` from the docs being audited.
 
 Scan for documentation artifacts:
 
@@ -74,9 +74,9 @@ Score each item as: **Present** / **Partial** / **Missing** / **N/A**
 
 Apply each of the three sub-skills by invoking them. For each, follow the skill's workflow against the project's documentation. You do not need to produce separate reports for each -- collect findings to merge into the final report. When invoking each sub-skill, restate any config directives relevant to it in the invocation text (these in-session sub-skills don't otherwise know about the config), and drop their suppressed findings when merging.
 
-#### 3a: Diataxis audit
+#### 3a: Doc structure audit
 
-Invoke the `audit-diataxis` skill. Evaluate:
+Invoke the `audit-docs-structure` skill. Evaluate:
 - Whether the major documentation types are represented (API reference, tutorials, and for complex projects, user guides grouping how-to and explanation topics by subject matter)
 - Whether existing docs are correctly categorized (e.g., a "tutorial" that is actually a how-to)
 - Whether there is cross-contamination between types (e.g., reference material embedded in tutorials)
@@ -174,7 +174,7 @@ A compact table summarizing the presence/absence of each expected documentation 
 | Advanced tutorial(s)       | ...     | ...   |
 | User guide                 | ...     | ...   |
 | API reference              | ...     | ...   |
-| Diataxis coverage          | ...     | ...   |
+| Doc structure coverage     | ...     | ...   |
 | Persona targeting          | ...     | ...   |
 | Docstring quality          | ...     | ...   |
 ```

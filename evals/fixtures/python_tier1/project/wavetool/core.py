@@ -16,7 +16,7 @@ def simulate(omega=1.0, zeta=0.05, x0=1.0, duration=10.0, dt=0.001):
     Returns:
         tuple: Arrays (t, x) of time points and displacements.
 
-    **Example**:
+    Examples:
 
         t, x = simulate(omega=2.0, zeta=0.1)
     """
@@ -38,7 +38,7 @@ def peak_frequency(t, x):
     Returns:
         float: Dominant frequency in Hz.
 
-    **Example**:
+    Examples:
 
         freq = peak_frequency(t, x)
     """
@@ -57,7 +57,7 @@ def damping_ratio(x):
     Returns:
         float: Estimated damping ratio.
 
-    **Example**:
+    Examples:
 
         zeta = damping_ratio(x)
     """

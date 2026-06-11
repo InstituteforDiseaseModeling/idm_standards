@@ -25,9 +25,11 @@ If more than one report exists and the scope wasn't restricted, confirm with the
 
 **Discover the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Apply its directives across both the code and docs fixes below: never implement a suppressed item (config wins over a stale report), but never skip a hard-floor fix (secrets, license, serious correctness).
 
+**Choose a version-control strategy once.** Before any changes, ask the user with a single AskUserQuestion how to manage version control for this run, offering the same four options `fix-code` does: **one branch + PR for everything**, **a branch + PR per priority group** (smaller, easier-to-review PRs), **commit on the current branch with no PR**, or **edit only, no git**. Pass the chosen strategy into `fix-code` (Step 2) so it doesn't re-ask, and apply the same choice to the docs fixes (Step 3). Confirm branch name(s) before creating them and confirm before pushing or opening any PR. If the project is not a git repository, edit files directly and tell the user.
+
 ## Step 2: Fix the code
 
-If acting on `code_audit.md`: invoke the **`fix-code`** skill via the Skill tool, passing the project path (fix-code discovers and applies the config itself). It handles its own planning, confirmation, implementation, and recording of proposed solutions (including the Tier 2/3 lock-artifact question).
+If acting on `code_audit.md`: invoke the **`fix-code`** skill via the Skill tool, passing the project path and the version-control strategy chosen in Step 1 (so fix-code doesn't re-ask). fix-code discovers and applies the config itself, and handles its own planning, confirmation, implementation, and recording of proposed solutions (including the Tier 2/3 lock-artifact question).
 
 If acting on `code_audit_exhaustive.md`: treat its CRITICAL and HIGH findings as additional fix candidates. Fold them into the plan below (or into fix-code's plan where they overlap with `code_audit.md` recommendations), fixing the clearly safe ones and recording the rest. Drop any folded finding a config directive suppresses (except hard-floor findings, which are always addressed).
 
@@ -37,11 +39,11 @@ If acting on `docs_audit.md`, implement its recommendations directly (there is n
 
 | Category | Examples |
 |----------|----------|
-| **Can implement now** | README sections (installation, usage, structure), LICENSE, CHANGELOG scaffold, folder READMEs, docstring fixes, broken links, TOC reorganization per the diataxis findings, Vale errors |
+| **Can implement now** | README sections (installation, usage, structure), LICENSE, CHANGELOG scaffold, folder READMEs, docstring fixes, broken links, TOC reorganization per the audit-docs-structure findings, Vale errors |
 | **Will scaffold** | Tutorial/notebook skeletons, docs-site config (`mkdocs.yml`/`_quarto.yml` from the templates in `docs_templates/`), API reference setup |
 | **Cannot implement** | Writing full tutorials or user guides (domain knowledge), persona-targeted rewrites needing scientific content, anything requiring publication decisions |
 
-Present the combined plan (code + docs) to the user **before making any changes**, wait for confirmation, then work through items in priority order (the reports rank them). Respect the report's recorded strictness and any user decisions. Drop docs items a config directive suppresses, listing them under "Skipped per your config" rather than dropping silently.
+Present the combined plan (code + docs) to the user **before making any changes**, wait for confirmation, then work through items in priority order (the reports rank them). Apply the version-control strategy chosen in Step 1 to the docs changes too (same branching/commit/PR behavior). Respect the report's recorded strictness and any user decisions. Drop docs items a config directive suppresses, listing them under "Skipped per your config" rather than dropping silently.
 
 ## Step 4: Record proposed solutions
 

@@ -1,5 +1,5 @@
 ---
-name: audit-diataxis
+name: audit-docs-structure
 description: Centralizes IDM's documentation topic-type guidance (borrowed from Diátaxis) so Claude can write, review, or improve documentation following the four distinct topic types (tutorials, how-tos, reference, explanation). Also includes guidance on how to organize those topics within the table of contents (TOC), including IDM's "user guide" grouping of how-to and explanation topics by subject matter.
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write
 ---

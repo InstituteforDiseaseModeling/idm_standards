@@ -17,7 +17,7 @@ This repo publishes the **IDM-Standards** Claude Code plugin, which applies IDM'
 **Docs**
 
 - **audit-docs** — full documentation audit (`docs_audit.md`); composes the three skills below.
-- **audit-diataxis** — reviews structure against the four Diátaxis topic types.
+- **audit-docs-structure** — reviews structure against the four Diátaxis topic types and IDM's TOC organization.
 - **audit-personas** — checks each section is pitched at the right IDM persona.
 - **audit-docstrings** — checks Google-style docstrings for completeness.
 

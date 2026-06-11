@@ -5,7 +5,7 @@ description: Use when docs_guidance/ has changed and the idm-standards plugin's 
 
 # Update the idm-standards docs skills from docs_guidance
 
-The documentation skills in `idm_standards_plugin/skills/` (`audit-docs`, `audit-diataxis`, `audit-personas`, `audit-docstrings`) are derived from, and must stay consistent with, the source documentation in `docs_guidance/`. When the guidance changes, these skills need to learn those changes — otherwise the plugin drifts from the project's actual documentation standards and the audit/review skills give stale advice.
+The documentation skills in `idm_standards_plugin/skills/` (`audit-docs`, `audit-docs-structure`, `audit-personas`, `audit-docstrings`) are derived from, and must stay consistent with, the source documentation in `docs_guidance/`. When the guidance changes, these skills need to learn those changes — otherwise the plugin drifts from the project's actual documentation standards and the audit/review skills give stale advice.
 
 This skill walks you through that sync: identify what changed, figure out which plugin skills need updating, propose the edits, apply them, bump the version, and update the changelog.
 
@@ -42,12 +42,12 @@ git diff --name-status <range> -- docs_guidance/
 
 ### 3. Map changes to plugin skills
 
-The plugin has four documentation skills: `audit-diataxis`, `audit-personas`, `audit-docstrings`, `audit-docs`. Use your judgment — read both the diff and the relevant `SKILL.md` files before deciding — but the typical mapping is:
+The plugin has four documentation skills: `audit-docs-structure`, `audit-personas`, `audit-docstrings`, `audit-docs`. Use your judgment — read both the diff and the relevant `SKILL.md` files before deciding — but the typical mapping is:
 
 | `docs_guidance/` area | Likely affected plugin skill |
 |-----------------------|------------------------------|
 | `personas/` | `skills/audit-personas/` |
-| `topic-types/` (diataxis concepts, tutorial/howto/reference/explanation, TOC) | `skills/audit-diataxis/` |
+| `topic-types/` (diataxis concepts, tutorial/howto/reference/explanation, TOC) | `skills/audit-docs-structure/` |
 | Docstring-specific guidance (wherever it lives) | `skills/audit-docstrings/` |
 | Broad structural or process changes | `skills/audit-docs/` |
 
