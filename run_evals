@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Run the idm-standards plugin eval harness. See evals/README.md.
+# Pass --roundtrip to include the audit -> fix -> audit round-trip (slower, more tokens).
+exec python "$(dirname "$0")/evals/run_evals.py" "$@"

@@ -1,0 +1,40 @@
+# Expected audit behavior for the Python Tier 1 fixture (a clean library).
+# The runner asserts on bounds and presence/absence patterns, not exact scores.
+project_subdir: project
+language: python
+tier: 1
+strictness: 1
+
+overall_score:
+  # A clean, tested library, but one deliberately missing CI, a CHANGELOG, tutorials,
+  # a composable class API, and git tags — so it honestly scores in the high 60s, not 70+.
+  min: 62
+  max: 100
+
+metrics:
+  correct:    {min: 6}   # good tests, but no CI and no peer-review evidence
+  # README + full docstrings, but no tutorials/doctests/user guide → reliably scores 5-6.
+  documented: {min: 5}
+  # Deps specified + deterministic, but the fixture is freshly git-init'd with no tags,
+  # so the rubric lands this at 5 ("deps specified, no semantic versioning via tags").
+  reproducible: {min: 5}
+
+# Recommendation text (case-insensitive substring match against the
+# Recommendations + Proposed solutions sections).
+must_appear:
+  - changelog            # no CHANGELOG.md present — legitimate Tier 1 gap
+  # The audit reliably recommends CI but phrases it "CI/CD" / "GitHub Actions", never the
+  # literal "continuous integration". Match the concrete artifact it prescribes instead —
+  # ".github/workflows" is unambiguous and avoids "ci" matching "concise"/"reproducible".
+  - .github/workflows    # no CI config present — legitimate Tier 1 gap
+
+# THE KEY TIER-1 ASSERTION: a library must never be told to add a lock file.
+must_not_appear:
+  - lock file
+  - lockfile
+  - "requirements_locked"
+  - "pylock.toml"
+  - "pip freeze"
+  - "pin dependencies"
+  - "pin the dependencies"
+  - "pinned versions"

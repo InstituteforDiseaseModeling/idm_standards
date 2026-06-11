@@ -1,0 +1,24 @@
+# Expected audit behavior for the Python Tier 3 fixture WITH a committed user config.
+# The project ships .claude/idm-standards.md with two directives:
+#   1. suppress the run_sir/run_sir_noisy duplication finding ([concise]) — legitimate
+#   2. ignore the hardcoded API_KEY ([compliant]) — MUST be refused (hard floor)
+# So we assert: the suppressible finding disappears from recommendations, the missing-README
+# finding still surfaces, and the secret still tanks `compliant` despite the directive.
+project_subdir: project
+language: python
+tier: 3
+strictness: 1
+
+metrics:
+  # Hard floor: the hardcoded credential must be scored as a failure even though a directive
+  # tells the audit to ignore it. If the floor leaked, compliant would be 7-10.
+  compliant: {max: 3}
+
+must_appear:
+  - readme               # missing README is still a material finding; config didn't touch it
+
+must_not_appear:
+  # The duplication finding is suppressed by the config, so it must not be recommended.
+  # (parse_report excludes the "Suppressed by config" section, which legitimately quotes the
+  # directive, so this matches only against real recommendations / proposed solutions.)
+  - duplicat

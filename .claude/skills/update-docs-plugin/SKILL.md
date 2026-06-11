@@ -1,11 +1,11 @@
 ---
 name: update-docs-plugin
-description: Use when docs_guidance/ has changed and idm_docs_plugin needs to be synced with those changes. Triggers on requests like "update the docs plugin", "sync the plugin with docs_guidance", "propagate the docs_guidance changes", "bump the docs plugin version", or "update the idm_docs_plugin changelog". Also use proactively after any edits to docs_guidance/ when the user indicates they're ready to release, and whenever the user mentions keeping the plugin in sync with the guidance source — even if they don't explicitly name the plugin.
+description: Use when docs_guidance/ has changed and the idm-standards plugin's documentation skills need to be synced with those changes. Triggers on requests like "update the docs skills", "sync the plugin with docs_guidance", "propagate the docs_guidance changes", "bump the plugin version", or "update the changelog for the docs changes". Also use proactively after any edits to docs_guidance/ when the user indicates they're ready to release, and whenever the user mentions keeping the plugin in sync with the guidance source — even if they don't explicitly name the plugin.
 ---
 
-# Update idm-docs-plugin from docs_guidance
+# Update the idm-standards docs skills from docs_guidance
 
-The skills in `idm_docs_plugin/skills/` are derived from, and must stay consistent with, the source documentation in `docs_guidance/`. When the guidance changes, the plugin's skills need to learn those changes — otherwise the plugin drifts from the project's actual documentation standards and the audit/review skills give stale advice.
+The documentation skills in `idm_standards_plugin/skills/` (`audit-docs`, `audit-docs-structure`, `audit-personas`, `audit-docstrings`) are derived from, and must stay consistent with, the source documentation in `docs_guidance/`. When the guidance changes, these skills need to learn those changes — otherwise the plugin drifts from the project's actual documentation standards and the audit/review skills give stale advice.
 
 This skill walks you through that sync: identify what changed, figure out which plugin skills need updating, propose the edits, apply them, bump the version, and update the changelog.
 
@@ -18,8 +18,8 @@ If the user specified a commit, commit range, or date range in their request, us
 Find the last-release commit with:
 
 ```bash
-CURRENT_VERSION=$(python -c "import json; print(json.load(open('idm_docs_plugin/.claude-plugin/plugin.json'))['version'])")
-git log -S "\"version\": \"$CURRENT_VERSION\"" --format=%H -- idm_docs_plugin/.claude-plugin/plugin.json | head -1
+CURRENT_VERSION=$(python -c "import json; print(json.load(open('idm_standards_plugin/.claude-plugin/plugin.json'))['version'])")
+git log -S "\"version\": \"$CURRENT_VERSION\"" --format=%H -- idm_standards_plugin/.claude-plugin/plugin.json | head -1
 ```
 
 That commit hash is your base. The range is `<commit>..HEAD`.
@@ -42,20 +42,20 @@ git diff --name-status <range> -- docs_guidance/
 
 ### 3. Map changes to plugin skills
 
-The plugin has four skills today: `diataxis`, `personas`, `python-docstrings`, `docs_audit`. Use your judgment — read both the diff and the relevant `SKILL.md` files before deciding — but the typical mapping is:
+The plugin has four documentation skills: `audit-docs-structure`, `audit-personas`, `audit-docstrings`, `audit-docs`. Use your judgment — read both the diff and the relevant `SKILL.md` files before deciding — but the typical mapping is:
 
 | `docs_guidance/` area | Likely affected plugin skill |
 |-----------------------|------------------------------|
-| `personas/` | `skills/personas/` |
-| `topic-types/` (diataxis concepts, tutorial/howto/reference/explanation, TOC) | `skills/diataxis/` |
-| Docstring-specific guidance (wherever it lives) | `skills/python-docstrings/` |
-| Broad structural or process changes | `skills/docs_audit/` |
+| `personas/` | `skills/audit-personas/` |
+| `topic-types/` (diataxis concepts, tutorial/howto/reference/explanation, TOC) | `skills/audit-docs-structure/` |
+| Docstring-specific guidance (wherever it lives) | `skills/audit-docstrings/` |
+| Broad structural or process changes | `skills/audit-docs/` |
 
 Files like `install.md`, `mkdocs.md`, `quarto.md`, `vale.md`, `home.md`, `index.md` are usually about tooling or landing pages, not skill content — but confirm with the user before dismissing them. A single guidance change can affect multiple plugin skills; note all of them.
 
 ### 4. Read the current plugin skills
 
-For each skill you identified as potentially affected, read `idm_docs_plugin/skills/<name>/SKILL.md`. You need the current content to (a) propose edits that preserve structure and voice, and (b) judge whether the guidance change is already reflected.
+For each skill you identified as potentially affected, read `idm_standards_plugin/skills/<name>/SKILL.md`. You need the current content to (a) propose edits that preserve structure and voice, and (b) judge whether the guidance change is already reflected.
 
 ### 5. Propose updates and wait for confirmation
 
@@ -97,31 +97,16 @@ The version scheme is `MAJOR.MINOR_YYYY.MM.DD`.
 
 Then update the version in **both** places:
 
-1. `idm_docs_plugin/.claude-plugin/plugin.json` — the top-level `version` field
-2. `.claude-plugin/marketplace.json` — the `version` field inside the entry whose `name` is `idm-docs-plugin` (leave the `idm-eng-plugin` entry alone)
+1. `idm_standards_plugin/.claude-plugin/plugin.json` — the top-level `version` field
+2. `.claude-plugin/marketplace.json` — the `version` field inside the single `idm-standards` entry
+
+Note: the docs skills share the plugin version with the code-audit skills (it is one plugin now). Coordinate with `idm_standards_plugin/admin/update_prompt.md` if both the docs guidance and the engineering guidance changed in the same release.
 
 ### 8. Update the changelog
 
-File: `idm_docs_plugin/CHANGELOG.md`.
+File: `idm_standards_plugin/CHANGELOG.md` (shared across all skills in the plugin).
 
-**If it doesn't exist yet**, create it using the format from `idm_eng_plugin/CHANGELOG.md`:
-
-```markdown
-# Changelog
-
-This document tracks updates to the IDM-Docs-Plugin.
-
-## Version <new> (<YYYY.MM.DD>)
-- <user-visible change>
-- <user-visible change>
-
-## Version 1.0 (2026.04.13)
-- Initial release.
-```
-
-(Include the historical `1.0` entry as a baseline so the changelog is complete — check git history to ground the date and description.)
-
-**If it exists**, prepend a new section above the previous one (newest first). Match the existing format.
+Prepend a new version section above the previous one (newest first), matching the existing format. Write bullets describing the documentation-skill changes; if the same release also changed the code-audit skills, fold both sets of changes into the one version entry.
 
 Write bullets from the user's perspective — what changed in the plugin's behavior or coverage, not a file-level diff summary. "Added persona guidance for policy-influencer" is better than "updated 3 files in skills/personas/".
 
