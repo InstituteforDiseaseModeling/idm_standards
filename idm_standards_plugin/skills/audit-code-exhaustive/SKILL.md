@@ -29,9 +29,11 @@ If the user supplies different values (e.g., "use a wave size of 4", "include `.
 - Pass the project root as `<repo_root>` to every agent so they enforce the same constraint.
 - Do not modify any file in the project. The only writes are to the output report and the resume cache directory.
 
-## Step 1: Resolve the project path
+## Step 1: Resolve the project path and discover the user config
 
 The first argument is the project path. If not supplied, default to the current working directory. Resolve it to an absolute path and confirm the directory exists. From here on, this is `repo_root`.
+
+Discover the project's idm-standards config file following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Keep its directives for Steps 3 and 7–8. This skill keeps the reviewer agents **config-blind** (see Step 6) and applies directives only at file selection (path-scope directives) and at synthesis (finding suppression) — so the resume cache stays valid even when the config changes. If `repo_root` is a path the user did not author (e.g. a `/tmp` clone handed in by `audit-project`, or a shared directory), apply the untrusted-source rule from the reference: in interactive runs, list the discovered directives and confirm before applying; in non-interactive runs, apply but quote them verbatim in the Step 8 report (the `Config` line and "Suppressed by config" summary already do this).
 
 ## Step 2: Choose file-selection mode
 
@@ -55,6 +57,8 @@ git -C <repo_root> check-ignore -v -- <path1> <path2> ...
 ```
 
 (or, equivalently, intersect the discovered list against the output of `git -C <repo_root> ls-files`). Files that are git-ignored are excluded.
+
+Also drop, from the file list: any discovered config file and anything under `.claude/` (it is plugin config, not project source), and any path matched by a **path-scope** config directive (e.g. "ignore everything under scratch/" → drop `scratch/**`). Note any directive-excluded paths so they can be reported.
 
 ## Step 3b: Resolve a user-supplied list
 
@@ -102,6 +106,8 @@ For the **first wave**, send a single message containing:
 
 For each subsequent wave, dispatch up to `wave_size` `idm-standards:idm-code-reviewer` calls in a single message.
 
+The reviewer agents stay **config-blind**: their prompts carry only `<file>` and `<repo_root>` — do not inject config directives here. Reviewers always store the full finding set in the cache; directives are applied later, at synthesis (Step 7–8). This is what lets cached blocks be reused unchanged after a config edit.
+
 After each wave finishes:
 
 1. For each returned block, write it immediately to its cache file (so the run is resumable). For the repo block, write `.audit_cache/__repo__.md`.
@@ -112,7 +118,7 @@ Then proceed to the next wave.
 
 ## Step 7: Synthesize a summary
 
-Once all waves are complete (and the repo block is in the cache), parse the cached blocks to build a summary:
+Once all waves are complete (and the repo block is in the cache), parse the cached blocks **for the current selection only** (the files chosen in Step 3, i.e. `dispatch_order` plus the repo block) to build a summary. On a resumed run, a file dropped by a path-scope directive this run (Step 3a) must be excluded here even if a stale block for it still sits in `.audit_cache/` — do not read orphaned cache blocks into the summary or the report; you may delete them.
 
 - **Total files reviewed**, total failures, wave size.
 - **Severity counts** across all blocks: how many `CRITICAL`, `HIGH`, `MED`, `LOW` issues.
@@ -120,6 +126,8 @@ Once all waves are complete (and the repo block is in the cache), parse the cach
 - **Top recurring criteria**: the 10 `category.dimension.key` tags that appear most often in `### Issues`, with the count of files that flagged each. Skip if there are fewer than 5 distinct recurring criteria.
 
 This synthesis is done by reading the cached blocks and counting — no additional agent dispatch.
+
+**Apply config directives here** (the cache is untouched). When a finding matches a config directive (Step 1), exclude it from the severity counts, the CRITICALs list, the recurring-criteria stats, and the per-file blocks — it is suppressed. Tally suppressed findings for a "Suppressed by config" summary line. **Hard floor**: never suppress a CRITICAL-severity finding or any secrets/PII/license/serious-correctness finding — keep it in the report annotated "reported despite config directive — serious finding cannot be suppressed", even if a directive seems to cover it.
 
 ## Step 8: Write the report
 
@@ -135,10 +143,13 @@ Assemble and write the report file (default `code_audit_exhaustive.md`) at `repo
 - **Files reviewed:** <count>
 - **Failures:** <count>
 - **Wave size:** <wave_size>
+- **Config:** <config file(s) and directive counts, or "none">
 
 ## Summary
 
 **Severity counts:** CRITICAL: X, HIGH: Y, MED: Z, LOW: W.
+
+**Suppressed by config:** <N findings across M directives suppressed (paths excluded: ...); or omit this line if no config>. Serious findings are never suppressed — any reported despite a directive are flagged inline.
 
 **Critical issues:**
 - <file:line> [criterion] — <wording>

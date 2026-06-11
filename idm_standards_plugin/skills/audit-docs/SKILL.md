@@ -20,6 +20,8 @@ The invocation may also supply a **tier** (1–3, per the IDM code tiers: 1 = li
 
 If the user provided any specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "focus on the API reference" or "pay special attention to the README", make sure to emphasize those areas in your audit.
 
+**Discover the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now), unless the invoking context (e.g. `audit-project`) already passed the directives in. Apply directives scoped to docs (`audit-docs`, `audit-diataxis`, `audit-personas`, `audit-docstrings`, or untagged "all audits" directives) — a suppressed item is neither flagged as a weakness nor recommended. Directives can never waive a license violation or other hard-floor finding (see the reference). Exclude any config file and `.claude/` from the docs being audited.
+
 Scan for documentation artifacts:
 
 - `README.md` at the repo root
@@ -70,7 +72,7 @@ Score each item as: **Present** / **Partial** / **Missing** / **N/A**
 
 ### Step 3: Run specialized audits
 
-Apply each of the three sub-skills by invoking them. For each, follow the skill's workflow against the project's documentation. You do not need to produce separate reports for each -- collect findings to merge into the final report.
+Apply each of the three sub-skills by invoking them. For each, follow the skill's workflow against the project's documentation. You do not need to produce separate reports for each -- collect findings to merge into the final report. When invoking each sub-skill, restate any config directives relevant to it in the invocation text (these in-session sub-skills don't otherwise know about the config), and drop their suppressed findings when merging.
 
 #### 3a: Diataxis audit
 
@@ -105,7 +107,7 @@ Evaluate the `mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml` configuration file a
 
 ### 3e: Grammar and style audit
 
-Run the Vale linter using the vale.ini configuration and styles under .github/styles. Evaluate how well the documentation follows the style and grammar rules, particularly where violated rules are considered errors.
+Run the Vale linter using the vale.ini configuration and styles under .github/styles. Evaluate how well the documentation follows the style and grammar rules, particularly where violated rules are considered errors. If a config directive names a Vale rule to skip (e.g. "Skip Vale rule Google.Passive"), omit violations of that rule from the findings.
 
 ### Step 4: Assemble the report
 
@@ -117,9 +119,12 @@ Produce a single structured report and write it to `docs_audit.md` **in the proj
 - **Project**: `<project_path>`
 - **Tier**: <tier> (<supplied or inferred>)
 - **Strictness**: <strictness>
+- **Config**: <config file(s) and directive counts, or "none">
 - **Date**: <YYYY-MM-DD>
 - **Version**: idm-standards:audit-docs <skill version>
 ```
+
+Apply config directives when assembling the Weaknesses and Recommendations sections: drop any item a directive suppresses (never a hard-floor item). If a config file was found, add a short **Suppressed by config** note listing each active directive and what it matched (or "nothing matched this run"); never drop an item silently.
 
 Then these sections:
 

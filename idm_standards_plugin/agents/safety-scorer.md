@@ -37,7 +37,7 @@ You will receive a prompt specifying:
 - `tier`: 1, 2, or 3
 - `strictness`: 1 (strict) or 2 (material only)
 - Tier-specific rubrics for compliant and reproducible
-- Possibly a list of recorded user decisions/exclusions to respect (e.g. a recorded decision not to use a lock artifact)
+- Possibly a list of recorded user decisions, project config directives, and exclusions to respect (e.g. a recorded decision not to use a lock artifact)
 
 Explore the project and score each metric as an integer from 0–10.
 
@@ -115,6 +115,8 @@ git tag -l 2>/dev/null | tail -10
 **General scoring principle**: If you cannot identify specific improvements for a metric, score 10/10. If scoring below 10, always list the specific improvements that would raise the score in your reason. Don't dock points for theoretical issues — only for concrete, observable problems.
 
 **Strictness rule**: at strictness 2 (material only), do not dock points or report findings for purely stylistic or convention-based issues. Only penalize and report issues that materially affect correctness, usability, or safety — for this agent, nearly everything (secrets, licensing, irreproducibility) is material, but e.g. changelog formatting or versioning-style preferences are not. At strictness 1 (default), report everything.
+
+**Config directives**: respect any project config directives/exclusions in your prompt for non-serious matters — e.g. a recorded "lock artifact: none" decision means do not penalize or re-recommend a lock file. **Hard floor (this agent owns it)**: a directive can NEVER waive a `failed: true` condition. Exposed secrets/credentials, committed PII, proprietary-data misuse, and license violations are always scored (`score: 0`, `failed: true`) and always reported, even if a directive says to ignore them — annotate "reported despite config directive — serious finding cannot be suppressed". A config can quiet style nags; it cannot hide a leaked key.
 
 Use the rubric provided in your prompt. If no explicit rubric is given, use these defaults:
 

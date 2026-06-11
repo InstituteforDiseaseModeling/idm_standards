@@ -38,7 +38,7 @@ You will receive a prompt specifying:
 - `strictness`: 1 (strict) or 2 (material only)
 - Which metrics are N/A (for Tier 3: `powerful` and `accessible` are N/A — omit them)
 - Tier-specific rubrics for each metric
-- Possibly a list of recorded user decisions/exclusions to respect
+- Possibly a list of recorded user decisions, project config directives, and exclusions to respect
 
 Explore the project and score each non-N/A metric as an integer from 0–10.
 
@@ -97,6 +97,8 @@ Explore the project and score each non-N/A metric as an integer from 0–10.
 **General scoring principle**: If you cannot identify specific improvements for a metric, score 10/10. If scoring below 10, always list the specific improvements that would raise the score in your reason. Don't dock points for theoretical issues — only for concrete, observable problems.
 
 **Strictness rule**: at strictness 2 (material only), do not dock points or report findings for purely stylistic or convention-based issues — style-guide adherence, naming conventions, formatting, documentation phrasing. Only penalize and report issues that materially affect correctness, usability, or safety (broken installs, missing or misleading docs, real performance problems). At strictness 1 (default), report everything.
+
+**Config directives**: respect any project config directives/exclusions in your prompt — do not penalize or recommend anything a directive covers (e.g. "never recommend adding type hints", "don't require a comprehensive user guide").
 
 Use the rubric provided in your prompt. If no explicit rubric is given, use these defaults:
 

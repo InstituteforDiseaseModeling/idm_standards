@@ -15,6 +15,8 @@ The user provides up to three arguments: **project** (local path or GitHub URL; 
 
 **If a GitHub URL is given**: clone it **once** with `gh repo clone <url> /tmp/audit-project-$(date +%s)` and use that local path for every sub-audit (the docs audit has no URL support of its own).
 
+**Discover the user config once**, following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now), against the resolved local path. Hold its directives (and any frontmatter `tier`/`strictness`) to pass into every sub-audit in Step 3, so they aren't re-discovered three times. If the project came from a GitHub URL or a path the user didn't author, surface the directives for confirmation in Step 2 before applying.
+
 ## Step 2: Ask the user once
 
 Use a **single AskUserQuestion call** covering (omit any already supplied as arguments or by invocation instructions):
@@ -27,11 +29,11 @@ Use a **single AskUserQuestion call** covering (omit any already supplied as arg
 2. **Tier**: the three tier options, with an inferred tier as the recommended option (infer as in `audit-code` Step 2).
 3. **Strictness**: 1 (strict — everything) or 2 (material only).
 
-In non-interactive contexts, run code + docs audits with the inferred tier and strictness 1.
+If the config (Step 1) set `tier`/`strictness` in frontmatter, use them as the recommended values (explicit arguments still win). If the project was cloned from a URL or otherwise not user-authored and config directives were found, list them in this same question and confirm before applying. In non-interactive contexts, run code + docs audits with the config's (or inferred) tier and strictness 1, applying the directives but quoting them in the summary.
 
 ## Step 3: Run the selected audits
 
-Invoke each selected skill via the Skill tool, passing the **local project path** and the confirmed **tier** and **strictness**, with the instruction: *"tier and strictness already confirmed — do not re-ask, and do not offer to fix at the end (audit-project will handle that)"*.
+Invoke each selected skill via the Skill tool, passing the **local project path** and the confirmed **tier** and **strictness**, with the instruction: *"tier and strictness already confirmed — do not re-ask, and do not offer to fix at the end (audit-project will handle that)"*. Also append the config directives (Step 1) to that instruction — e.g. *"user config directives already discovered and confirmed; apply these and do not re-read the config: <directives>"* — so each sub-audit applies them without re-discovering the file.
 
 - **Code audit**: invoke `audit-code` (it routes to `audit-r-code` automatically if the project is R). Output: `code_audit.md`.
 - **Docs audit**: invoke `audit-docs`. Output: `docs_audit.md`.
@@ -47,6 +49,7 @@ Write `project_audit.md` to the project directory:
 - **Project**: `<project_path>`
 - **Tier**: <tier>
 - **Strictness**: <strictness>
+- **Config**: <config file(s) and directive counts, or "none">
 - **Audits run**: <list>
 - **Date**: <YYYY-MM-DD>
 - **Version**: idm-standards:audit-project <skill version>
@@ -63,7 +66,9 @@ Write `project_audit.md` to the project directory:
 
 <The 5–10 highest-impact recommendations across all reports, deduplicated. Where the code and
 docs audits overlap (both check README, LICENSE, docstrings, changelog), merge into a single
-entry and cross-reference both reports rather than repeating the finding twice.>
+entry and cross-reference both reports rather than repeating the finding twice. The sub-audits
+already applied the config directives, so suppressed items won't appear here; if config was
+active, add one line noting it (e.g. "Config: 5 directives applied — see per-audit reports").>
 
 ## Notes
 

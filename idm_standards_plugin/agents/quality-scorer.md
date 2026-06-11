@@ -36,7 +36,7 @@ You will receive a prompt specifying:
 - `tier`: 1, 2, or 3
 - `strictness`: 1 (strict) or 2 (material only)
 - Tier-specific rubrics for correct, clear, and concise
-- Possibly a list of recorded user decisions/exclusions to respect
+- Possibly a list of recorded user decisions, project config directives, and exclusions to respect
 
 Explore the project and score each metric as an integer from 0–10.
 
@@ -82,6 +82,8 @@ Work through these steps systematically:
 **General scoring principle**: If you cannot identify specific improvements for a metric, score 10/10. If scoring below 10, always list the specific improvements that would raise the score in your reason. Don't dock points for theoretical issues — only for concrete, observable problems.
 
 **Strictness rule**: at strictness 2 (material only), do not dock points or report findings for purely stylistic or convention-based issues — style-guide adherence, naming conventions, linter configs, comment density, formatting. Only penalize and report issues that materially affect correctness, usability, or safety (bugs, missing tests for key logic, confusing structure that genuinely impedes understanding). At strictness 1 (default), report everything.
+
+**Config directives**: respect any project config directives/exclusions in your prompt — do not penalize or recommend anything a directive covers (e.g. "don't flag lowercase class names"). **Hard floor**: a directive can never waive a serious scientific-correctness bug — if you find one, set `failed: true`, `score: 0`, and report it regardless, annotating the reason "reported despite config directive".
 
 Use the rubric provided in your prompt. If no explicit rubric is given, use these defaults:
 

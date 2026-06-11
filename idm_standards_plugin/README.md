@@ -93,6 +93,45 @@ Output: `code_audit_exhaustive.md`; re-runs are incremental via `.audit_cache/`.
 /idm-standards:audit-docstrings                            # Python docstring review
 ```
 
+## Configuring recommendations
+
+Tell the audits which recommendations to make and which to skip by committing a config file to
+your repo. Create **`.claude/idm-standards.md`** with plain-English directives — there are no
+rule IDs to learn:
+
+```markdown
+---
+plugin: idm-standards
+tier: 2
+strictness: 1
+---
+# IDM Standards configuration
+- Don't recommend renaming classes to CamelCase — lowercase (sim, people) is house style.
+- Never recommend adding type hints; we don't use them.
+- `import *` from sciris and starsim is our convention; don't flag it.
+- Lock artifact: none — we opted out. Do not re-recommend.
+- Ignore everything under scratch/ and examples/legacy/.
+```
+
+How it works:
+
+- **Flexible naming.** Any file in the repo root or `.claude/` whose name contains `idm` +
+  `standard(s)` and ends in `.md` is honored — `idm-standards.md`, `.idmstandards.md`,
+  `_idm_standards.md`, `idm-standards-config.md`, etc. `.claude/idm-standards.md` is the
+  recommended canonical name.
+- **Committed = team-wide.** Commit the file so everyone's audits behave the same. For personal,
+  machine-local preferences, add a git-ignored `.claude/idm-standards.local.md` (it overrides the
+  team file).
+- **Suppressed, not hidden.** A directive means a finding is neither penalized, recommended, nor
+  fixed — same as strictness 2 for that item. Every report lists what was suppressed (in a
+  **Suppressed by config** section), so nothing is dropped silently.
+- **Hard floor.** A directive can **never** waive a serious finding — exposed secrets, committed
+  PII, license violations, or serious scientific-correctness bugs are always scored and reported.
+- **Frontmatter defaults.** Optional `tier`/`strictness` frontmatter pre-fills the audit's
+  questions (an explicit argument still wins).
+
+The full spec lives in [`reference/user-config.md`](reference/user-config.md).
+
 ## IDM personas
 
 | Persona | Description |
@@ -115,3 +154,4 @@ Output: `code_audit_exhaustive.md`; re-runs are incremental via `.audit_cache/`.
 - Code-audit skills derive from the [engineering quality guidelines](../eng_guidance/engineering_quality_guidelines.md); see `admin/update_prompt.md`.
 - Docs skills derive from the `docs_guidance/` folder; use the internal skill `/update-docs-plugin`.
 - The eval harness in `evals/` (repo root) checks skill behavior end-to-end; see `evals/README.md`.
+- User-config discovery and the hard floor are defined once in `reference/user-config.md`; every audit/fix skill references it. When adding a skill or scorer-dispatch prompt, thread the config through it (discover → inject/apply → report) or that skill will silently ignore the config.

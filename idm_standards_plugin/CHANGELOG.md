@@ -15,6 +15,7 @@ This document tracks updates to the IDM-Standards plugin (formerly three separat
 - **Proposed solutions in the report**: recommendations that can't be automated get concrete proposed approaches, and the fixers record skipped/unfixable items (and user decisions) in a "Proposed solutions" section of the audit report.
 - **Audit→fix chaining**: each audit ends by offering to run its fix counterpart immediately.
 - Added an eval harness (`evals/` at the repo root) with fixture projects and round-trip checks (score must not decrease after fixes; implemented fixes must not be re-identified).
+- **User config file**: a project can commit `.claude/idm-standards.md` (flexible naming — any root/`.claude` file whose name contains `idm` + `standard(s)` and ends in `.md`) with plain-English directives like "don't recommend renaming classes to CamelCase". Every audit and fix skill discovers it and suppresses matching findings (neither penalized, recommended, nor fixed), with an optional git-ignored `.claude/idm-standards.local.md` for personal overrides and frontmatter `tier`/`strictness` defaults. A **hard floor** means directives can never waive serious findings (exposed secrets, PII, license violations, scientific-correctness bugs, CRITICAL exhaustive findings) — these are always scored and reported. Reports gain a `Config` line and a "Suppressed by config" section so nothing is dropped silently. Discovery, precedence, and the floor are defined once in `reference/user-config.md`.
 
 ---
 

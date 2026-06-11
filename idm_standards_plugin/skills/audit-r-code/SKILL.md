@@ -33,7 +33,7 @@ When inferring a suggested tier:
 
 ### Difference 4: R-specific exploration instructions (audit-code Step 5)
 
-Use the same three agents (`quality-scorer`, `usability-scorer`, `safety-scorer`) with the same prompt templates, strictness block, and user-decisions block as audit-code, but replace the per-agent "Instructions" lists with these R-specific versions (and paste the rubrics from the **R** schema):
+Use the same three agents (`quality-scorer`, `usability-scorer`, `safety-scorer`) with the same prompt templates, strictness block, and user-decisions block as audit-code, but replace the per-agent "Instructions" lists with these R-specific versions (and paste the rubrics from the **R** schema). The user-config discovery, merge, hard floor, and reporting from audit-code (Steps 1, 4, 5, 8, 9) apply identically — config directives are expanded verbatim into the same user-decisions block here, and lock-artifact directives like "lock artifact: none" map to the R lock-artifact rules below.
 
 **quality-scorer instructions (R)**:
 1. Explore the project: read key source files (`R/`, scripts, `*.Rmd`), check structure, naming, roxygen2 comments, duplication.

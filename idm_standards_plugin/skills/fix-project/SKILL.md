@@ -23,11 +23,13 @@ If the invoking context restricts scope (e.g. `audit-docs` chained here with "ac
 
 If more than one report exists and the scope wasn't restricted, confirm with the user via one AskUserQuestion (multiSelect) which reports to act on — default: all found.
 
+**Discover the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Apply its directives across both the code and docs fixes below: never implement a suppressed item (config wins over a stale report), but never skip a hard-floor fix (secrets, license, serious correctness).
+
 ## Step 2: Fix the code
 
-If acting on `code_audit.md`: invoke the **`fix-code`** skill via the Skill tool, passing the project path. It handles its own planning, confirmation, implementation, and recording of proposed solutions (including the Tier 2/3 lock-artifact question).
+If acting on `code_audit.md`: invoke the **`fix-code`** skill via the Skill tool, passing the project path (fix-code discovers and applies the config itself). It handles its own planning, confirmation, implementation, and recording of proposed solutions (including the Tier 2/3 lock-artifact question).
 
-If acting on `code_audit_exhaustive.md`: treat its CRITICAL and HIGH findings as additional fix candidates. Fold them into the plan below (or into fix-code's plan where they overlap with `code_audit.md` recommendations), fixing the clearly safe ones and recording the rest.
+If acting on `code_audit_exhaustive.md`: treat its CRITICAL and HIGH findings as additional fix candidates. Fold them into the plan below (or into fix-code's plan where they overlap with `code_audit.md` recommendations), fixing the clearly safe ones and recording the rest. Drop any folded finding a config directive suppresses (except hard-floor findings, which are always addressed).
 
 ## Step 3: Fix the docs
 
@@ -39,7 +41,7 @@ If acting on `docs_audit.md`, implement its recommendations directly (there is n
 | **Will scaffold** | Tutorial/notebook skeletons, docs-site config (`mkdocs.yml`/`_quarto.yml` from the templates in `docs_templates/`), API reference setup |
 | **Cannot implement** | Writing full tutorials or user guides (domain knowledge), persona-targeted rewrites needing scientific content, anything requiring publication decisions |
 
-Present the combined plan (code + docs) to the user **before making any changes**, wait for confirmation, then work through items in priority order (the reports rank them). Respect the report's recorded strictness and any user decisions.
+Present the combined plan (code + docs) to the user **before making any changes**, wait for confirmation, then work through items in priority order (the reports rank them). Respect the report's recorded strictness and any user decisions. Drop docs items a config directive suppresses, listing them under "Skipped per your config" rather than dropping silently.
 
 ## Step 4: Record proposed solutions
 

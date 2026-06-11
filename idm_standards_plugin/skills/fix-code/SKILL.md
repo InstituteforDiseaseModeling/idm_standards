@@ -22,6 +22,7 @@ Read the full contents of the report — particularly the **Recommendations**, *
 Respect what the report records:
 - **Strictness**: if the report was generated at strictness 2 (material only), don't introduce fixes for stylistic issues the audit deliberately excluded.
 - **User decisions** in the Proposed solutions section (e.g. "Lock artifact: none — user opted out"): do not re-raise them.
+- **User config**: discover the project's idm-standards config following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Never implement a fix that a config directive suppresses — and the config **wins over the report**: if an older `code_audit.md` (generated before the config existed) still lists a now-suppressed recommendation, skip it. The hard floor still applies: directives can't stop you from fixing a serious finding (exposed secret, license violation, etc.) — those remain fix-or-flag.
 
 ## Step 2: Create a Prioritized Implementation Plan
 
@@ -64,7 +65,7 @@ Estimated score improvement: +12 to +18 points (depending on test coverage achie
 Proceed? (yes/no)
 ```
 
-Wait for the user to confirm before making any changes.
+If config directives suppressed any recommendations from the report, list them under a **"Skipped per your config"** heading in the plan (quoting the directive) rather than dropping them silently — but never skip a serious safety/correctness fix on account of a directive. Wait for the user to confirm before making any changes.
 
 ## Step 3: Implement Approved Changes
 
@@ -238,6 +239,8 @@ If implementing one recommendation would negatively impact another metric, **sto
 - Any user decisions made during this run (e.g. "Lock artifact: none — user opted out (YYYY-MM-DD). Do not re-recommend."), so future audit and fix runs respect them
 
 Do not modify the report's scores or other sections.
+
+**Offer to persist durable preferences.** If during this run the user made a decision that should apply to *every* future audit (not just this report) — e.g. "stop recommending type hints", or a permanent opt-out — offer to save it as a directive in `.claude/idm-standards.md` (create the file from the template in `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` if absent). Per-run-only decisions stay in the report's Proposed solutions, as above; durable ones belong in the config. If you create a `.local.md` overlay, offer to add `.claude/*.local.md` to the project's `.gitignore`.
 
 Then provide a concise summary in chat:
 

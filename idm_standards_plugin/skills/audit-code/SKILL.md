@@ -34,6 +34,8 @@ The user provides up to three arguments:
 
 If the user provided any other specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "ignore missing docstrings", make sure to not penalize the project for that in the scoring and omit it from the recommendations. If the invoking context says the tier and strictness are **already confirmed** (e.g., this skill was invoked by `audit-project`), skip the questions in Step 2.
 
+**Discover the user config.** After resolving the project path (including any `/tmp` clone), discover the project's idm-standards config file following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Collect its directives into the same set as the invocation instructions above — directives suppress matching findings (not penalized, not recommended) but, per the hard floor in that reference, can never waive serious safety/correctness findings. If the project came from a GitHub URL or a path the user didn't author, confirm the directives before applying them (interactive runs). Frontmatter `tier`/`strictness` pre-fill Step 2. When this skill is invoked by `audit-project`, the config has already been discovered and its directives are passed in the invocation instructions — do not re-read it.
+
 ## Step 2: Confirm tier and strictness
 
 **Tier definitions (brief)**:
@@ -50,7 +52,7 @@ Then **confirm with the user** using a single AskUserQuestion call with two ques
 1. **Tier**: present the three tiers (with the definitions above) as options, with the inferred tier as the recommended option.
 2. **Strictness** (only if not supplied as an argument): "1 — strict: report everything (default)" vs "2 — material only: skip purely stylistic/convention findings".
 
-In non-interactive contexts (no user available to answer), use the inferred tier and strictness 1, and note this in the report.
+If the config file (Step 1) set `tier` or `strictness` in its frontmatter, use those as the pre-filled/recommended values (an explicit argument still wins). In non-interactive contexts (no user available to answer), use the config values if present, otherwise the inferred tier and strictness 1, and note this in the report.
 
 ## Step 3: Read the scoring schema
 
@@ -72,6 +74,8 @@ Look in the project directory for a prior `code_audit.md` (or, for compatibility
 4. The prior report's **date** (for `git log --since=<date>` in Step 7).
 
 **Important**: do NOT give the prior report's findings or scores to the scorer agents in Step 5 — they must score fresh, so old findings don't anchor new ones. Only recorded *user decisions* (which are instructions, not findings) are passed along.
+
+**Merge with the config.** Combine the config directives (Step 1) with the recorded user decisions into a single exclusions set to hand the scorers in Step 5. The config is the durable layer: if a recorded report decision conflicts with a current config directive (e.g. the report says "always recommend a lock file" but the config says "lock artifact: none"), drop the stale decision in favor of the directive and note it in chat.
 
 ## Step 5: Dispatch sub-agents in parallel
 
@@ -99,8 +103,9 @@ Tier <tier> rubric for quality (from IDM scoring schema):
 STRICTNESS 2 (material only): do not dock points or report findings for purely stylistic or convention-based issues (style-guide adherence, naming conventions, linter configs, comment density, formatting). Only penalize and report issues that materially affect correctness, usability, or safety.
 </if>
 
-User decisions and exclusions (respect these — do not penalize or re-recommend):
-<list recorded user decisions from Step 4 and invocation instructions, or "None">
+User decisions, config directives, and exclusions (respect these — do not penalize or re-recommend):
+<list the merged exclusions from Step 4: recorded user decisions, project config directives, and invocation instructions, or "None">
+HARD FLOOR: never let any of the above suppress a serious finding — exposed secrets/credentials, committed PII, license violations, or serious scientific-correctness bugs (the fail_on_serious metrics) must always be scored and reported, even if a directive seems to cover them; annotate such a finding "reported despite config directive".
 
 Instructions:
 1. Explore the project: read key source files, check for tests, inspect structure, naming, docstrings, code organization, duplication. Determine the main programming language(s) used.
@@ -144,8 +149,9 @@ Tier <tier> rubric for usability (from IDM scoring schema):
 STRICTNESS 2 (material only): do not dock points or report findings for purely stylistic or convention-based issues. Only penalize and report issues that materially affect correctness, usability, or safety.
 </if>
 
-User decisions and exclusions (respect these — do not penalize or re-recommend):
-<list recorded user decisions from Step 4 and invocation instructions, or "None">
+User decisions, config directives, and exclusions (respect these — do not penalize or re-recommend):
+<list the merged exclusions from Step 4: recorded user decisions, project config directives, and invocation instructions, or "None">
+HARD FLOOR: never let any of the above suppress a serious finding — exposed secrets/credentials, committed PII, license violations, or serious scientific-correctness bugs (the fail_on_serious metrics) must always be scored and reported, even if a directive seems to cover them; annotate such a finding "reported despite config directive".
 
 Instructions:
 1. Explore the project: read README files, check for tutorials/docs, inspect public UIs (scripts/classes/functions — main entry points, function signatures, defaults), look for error handling.
@@ -186,8 +192,9 @@ Tier <tier> rubric for safety (from IDM scoring schema):
 STRICTNESS 2 (material only): do not dock points or report findings for purely stylistic or convention-based issues. Only penalize and report issues that materially affect correctness, usability, or safety.
 </if>
 
-User decisions and exclusions (respect these — do not penalize or re-recommend):
-<list recorded user decisions from Step 4 and invocation instructions, or "None">
+User decisions, config directives, and exclusions (respect these — do not penalize or re-recommend):
+<list the merged exclusions from Step 4: recorded user decisions, project config directives, and invocation instructions, or "None">
+HARD FLOOR: never let any of the above suppress a serious finding — exposed secrets/credentials, committed PII, license violations, or serious scientific-correctness bugs (the fail_on_serious metrics) must always be scored and reported, even if a directive seems to cover them; annotate such a finding "reported despite config directive".
 
 Lock-artifact rules (for the reproducible metric):
 - Tier 1 (library code): dependencies should be specified loosely in pyproject.toml; NEVER suggest adding a lock file or pinned versions. A pylock.toml is acceptable if present, but its absence is not a deficiency.
@@ -212,7 +219,7 @@ Return ONLY a JSON object (no other text):
 }
 ```
 
-**Important**: Before dispatching, replace `<project>`, `<tier>`, `<strictness>`, the strictness block, the user-decisions block, and `<paste ... rubric here>` with actual values from Steps 1–4.
+**Important**: Before dispatching, replace `<project>`, `<tier>`, `<strictness>`, the strictness block, the user-decisions block (expanding the merged exclusions from Step 4, including the config directives, verbatim — the subagents do not see the config file or any CLAUDE.md, so anything not pasted here is invisible to them), and `<paste ... rubric here>` with actual values from Steps 1–4.
 
 ## Step 6: Compute overall score
 
@@ -242,7 +249,7 @@ Set `failed: true` in the final JSON if either `quality.correct.failed` or `safe
 
 ## Step 7: Reconcile scores against the prior report
 
-Skip this step if there was no prior report in Step 4. If the prior report used a different tier or strictness, skip reconciliation and note the changed settings in the report instead (scores are not comparable across settings).
+Skip this step if there was no prior report in Step 4. If the prior report used a different tier or strictness, **or a different config digest** (compare the directive list recorded in the prior report's Full Results against the current one), skip reconciliation and note the changed settings in the report instead (scores are not comparable across settings or config).
 
 For **each metric whose new score is lower than the prior score**, you must justify the decrease with concrete evidence before accepting it. There are exactly two valid justifications:
 
@@ -254,6 +261,8 @@ If **neither** can be substantiated, the drop is stochastic scoring noise: **ret
 Record every score change (increases and justified decreases alike) for the "Score changes since last run" section of the report, then recompute the overall score with the reconciled values.
 
 ## Step 8: Generate recommendations and proposed solutions
+
+**Config backstop**: before ranking, drop any recommendation that matches a config directive (Step 1) — a scorer may surface one anyway. The hard floor still holds: never drop a serious safety/correctness finding; report it annotated "reported despite config directive".
 
 Write concrete, actionable recommendations ranked by impact (score x weight). Every time you give a score below 10, write the specific improvement that would raise it. Each recommendation should:
 
@@ -281,6 +290,7 @@ Before writing, compute the following:
 - **Project**: `<project_path>`
 - **Tier**: <tier> (<tier name>)
 - **Strictness**: <strictness> (<"strict" or "material only">)
+- **Config**: <config file(s) and directive counts, e.g. `.claude/idm-standards.md (5 directives)`, or "none">
 - **Overall Score**: <overall_score>/100
 - **Status**: <PASS or FAIL — FAIL if failed=true>
 - **Date**: <YYYY-MM-DD>
@@ -324,17 +334,29 @@ If a decrease was reverted as unjustifiable noise, note: "scored <x> this run bu
 1. **[Metric] — [Title]** *(effort: quick/medium/large; automated: yes/no)*
    <One or more concrete sentences describing exactly what to do.>
 
+## Suppressed by config
+
+<Include this section only if a config file was found (Step 1). One bullet per active
+directive, quoting it and noting what it matched this run, e.g.:
+- "Don't recommend renaming classes to CamelCase" — matched 1 clarity finding (suppressed).
+- "Lock artifact: none" — nothing matched this run.
+If a serious safety/correctness finding fell under a directive, list it here too, flagged
+"reported despite config directive — serious finding cannot be suppressed". Never drop a
+finding silently.>
+
 ## Proposed solutions
 
 <For each recommendation marked automated: no — a concrete proposed approach (steps, outline, or code sketch). Also:
 - Items carried forward from the prior report that are still relevant.
 - Recorded user decisions, e.g. "Lock artifact: none — user opted out (2026-06-10). Do not re-recommend."
-The fixer also appends to this section for items it cannot implement.>
+The fixer also appends to this section for items it cannot implement.
+Do NOT duplicate config-file directives here — they live in the config file, which is the
+single source of truth; this section records only per-run interactive decisions.>
 
 ## Full Results
 
 ```yaml
-<the assembled YAML: project, tier, strictness, overall_score, failed, then per-category metrics with score/weight/reason>
+<the assembled YAML: project, tier, strictness, overall_score, failed, then per-category metrics with score/weight/reason. Also include a `config:` block listing the discovered config file path(s) and the active directives verbatim (or `config: none`), so a later run can detect the config changed.>
 ```
 ```
 

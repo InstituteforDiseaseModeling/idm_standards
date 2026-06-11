@@ -61,7 +61,9 @@ def parse_report(report_path):
     must_appear / must_not_appear checks) — so a recommendation assertion isn't matched
     against the metric-table Notes, the Summary prose, or the Full Results YAML, where a
     correct report legitimately *mentions* a phrase (e.g. "no lock file needed") while
-    not *recommending* it.
+    not *recommending* it. The "Suppressed by config" section is also excluded: it
+    intentionally quotes the suppressing directives, which would otherwise false-match a
+    must_not_appear assertion for the very thing the config suppressed.
     """
     text = report_path.read_text()
     out = {"text": text.lower(), "metrics": {}, "overall": None, "version": ""}
@@ -78,9 +80,15 @@ def parse_report(report_path):
     for name, score in re.findall(r"\|\s*(\w+)\s*\|\s*(\d+)\s*/\s*10\s*\|", text):
         out["metrics"][name] = int(score)
 
-    # Recommendations + Proposed solutions sections (fall back to whole report if absent).
-    m = re.search(r"##\s*Recommendations(.*?)(?:\n##\s*Full Results|\Z)", text, re.S)
-    out["rec_text"] = (m.group(1) if m else text).lower()
+    # Recommendations + Proposed solutions sections, each captured up to the next "## "
+    # heading so the "Suppressed by config" section in between is excluded (it quotes the
+    # suppressing directives). Fall back to the whole report if neither section is present.
+    def section(title):
+        mm = re.search(rf"##\s*{title}(.*?)(?:\n##\s|\Z)", text, re.S)
+        return mm.group(1) if mm else ""
+
+    rec = section("Recommendations") + "\n" + section("Proposed solutions")
+    out["rec_text"] = (rec if rec.strip() else text).lower()
     return out
 
 

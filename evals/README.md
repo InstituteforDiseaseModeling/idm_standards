@@ -9,6 +9,7 @@ End-to-end behavioral tests for the `idm-standards` plugin's audit and fix skill
 | `python_tier1` | 1 (library) | Scores well; flags missing CHANGELOG/CI; **never suggests a lock file** (the core item-1 rule). |
 | `python_tier3` | 3 (one-off script) | Flags missing README and duplicated code; at **strictness 2** the stylistic findings disappear while the material ones remain. |
 | `r_tier2` | 2 (shared R research code) | Routes to `audit-r-code` (Version line names it); flags missing tests and the renv gap; suggests **renv**, never the Python lock artifacts. |
+| `python_tier3_config` | 3 (with committed config) | Ships `.claude/idm-standards.md`. The suppressed duplication finding disappears from recommendations; the missing-README finding still surfaces; the hardcoded API key still tanks `compliant` (≤3) — proving a directive **cannot** waive the hard floor. |
 
 With `--roundtrip`, each fixture also runs **audit → fix-code → audit** and asserts CK's two acceptance criteria:
 
@@ -43,7 +44,8 @@ Because scoring is **nondeterministic**, the assertions are deliberately loose (
 2. Add `fixtures/<name>/expected.yaml`:
    - `project_subdir`, `language` (`python`/`r`), `tier`, `strictness`
    - `overall_score: {min, max}` and per-metric `metrics: {<name>: {min, max}}` bounds
-   - `must_appear` / `must_not_appear`: case-insensitive substrings checked against the Recommendations + Proposed solutions text
+   - `must_appear` / `must_not_appear`: case-insensitive substrings checked against the Recommendations + Proposed solutions text (the "Suppressed by config" section is excluded, so a `must_not_appear` for a config-suppressed item isn't tripped by the directive quoted there)
+   - to test a user config, commit a config file into `fixtures/<name>/project/.claude/idm-standards.md` (the harness's `git add -A` commits it); assert suppression via `must_not_appear` and the hard floor via a metric bound like `compliant: {max: 3}`
    - optional `report_version_contains` (routing assertion)
    - optional `strictness2: {strictness, must_appear, must_not_appear}` for a second-pass strictness check
 3. Run `python evals/run_evals.py <name>` and tune the bounds.
