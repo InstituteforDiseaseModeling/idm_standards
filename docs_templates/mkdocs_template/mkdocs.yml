@@ -12,6 +12,8 @@ theme:
   logo: images/idm-logo-transparent.png
   favicon: images/favicon.ico
   features:
+    - navigation.instant # SPA-style navigation without full page reloads
+    - navigation.instant.progress # show a progress bar for slower page loads
     - navigation.footer # include a footer with links to privacy, terms, etc.
     - content.code.copy # enable copy buttons for code blocks
     - navigation.indexes # enable parent index page for sections
@@ -78,6 +80,7 @@ markdown_extensions:
 
 # javascript and CSS customization
 extra_javascript:
+  - customization/javascripts/mathjax.js # MathJax config: enables inline math and re-typesets on navigation
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra_css:
   - customization/css/extra.css # custom CSS for footer spacing
