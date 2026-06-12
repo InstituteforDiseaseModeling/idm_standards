@@ -602,8 +602,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#notes-on-math" id="toc-notes-on-math" class="nav-link active" data-scroll-target="#notes-on-math">Notes on math</a></li>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#first-step" id="toc-first-step" class="nav-link" data-scroll-target="#first-step">First step</a></li>
   <li><a href="#second-step" id="toc-second-step" class="nav-link" data-scroll-target="#second-step">Second step</a></li>
   </ul>
@@ -632,14 +631,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 
 
-<p>Describe the overall purpose of the tutorial. Including a list of all actions contained within the tutorial is helpful. If there are other topics that provide relevant context, add links to them (note: in MkDocs, links should be to the parent folder and without the extension, e.g.&nbsp;<code>example.md</code> in the same folder as the notebook should be linked as <code>[example](../example)</code>; in Quarto, just link directly, e.g.&nbsp;<code>[example](example.md)</code>).</p>
-<p>We strongly recommend providing users the ability to interactively run notebooks in their browser by providing a link to a compute server such as Binder, GitHub Codespaces, Vercel, or Voila. You can create individual buttons to Binder in each notebook using the format:</p>
+<p>Notebooks included in the documentation serve as tutorials to teach new users about key features or workflows of the tool. Lead with a paragraph that describes the overall purpose of the notebook and list the actions contained within the tutorial.</p>
+<p>Consider execution time when writing notebooks, both for its impact on the user experience and on documentation builds. Aim for 60 seconds per notebook or less and consider downsampling the population size or other ways to speed up execution as appropriate. Execute notebooks as part of every documentation build or just as part of the GitHub Actions builds, but do not include notebooks without regularly executing them to verify validity.</p>
+<p>If you want to include notebooks in the project for other purposes, such as demonstrating scientific validity or testing functionality, those notebooks should live outside the documentation. Limit notebooks in the documentation just to ones that new users will want to read or run to gain familiarity with the tool.</p>
+<p>If there are other topics that provide relevant context, add links to them (note: in MkDocs, links should be to the parent folder and without the extension, e.g.&nbsp;<code>example.md</code> in the same folder as the notebook should be linked as <code>[example](../example)</code>; in Quarto, just link directly, e.g.&nbsp;<code>[example](example.md)</code>).</p>
+<p>Mixing executable code with explanatory prose is a great teaching tool; be sure to include ample explanation of both input code and output plots. We strongly recommend providing users the ability to interactively run notebooks in their browser by providing a link to a compute server (recommend Binder). Interaction helps solidify learning. You can create individual buttons to Binder in each notebook using the format:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![Binder](https://mybinder.org/badge_logo.svg)</span><span class="co">](https://mybinder.org/v2/gh/&lt;USERNAME&gt;/&lt;REPO&gt;/&lt;BRANCH&gt;?filepath=&lt;PATH_TO_NOTEBOOK&gt;)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To open an interactive version of this notebook, click <a href="https://mybinder.org/v2/gh/institutefordiseasemodeling/idm_standards/HEAD?urlpath=lab%2Ftree%2Fdocs_guidance%2Ftopic-types%2Fnotebook.ipynb"><img src="https://mybinder.org/badge_logo.svg" class="img-fluid" alt="Binder"></a></p>
-<section id="notes-on-math" class="level2">
-<h2 class="anchored" data-anchor-id="notes-on-math">Notes on math</h2>
-<p>Note that the mathjax LaTeX parser used with MkDocs cannot render inline (within a sentence) LaTeX correctly in Jupyter notebooks. LaTeX blocks (on a separate line) are rendered correctly, as are inline LaTeX and LaTeX blocks within Markdown files. If you need to include simple math within sentences, use italics with the English alphabet and add Greek symbols directly. For example, <em>S+I+R=N</em> and β or γ. If you need to add subscripts or superscripts, you can use HTML tags, for example <em>R<sub>0</sub></em>.</p>
-</section>
+<p>To open an interactive version of this notebook, click <a href="https://mybinder.org/v2/gh/institutefordiseasemodeling/idm_standards/HEAD?urlpath=lab%2Ftree%2Fdocs_guidance%2Ftopic-types%2Fnotebook.ipynb"><img src="https://mybinder.org/badge_logo.svg" class="img-fluid" alt="Binder"></a>. Note that it may take a few minutes to create the environment and edits will not be saved.</p>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
 <p>Include a list of any explanation topics the reader should be familiar with or other tutorials that must be completed before running this tutorial.</p>
@@ -679,9 +677,9 @@ Initializing sim with 10000 agents
 
   Running 2000.01.01 ( 0/51) (0.00 s)  ———————————————————— 2%
 
-  Running 2010.01.01 (10/51) (1.43 s)  ••••———————————————— 22%
+  Running 2010.01.01 (10/51) (1.44 s)  ••••———————————————— 22%
 
-  Running 2020.01.01 (20/51) (1.49 s)  ••••••••———————————— 41%
+  Running 2020.01.01 (20/51) (1.50 s)  ••••••••———————————— 41%
 
   Running 2030.01.01 (30/51) (1.55 s)  ••••••••••••———————— 61%
 
