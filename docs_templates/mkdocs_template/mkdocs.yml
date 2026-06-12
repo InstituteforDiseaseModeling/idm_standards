@@ -12,6 +12,8 @@ theme:
   logo: images/idm-logo-transparent.png
   favicon: images/favicon.ico
   features:
+    - navigation.instant # SPA-style navigation without full page reloads
+    - navigation.instant.progress # show a progress bar for slower page loads
     - navigation.footer # include a footer with links to privacy, terms, etc.
     - content.code.copy # enable copy buttons for code blocks
     - navigation.indexes # enable parent index page for sections
@@ -48,7 +50,7 @@ nav: # Navigation structure for the documentation
 markdown_extensions:
   - toc:
       toc_depth: 3
-  - attr_list # enables HTMl and CSS classes to inline elements
+  - attr_list # enables HTML and CSS classes to inline elements
   - md_in_html # enables grids
   - admonition # warnings, etc.
   - def_list
@@ -66,7 +68,11 @@ markdown_extensions:
       linenums: true
       default_lang: 'python'
   - pymdownx.inlinehilite # syntax highlighting for inline code
-  - pymdownx.superfences # enables code, diagram fences to be nested in lists, etc.e
+  - pymdownx.superfences: # enables code, diagram fences to be nested in lists, etc.
+    custom_fences:
+      - name: mermaid # render mermaid code
+        class: mermaid
+        format: !!python/name:mermaid2.fence_mermaid_custom
   - pymdownx.details # collapsible elements
   - pymdownx.tabbed: # tabbed content that can be toggled
       alternate_style: true
@@ -74,6 +80,7 @@ markdown_extensions:
 
 # javascript and CSS customization
 extra_javascript:
+  - customization/javascripts/mathjax.js # MathJax config: enables inline math and re-typesets on navigation
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra_css:
   - customization/css/extra.css # custom CSS for footer spacing

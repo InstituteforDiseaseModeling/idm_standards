@@ -47,8 +47,10 @@ website:
         - section: Tutorials
           file: tutorials/index.md
           contents:
-            - text: Getting started
-              file: tutorials/get-started.md
+            - text: Getting started (notebook)
+              file: tutorials/get-started.ipynb
+            - text: Getting started (qmd)
+              file: tutorials/example-tutorial.qmd
         - section: Model overview
           file: model/index.md
           contents:

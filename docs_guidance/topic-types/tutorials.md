@@ -118,9 +118,13 @@ This is the **most commonly confused distinction** in documentation. Both contai
 - Unreliable tutorials create lasting negative impressions
 - Perfect reliability is non-negotiable
 
-**Format and implementation** 
+**Format and implementation**
 
 Where possible, write tutorials as Jupyter notebooks or other executable formats. This allows tutorials to be run automatically during documentation builds, surfacing broken steps or outdated outputs before learners encounter them. This directly supports the principle of perfect reliability.
+
+In building documentation using Quarto, tutorials can be formatted as Jupyter notebooks or Quarto Markdown. Quarto Markdown has several advantages, including readability, ease of authoring and support for a mix of R and Python in the same kernel.
+
+Both formats enable interactivity in the browser to solidify learning and avoid installation challenges. However, user interaction with .qmd is limited to plotting and widgets, not running simulations. If you want users to be able to interactively run simulations, use Jupyter notebooks with a link to Binder.
 
 ## Voice and tone
 

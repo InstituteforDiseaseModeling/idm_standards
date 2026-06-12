@@ -6,3 +6,5 @@ _site/*
 # vscode files
 .vscode/*
 
+# claude personal settings
+**/.claude/settings.local.json
