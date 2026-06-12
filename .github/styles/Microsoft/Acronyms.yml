@@ -28,7 +28,6 @@ exceptions:
   - LASER
   - ODE
   - TOC
-  - API
 
 # --- Microsoft’s defaults (keep/copy from the package) ---
   - API

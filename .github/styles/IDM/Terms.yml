@@ -10,9 +10,8 @@ swap:
   "(?:click on)": click
   "(?:wish)": want
   "(?:wishes)": wants
-  "(?:is comprised of)": comprises
   "(?:is comprised of)": is composed of
-  "(?:utilize)": use
+  "(?:are comprised of)": are composed of
   "(?:multi-variate)": multivariate
   "(?:&)": and
   "(?:bed net)": bednet
