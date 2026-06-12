@@ -4,7 +4,6 @@ link: 'https://docs.microsoft.com/en-us/style-guide'
 level: suggestion
 ignorecase: true
 tokens:
-  - accessible
   - actionable
   - alarm
   - alert

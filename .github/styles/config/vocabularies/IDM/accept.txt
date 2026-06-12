@@ -33,3 +33,5 @@ influencers
 repo
 comms
 chatbot
+backend
+MCP
