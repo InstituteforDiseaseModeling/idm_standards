@@ -19,4 +19,4 @@ Projects within the starsimhub, laser-base, EMOD-hub, or InstituteforDiseaseMode
 
 Contact the content team when you are ready to share the docs more broadly by listing the project on the landing page for each of those subdomains. For more information on custom subdomains, see [GitHub Docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
-If desired, teams may set up a tool site separate from the idmod.org subdomain (such as [starsim.org](https://starsim.org/)), but must configure redirects for users who
+If desired, teams may set up a tool site separate from the idmod.org subdomain (such as [starsim.org](https://starsim.org/)), but must configure redirects for users who try to access the site from one of the subdomains above.
