@@ -2,7 +2,7 @@ name: MkDocs Build on PR
 
 on:
   pull_request:
-    branches: [ master, main ]  # Replace with your desired branches
+    branches: [ main ]  # Replace with your desired branches
 
 jobs:
   build:

@@ -1,0 +1,10 @@
+extends: existence
+message: "This looks like work in progress."
+# See the A-Z word list
+link: https://docs.microsoft.com/en-us/style-guide
+ignorecase: true
+level: error
+tokens:
+  - TODO
+  - TBD
+  - TBA

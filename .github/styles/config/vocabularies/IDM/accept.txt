@@ -30,3 +30,8 @@ NGO
 RCO
 PST
 influencers
+repo
+comms
+chatbot
+backend
+MCP

@@ -16,7 +16,6 @@ swap:
   "24/7": every day
   "audio(?:-| )book": audiobook
   "back(?:-| )light": backlight
-  "chat ?bots?": chatbot(s)
   adaptor: adapter
   administrate: administer
   afterwards: afterward
