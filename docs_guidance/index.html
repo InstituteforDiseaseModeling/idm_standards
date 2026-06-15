@@ -454,12 +454,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../docs_guidance/topic-types/toc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of contents</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/topic-types/toc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Table of contents</span></a>
+  <a href="../docs_guidance/topic-types/home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home page</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs_guidance/topic-types/install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../docs_guidance/topic-types/tutorials.html" class="sidebar-item-text sidebar-link">
@@ -501,11 +518,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="sidebar-item-container"> 
             <a href="../docs_guidance/personas/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Personas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../docs_guidance/personas/model-builder.html" class="sidebar-item-text sidebar-link">
@@ -544,11 +561,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="sidebar-item-container"> 
             <a href="../plugins_readme.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Claude plugins</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../idm_standards_plugin/README.html" class="sidebar-item-text sidebar-link">
@@ -589,14 +606,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <section id="hosting" class="level2">
 <h2 class="anchored" data-anchor-id="hosting">Hosting</h2>
 <p>Under .github/ there are GH-Actions files for running a test doc build when PRs are opened and pushing changes to GH-Pages when PRs are merged. Note that private repositories can host documentation via GH-Pages, but the hosted docs will be publicly available unless the GitHub organization has an Enterprise account. IDM LT is aware of this limitation and approves of hosting docs for private repositories on GH-Pages but not publicizing the docs more broadly until the repo is public.</p>
-<p>The default URL for GH-Pages is org.github.io/repo, but when documentation is ready to share broadly, you should set up a custom domain at one of the following subdomains:</p>
+<p>Projects within the starsimhub, laser-base, EMOD-hub, or InstituteforDiseaseModeling GitHub organizations will automatically have GH-Pages projects hosted at the following custom subdomains:</p>
 <ul>
-<li>starsim.org/project</li>
+<li>starsim.idmod.org/project</li>
 <li>laser.idmod.org/project</li>
 <li>emod.idmod.org/project</li>
 <li>docs.idmod.org/project</li>
 </ul>
-<p>For more information, see <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">GitHub Docs</a>. Coordinate with the research content team to add the CNAME record and set up a link on the docs landing pages and a tool page on <a href="https://www.idmod.org/tools/">idmod.org</a>.</p>
+<p>Contact the content team when you are ready to share the docs more broadly by listing the project on the landing page for each of those subdomains. For more information on custom subdomains, see <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">GitHub Docs</a>.</p>
+<p>If desired, teams may set up a tool site separate from the idmod.org subdomain (such as <a href="https://starsim.org/">starsim.org</a>), but must configure redirects for users who try to access the site from one of the subdomains above.</p>
 
 
 </section>

@@ -623,75 +623,53 @@
     ]
   },
   {
-    "objectID": "docs_guidance/topic-types/howto.html",
-    "href": "docs_guidance/topic-types/howto.html",
-    "title": "How-to",
+    "objectID": "docs_guidance/topic-types/index.html",
+    "href": "docs_guidance/topic-types/index.html",
+    "title": "Topic types and structure",
     "section": "",
-    "text": "How-tos are goal-oriented directions that help users accomplish specific tasks or solve real problems. They guide action through practical steps focused on what users want to achieve.\nHow-tos assume competence and focus exclusively on helping users accomplish a specific, known goal. They are about action and only action no teaching, no explanation, no reference material.\n\n\nThis is the most commonly confused distinction in documentation. Both contain steps, but they serve fundamentally different purposes:\n\n\n\n\n\n\n\n\nAspect\nHow-to\nTutorial\n\n\n\n\nUser knowledge\nAlready knows what they want to achieve\nLearner may not know enough to even ask the right questions\n\n\nApproach\nGeneral: many things unknowable in advance or different in each case\nConcrete and particular: specific, known tools and materials we’ve set before the learner\n\n\nPath structure\nForks and branches, different routes to same destination\nSingle line, no choices or alternatives\n\n\nCompleteness\nDoesn’t need to be complete: starts/ends at reasonable points\nMust be complete end-to-end guide\n\n\nSafety\nCannot promise safety: often only one chance to get it right\nMust be safe: no harm can come, always possible to go back and start again\n\n\nResponsibility\nUser has responsibility for getting in and out of trouble\nTeacher has responsibility: if learner gets in trouble, teacher must fix it\n\n\nFocus\nWork—accomplishing tasks\nStudy—learning skills\n\n\n\nGood how-to examples:\n\n“How to calibrate transmission parameters to surveillance data”\n“How to add a waning immunity compartment to an SEIR model”\n“How to structure age-stratified contact matrices for a population”\n“Troubleshooting oscillating or unstable model outputs”\n\nNOT how-tos (too broad, really need tutorials):\n\n“How to build an SIR model”\n“How to use the API”\n\n\n\n\n\n\n\nHow-tos must be written from the perspective of the user, not of the machinery\nAddress real-world human needs and purposes\nTools should be incidental to the larger human goal\nThink about what users want to accomplish, not what the software can do\n\n\n\n\n\nServe already-competent users who know what they want to achieve\nUsers understand their goal and have chosen to pursue it\nDon’t include teaching or foundational explanations\nExpect readers can follow instructions correctly\n\n\n\n\n\nStay centered on the specific task or problem\nEvery sentence must advance the user toward their goal\nRemove anything that doesn’t directly serve task completion\nLink to related explanation, reference, or tutorials\n\n\n\n\n\nWithin the table of contents organization, how-to topics are organized within user guides that usually have explanation topics as the parent topics for a given subject.\n\n\nTemporal order:\n\nOrganize steps in the order they must be performed\nEach step builds meaningfully on previous ones\nInclude all steps needed to accomplish goal\n\nConditional guidance:\n\n“If you want x, do y”\n“When z is true, use approach a”\nProvide decision points where relevant\n\n\n\n\n\n\n\n\nState exactly what the guide accomplishes\nUse “How to…” format\nAvoid ambiguous titles that leave purpose unclear\n\n\n\n\n\nDirect, action-oriented language\n“Configure the settings”\n“Run the command…”\n“Add the following code…”\n\n\n\n\n\n\nMixing teaching with tasks\n\nDon’t explain concepts while giving instructions\nKeep learning and doing separate\n\nTool-centered writing\n\nDon’t organize around software features\nFocus on what users want to accomplish\n\nOver-specification\n\nDon’t make guides so narrow they’re not adaptable\nAllow for real-world variation\n\nScope creep\n\nDon’t let guides expand into tutorials or reference\nStay focused on the single task\n\nMissing the goal\n\nDon’t forget to state what will be accomplished\nMake the outcome clear",
+    "text": "Topic types and structure\nIDM documentation borrows much of the guidance from the Diátaxis framework, which classifies each topic within the documentation into four distinct topic types based on what the reader needs:\n\n\n\n\n\n\n\n\n\nACQUISITION (Study)\nAPPLICATION (Work)\n\n\nACTION (Doing)\nTUTORIALS (Learning-oriented)\nHOW-TO (Task-oriented)\n\n\nCOGNITION (Knowing)\nEXPLANATION (Understanding- oriented)\nREFERENCE (Information- oriented)\n\n\n\n\nTutorials – Learning-oriented experiences that guide a beginner through a series of steps to build skills and confidence.\nHow-to – Task-oriented directions that help a practitioner accomplish a specific goal.\nReference – Information-oriented technical descriptions for looking up specifications, parameters, and APIs.\nExplanation – Understanding-oriented discussions that provide context, background, and answer “why?” questions.\n\nEach topic type serves a different user need. Focusing each individual topic on a single user need makes the documentation as a whole easier to navigate, write, and maintain. All topics should aim to be self-contained and describe a single subject, linking away to related topics but not duplicating their content. When content must appear in multiple topics (such as common warnings), create a snippet of reusable text rather than duplicating that content.\nHow you organize and group individual topics into the table of contents should follow the typical user journey. Generally, place API reference and tutorials as top-level sections in the TOC and group explanation and how-to topics into “user guides.” See table of contents for detailed guidance on organizing topics within your documentation’s TOC.",
     "crumbs": [
       "Docs guidance",
-      "Topic types and structure",
-      "How-to"
+      "Topic types and structure"
     ]
   },
   {
-    "objectID": "docs_guidance/topic-types/howto.html#critical-distinction-how-to-vs-tutorial",
-    "href": "docs_guidance/topic-types/howto.html#critical-distinction-how-to-vs-tutorial",
-    "title": "How-to",
+    "objectID": "docs_guidance/topic-types/home.html",
+    "href": "docs_guidance/topic-types/home.html",
+    "title": "Home page",
     "section": "",
-    "text": "This is the most commonly confused distinction in documentation. Both contain steps, but they serve fundamentally different purposes:\n\n\n\n\n\n\n\n\nAspect\nHow-to\nTutorial\n\n\n\n\nUser knowledge\nAlready knows what they want to achieve\nLearner may not know enough to even ask the right questions\n\n\nApproach\nGeneral: many things unknowable in advance or different in each case\nConcrete and particular: specific, known tools and materials we’ve set before the learner\n\n\nPath structure\nForks and branches, different routes to same destination\nSingle line, no choices or alternatives\n\n\nCompleteness\nDoesn’t need to be complete: starts/ends at reasonable points\nMust be complete end-to-end guide\n\n\nSafety\nCannot promise safety: often only one chance to get it right\nMust be safe: no harm can come, always possible to go back and start again\n\n\nResponsibility\nUser has responsibility for getting in and out of trouble\nTeacher has responsibility: if learner gets in trouble, teacher must fix it\n\n\nFocus\nWork—accomplishing tasks\nStudy—learning skills\n\n\n\nGood how-to examples:\n\n“How to calibrate transmission parameters to surveillance data”\n“How to add a waning immunity compartment to an SEIR model”\n“How to structure age-stratified contact matrices for a population”\n“Troubleshooting oscillating or unstable model outputs”\n\nNOT how-tos (too broad, really need tutorials):\n\n“How to build an SIR model”\n“How to use the API”",
+    "text": "Include an introductory paragraph describing broadly what the project or package is and what the intended usage is. Don’t forget to include the broader context about how it fits into disease modeling tools.\nIt’s generally a good practice to automatically reuse the README.md file for the repo in your documentation home page.\nMkDocs syntax:\n{%\n    include-markdown \"../README.md\"\n%}\nQuarto syntax:\n{{&lt; include ../README.md &gt;}}\n\n\nIn the package README, include the following:\nA summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications.\nNote: IDM used to require a disclaimer to be included in the README, but these are no longer needed and should be removed. However, please ensure that the license is correct and up to date (MIT license in a LICENSE file).\n\n\nSoftware/hardware requirements.\n\n\n\nInstallation instructions.\n\n\n\nProvide a link to the hosted documentation at https://docs.idmod.org/project or relevant modeling framework subdomain. If desired, include brief instructions on running a demo or simple simulation.\n\n\n\nAn overview of the core model code, classes, and submodules.\n\n\n\nAny instructions on how to provide code contributions or reach out for support.\n\n\n\n\nAfter reusing the README.md file, you can append additional content to orient the reader to the documentation.\nMkDocs syntax:\nOne visually appealing way to present the high-level sections of the documentation is to include grid cards. There are many different icons available and the cards can be combined with other MkDocs formatting, such as content tabs, code blocks, or lists. This is an illustrative example; you may add or remove grid cards to best meet the needs of your documentation set.\n&lt;div class=\"grid cards\" markdown&gt;\n\n-   :simple-jupyter:{ .lg .middle } __Tutorials__\n\n    ---\n\n    An interactive tour of key features.\n\n    [:octicons-arrow-right-24: Tutorials](tutorials/index.md)\n\n-   :material-api:{ .lg .middle } __Reference__\n\n    ---\n\n    Full details on all classes and functions. Update the path with the package name.\n\n    [:octicons-arrow-right-24: API reference](autoapi/package/index.md)\n\n-   :material-new-box:{ .lg .middle } __What's new__\n\n    ---\n\n    See what's in the latest releases.\n\n    [:octicons-arrow-right-24: What's new](whatsnew.md)\n\n&lt;/div&gt;",
     "crumbs": [
       "Docs guidance",
       "Topic types and structure",
-      "How-to"
+      "Table of contents",
+      "Home page"
     ]
   },
   {
-    "objectID": "docs_guidance/topic-types/howto.html#key-principles",
-    "href": "docs_guidance/topic-types/howto.html#key-principles",
-    "title": "How-to",
+    "objectID": "docs_guidance/topic-types/home.html#readme-guidance",
+    "href": "docs_guidance/topic-types/home.html#readme-guidance",
+    "title": "Home page",
     "section": "",
-    "text": "How-tos must be written from the perspective of the user, not of the machinery\nAddress real-world human needs and purposes\nTools should be incidental to the larger human goal\nThink about what users want to accomplish, not what the software can do\n\n\n\n\n\nServe already-competent users who know what they want to achieve\nUsers understand their goal and have chosen to pursue it\nDon’t include teaching or foundational explanations\nExpect readers can follow instructions correctly\n\n\n\n\n\nStay centered on the specific task or problem\nEvery sentence must advance the user toward their goal\nRemove anything that doesn’t directly serve task completion\nLink to related explanation, reference, or tutorials",
+    "text": "In the package README, include the following:\nA summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications.\nNote: IDM used to require a disclaimer to be included in the README, but these are no longer needed and should be removed. However, please ensure that the license is correct and up to date (MIT license in a LICENSE file).\n\n\nSoftware/hardware requirements.\n\n\n\nInstallation instructions.\n\n\n\nProvide a link to the hosted documentation at https://docs.idmod.org/project or relevant modeling framework subdomain. If desired, include brief instructions on running a demo or simple simulation.\n\n\n\nAn overview of the core model code, classes, and submodules.\n\n\n\nAny instructions on how to provide code contributions or reach out for support.",
     "crumbs": [
       "Docs guidance",
       "Topic types and structure",
-      "How-to"
+      "Table of contents",
+      "Home page"
     ]
   },
   {
-    "objectID": "docs_guidance/topic-types/howto.html#structural-guidelines",
-    "href": "docs_guidance/topic-types/howto.html#structural-guidelines",
-    "title": "How-to",
+    "objectID": "docs_guidance/topic-types/home.html#learn-more",
+    "href": "docs_guidance/topic-types/home.html#learn-more",
+    "title": "Home page",
     "section": "",
-    "text": "Within the table of contents organization, how-to topics are organized within user guides that usually have explanation topics as the parent topics for a given subject.\n\n\nTemporal order:\n\nOrganize steps in the order they must be performed\nEach step builds meaningfully on previous ones\nInclude all steps needed to accomplish goal\n\nConditional guidance:\n\n“If you want x, do y”\n“When z is true, use approach a”\nProvide decision points where relevant",
+    "text": "After reusing the README.md file, you can append additional content to orient the reader to the documentation.\nMkDocs syntax:\nOne visually appealing way to present the high-level sections of the documentation is to include grid cards. There are many different icons available and the cards can be combined with other MkDocs formatting, such as content tabs, code blocks, or lists. This is an illustrative example; you may add or remove grid cards to best meet the needs of your documentation set.\n&lt;div class=\"grid cards\" markdown&gt;\n\n-   :simple-jupyter:{ .lg .middle } __Tutorials__\n\n    ---\n\n    An interactive tour of key features.\n\n    [:octicons-arrow-right-24: Tutorials](tutorials/index.md)\n\n-   :material-api:{ .lg .middle } __Reference__\n\n    ---\n\n    Full details on all classes and functions. Update the path with the package name.\n\n    [:octicons-arrow-right-24: API reference](autoapi/package/index.md)\n\n-   :material-new-box:{ .lg .middle } __What's new__\n\n    ---\n\n    See what's in the latest releases.\n\n    [:octicons-arrow-right-24: What's new](whatsnew.md)\n\n&lt;/div&gt;",
     "crumbs": [
       "Docs guidance",
       "Topic types and structure",
-      "How-to"
-    ]
-  },
-  {
-    "objectID": "docs_guidance/topic-types/howto.html#naming-and-language",
-    "href": "docs_guidance/topic-types/howto.html#naming-and-language",
-    "title": "How-to",
-    "section": "",
-    "text": "State exactly what the guide accomplishes\nUse “How to…” format\nAvoid ambiguous titles that leave purpose unclear\n\n\n\n\n\nDirect, action-oriented language\n“Configure the settings”\n“Run the command…”\n“Add the following code…”",
-    "crumbs": [
-      "Docs guidance",
-      "Topic types and structure",
-      "How-to"
-    ]
-  },
-  {
-    "objectID": "docs_guidance/topic-types/howto.html#common-pitfalls",
-    "href": "docs_guidance/topic-types/howto.html#common-pitfalls",
-    "title": "How-to",
-    "section": "",
-    "text": "Mixing teaching with tasks\n\nDon’t explain concepts while giving instructions\nKeep learning and doing separate\n\nTool-centered writing\n\nDon’t organize around software features\nFocus on what users want to accomplish\n\nOver-specification\n\nDon’t make guides so narrow they’re not adaptable\nAllow for real-world variation\n\nScope creep\n\nDon’t let guides expand into tutorials or reference\nStay focused on the single task\n\nMissing the goal\n\nDon’t forget to state what will be accomplished\nMake the outcome clear",
-    "crumbs": [
-      "Docs guidance",
-      "Topic types and structure",
-      "How-to"
+      "Table of contents",
+      "Home page"
     ]
   },
   {
@@ -1002,26 +980,6 @@
     ]
   },
   {
-    "objectID": "docs_guidance/index.html",
-    "href": "docs_guidance/index.html",
-    "title": "IDM documentation guidance",
-    "section": "",
-    "text": "This section describes the standards for writing IDM documentation. You may build documentation using either Material for MkDocs (recommended) or Quarto (if greater R support or interactivity needed).\nUse the template files in coordination with this documentation or the AI-driven plugins. Style guidance for terminology, grammar, and formatting is defined and enforced via the Vale linter.\nYou should build or preview the documentation locally before submitting documentation changes.\n\n\nUnder .github/ there are GH-Actions files for running a test doc build when PRs are opened and pushing changes to GH-Pages when PRs are merged. Note that private repositories can host documentation via GH-Pages, but the hosted docs will be publicly available unless the GitHub organization has an Enterprise account. IDM LT is aware of this limitation and approves of hosting docs for private repositories on GH-Pages but not publicizing the docs more broadly until the repo is public.\nThe default URL for GH-Pages is org.github.io/repo, but when documentation is ready to share broadly, you should set up a custom domain at one of the following subdomains:\n\nstarsim.org/project\nlaser.idmod.org/project\nemod.idmod.org/project\ndocs.idmod.org/project\n\nFor more information, see GitHub Docs. Coordinate with the research content team to add the CNAME record and set up a link on the docs landing pages and a tool page on idmod.org.",
-    "crumbs": [
-      "Docs guidance"
-    ]
-  },
-  {
-    "objectID": "docs_guidance/index.html#hosting",
-    "href": "docs_guidance/index.html#hosting",
-    "title": "IDM documentation guidance",
-    "section": "",
-    "text": "Under .github/ there are GH-Actions files for running a test doc build when PRs are opened and pushing changes to GH-Pages when PRs are merged. Note that private repositories can host documentation via GH-Pages, but the hosted docs will be publicly available unless the GitHub organization has an Enterprise account. IDM LT is aware of this limitation and approves of hosting docs for private repositories on GH-Pages but not publicizing the docs more broadly until the repo is public.\nThe default URL for GH-Pages is org.github.io/repo, but when documentation is ready to share broadly, you should set up a custom domain at one of the following subdomains:\n\nstarsim.org/project\nlaser.idmod.org/project\nemod.idmod.org/project\ndocs.idmod.org/project\n\nFor more information, see GitHub Docs. Coordinate with the research content team to add the CNAME record and set up a link on the docs landing pages and a tool page on idmod.org.",
-    "crumbs": [
-      "Docs guidance"
-    ]
-  },
-  {
     "objectID": "CHANGELOG.html",
     "href": "CHANGELOG.html",
     "title": "Changelog",
@@ -1093,39 +1051,24 @@
     ]
   },
   {
-    "objectID": "docs_guidance/home.html",
-    "href": "docs_guidance/home.html",
-    "title": "Home topic",
+    "objectID": "docs_guidance/index.html",
+    "href": "docs_guidance/index.html",
+    "title": "IDM documentation guidance",
     "section": "",
-    "text": "Include an introductory paragraph describing broadly what the project or package is and what the intended usage is. Don’t forget to include the broader context about how it fits into disease modeling tools.\nIt’s generally a good practice to automatically reuse the README.md file for the repo in your documentation home page.\nMkDocs syntax:\n{%\n    include-markdown \"../README.md\"\n%}\nQuarto syntax:\n{{&lt; include ../README.md &gt;}}\n\n\nIn the package README, include the following:\nA summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications.\nNote: IDM used to require a disclaimer to be included in the README, but these are no longer needed and should be removed. However, please ensure that the license is correct and up to date (MIT license in a LICENSE file).\n\n\nSoftware/hardware requirements.\n\n\n\nInstallation instructions.\n\n\n\nProvide a link to the hosted documentation at https://docs.idmod.org/project or relevant modeling framework subdomain. If desired, include brief instructions on running a demo or simple simulation.\n\n\n\nAn overview of the core model code, classes, and submodules.\n\n\n\nAny instructions on how to provide code contributions or reach out for support.\n\n\n\n\nAfter reusing the README.md file, you can append additional content to orient the reader to the documentation.\nMkDocs syntax:\nOne visually appealing way to present the high-level sections of the documentation is to include grid cards. There are many different icons available and the cards can be combined with other MkDocs formatting, such as content tabs, code blocks, or lists. This is an illustrative example; you may add or remove grid cards to best meet the needs of your documentation set.\n&lt;div class=\"grid cards\" markdown&gt;\n\n-   :simple-jupyter:{ .lg .middle } __Tutorials__\n\n    ---\n\n    An interactive tour of key features.\n\n    [:octicons-arrow-right-24: Tutorials](tutorials/index.md)\n\n-   :material-api:{ .lg .middle } __Reference__\n\n    ---\n\n    Full details on all classes and functions. Update the path with the package name.\n\n    [:octicons-arrow-right-24: API reference](autoapi/package/index.md)\n\n-   :material-new-box:{ .lg .middle } __What's new__\n\n    ---\n\n    See what's in the latest releases.\n\n    [:octicons-arrow-right-24: What's new](whatsnew.md)\n\n&lt;/div&gt;"
+    "text": "This section describes the standards for writing IDM documentation. You may build documentation using either Material for MkDocs (recommended) or Quarto (if greater R support or interactivity needed).\nUse the template files in coordination with this documentation or the AI-driven plugins. Style guidance for terminology, grammar, and formatting is defined and enforced via the Vale linter.\nYou should build or preview the documentation locally before submitting documentation changes.\n\n\nUnder .github/ there are GH-Actions files for running a test doc build when PRs are opened and pushing changes to GH-Pages when PRs are merged. Note that private repositories can host documentation via GH-Pages, but the hosted docs will be publicly available unless the GitHub organization has an Enterprise account. IDM LT is aware of this limitation and approves of hosting docs for private repositories on GH-Pages but not publicizing the docs more broadly until the repo is public.\nProjects within the starsimhub, laser-base, EMOD-hub, or InstituteforDiseaseModeling GitHub organizations will automatically have GH-Pages projects hosted at the following custom subdomains:\n\nstarsim.idmod.org/project\nlaser.idmod.org/project\nemod.idmod.org/project\ndocs.idmod.org/project\n\nContact the content team when you are ready to share the docs more broadly by listing the project on the landing page for each of those subdomains. For more information on custom subdomains, see GitHub Docs.\nIf desired, teams may set up a tool site separate from the idmod.org subdomain (such as starsim.org), but must configure redirects for users who try to access the site from one of the subdomains above.",
+    "crumbs": [
+      "Docs guidance"
+    ]
   },
   {
-    "objectID": "docs_guidance/home.html#readme-guidance",
-    "href": "docs_guidance/home.html#readme-guidance",
-    "title": "Home topic",
+    "objectID": "docs_guidance/index.html#hosting",
+    "href": "docs_guidance/index.html#hosting",
+    "title": "IDM documentation guidance",
     "section": "",
-    "text": "In the package README, include the following:\nA summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications.\nNote: IDM used to require a disclaimer to be included in the README, but these are no longer needed and should be removed. However, please ensure that the license is correct and up to date (MIT license in a LICENSE file).\n\n\nSoftware/hardware requirements.\n\n\n\nInstallation instructions.\n\n\n\nProvide a link to the hosted documentation at https://docs.idmod.org/project or relevant modeling framework subdomain. If desired, include brief instructions on running a demo or simple simulation.\n\n\n\nAn overview of the core model code, classes, and submodules.\n\n\n\nAny instructions on how to provide code contributions or reach out for support."
-  },
-  {
-    "objectID": "docs_guidance/home.html#learn-more",
-    "href": "docs_guidance/home.html#learn-more",
-    "title": "Home topic",
-    "section": "",
-    "text": "After reusing the README.md file, you can append additional content to orient the reader to the documentation.\nMkDocs syntax:\nOne visually appealing way to present the high-level sections of the documentation is to include grid cards. There are many different icons available and the cards can be combined with other MkDocs formatting, such as content tabs, code blocks, or lists. This is an illustrative example; you may add or remove grid cards to best meet the needs of your documentation set.\n&lt;div class=\"grid cards\" markdown&gt;\n\n-   :simple-jupyter:{ .lg .middle } __Tutorials__\n\n    ---\n\n    An interactive tour of key features.\n\n    [:octicons-arrow-right-24: Tutorials](tutorials/index.md)\n\n-   :material-api:{ .lg .middle } __Reference__\n\n    ---\n\n    Full details on all classes and functions. Update the path with the package name.\n\n    [:octicons-arrow-right-24: API reference](autoapi/package/index.md)\n\n-   :material-new-box:{ .lg .middle } __What's new__\n\n    ---\n\n    See what's in the latest releases.\n\n    [:octicons-arrow-right-24: What's new](whatsnew.md)\n\n&lt;/div&gt;"
-  },
-  {
-    "objectID": "docs_guidance/install.html",
-    "href": "docs_guidance/install.html",
-    "title": "Installation/Get started",
-    "section": "",
-    "text": "Depending on the structure of the rest of the content, you may want to include either an “Installation” topic or a “Getting started” topic. Generally, if there is a single “Getting started” tutorial or if installation is a complex process, use a separate “Installation” topic. These topics should follow the guidelines for a How-to topic.\nIf installation is a simple process, such as a pip install, and there is a recommended path for getting started with a project or package, we recommend including the installation instructions as part of the “Home” page.\nContent tabs can be a neat way to present different instructions for different operating systems or Python installations. For example:\n\nPythonAnaconda\n\n\npython -m venv &lt;env-name&gt;\n\n\nconda create -n &lt;env-name&gt;\n\n\n\n\n\nFor a “Get started” topic, it’s good practice to link to one or more of the beginning tutorials."
-  },
-  {
-    "objectID": "docs_guidance/install.html#tutorials",
-    "href": "docs_guidance/install.html#tutorials",
-    "title": "Installation/Get started",
-    "section": "",
-    "text": "For a “Get started” topic, it’s good practice to link to one or more of the beginning tutorials."
+    "text": "Under .github/ there are GH-Actions files for running a test doc build when PRs are opened and pushing changes to GH-Pages when PRs are merged. Note that private repositories can host documentation via GH-Pages, but the hosted docs will be publicly available unless the GitHub organization has an Enterprise account. IDM LT is aware of this limitation and approves of hosting docs for private repositories on GH-Pages but not publicizing the docs more broadly until the repo is public.\nProjects within the starsimhub, laser-base, EMOD-hub, or InstituteforDiseaseModeling GitHub organizations will automatically have GH-Pages projects hosted at the following custom subdomains:\n\nstarsim.idmod.org/project\nlaser.idmod.org/project\nemod.idmod.org/project\ndocs.idmod.org/project\n\nContact the content team when you are ready to share the docs more broadly by listing the project on the landing page for each of those subdomains. For more information on custom subdomains, see GitHub Docs.\nIf desired, teams may set up a tool site separate from the idmod.org subdomain (such as starsim.org), but must configure redirects for users who try to access the site from one of the subdomains above.",
+    "crumbs": [
+      "Docs guidance"
+    ]
   },
   {
     "objectID": "docs_guidance/personas/index.html",
@@ -1389,14 +1332,101 @@
     ]
   },
   {
-    "objectID": "docs_guidance/topic-types/index.html",
-    "href": "docs_guidance/topic-types/index.html",
-    "title": "Topic types and structure",
+    "objectID": "docs_guidance/topic-types/howto.html",
+    "href": "docs_guidance/topic-types/howto.html",
+    "title": "How-to",
     "section": "",
-    "text": "Topic types and structure\nIDM documentation borrows much of the guidance from the Diátaxis framework, which classifies each topic within the documentation into four distinct topic types based on what the reader needs:\n\n\n\n\n\n\n\n\n\nACQUISITION (Study)\nAPPLICATION (Work)\n\n\nACTION (Doing)\nTUTORIALS (Learning-oriented)\nHOW-TO (Task-oriented)\n\n\nCOGNITION (Knowing)\nEXPLANATION (Understanding- oriented)\nREFERENCE (Information- oriented)\n\n\n\n\nTutorials – Learning-oriented experiences that guide a beginner through a series of steps to build skills and confidence.\nHow-to – Task-oriented directions that help a practitioner accomplish a specific goal.\nReference – Information-oriented technical descriptions for looking up specifications, parameters, and APIs.\nExplanation – Understanding-oriented discussions that provide context, background, and answer “why?” questions.\n\nEach topic type serves a different user need. Focusing each individual topic on a single user need makes the documentation as a whole easier to navigate, write, and maintain. All topics should aim to be self-contained and describe a single subject, linking away to related topics but not duplicating their content. When content must appear in multiple topics (such as common warnings), create a snippet of reusable text rather than duplicating that content.\nHow you organize and group individual topics into the table of contents should follow the typical user journey. Generally, place API reference and tutorials as top-level sections in the TOC and group explanation and how-to topics into “user guides.” See table of contents for detailed guidance on organizing topics within your documentation’s TOC.",
+    "text": "How-tos are goal-oriented directions that help users accomplish specific tasks or solve real problems. They guide action through practical steps focused on what users want to achieve.\nHow-tos assume competence and focus exclusively on helping users accomplish a specific, known goal. They are about action and only action no teaching, no explanation, no reference material.\n\n\nThis is the most commonly confused distinction in documentation. Both contain steps, but they serve fundamentally different purposes:\n\n\n\n\n\n\n\n\nAspect\nHow-to\nTutorial\n\n\n\n\nUser knowledge\nAlready knows what they want to achieve\nLearner may not know enough to even ask the right questions\n\n\nApproach\nGeneral: many things unknowable in advance or different in each case\nConcrete and particular: specific, known tools and materials we’ve set before the learner\n\n\nPath structure\nForks and branches, different routes to same destination\nSingle line, no choices or alternatives\n\n\nCompleteness\nDoesn’t need to be complete: starts/ends at reasonable points\nMust be complete end-to-end guide\n\n\nSafety\nCannot promise safety: often only one chance to get it right\nMust be safe: no harm can come, always possible to go back and start again\n\n\nResponsibility\nUser has responsibility for getting in and out of trouble\nTeacher has responsibility: if learner gets in trouble, teacher must fix it\n\n\nFocus\nWork—accomplishing tasks\nStudy—learning skills\n\n\n\nGood how-to examples:\n\n“How to calibrate transmission parameters to surveillance data”\n“How to add a waning immunity compartment to an SEIR model”\n“How to structure age-stratified contact matrices for a population”\n“Troubleshooting oscillating or unstable model outputs”\n\nNOT how-tos (too broad, really need tutorials):\n\n“How to build an SIR model”\n“How to use the API”\n\n\n\n\n\n\n\nHow-tos must be written from the perspective of the user, not of the machinery\nAddress real-world human needs and purposes\nTools should be incidental to the larger human goal\nThink about what users want to accomplish, not what the software can do\n\n\n\n\n\nServe already-competent users who know what they want to achieve\nUsers understand their goal and have chosen to pursue it\nDon’t include teaching or foundational explanations\nExpect readers can follow instructions correctly\n\n\n\n\n\nStay centered on the specific task or problem\nEvery sentence must advance the user toward their goal\nRemove anything that doesn’t directly serve task completion\nLink to related explanation, reference, or tutorials\n\n\n\n\n\nWithin the table of contents organization, how-to topics are organized within user guides that usually have explanation topics as the parent topics for a given subject.\n\n\nTemporal order:\n\nOrganize steps in the order they must be performed\nEach step builds meaningfully on previous ones\nInclude all steps needed to accomplish goal\n\nConditional guidance:\n\n“If you want x, do y”\n“When z is true, use approach a”\nProvide decision points where relevant\n\n\n\n\n\n\n\n\nState exactly what the guide accomplishes\nUse “How to…” format\nAvoid ambiguous titles that leave purpose unclear\n\n\n\n\n\nDirect, action-oriented language\n“Configure the settings”\n“Run the command…”\n“Add the following code…”\n\n\n\n\n\n\nMixing teaching with tasks\n\nDon’t explain concepts while giving instructions\nKeep learning and doing separate\n\nTool-centered writing\n\nDon’t organize around software features\nFocus on what users want to accomplish\n\nOver-specification\n\nDon’t make guides so narrow they’re not adaptable\nAllow for real-world variation\n\nScope creep\n\nDon’t let guides expand into tutorials or reference\nStay focused on the single task\n\nMissing the goal\n\nDon’t forget to state what will be accomplished\nMake the outcome clear",
     "crumbs": [
       "Docs guidance",
-      "Topic types and structure"
+      "Topic types and structure",
+      "How-to"
+    ]
+  },
+  {
+    "objectID": "docs_guidance/topic-types/howto.html#critical-distinction-how-to-vs-tutorial",
+    "href": "docs_guidance/topic-types/howto.html#critical-distinction-how-to-vs-tutorial",
+    "title": "How-to",
+    "section": "",
+    "text": "This is the most commonly confused distinction in documentation. Both contain steps, but they serve fundamentally different purposes:\n\n\n\n\n\n\n\n\nAspect\nHow-to\nTutorial\n\n\n\n\nUser knowledge\nAlready knows what they want to achieve\nLearner may not know enough to even ask the right questions\n\n\nApproach\nGeneral: many things unknowable in advance or different in each case\nConcrete and particular: specific, known tools and materials we’ve set before the learner\n\n\nPath structure\nForks and branches, different routes to same destination\nSingle line, no choices or alternatives\n\n\nCompleteness\nDoesn’t need to be complete: starts/ends at reasonable points\nMust be complete end-to-end guide\n\n\nSafety\nCannot promise safety: often only one chance to get it right\nMust be safe: no harm can come, always possible to go back and start again\n\n\nResponsibility\nUser has responsibility for getting in and out of trouble\nTeacher has responsibility: if learner gets in trouble, teacher must fix it\n\n\nFocus\nWork—accomplishing tasks\nStudy—learning skills\n\n\n\nGood how-to examples:\n\n“How to calibrate transmission parameters to surveillance data”\n“How to add a waning immunity compartment to an SEIR model”\n“How to structure age-stratified contact matrices for a population”\n“Troubleshooting oscillating or unstable model outputs”\n\nNOT how-tos (too broad, really need tutorials):\n\n“How to build an SIR model”\n“How to use the API”",
+    "crumbs": [
+      "Docs guidance",
+      "Topic types and structure",
+      "How-to"
+    ]
+  },
+  {
+    "objectID": "docs_guidance/topic-types/howto.html#key-principles",
+    "href": "docs_guidance/topic-types/howto.html#key-principles",
+    "title": "How-to",
+    "section": "",
+    "text": "How-tos must be written from the perspective of the user, not of the machinery\nAddress real-world human needs and purposes\nTools should be incidental to the larger human goal\nThink about what users want to accomplish, not what the software can do\n\n\n\n\n\nServe already-competent users who know what they want to achieve\nUsers understand their goal and have chosen to pursue it\nDon’t include teaching or foundational explanations\nExpect readers can follow instructions correctly\n\n\n\n\n\nStay centered on the specific task or problem\nEvery sentence must advance the user toward their goal\nRemove anything that doesn’t directly serve task completion\nLink to related explanation, reference, or tutorials",
+    "crumbs": [
+      "Docs guidance",
+      "Topic types and structure",
+      "How-to"
+    ]
+  },
+  {
+    "objectID": "docs_guidance/topic-types/howto.html#structural-guidelines",
+    "href": "docs_guidance/topic-types/howto.html#structural-guidelines",
+    "title": "How-to",
+    "section": "",
+    "text": "Within the table of contents organization, how-to topics are organized within user guides that usually have explanation topics as the parent topics for a given subject.\n\n\nTemporal order:\n\nOrganize steps in the order they must be performed\nEach step builds meaningfully on previous ones\nInclude all steps needed to accomplish goal\n\nConditional guidance:\n\n“If you want x, do y”\n“When z is true, use approach a”\nProvide decision points where relevant",
+    "crumbs": [
+      "Docs guidance",
+      "Topic types and structure",
+      "How-to"
+    ]
+  },
+  {
+    "objectID": "docs_guidance/topic-types/howto.html#naming-and-language",
+    "href": "docs_guidance/topic-types/howto.html#naming-and-language",
+    "title": "How-to",
+    "section": "",
+    "text": "State exactly what the guide accomplishes\nUse “How to…” format\nAvoid ambiguous titles that leave purpose unclear\n\n\n\n\n\nDirect, action-oriented language\n“Configure the settings”\n“Run the command…”\n“Add the following code…”",
+    "crumbs": [
+      "Docs guidance",
+      "Topic types and structure",
+      "How-to"
+    ]
+  },
+  {
+    "objectID": "docs_guidance/topic-types/howto.html#common-pitfalls",
+    "href": "docs_guidance/topic-types/howto.html#common-pitfalls",
+    "title": "How-to",
+    "section": "",
+    "text": "Mixing teaching with tasks\n\nDon’t explain concepts while giving instructions\nKeep learning and doing separate\n\nTool-centered writing\n\nDon’t organize around software features\nFocus on what users want to accomplish\n\nOver-specification\n\nDon’t make guides so narrow they’re not adaptable\nAllow for real-world variation\n\nScope creep\n\nDon’t let guides expand into tutorials or reference\nStay focused on the single task\n\nMissing the goal\n\nDon’t forget to state what will be accomplished\nMake the outcome clear",
+    "crumbs": [
+      "Docs guidance",
+      "Topic types and structure",
+      "How-to"
+    ]
+  },
+  {
+    "objectID": "docs_guidance/topic-types/install.html",
+    "href": "docs_guidance/topic-types/install.html",
+    "title": "Installation/Get started",
+    "section": "",
+    "text": "Depending on the structure of the rest of the content, you may want to include either an “Installation” topic or a “Getting started” topic. Generally, if there is a single “Getting started” tutorial or if installation is a complex process, use a separate “Installation” topic. These topics should follow the guidelines for a How-to topic.\nIf installation is a simple process, such as a pip install, and there is a recommended path for getting started with a project or package, we recommend including the installation instructions as part of the “Home” page.\nContent tabs can be a neat way to present different instructions for different operating systems or Python installations. For example:\n\nPythonAnaconda\n\n\npython -m venv &lt;env-name&gt;\n\n\nconda create -n &lt;env-name&gt;\n\n\n\n\n\nFor a “Get started” topic, it’s good practice to link to one or more of the beginning tutorials.",
+    "crumbs": [
+      "Docs guidance",
+      "Topic types and structure",
+      "Table of contents",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "docs_guidance/topic-types/install.html#tutorials",
+    "href": "docs_guidance/topic-types/install.html#tutorials",
+    "title": "Installation/Get started",
+    "section": "",
+    "text": "For a “Get started” topic, it’s good practice to link to one or more of the beginning tutorials.",
+    "crumbs": [
+      "Docs guidance",
+      "Topic types and structure",
+      "Table of contents",
+      "Installation"
     ]
   },
   {
@@ -1678,9 +1708,9 @@
   {
     "objectID": "eng_process/public_release.html",
     "href": "eng_process/public_release.html",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
-    "text": "Christopher Lorton, Cliff Kerr, Claude - April 2026\nThis document describes the requirements and procedure for making a repository public. It is written for managers and directors who are deciding whether to make a project public and what resources that decision requires.\nGoals: - provide guidance on making projects public and when not to make them public - lay out expectations for quality for public projects - highlight resources for assessing quality and addressing quality issues - provide estimates on team and time commitments for making projects public\n\n\nWe want to make a project/code public if it meets one or more of the following criteria:\n\nIt amplifies IDM’s scientific impact by enabling others to build on our work\nIt builds trust through transparency in scientific methods\nIt attracts collaborators, contributors, and feedback that improve quality\nIt fulfills our mission to share knowledge for global health benefit\n\nThere are three main reasons why a project is not made public:\n\nIt contains sensitive data or results, so it is not allowed to be made public.\nWe are not confident yet that the results are correct, so it could potentially be misleading or dangerous to make it public.\nIt is neither sensitive nor dangerous, but it is of interest to so few people that making it public would create noise rather than signal.\n\nIf your project satisfies one or more of the criteria above and does not fall into any of these three disqualifying categories, consider making it public.\n\n\n\nQuality expectations depend on the project’s tier, which reflects its scope, intended audience, and expected lifetime. The engineering quality guidelines define the three tiers. Briefly, they are:\nTier 1: large-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external Tier 2: small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external Tier 3: one-off or exploratory code (e.g., code for a paper or presentation) with a few (1-5) users, primarily internal\nTier 1 should meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety with any exceptions clearly identified and justified. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the engineering quality guidelines.\nRegardless of tier, all public code must be:\n\nCorrect: The code does what it claims to do. Peer review and colleague second opinions strengthen this.\nTested: Appropriate test coverage for the tier. Tier 1 and Tier 2 code are expected to have automated tests appropriate to their scope; Tier 3 code may instead be validated through usage when that is appropriate for the work. For non-trivial code, “it looked right when I ran it” is not sufficient.\nDocumented: Every public repo needs at minimum a README explaining purpose, installation, and basic usage.\nSafe: Under no circumstances make a repo public if it contains sensitive data, personally identifiable information (PII), API keys, or other secrets.\nLicensed: By default we are using the MIT License.\n\n\n\n\nBefore a project goes public, the team should perform the following actions to assess the state of a project with respect to the quality expectations and identify any gaps:\n\nRun automated review (all tiers): Use the IDM-Standards plugin — a Claude Code plugin built directly from the engineering guidelines — to score the project (/idm-standards:audit-code) and generate a prioritized list of gaps and improvements. Estimate: 1 person, 1 hour.\nPerform peer code review (T1 and T2, recommended for T3): At least one engineer who did not write the code reviews it against the engineering quality guidelines. Estimate: 1 person, 1 day – 1+ weeks depending on project size.\nPerform documentation review (T1 and T2, recommended for T3): The content team reviews docs for clarity and completeness. Estimate: 1 person, 1 day – 1+ weeks depending on project size.\nGet stakeholder sign-off: All stakeholders confirm the project meets its success criteria. Estimate: 1 day – 1 week depending on number of stakeholders and project size.\nRun history scan: Verify the full commit history (not just the current state) contains no secrets, API keys, or sensitive data that were accidentally committed and later deleted. If found, these must be excised from history before the repo is made public. Estimate: 1 person, 1 hour.\n\n\n\n\nEffort depends heavily on the project’s current state and target tier. Rough guidance:\n\nTier 3 → public: If the code is already correct and has a README, the main effort is typically documenting and removing any sensitive content. Estimate: 1 person, 0.5–2 days.\nTier 2 → public: Typically requires adding tests, improving documentation (README + example scripts or tutorial), ensuring reproducibility (capturing exact dependency versions where results matter), and passing a code review. Estimate: several people, 2–5 days for a project in decent shape; more if significant gaps exist.\nTier 1 → public: Full Tier 1 quality is a significant ongoing investment. Projects intended for public Tier 1 release should be designed to that standard from the start; retrofitting rarely is cost-effective. Estimate: multi-person team, weeks to months depending on gaps.\n\nThe IDM-Standards plugin can provide a more specific estimate based on an actual assessment of the project.\n\n\n\nOnce a project is ready to go public, follow the launch checklist from the engineering processes guide:\n\nAll stakeholders confirm the project meets its success criteria.Estimate: “box checked” based on quality assessment (QA) above.\nFull codebase is reviewed by an engineer and AI tool against the quality guidelines.Estimate: “box checked” based on the QA work.\nDocs are reviewed by the content team for clarity and completeness.Estimate: “box checked” based on the QA work.\nEnsure the main branch is the primary entry point (not a long-lived feature branch).Estimate: “box checked” based on preparation for review and testing.\nPublish to PyPI or CRAN if the project is a reusable library.Estimate: extra-small task, 1 hour.\nOptionally pair with an AI tool (plugin, MCP server, or chatbot) to make the project more accessible.Estimate: could be non-trivial – several days to several weeks.\nOptionally pair with a dedicated documentation website.Estimate: small task, &lt;1 week with coordination with EIT.\nAnnounce via social media, websites, and partner channels as appropriate.Estimate: small task, &lt;1 week for content development and coordination with comms.\n\n\n\n\nMaking a project public is a commitment, not a one-time action. Public repositories have users who depend on them. Plan for:\n\nTechnical debt: Proactively managed to keep the codebase healthy over time.\nReleases: Frequent releases, especially for bug fixes.\nSupport: User questions and bug reports receive a first response within 24 hours, with resolution time depending on severity.\nDocs sync: Documentation kept in sync with code.\n\nFor Tier 1 projects, this typically requires dedicated engineering time on an ongoing basis. For Tier 2 and Tier 3 projects, maintenance can be lighter, but should still be explicitly planned and resourced before release.\n\n\n\n\nmanagement: go/no go decision for making projects public including allocating time and resources for meeting IDM quality expectations\nresearch: sign-off on correctness, review research code, breadth and depth of test coverage, and accuracy of documentation for research usage\nsoftware: help with or run automated tools for quality assessment and addressing quality gaps, assist with code reviews, help with implementing necessary test coverage, generate technical documentation\ndocumentation: review documentation for quality and completeness according to tier expectations and public comms as appropriate",
+    "text": "Christopher Lorton, Cliff Kerr, Claude - April 2026\nThis document describes the requirements and procedure for making a repository public. It is written for managers and directors who are deciding whether to make a project public and what resources that decision requires.\nGoals:\n\nProvide guidance on making projects public and when not to make them public\nLay out expectations for quality for public projects\nHighlight resources for assessing quality and addressing quality issues\nProvide estimates on team and time commitments for making projects public\n\n\n\nWe want to make a project/code public if it meets one or more of the following criteria:\n\nIt amplifies IDM’s scientific impact by enabling others to build on our work\nIt builds trust through transparency in scientific methods\nIt attracts collaborators, contributors, and feedback that improve quality\nIt fulfills our mission to share knowledge for global health benefit\n\nThere are three main reasons why a project is not made public:\n\nIt contains sensitive data or results, so it is not allowed to be made public.\nWe are not confident yet that the results are correct, so it could potentially be misleading or dangerous to make it public.\nIt is neither sensitive nor dangerous, but it is of interest to so few people that making it public would create noise rather than signal.\n\nIf your project satisfies one or more of the criteria above and does not fall into any of these three disqualifying categories, consider making it public.\n\n\n\nQuality expectations depend on the project’s tier, which reflects its scope, intended audience, and expected lifetime. The engineering quality guidelines define the three tiers. Briefly, they are:\nTier 1: Large-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external Tier 2: Small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external Tier 3: One-off or exploratory code (e.g., code for a paper or presentation) with a few (1-5) users, primarily internal\nTier 1 should meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety with any exceptions clearly identified and justified. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the engineering quality guidelines.\nRegardless of tier, all public code must be:\n\nCorrect: The code does what it claims to do. Peer review and colleague second opinions strengthen this.\nTested: Appropriate test coverage for the tier. Tier 1 and Tier 2 code are expected to have automated tests appropriate to their scope; Tier 3 code may instead be validated through usage when that is appropriate for the work. For non-trivial code, “it looked right when I ran it” is not sufficient.\nDocumented: Every public repo needs at minimum a README explaining purpose, installation, and basic usage.\nSafe: Under no circumstances make a repo public if it contains sensitive data, personally identifiable information (PII), API keys, or other secrets.\nLicensed: By default we are using the MIT License.\n\n\n\n\nBefore a project goes public, the team should perform the following actions to assess the state of a project with respect to the quality expectations and identify any gaps:\n\nRun automated review (all tiers): Use the IDM-Standards plugin — a Claude Code plugin built directly from the engineering guidelines — to score the project (/idm-standards:audit-code) and generate a prioritized list of gaps and improvements. Estimate: 1 person, 1 hour.\nPerform peer code review (T1 and T2, recommended for T3): At least one engineer who did not write the code reviews it against the engineering quality guidelines. Estimate: 1 person, 1 day – 1+ weeks depending on project size.\nPerform documentation review (T1 and T2, recommended for T3): The content team reviews docs for clarity and completeness. Estimate: 1 person, 1 day – 1+ weeks depending on project size.\nGet stakeholder sign-off: All stakeholders confirm the project meets its success criteria. Estimate: 1 day – 1 week depending on number of stakeholders and project size.\nRun history scan: Verify the full commit history (not just the current state) contains no secrets, API keys, or sensitive data that were accidentally committed and later deleted. If found, these must be excised from history before the repo is made public. Estimate: 1 person, 1 hour.\n\n\n\n\nEffort depends heavily on the project’s current state and target tier. Rough guidance:\n\nTier 3 → public: If the code is already correct and has a README, the main effort is typically documenting and removing any sensitive content. Estimate: 1 person, 0.5–2 days.\nTier 2 → public: Typically requires adding tests, improving documentation (README + example scripts or tutorial), ensuring reproducibility (capturing exact dependency versions where results matter), and passing a code review. Estimate: several people, 2–5 days for a project in decent shape; more if significant gaps exist.\nTier 1 → public: Full Tier 1 quality is a significant ongoing investment. Projects intended for public Tier 1 release should be designed to that standard from the start; retrofitting rarely is cost-effective. Estimate: multi-person team, weeks to months depending on gaps.\n\nThe IDM-Standards plugin can provide a more specific estimate based on an actual assessment of the project.\n\n\n\nOnce a project is ready to go public, follow the launch checklist from the engineering processes guide:\n\nAll stakeholders confirm the project meets its success criteria.Estimate: “box checked” based on quality assessment (QA) above.\nFull codebase is reviewed by an engineer and AI tool against the quality guidelines.Estimate: “box checked” based on the QA work.\nDocs are reviewed by the content team for clarity and completeness.Estimate: “box checked” based on the QA work.\nEnsure the main branch is the primary entry point (not a long-lived feature branch).Estimate: “box checked” based on preparation for review and testing.\nPublish to PyPI or CRAN if the project is a reusable library.Estimate: extra-small task, 1 hour.\nOptionally pair with an AI tool (plugin, MCP server, or chatbot) to make the project more accessible.Estimate: could be non-trivial – several days to several weeks.\nOptionally pair with a dedicated documentation website.Estimate: small task, &lt;1 week with coordination with EIT.\nAnnounce via social media, websites, and partner channels as appropriate.Estimate: small task, &lt;1 week for content development and coordination with comms.\n\n\n\n\nMaking a project public is a commitment, not a one-time action. Public repositories have users who depend on them. Plan for:\n\nTechnical debt: Proactively managed to keep the codebase healthy over time.\nReleases: Frequent releases, especially for bug fixes.\nSupport: User questions and bug reports receive a first response within 24 hours, with resolution time depending on severity.\nDocs sync: Documentation kept in sync with code.\n\nFor Tier 1 projects, this typically requires dedicated engineering time on an ongoing basis. For Tier 2 and Tier 3 projects, maintenance can be lighter, but should still be explicitly planned and resourced before release.\n\n\n\n\nManagement: Go/no go decision for making projects public including allocating time and resources for meeting IDM quality expectations\nResearch: Sign-off on correctness, review research code, breadth and depth of test coverage, and accuracy of documentation for research usage\nSoftware: Help with or run automated tools for quality assessment and addressing quality gaps, assist with code reviews, help with implementing necessary test coverage, generate technical documentation\nDocumentation: Review documentation for quality and completeness according to tier expectations and public comms as appropriate",
     "crumbs": [
       "Engineering processes",
       "Public release"
@@ -1689,7 +1719,7 @@
   {
     "objectID": "eng_process/public_release.html#publicprivate-considerations",
     "href": "eng_process/public_release.html#publicprivate-considerations",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
     "text": "We want to make a project/code public if it meets one or more of the following criteria:\n\nIt amplifies IDM’s scientific impact by enabling others to build on our work\nIt builds trust through transparency in scientific methods\nIt attracts collaborators, contributors, and feedback that improve quality\nIt fulfills our mission to share knowledge for global health benefit\n\nThere are three main reasons why a project is not made public:\n\nIt contains sensitive data or results, so it is not allowed to be made public.\nWe are not confident yet that the results are correct, so it could potentially be misleading or dangerous to make it public.\nIt is neither sensitive nor dangerous, but it is of interest to so few people that making it public would create noise rather than signal.\n\nIf your project satisfies one or more of the criteria above and does not fall into any of these three disqualifying categories, consider making it public.",
     "crumbs": [
@@ -1700,9 +1730,9 @@
   {
     "objectID": "eng_process/public_release.html#quality-expectations",
     "href": "eng_process/public_release.html#quality-expectations",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
-    "text": "Quality expectations depend on the project’s tier, which reflects its scope, intended audience, and expected lifetime. The engineering quality guidelines define the three tiers. Briefly, they are:\nTier 1: large-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external Tier 2: small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external Tier 3: one-off or exploratory code (e.g., code for a paper or presentation) with a few (1-5) users, primarily internal\nTier 1 should meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety with any exceptions clearly identified and justified. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the engineering quality guidelines.\nRegardless of tier, all public code must be:\n\nCorrect: The code does what it claims to do. Peer review and colleague second opinions strengthen this.\nTested: Appropriate test coverage for the tier. Tier 1 and Tier 2 code are expected to have automated tests appropriate to their scope; Tier 3 code may instead be validated through usage when that is appropriate for the work. For non-trivial code, “it looked right when I ran it” is not sufficient.\nDocumented: Every public repo needs at minimum a README explaining purpose, installation, and basic usage.\nSafe: Under no circumstances make a repo public if it contains sensitive data, personally identifiable information (PII), API keys, or other secrets.\nLicensed: By default we are using the MIT License.",
+    "text": "Quality expectations depend on the project’s tier, which reflects its scope, intended audience, and expected lifetime. The engineering quality guidelines define the three tiers. Briefly, they are:\nTier 1: Large-scale reusable library or “digital public good” (e.g., EMOD, Starsim, HPVSim) with many (10+) users, internal and external Tier 2: Small-scale reusable code (e.g., calibrated country model, utility) with several (2-10) users, potentially external Tier 3: One-off or exploratory code (e.g., code for a paper or presentation) with a few (1-5) users, primarily internal\nTier 1 should meet the full set of engineering quality standards — correctness, clear structure, comprehensive documentation, testing, and safety with any exceptions clearly identified and justified. Tier 2 and Tier 3 requirements are progressively lighter. The full details are in the engineering quality guidelines.\nRegardless of tier, all public code must be:\n\nCorrect: The code does what it claims to do. Peer review and colleague second opinions strengthen this.\nTested: Appropriate test coverage for the tier. Tier 1 and Tier 2 code are expected to have automated tests appropriate to their scope; Tier 3 code may instead be validated through usage when that is appropriate for the work. For non-trivial code, “it looked right when I ran it” is not sufficient.\nDocumented: Every public repo needs at minimum a README explaining purpose, installation, and basic usage.\nSafe: Under no circumstances make a repo public if it contains sensitive data, personally identifiable information (PII), API keys, or other secrets.\nLicensed: By default we are using the MIT License.",
     "crumbs": [
       "Engineering processes",
       "Public release"
@@ -1711,7 +1741,7 @@
   {
     "objectID": "eng_process/public_release.html#quality-assessments",
     "href": "eng_process/public_release.html#quality-assessments",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
     "text": "Before a project goes public, the team should perform the following actions to assess the state of a project with respect to the quality expectations and identify any gaps:\n\nRun automated review (all tiers): Use the IDM-Standards plugin — a Claude Code plugin built directly from the engineering guidelines — to score the project (/idm-standards:audit-code) and generate a prioritized list of gaps and improvements. Estimate: 1 person, 1 hour.\nPerform peer code review (T1 and T2, recommended for T3): At least one engineer who did not write the code reviews it against the engineering quality guidelines. Estimate: 1 person, 1 day – 1+ weeks depending on project size.\nPerform documentation review (T1 and T2, recommended for T3): The content team reviews docs for clarity and completeness. Estimate: 1 person, 1 day – 1+ weeks depending on project size.\nGet stakeholder sign-off: All stakeholders confirm the project meets its success criteria. Estimate: 1 day – 1 week depending on number of stakeholders and project size.\nRun history scan: Verify the full commit history (not just the current state) contains no secrets, API keys, or sensitive data that were accidentally committed and later deleted. If found, these must be excised from history before the repo is made public. Estimate: 1 person, 1 hour.",
     "crumbs": [
@@ -1722,7 +1752,7 @@
   {
     "objectID": "eng_process/public_release.html#time-and-team-size-estimates-for-public-release-quality-assurance",
     "href": "eng_process/public_release.html#time-and-team-size-estimates-for-public-release-quality-assurance",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
     "text": "Effort depends heavily on the project’s current state and target tier. Rough guidance:\n\nTier 3 → public: If the code is already correct and has a README, the main effort is typically documenting and removing any sensitive content. Estimate: 1 person, 0.5–2 days.\nTier 2 → public: Typically requires adding tests, improving documentation (README + example scripts or tutorial), ensuring reproducibility (capturing exact dependency versions where results matter), and passing a code review. Estimate: several people, 2–5 days for a project in decent shape; more if significant gaps exist.\nTier 1 → public: Full Tier 1 quality is a significant ongoing investment. Projects intended for public Tier 1 release should be designed to that standard from the start; retrofitting rarely is cost-effective. Estimate: multi-person team, weeks to months depending on gaps.\n\nThe IDM-Standards plugin can provide a more specific estimate based on an actual assessment of the project.",
     "crumbs": [
@@ -1733,7 +1763,7 @@
   {
     "objectID": "eng_process/public_release.html#the-release-process",
     "href": "eng_process/public_release.html#the-release-process",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
     "text": "Once a project is ready to go public, follow the launch checklist from the engineering processes guide:\n\nAll stakeholders confirm the project meets its success criteria.Estimate: “box checked” based on quality assessment (QA) above.\nFull codebase is reviewed by an engineer and AI tool against the quality guidelines.Estimate: “box checked” based on the QA work.\nDocs are reviewed by the content team for clarity and completeness.Estimate: “box checked” based on the QA work.\nEnsure the main branch is the primary entry point (not a long-lived feature branch).Estimate: “box checked” based on preparation for review and testing.\nPublish to PyPI or CRAN if the project is a reusable library.Estimate: extra-small task, 1 hour.\nOptionally pair with an AI tool (plugin, MCP server, or chatbot) to make the project more accessible.Estimate: could be non-trivial – several days to several weeks.\nOptionally pair with a dedicated documentation website.Estimate: small task, &lt;1 week with coordination with EIT.\nAnnounce via social media, websites, and partner channels as appropriate.Estimate: small task, &lt;1 week for content development and coordination with comms.",
     "crumbs": [
@@ -1744,7 +1774,7 @@
   {
     "objectID": "eng_process/public_release.html#ongoing-maintenance-commitments",
     "href": "eng_process/public_release.html#ongoing-maintenance-commitments",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
     "text": "Making a project public is a commitment, not a one-time action. Public repositories have users who depend on them. Plan for:\n\nTechnical debt: Proactively managed to keep the codebase healthy over time.\nReleases: Frequent releases, especially for bug fixes.\nSupport: User questions and bug reports receive a first response within 24 hours, with resolution time depending on severity.\nDocs sync: Documentation kept in sync with code.\n\nFor Tier 1 projects, this typically requires dedicated engineering time on an ongoing basis. For Tier 2 and Tier 3 projects, maintenance can be lighter, but should still be explicitly planned and resourced before release.",
     "crumbs": [
@@ -1755,9 +1785,9 @@
   {
     "objectID": "eng_process/public_release.html#roles-and-expectations",
     "href": "eng_process/public_release.html#roles-and-expectations",
-    "title": "Considerations for Public Release",
+    "title": "Considerations for public release",
     "section": "",
-    "text": "management: go/no go decision for making projects public including allocating time and resources for meeting IDM quality expectations\nresearch: sign-off on correctness, review research code, breadth and depth of test coverage, and accuracy of documentation for research usage\nsoftware: help with or run automated tools for quality assessment and addressing quality gaps, assist with code reviews, help with implementing necessary test coverage, generate technical documentation\ndocumentation: review documentation for quality and completeness according to tier expectations and public comms as appropriate",
+    "text": "Management: Go/no go decision for making projects public including allocating time and resources for meeting IDM quality expectations\nResearch: Sign-off on correctness, review research code, breadth and depth of test coverage, and accuracy of documentation for research usage\nSoftware: Help with or run automated tools for quality assessment and addressing quality gaps, assist with code reviews, help with implementing necessary test coverage, generate technical documentation\nDocumentation: Review documentation for quality and completeness according to tier expectations and public comms as appropriate",
     "crumbs": [
       "Engineering processes",
       "Public release"
@@ -1893,7 +1923,7 @@
     "href": "docs_guidance/topic-types/notebook.html#first-step",
     "title": "Example notebook",
     "section": "First step",
-    "text": "First step\nInclude a descriptive heading followed by an explanation of the code sample that will follow to help guide the reader’s learning experience. Code samples should include extensive comments.\n\n%matplotlib inline\nimport starsim as ss\n\n# Define the parameters\npars = dict(\n    n_agents = 10_000,    # Number of agents to simulate\n    networks = dict(      # *Networks* add detail on how the agents interact with each other\n        type = 'random',  # Here, we use a 'random' network\n        n_contacts = 10   # Each person has an average of 10 contacts with other people\n    ),\n    diseases = dict(      # *Diseases* add detail on what diseases to model\n        type = 'sir',     # Here, we're creating an SIR disease\n        init_prev = 0.01, # Proportion of the population initially infected\n        beta = 0.05,      # Probability of transmission between contacts\n    )\n)\n\n# Make the sim, run and plot\nsim = ss.Sim(pars)\nsim.run()\nsim.plot()\nsim.diseases.sir.plot()\n\nRebuilding font cache, please be patient...\nFont cache rebuilt in folder: /home/runner/.cache/matplotlib\n\nNote: rebuilding the font cache only happens once on first import, or set the environment variable STARSIM_INSTALL_FONTS=0 to disable.\nInitializing sim with 10000 agents\n\n  Running 2000.01.01 ( 0/51) (0.00 s)  ———————————————————— 2%\n\n  Running 2010.01.01 (10/51) (1.44 s)  ••••———————————————— 22%\n\n  Running 2020.01.01 (20/51) (1.50 s)  ••••••••———————————— 41%\n\n  Running 2030.01.01 (30/51) (1.55 s)  ••••••••••••———————— 61%\n\n  Running 2040.01.01 (40/51) (1.59 s)  ••••••••••••••••———— 80%\n\n  Running 2050.01.01 (50/51) (1.63 s)  •••••••••••••••••••• 100%\n\nFigure(768x576)\n\n\n\n\n\n\n\n\n\nFigure(672x480)\n\n\n\n\n\n\n\n\n\nIf necessary, provide follow-up context or note relevant features of the output plots.",
+    "text": "First step\nInclude a descriptive heading followed by an explanation of the code sample that will follow to help guide the reader’s learning experience. Code samples should include extensive comments.\n\n%matplotlib inline\nimport starsim as ss\n\n# Define the parameters\npars = dict(\n    n_agents = 10_000,    # Number of agents to simulate\n    networks = dict(      # *Networks* add detail on how the agents interact with each other\n        type = 'random',  # Here, we use a 'random' network\n        n_contacts = 10   # Each person has an average of 10 contacts with other people\n    ),\n    diseases = dict(      # *Diseases* add detail on what diseases to model\n        type = 'sir',     # Here, we're creating an SIR disease\n        init_prev = 0.01, # Proportion of the population initially infected\n        beta = 0.05,      # Probability of transmission between contacts\n    )\n)\n\n# Make the sim, run and plot\nsim = ss.Sim(pars)\nsim.run()\nsim.plot()\nsim.diseases.sir.plot()\n\nRebuilding font cache, please be patient...\nFont cache rebuilt in folder: /home/runner/.cache/matplotlib\n\nNote: rebuilding the font cache only happens once on first import, or set the environment variable STARSIM_INSTALL_FONTS=0 to disable.\nInitializing sim with 10000 agents\n\n  Running 2000.01.01 ( 0/51) (0.00 s)  ———————————————————— 2%\n\n  Running 2010.01.01 (10/51) (1.48 s)  ••••———————————————— 22%\n\n  Running 2020.01.01 (20/51) (1.54 s)  ••••••••———————————— 41%\n\n  Running 2030.01.01 (30/51) (1.60 s)  ••••••••••••———————— 61%\n\n  Running 2040.01.01 (40/51) (1.64 s)  ••••••••••••••••———— 80%\n\n  Running 2050.01.01 (50/51) (1.68 s)  •••••••••••••••••••• 100%\n\nFigure(768x576)\n\n\n\n\n\n\n\n\n\nFigure(672x480)\n\n\n\n\n\n\n\n\n\nIf necessary, provide follow-up context or note relevant features of the output plots.",
     "crumbs": [
       "Docs guidance",
       "Topic types and structure",
