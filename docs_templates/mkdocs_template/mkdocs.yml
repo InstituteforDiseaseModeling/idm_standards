@@ -88,6 +88,7 @@ extra_css:
 
 plugins:
   - search # search functionality
+  - git-revision-date-localized # per-page last-updated dates from git history (requires full clone; see workflows)
   - autorefs # automatically create linkable references
   - include-markdown # include other files, such as READMEs
   - table-reader # enables rendering of CSV/TSV files as tables
