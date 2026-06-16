@@ -134,10 +134,10 @@ The code or explanatory text that follows should be indented.
 
 Only precede the code samples with `>>>` if you have implemented [doctest](https://docs.python.org/3/library/doctest.html). Otherwise, use fenced code blocks as follows:
 
-```python
+````python
 Examples:
     ```python
     code sample
     ```
-```
+````
 
