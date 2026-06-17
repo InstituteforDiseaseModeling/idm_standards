@@ -89,8 +89,13 @@ website:
           - section: Topic types and structure
             file: docs_guidance/topic-types/index.md
             contents:
-              - text: Table of contents
+              - section: Table of contents
                 file: docs_guidance/topic-types/toc.md
+                contents:
+                  - text: Home page
+                    file: docs_guidance/topic-types/home.md
+                  - text: Installation
+                    file: docs_guidance/topic-types/install.md
               - text: Tutorials
                 file: docs_guidance/topic-types/tutorials.md
                 contents:

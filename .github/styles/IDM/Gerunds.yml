@@ -7,4 +7,4 @@ ignorecase: true
 # Flag any -ing word in a heading, except listed false positives.
 # Add/remove exceptions in the (?! ... ) group as needed.
 tokens:
-  - '\b(?!thing\b|getting\b|something\b|docstring\b|nothing\b|anything\b|king\b|ring\b|spring\b|evening\b|morning\b|ceiling\b|building\b)[A-Za-z-]+ing\b'
+  - '\b(?!thing\b|getting\b|something\b|docstring\b|nothing\b|anything\b|king\b|ring\b|spring\b|evening\b|morning\b|ceiling\b|beginning\b|building\b)[A-Za-z-]+ing\b'

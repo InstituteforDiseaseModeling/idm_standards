@@ -1,4 +1,4 @@
-# Home topic
+# Home page
 
 Include an introductory paragraph describing broadly what the project or package is and what the intended usage is. Don't forget to include the broader context about how it fits into disease modeling tools.
 
@@ -24,7 +24,7 @@ In the package README, include the following:
 
 A summary of the repo with enough context to guide model/tool selection relative to other similar tools. Although primarily for model builders/extenders/users, remember to ground the repo in potential policy/research applications.
 
-*Note:* IDM used to require a disclaimer to be included in the README, but these are no longer needed and should be removed. However, please ensure that the license is correct and up to date (MIT license in a `LICENSE` file).
+*Note:* IDM used to require a disclaimer to be included in the README, but these are no longer needed and should be removed. However, please ensure that the license is correct and up to date ([MIT license](https://opensource.org/license/mit) in a `LICENSE` file).
 
 ### Requirements
 
@@ -36,23 +36,23 @@ Installation instructions.
 
 ### Documentation and usage
 
-Provide a link to the hosted documentation at https://docs.idmod.org/project or relevant modeling framework subdomain. If desired, include brief instructions on running a demo or simple simulation. 
+Provide a link to the hosted documentation at https://docs.idmod.org/project or relevant modeling framework subdomain. If desired, include brief instructions on running a demo or simple simulation.
 
 ### Package structure
 
-An overview of the core model code, classes, and submodules. 
+An overview of the core model code, classes, and submodules.
 
 ### Contributing
 
 Any instructions on how to provide code contributions or reach out for support.
 
-## Learn more 
+## Learn more
 
 After reusing the README.md file, you can append additional content to orient the reader to the documentation.
 
 **MkDocs syntax:**
 
-One visually appealing way to present the high-level sections of the documentation is to include [grid cards](https://squidfunk.github.io/mkdocs-material/reference/grids/). There are many different icons available and the cards can be combined with other MkDocs formatting, such as content tabs, code blocks, or lists. This is an illustrative example; you may add or remove grid cards to best meet the needs of your documentation set. 
+One visually appealing way to present the high-level sections of the documentation is to include [grid cards](https://squidfunk.github.io/mkdocs-material/reference/grids/). There are many different icons available and the cards can be combined with other MkDocs formatting, such as content tabs, code blocks, or lists. This is an illustrative example; you may add or remove grid cards to best meet the needs of your documentation set.
 
 ```html
 <div class="grid cards" markdown>

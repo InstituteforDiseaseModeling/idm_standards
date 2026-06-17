@@ -8,7 +8,6 @@ action:
 swap:
   "sufficient number(?: of)?": enough
   (?:in order to|as a means to): to
-  (?:inform|let me know): tell
   (?:previous|prior) to: before
   (?:utilize|make use of): use
   a (?:large)? majority of: most

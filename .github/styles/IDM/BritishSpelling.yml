@@ -1,0 +1,112 @@
+# Vale rule: BritishSpelling
+# Suggests American English spellings in place of British English ones.
+# Weighted toward vocabulary common in disease modeling and epidemiology.
+#
+# Compatible with: Quarto (.qmd), MkDocs Material (.md)
+#
+# Reference it in vale.ini:
+#   [*.{md,qmd}]
+#   IDM.BritishSpelling = warning
+
+extends: substitution
+message: "Use the American spelling '%s' instead of '%s'."
+link: "https://en.wikipedia.org/wiki/American_and_British_English_spelling_differences"
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  # --- -ise / -isation → -ize / -ization (analysis, optimization, etc.) ---
+  analyse: analyze
+  analysed: analyzed
+  analysing: analyzing
+  characterise: characterize
+  characterised: characterized
+  characterisation: characterization
+  discretise: discretize
+  discretised: discretized
+  discretisation: discretization
+  generalise: generalize
+  generalised: generalized
+  immunise: immunize
+  immunised: immunized
+  immunisation: immunization
+  maximise: maximize
+  maximised: maximized
+  minimise: minimize
+  minimised: minimized
+  normalise: normalize
+  normalised: normalized
+  normalisation: normalization
+  optimise: optimize
+  optimised: optimized
+  optimisation: optimization
+  parameterise: parameterize
+  parameterised: parameterized
+  parameterisation: parameterization
+  prioritise: prioritize
+  prioritised: prioritized
+  randomise: randomize
+  randomised: randomized
+  randomisation: randomization
+  standardise: standardize
+  standardised: standardized
+  standardisation: standardization
+  summarise: summarize
+  summarised: summarized
+  visualise: visualize
+  visualised: visualized
+  visualisation: visualization
+
+  # --- -our → -or ---
+  behaviour: behavior
+  behavioural: behavioral
+  colour: color
+  favour: favor
+  favourable: favorable
+  neighbour: neighbor
+  neighbourhood: neighborhood
+
+  # --- -re → -er ---
+  centre: center
+  centred: centered
+  fibre: fiber
+  litre: liter
+  metre: meter
+
+  # --- -ll- → -l- (and reverse for travel etc.) ---
+  labelled: labeled
+  labelling: labeling
+  modelled: modeled
+  modelling: modeling
+  modeller: modeler
+  signalling: signaling
+
+  # --- -ce → -se (nouns) ---
+  defence: defense
+  licence: license
+  offence: offense
+
+  # --- ae / oe digraphs (clinical and epidemiological terms) ---
+  aetiology: etiology
+  anaemia: anemia
+  anaemic: anemic
+  diarrhoea: diarrhea
+  haematology: hematology
+  haemoglobin: hemoglobin
+  haemorrhage: hemorrhage
+  leukaemia: leukemia
+  oedema: edema
+  oestrogen: estrogen
+  paediatric: pediatric
+  foetus: fetus
+  foetal: fetal
+
+  # --- miscellaneous ---
+  ageing: aging
+  artefact: artifact
+  catalogue: catalog
+  grey: gray
+  mould: mold
+  programme: program
+  sceptical: skeptical
