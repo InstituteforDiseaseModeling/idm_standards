@@ -1,6 +1,6 @@
 # Getting started at IDM
 
-Welcome to [IDM](https://idmodorg.org) team! This guide covers everything you need to get set up and start participating.
+Welcome to the [IDM](https://idmod.org) team! This guide covers everything you need to get set up and start participating.
 
 - [**Python**](python.md) – Setting up Python
 - [**AI**](ai.md) – Getting started with AI-assisted development

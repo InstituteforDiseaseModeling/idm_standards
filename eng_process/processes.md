@@ -9,20 +9,20 @@ The processes listed here can help projects achieve the [engineering quality gui
     4. Create feature roadmap.  
     5. Decide and implement project structure, including:  
         1. Roles & responsibilities, including software/research leads and project manager  
-        2. Repository location and conventions (e.g., public vs. private, branch vs. fork)  
-        3. Docs setup (e.g. MkDocs, Quarto)  
-        4. Communication platform and approach (e.g. Teams channels, Slack, GitHub))  
+        2. Repository location and conventions (for example, public vs. private, branch vs. fork)  
+        3. Docs setup (for example, MkDocs, Quarto)  
+        4. Communication platform and approach (for example, Teams channels, Slack, GitHub))  
         5. Cadence for meetings and async updates  
 2. **Project workflow**  
     1. Engineers and researchers talk frequently and are in sync on plans.  
-    2. Issues, next steps, and progress are documented in a consistent, accessible place (e.g. GitHub project board or shared doc).  
+    2. Issues, next steps, and progress are documented in a consistent, accessible place (for example, GitHub project board or shared doc).  
     3. Risks and dependencies are identified and tracked.  
     4. Code is delivered on time (both in terms of need and promises made).  
 3. **Code development**  
     1. Code uses test-driven or docs-driven development where possible; if the code is written first, the docs and tests are written immediately after.  
     2. Code follows the project's style guide.  
     3. Where possible, perform automatic linting to ensure consistency with the style guide.  
-    4. Developers use the IDE of their choice (e.g. RStudio, VS Code, Cursor, PyCharm, Spyder, Neovim), and leverage AI integration where possible.  
+    4. Developers use the IDE of their choice (for example, RStudio, VS Code, Cursor, PyCharm, Spyder, Neovim), and leverage AI integration where possible.  
     5. Developers use a modern environment manager of their choice (conda, uv, or none).  
 4. **Code reviews**  
     1. All code is submitted via PR (for Tier 1 and 2 projects; optional for Tier 3 projects).  
@@ -34,7 +34,7 @@ The processes listed here can help projects achieve the [engineering quality gui
     2. The full codebase is reviewed by an engineer and AI tool against the quality guidelines.  
     3. Docs are reviewed by the content team for clarity and completeness.  
     4. Code is easy to find and use on GitHub ("main" branch, not long-lived feature branches).  
-    5. Code is pushed to an industry standard repository (e.g. PyPI, CRAN) where appropriate.  
+    5. Code is pushed to an industry standard repository (for example, PyPI, CRAN) where appropriate.  
     6. Where applicable, the project is paired with an AI tool (plugin, MCP server, or chatbot).  
     7. Where applicable, the project is paired with a dedicated website.  
     8. Where applicable, the launch is publicized via social media, websites, and announcements.  

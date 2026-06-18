@@ -14,14 +14,14 @@ While we encourage you to read the whole Google style guide, here's the quick ve
 - Avoid global state variables.
 - Nested functions, list comprehensions, and lambda functions are fine, but use them sparingly.
 - List comprehensions are also fine, but also use sparingly.
-- Use implicit true/false where possible (e.g. `if n_tests` not `if n_tests > 0`); but always check for `None` explicitly (e.g. `if n_tests is None: n_tests = 0`, not `if not n_tests: n_tests = 0`).
+- Use implicit true/false where possible (for example, `if n_tests` not `if n_tests > 0`); but always check for `None` explicitly (for example, `if n_tests is None: n_tests = 0`, not `if not n_tests: n_tests = 0`).
 - Use parentheses sparingly.
 - Indent using 4 spaces.
 - Do not use unnecessary whitespace.
 - Docstrings:
   - Use module-level docstrings (a `"""` block at the very top of each Python file) that describes what this file does; it should not be more than a paragraph or two.
   - There should be a docstring for each function, class, and method (we'll just refer to these as "functions" for simplicity)
-  - Short, obvious, and/or utility functions, e.g. `__len__` almost never needs a docstring; Google's exact advice is "Use docstrings for every function that is part of the public API, has nontrivial size, or non-obvious logic".
+  - Short, obvious, and/or utility functions, for example, `__len__` almost never needs a docstring; Google's exact advice is "Use docstrings for every function that is part of the public API, has nontrivial size, or non-obvious logic".
   - Docstrings should start with a one-line explanation of what the function does. Then, if needed, a longer explanation.
   - If the function takes arguments, these should be listed under "Args:", including types and defaults.
   - If the function outputs something important, you can optionally include a "Returns:" section.
@@ -78,7 +78,7 @@ sim.apply_interventions(screen_prob=0.6, treat_prob=0.4)
 
 **Reason**: Type hints are useful for ensuring that simple functions do exactly what they're supposed to as part of a complex whole. They prioritize consistency over convenience, which is the correct priority for low-level library functions, but not for functions and classes that aim to make it as easy as possible for the user.
 
-For example, in Starsim, dates can be specified as strings (`'2024-04-04'`), date objects (`datetime.date(2024, 4, 4)`), or custom `date` objects (`ss.date('2024.04.04')`). Likewise, many quantities can be specified as a scalar, list, or array. If a function *usually* only needs a single input but can optionally operate on more than one, it adds burden on the user to require them to provide e.g. `np.array([0.3])` rather than just `0.3`. In addition, most functions have default arguments of `None`, in which case Starsim will use "sensible" defaults.
+For example, in Starsim, dates can be specified as strings (`'2024-04-04'`), date objects (`datetime.date(2024, 4, 4)`), or custom `date` objects (`ss.date('2024.04.04')`). Likewise, many quantities can be specified as a scalar, list, or array. If a function *usually* only needs a single input but can optionally operate on more than one, it adds burden on the user to require them to provide, for example, `np.array([0.3])` rather than just `0.3`. In addition, most functions have default arguments of `None`, in which case Starsim will use "sensible" defaults.
 
 Attempting to apply type annotations to the flexibility Starsim gives to the user would result in monstrosities like:
 
@@ -114,7 +114,7 @@ See the "Naming" section below for another example of why type hints are not usu
 
 #### Exceptions
 
-If you're writing code like `count_days`, or standard Starsim modules (e.g. interventions), you shouldn't need type hints. However, there are many cases where type hints are very useful. If you are passing large numbers of simple objects between functions, type annotations tend not to help much (as in the examples above). However, if you're passing a small number of complex objects between functions, they can be very helpful, especially for code introspection. For example, if you're working with AI agents and you're passing in a `RequestContext` and expecting a `ResultMessage` back, type hints can be very helpful in specifying that the API must be _exactly_ this.
+If you're writing code like `count_days`, or standard Starsim modules (for example, interventions), you shouldn't need type hints. However, there are many cases where type hints are very useful. If you are passing large numbers of simple objects between functions, type annotations tend not to help much (as in the examples above). However, if you're passing a small number of complex objects between functions, they can be very helpful, especially for code introspection. For example, if you're working with AI agents and you're passing in a `RequestContext` and expecting a `ResultMessage` back, type hints can be very helpful in specifying that the API must be _exactly_ this.
 
 ### 3.2 Line length ([GSG32](https://google.github.io/styleguide/pyguide.html#32-line-length))
 
@@ -122,7 +122,7 @@ If you're writing code like `count_days`, or standard Starsim modules (e.g. inte
 
 **Reason**: Line lengths of 80 characters are due to [historical limitations](https://en.wikipedia.org/wiki/Characters_per_line). Think of lines >80 characters as bad, but breaking a line as being equally bad. Decide whether a long line would be better implemented some other way -- for example, rather than breaking a >80 character list comprehension over multiple lines, use a `for` loop instead. Always keep literal strings together (do not use implicit string concatenation).
 
-Line comments are encouraged at IDM, and these can be as long as needed; they should not be broken over multiple lines to avoid breaking the flow of the code. A 50-character line with a 150 character line comment after it is completely fine. The rationale is that long line comments only need to be read very occasionally; if they are broken up over multiple lines, then they have to be scrolled past *every single time*. Since scrolling vertically is such a common task, it is important to minimize the amount of effort required (i.e., minimizing lines) while not sacrificing clarity. Vertically compact code also means more will fit on your screen (and thence your brain).
+Line comments are encouraged at IDM, and these can be as long as needed; they should not be broken over multiple lines to avoid breaking the flow of the code. A 50-character line with a 150 character line comment after it is completely fine. The rationale is that long line comments only need to be read very occasionally; if they are broken up over multiple lines, then they have to be scrolled past *every single time*. Since scrolling vertically is such a common task, it is important to minimize the amount of effort required (that is, minimizing lines) while not sacrificing clarity. Vertically compact code also means more will fit on your screen (and thence your brain).
 
 Examples:
 
@@ -152,13 +152,13 @@ foo_bar(self, width, height, color='black', design=None, x='foo') # Note the dif
 
 **Difference**: You *may* use one extra blank line between levels as within a level.
 
-**Reason**: Google's recommendation (two blank lines between functions or classes, one blank line between methods) is appropriate for small-to-medium classes and methods. However, for large methods (e.g. >50 lines) with multiple blank lines within them, using only a single blank line can make it hard to tell where one method stops and the next one starts. THus, in cases where a class consists mostly of large methods that contains blank lines within themselves, you can use *two* blank lines between methods (and then do that consistently for the rest of the class). However, err on the side of using a single line between methods (and maybe try to refactor your overly-long methods into smaller, more modular ones).
+**Reason**: Google's recommendation (two blank lines between functions or classes, one blank line between methods) is appropriate for small-to-medium classes and methods. However, for large methods (for example, >50 lines) with multiple blank lines within them, using only a single blank line can make it hard to tell where one method stops and the next one starts. THus, in cases where a class consists mostly of large methods that contains blank lines within themselves, you can use *two* blank lines between methods (and then do that consistently for the rest of the class). However, err on the side of using a single line between methods (and maybe try to refactor your overly-long methods into smaller, more modular ones).
 
 While not explicitly covered by the Google style guide, `return` statements should be used at the end of each function and method, even if that block returns `None` (in which case use `return`, not `return None`). This helps delimit larger methods/functions. However, always ask whether a function/method *should* return `None`. Following the pandas convention, many Starsim methods return `self`, which is what enables "chaining" patterns such as `ss.Sim().run().plot()`.
 
 ### 3.6 Whitespace ([GSG36](https://google.github.io/styleguide/pyguide.html#36-whitespace))
 
-**Difference**: You *may* use spaces to vertically align tokens when the content is semantically related, e.g. a list of parameter values.
+**Difference**: You *may* use spaces to vertically align tokens when the content is semantically related, for example, a list of parameter values.
 
 **Reason**: This convention, which is a type of [semantic indenting](https://gist.github.com/androidfred/66873faf9f0b76f595b5e3ea3537a97c), can greatly increase readability of the code by drawing attention to the semantic similarities and differences between consecutive lines.
 
@@ -188,7 +188,7 @@ self.flows['new_recoveries']  += self.check_recovery()
 
 In the second case, the typo (repeated `check_symptomatic()`)  immediately jumps out, whereas in the first case, it requires careful scanning of each line.
 
-Vertically aligned code blocks also make it easier to edit code using editors that allow multiline editing (e.g., [Sublime](https://www.sublimetext.com/)). However, use your judgement -- there are (many!) cases where it does more harm than good, especially if the block is small, or if egregious amounts of whitespace would need to be used to achieve alignment:
+Vertically aligned code blocks also make it easier to edit code using editors that allow multiline editing (for example, [Sublime](https://www.sublimetext.com/)). However, use your judgement -- there are (many!) cases where it does more harm than good, especially if the block is small, or if egregious amounts of whitespace would need to be used to achieve alignment:
 
 ```python
 # Yes -- makes it much easier to read
@@ -220,7 +220,7 @@ omicron_vax_prob = dict(low=0.05, high=0.1) # Per-day probability of receiving O
 
 **Difference**: Always use f-strings or addition.
 
-**Reason**: It's just nicer. Compared to `'{}, {}'.format(first, second)` or `'%s, %s' % (first, second)`, the more modern `f'{first}, {second}'` is both shorter and clearer to read. However, use concatenation if it's simpler, e.g. `third = first + second` rather than `third = f'{first}{second}'` (because again, it's shorter and clearer).
+**Reason**: It's just nicer. Compared to `'{}, {}'.format(first, second)` or `'%s, %s' % (first, second)`, the more modern `f'{first}, {second}'` is both shorter and clearer to read. However, use concatenation if it's simpler, for example, `third = first + second` rather than `third = f'{first}{second}'` (because again, it's shorter and clearer).
 
 ### 3.13 Imports formatting ([GSG313](https://google.github.io/styleguide/pyguide.html#313-imports-formatting))
 
@@ -239,7 +239,7 @@ from .covasim import defaults as cvd
 from .covasim import plotting as cvpl
 ```
 
-Note the logical groupings -- standard library imports first, then numeric libraries, with NumPy coming before pandas since it's lower level (i.e., NumPy is a dependency of pandas); then external plotting libraries; and finally internal imports. (In this particular example, Google's import order would be identical, but for a different reason -- `numpy` would come before `seaborn` because it's first alphabetically, not because it's lower level.)
+Note the logical groupings -- standard library imports first, then numeric libraries, with NumPy coming before pandas since it's lower level (that is, NumPy is a dependency of pandas); then external plotting libraries; and finally internal imports. (In this particular example, Google's import order would be identical, but for a different reason -- `numpy` would come before `seaborn` because it's first alphabetically, not because it's lower level.)
 
 ### 3.14 Statements ([GSG314](https://google.github.io/styleguide/pyguide.html#314-statements))
 
@@ -306,9 +306,9 @@ except ValueError: baz(foo)
 
 **Difference**: Names should be consistent with other libraries and with how the user interacts with the code.
 
-**Reason**: IDM code interacts with other libraries, especially Numpy and Matplotlib, and should not redefine these libraries' names. For example, Google naming convention would prefer `fig_size` to `figsize`, but Matplotlib uses `figsize`, so this should also be the name preferred by IDM. (This applies if the variable name is *only* used by source libraries. If it's used by both, e.g. `start_day` used both directly by Covasim and by `sc.date()`, it's OK to use the Google style convention.)
+**Reason**: IDM code interacts with other libraries, especially Numpy and Matplotlib, and should not redefine these libraries' names. For example, Google naming convention would prefer `fig_size` to `figsize`, but Matplotlib uses `figsize`, so this should also be the name preferred by IDM. (This applies if the variable name is *only* used by source libraries. If it's used by both, for example, `start_day` used both directly by Covasim and by `sc.date()`, it's OK to use the Google style convention.)
 
-If an object is technically a class but is used more like a function (e.g. `cv.change_beta()`), it should be named as if it were a function. A class is "used like a function" if the user is not expected to interact with it after creation, as is the case with most interventions. Thus `cv.BaseVaccinate` is a class that is intended to be used *as a class* (primarily for subclassing). `cv.vaccinate_prob()` is also a class, but intended to be used like a function; `cv.vaccinate()` is a function which returns an instance of `cv.vaccinate_prob` or `cv.vaccinate_num`. Because `cv.vaccinate()` and `cv.vaccinate_prob()` can be used interchangeably, they are named according to the same convention.
+If an object is technically a class but is used more like a function (for example, `cv.change_beta()`), it should be named as if it were a function. A class is "used like a function" if the user is not expected to interact with it after creation, as is the case with most interventions. Thus `cv.BaseVaccinate` is a class that is intended to be used *as a class* (primarily for subclassing). `cv.vaccinate_prob()` is also a class, but intended to be used like a function; `cv.vaccinate()` is a function which returns an instance of `cv.vaccinate_prob` or `cv.vaccinate_num`. Because `cv.vaccinate()` and `cv.vaccinate_prob()` can be used interchangeably, they are named according to the same convention.
 
 Names should be as short as they can be while being *memorable*. This is slightly less strict than being unambiguous. Think of it as: the meaning might not be clear solely from the variable name, but should be clear from the docstring and/or line comment, and from *that* point should be unambiguous. For example:
 
@@ -326,7 +326,7 @@ vaccination_probability = 0.3
 vp = 0.3
 ```
 
-Underscores in variable names are generally preferred, but there are exceptions (e.g. `figsize` mentioned above). Always ask whether part of a multi-part name is providing necessary clarity (and if it's not, omit it). For example, if an intervention called `antigen_test()` uses a single variable for probability, call that variable `prob` rather than `test_prob`.
+Underscores in variable names are generally preferred, but there are exceptions (for example, `figsize` mentioned above). Always ask whether part of a multi-part name is providing necessary clarity (and if it's not, omit it). For example, if an intervention called `antigen_test()` uses a single variable for probability, call that variable `prob` rather than `test_prob`.
 
 Why is it important to keep variable names short? Because it makes the code closer to math, which is how most IDM users think. Consider these two examples that both implement the same functionality:
 
@@ -384,22 +384,22 @@ We do not take a position on which Python package/environment manager you use. H
 
 - Your package should be installable with both `pip` and `uv`, if possible.
 - You do not need to use an environment manager; however, if you do use one, we recommend `conda` or `uv`, not `venv`.
-- In general, straightforward projects with simple dependencies should use `pip`, but more complex projects (e.g. AI workflows), or projects that need exact reproducibility on different environments (e.g., running across VMs), should use `uv`. Include a `uv.lock` file if it's helpful, but do not include one "just because".
+- In general, straightforward projects with simple dependencies should use `pip`, but more complex projects (for example, AI workflows), or projects that need exact reproducibility on different environments (for example, running across VMs), should use `uv`. Include a `uv.lock` file if it's helpful, but do not include one "just because".
 
 #### Dependency pinning
 
-Pinning dependencies (e.g. `numpy==1.23.0`) allows for exact reproducibility in the future. However, it also makes your code extremely brittle (if a single dependency of yours pins a shared dependency to a different version, there is a conflict).
+Pinning dependencies (for example, `numpy==1.23.0`) allows for exact reproducibility in the future. However, it also makes your code extremely brittle (if a single dependency of yours pins a shared dependency to a different version, there is a conflict).
 
-Where possible, provide exact dependency _guidance_, not _requirements_. The dependencies in `pyproject.toml` should be as general as possible (e.g. `numpy`), with upward-pinned dependencies if and only if older versions really are guaranteed not to work (e.g. `pandas>=2.0.0`).
+Where possible, provide exact dependency _guidance_, not _requirements_. The dependencies in `pyproject.toml` should be as general as possible (for example, `numpy`), with upward-pinned dependencies if and only if older versions really are guaranteed not to work (for example, `pandas>=2.0.0`).
 
-If you are building reusable library code where the functionality rather than the results matters (e.g., Starsim itself, or any Tier 1 project), this is usually enough: libraries should *not* include a lock file, since their job is to work with a range of dependency versions, not to freeze one. (A `pylock.toml` is acceptable if a library project finds one useful, but it is never expected.)
+If you are building reusable library code where the functionality rather than the results matters (for example, Starsim itself, or any Tier 1 project), this is usually enough: libraries should *not* include a lock file, since their job is to work with a range of dependency versions, not to freeze one. (A `pylock.toml` is acceptable if a library project finds one useful, but it is never expected.)
 
-However, if your code produces numerical results where reproducibility matters (e.g., results for a publication — typically Tier 2 or 3 projects), you _should_ capture exact versions. In addition to the unpinned `pyproject.toml`, you have several options, from simplest to most thorough:
+However, if your code produces numerical results where reproducibility matters (for example, results for a publication — typically Tier 2 or 3 projects), you _should_ capture exact versions. In addition to the unpinned `pyproject.toml`, you have several options, from simplest to most thorough:
 
-- You can export all the packages in your current environment with `pip freeze > requirements_locked.txt` (always include a suffix like "locked" or "frozen" to make it clear to users that these are not _necessary_ requirements). This is usually the right choice for simple projects (e.g. Tier 3).
-- You can generate a standard lock file with `pip lock` (which produces `pylock.toml`, the standardized lock format from [PEP 751](https://peps.python.org/pep-0751/); requires pip ≥25.1). This is usually the right choice for more advanced projects (e.g. Tier 2).
+- You can export all the packages in your current environment with `pip freeze > requirements_locked.txt` (always include a suffix like "locked" or "frozen" to make it clear to users that these are not _necessary_ requirements). This is usually the right choice for simple projects (for example, Tier 3).
+- You can generate a standard lock file with `pip lock` (which produces `pylock.toml`, the standardized lock format from [PEP 751](https://peps.python.org/pep-0751/); requires pip ≥25.1). This is usually the right choice for more advanced projects (for example, Tier 2).
 - In `pyproject.toml`, under `[project.optional-dependencies]`, add a `lock` section with pinned dependencies based on the latest-tested version.
-- If you're using `conda`, you can export your current environment, e.g. `conda export > environment.yaml`.
+- If you're using `conda`, you can export your current environment, for example, `conda export > environment.yaml`.
 - If you're using `uv`, you can use `uv lock --upgrade` (or `uv export -o pylock.toml` for the standard format).
 
 Which option (if any) to use is the project owner's call — reproducibility needs differ, and "no lock artifact" is a legitimate choice for code whose results don't need to be exactly reproduced.

@@ -51,7 +51,7 @@ A few of the most notable rules to be aware of are listed below.
       than "It is recommended that."
 *  Be direct and use simple sentence structure.
    *  Avoid jargon.
-   *  Don't use i.e. or e.g. as they can cause problems for non-native English speakers or machine translation.
+   *  Don't use that is, or for example, as they can cause problems for non-native English speakers or machine translation.
 
 **Procedures**
 

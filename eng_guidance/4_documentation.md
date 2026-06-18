@@ -12,7 +12,7 @@ We identify five different "personas" as the audience for IDM (and IDM-related) 
 | Model builder | People who design and implement new modeling frameworks and core methods | Detailed how-to guides and comprehensive API references that describe the full functionality, plus ways to extend the code |
 | Model extender | People who adapt and calibrate existing models to new questions, countries, or datasets | Tutorials, how-to guides, and easy-to-understand API references with examples |
 | Model user | People who run pre-built models or dashboards to answer concrete questions, without changing the underlying code | Simple tutorials and accessible how-to guides |
-| Policy influencer | People who shape which evidence and models are used and how they are interpreted | Clear guidance about what this tool is useful for, accessible results (e.g. dashboards), and evidence that it's trustworthy |
+| Policy influencer | People who shape which evidence and models are used and how they are interpreted | Clear guidance about what this tool is useful for, accessible results (for example, dashboards), and evidence that it's trustworthy |
 | Policy maker | People who hold formal authority to set policy and allocate public resources | Clear, brief explanation of the tool's purpose and why it can be trusted |
 
 
