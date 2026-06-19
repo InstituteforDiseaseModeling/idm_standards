@@ -91,8 +91,6 @@ the bolded form was a Sphinx-only requirement and is not recognized by the MkDoc
 The example code is just an indented block under the header; do not wrap it in a ```` ```python ````
 fence (an indented block is already rendered as code).
 
----
-
 ### Cross-references to other Python objects
 
 #### MkDocs syntax
@@ -122,8 +120,6 @@ Use these links in the **description prose** to guide a reader toward related co
 
 Cross-references typically work directly, e.g. `ss.Arr` automatically links to `starsim.arrays.Arr`. If you need to customize, use the syntax: [Arr](`starsim.arrays.Arr`).
 
----
-
 ### Researcher workflow context
 
 A researcher using this library follows a predictable workflow. Your docstring should anchor the object to one of these stages:
@@ -144,8 +140,6 @@ In the description prose, state clearly:
 
 Example phrasing:
 > "Add this component to `model.components` *before* any transmission component. It initialises the `S` array consumed by [`SIR.Transmission`][laser.generic.SIR.Transmission] at every timestep."
-
----
 
 ### Usage examples
 
@@ -185,9 +179,6 @@ Example:
     migration_matrix = row_normalizer(rates)
     ```
 ```
-
----
-
 ### Class docstrings
 
 For classes, the docstring lives on the class body (not `__init__`), because `merge_init_into_class: true` is set in `mkdocs.yml`. Structure it as:
@@ -215,8 +206,6 @@ Note:
 
 Do not repeat the class name in the one-line summary. Write "Manages the
 susceptible compartment" not "Susceptible manages the susceptible compartment."
-
----
 
 ### What to omit
 
