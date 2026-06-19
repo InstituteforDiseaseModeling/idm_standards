@@ -97,6 +97,7 @@ format:
     toc: true
     toc-expand: true
     toc-depth: 3
+    anchor-sections: true
     highlight-style: github
     include-in-header:
       - customization/analytics.html

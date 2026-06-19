@@ -75,10 +75,15 @@ website:
       - section: Docs guidance
         file: docs_guidance/index.md
         contents:
-          - text: MkDocs overview
-            file: docs_guidance/mkdocs.md
-          - text: Quarto overview
-            file: docs_guidance/quarto.md
+          - section: Doc tools
+            file: tools/index.md
+            contents:
+              - text: MkDocs overview
+                file: docs_guidance/tools/mkdocs.md
+              - text: Quarto overview
+                file: docs_guidance/tools/quarto.md
+              - text: Migration from Sphinx
+                file: docs_guidance/tools/sphinx.md
           - text: Style and grammar
             file: docs_guidance/style.md
           - section: Topic types and structure
