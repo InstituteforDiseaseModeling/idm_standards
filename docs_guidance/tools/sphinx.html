@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mkdocs – IDM Standards</title>
+<title>sphinx – IDM Standards</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,31 +23,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../docs_guidance/images/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-55eca34aa64a4a9bb03536e6e087c529.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../docs_guidance/images/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-55eca34aa64a4a9bb03536e6e087c529.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-60ba68a17b41556aa1e13cc5db8670c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -261,11 +296,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../docs_guidance/images/idm-logo-transparent.png" alt="" class="navbar-logo light-content">
-    <img src="../docs_guidance/images/idm-logo-transparent.png" alt="" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../docs_guidance/images/idm-logo-transparent.png" alt="" class="navbar-logo light-content">
+    <img src="../../docs_guidance/images/idm-logo-transparent.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">IDM Standards</span>
     </a>
   </div>
@@ -283,7 +318,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../docs_guidance/mkdocs.html">MkDocs overview</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../../tools/index.md">Doc tools</a></li><li class="breadcrumb-item"><a href="../../docs_guidance/tools/sphinx.html">Migration from Sphinx</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -297,13 +332,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../README.html" class="sidebar-item-text sidebar-link">
+  <a href="../../README.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../getting_started/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../getting_started/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -312,19 +347,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting_started/python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../getting_started/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installing Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting_started/ai.html" class="sidebar-item-text sidebar-link">
+  <a href="../../getting_started/ai.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AI-assisted development</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting_started/comms.html" class="sidebar-item-text sidebar-link">
+  <a href="../../getting_started/comms.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication and culture</span></a>
   </div>
 </li>
@@ -332,7 +367,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../eng_guidance/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../eng_guidance/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Engineering guidance</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -341,49 +376,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/1_philosophy.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/1_philosophy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Philosophy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/2_python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/2_python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/2b_r.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/2b_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/3_tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/3_tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/4_documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/4_documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/5_other.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/5_other.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Other</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/6_zen.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/6_zen.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Zen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_guidance/engineering_quality_guidelines.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_guidance/engineering_quality_guidelines.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quality guidelines</span></a>
   </div>
 </li>
@@ -391,7 +426,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../eng_process/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../eng_process/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Engineering processes</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -400,19 +435,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_process/github.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_process/github.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_process/processes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_process/processes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Processes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../eng_process/public_release.html" class="sidebar-item-text sidebar-link">
+  <a href="../../eng_process/public_release.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Public release</span></a>
   </div>
 </li>
@@ -420,58 +455,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../docs_guidance/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../docs_guidance/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Docs guidance</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../tools/index.md" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doc tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/mkdocs.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../docs_guidance/tools/mkdocs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MkDocs overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/tools/quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/style.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/tools/sphinx.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Migration from Sphinx</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs_guidance/style.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Style and grammar</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../docs_guidance/topic-types/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../docs_guidance/topic-types/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Topic types and structure</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../docs_guidance/topic-types/toc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Table of contents</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../docs_guidance/topic-types/toc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of contents</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/topic-types/home.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/topic-types/home.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home page</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/topic-types/install.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/topic-types/install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
@@ -479,7 +531,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../docs_guidance/topic-types/tutorials.html" class="sidebar-item-text sidebar-link">
+            <a href="../../docs_guidance/topic-types/tutorials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -488,7 +540,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul id="" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/topic-types/notebook.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/topic-types/notebook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Example notebook</span></a>
   </div>
 </li>
@@ -496,19 +548,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/topic-types/howto.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/topic-types/howto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How-to</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/topic-types/reference.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/topic-types/reference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/topic-types/explanation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/topic-types/explanation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explanation</span></a>
   </div>
 </li>
@@ -516,40 +568,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../docs_guidance/personas/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../docs_guidance/personas/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Personas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/personas/model-builder.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/personas/model-builder.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model builder</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/personas/model-extender.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/personas/model-extender.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model extender</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/personas/model-user.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/personas/model-user.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model user</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/personas/policy-influencer.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/personas/policy-influencer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policy influencer</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs_guidance/personas/policy-maker.html" class="sidebar-item-text sidebar-link">
+  <a href="../../docs_guidance/personas/policy-maker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policy maker</span></a>
   </div>
 </li>
@@ -559,16 +611,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../plugins_readme.html" class="sidebar-item-text sidebar-link">
+            <a href="../../plugins_readme.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Claude plugins</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../idm_standards_plugin/README.html" class="sidebar-item-text sidebar-link">
+  <a href="../../idm_standards_plugin/README.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDM-Standards plugin</span></a>
   </div>
 </li>
@@ -584,53 +636,123 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mkdocs-templates-and-guidance" id="toc-mkdocs-templates-and-guidance" class="nav-link active" data-scroll-target="#mkdocs-templates-and-guidance">MkDocs templates and guidance</a>
+  <li><a href="#how-to-migrate-from-sphinx" id="toc-how-to-migrate-from-sphinx" class="nav-link active" data-scroll-target="#how-to-migrate-from-sphinx">How to migrate from Sphinx</a>
   <ul class="collapse">
-  <li><a href="#doc-builds-and-previews" id="toc-doc-builds-and-previews" class="nav-link" data-scroll-target="#doc-builds-and-previews">Doc builds and previews</a>
+  <li><a href="#migrate-from-sphinx" id="toc-migrate-from-sphinx" class="nav-link" data-scroll-target="#migrate-from-sphinx">Migrate from Sphinx</a></li>
+  <li><a href="#common-issues-with-migration" id="toc-common-issues-with-migration" class="nav-link" data-scroll-target="#common-issues-with-migration">Common issues with migration</a></li>
+  <li><a href="#markdown-files" id="toc-markdown-files" class="nav-link" data-scroll-target="#markdown-files">Markdown files</a>
   <ul class="collapse">
-  <li><a href="#install-required-packages" id="toc-install-required-packages" class="nav-link" data-scroll-target="#install-required-packages">Install required packages</a></li>
-  <li><a href="#preview-the-docs-in-a-browser" id="toc-preview-the-docs-in-a-browser" class="nav-link" data-scroll-target="#preview-the-docs-in-a-browser">Preview the docs in a browser</a></li>
-  <li><a href="#build-the-docs" id="toc-build-the-docs" class="nav-link" data-scroll-target="#build-the-docs">Build the docs</a></li>
+  <li><a href="#docstrings-in-python-files" id="toc-docstrings-in-python-files" class="nav-link" data-scroll-target="#docstrings-in-python-files">Docstrings in Python files</a></li>
   </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../docs_guidance/mkdocs.html">MkDocs overview</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../docs_guidance/index.html">Docs guidance</a></li><li class="breadcrumb-item"><a href="../../tools/index.md">Doc tools</a></li><li class="breadcrumb-item"><a href="../../docs_guidance/tools/sphinx.html">Migration from Sphinx</a></li></ol></nav></header>
 
 
 
 
 
-<section id="mkdocs-templates-and-guidance" class="level1">
-<h1>MkDocs templates and guidance</h1>
-<p>For MkDocs, the <code>mkdocs.yml</code> file controls most aspects of the documentation build, style, table of contents, and plug-in functionality. The minimal files under customization/ are needed to meet GF requirements and should not require frequent updates. Avoid adding any other CSS or Javascript customization as it makes the doc build fragile and difficult to maintain consistency. For more information, see the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs documentation</a>.</p>
-<section id="doc-builds-and-previews" class="level2">
-<h2 class="anchored" data-anchor-id="doc-builds-and-previews">Doc builds and previews</h2>
-<p>You should build or preview the documentation locally before submitting documentation changes.</p>
-<section id="install-required-packages" class="level3">
-<h3 class="anchored" data-anchor-id="install-required-packages">Install required packages</h3>
+<section id="how-to-migrate-from-sphinx" class="level1">
+<h1>How to migrate from Sphinx</h1>
+<p>In the past, IDM used <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> to build documentation that was hosted on Read the Docs. Sphinx is no longer supported for actively maintained software and hosting has moved to GitHub Pages. To migrate existing documentation from Sphinx to MkDocs or Quarto, follow the guidance below:</p>
+<section id="migrate-from-sphinx" class="level2">
+<h2 class="anchored" data-anchor-id="migrate-from-sphinx">Migrate from Sphinx</h2>
 <ol type="1">
-<li>Install MkDocs and associated packages: <code>pip install -r docs/requirements.txt</code></li>
+<li>Prompt an AI agent to migrate the doc project and provide it with either the <a href="https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/docs_templates/mkdocs_template">MkDocs template</a> or <a href="https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/docs_templates/quarto_template">Quarto template</a>, as appropriate.</li>
+<li>Attempt to build the migrated content locally and troubleshoot any issues you identify.</li>
+<li>Review the HTML output to identify any styling issues that pass build validation but look incorrect.</li>
+<li>Remove all Sphinx files and references that are no longer needed, such as:
+<ul>
+<li>References in .gitignore</li>
+<li>References in the README or repo settings</li>
+<li>Links using the docs.idmod.org/projects/&lt;package&gt;/en/latest Read the Docs URL pattern</li>
+<li>GitHub Action files</li>
+<li>The .readthedocs.yml configuration file</li>
+</ul></li>
+<li>Check for common migration issues described below.</li>
 </ol>
 </section>
-<section id="preview-the-docs-in-a-browser" class="level3">
-<h3 class="anchored" data-anchor-id="preview-the-docs-in-a-browser">Preview the docs in a browser</h3>
-<ol type="1">
-<li><p>Run a local server with:</p>
-<pre><code>mkdocs serve --watch .</code></pre>
-<p>The <code>watch</code> option will rebuild on changes outside the docs/ folder, such as docstring changes.</p></li>
-<li><p>Open a browser window at http://127.0.0.1:8000/<project>. This will rebuild to reflect changes each time a source file is updated and saved.</project></p></li>
-</ol>
+<section id="common-issues-with-migration" class="level2">
+<h2 class="anchored" data-anchor-id="common-issues-with-migration">Common issues with migration</h2>
+<p>As implied by the steps above, both MkDocs and Quarto builds may succeed without detecting incorrect formatting, such as a numbered list incorrectly rendered as a paragraph. These are the most common issues seen after AI-assisted migration from Sphinx.</p>
 </section>
-<section id="build-the-docs" class="level3">
-<h3 class="anchored" data-anchor-id="build-the-docs">Build the docs</h3>
-<ol type="1">
-<li><p>Build the documents:</p>
-<pre><code>mkdocs build</code></pre></li>
-<li><p>The built documents will be in <code>site/</code>.</p></li>
-</ol>
+<section id="markdown-files" class="level2">
+<h2 class="anchored" data-anchor-id="markdown-files">Markdown files</h2>
+<p>These are the issues most likely to be seen in Markdown files.</p>
+<p><strong>Numbered lists</strong></p>
+<p>In Sphinx, you can use <code>#.</code> for every item in a numbered list, and the list will be automatically renumbered during the documentation build. Quarto and MkDocs have similar renumbering functionality, but the syntax used is <code>1.</code> for every item.</p>
+<p><strong>Notes and warnings</strong></p>
+<p>To draw attention to notes or warnings, use syntax that renders them in callout/admonition boxes.</p>
+<p>In Sphinx, the syntax is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode rst code-with-copy"><code class="sourceCode rest"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">.. warning::</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    My warning text.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">.. note::</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    My user note.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In Quarto, the syntax is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>User note that there are five types of callouts, including:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">`note`</span>, <span class="in">`warning`</span>, <span class="in">`important`</span>, <span class="in">`tip`</span>, and <span class="in">`caution`</span>.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In MkDocs, the syntax is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>!!! note:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">    My user note.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>!!! warning: Optional custom title</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">    My warning text.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use admonition markup for notes/warnings not plain text Single tab indent under admonitions, code samples</p>
+<p><strong>Anchor links</strong></p>
+<p>It can often be helpful to link to figures, sections, and other items in the docs. In Sphinx, linkable labels required anchors to be added before individual items using the following syntax:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode rst code-with-copy"><code class="sourceCode rest"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">.. _my-reference-label:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Section to cross-reference</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>--------------------------</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>This is the text of the section.</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>To link to this section, see <span class="kw">:ref:</span><span class="dv">`my-reference-label`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In Quarto and MkDocs, the templates add anchors to every section heading by slugifying the heading text. Anchors for figures and other elements need to be added to the source individually.</p>
+<p>In Quarto, the syntax to add an anchor and then cross-reference it is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction {#sec-introduction}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>@sec-introduction</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In MkDocs, the syntax to add an anchor and then cross-reference it is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hello, world!</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Another heading</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>Link to <span class="co">[</span><span class="ot">Hello, World!</span><span class="co">](#hello-world)</span> on the same page.</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Link to <span class="co">[</span><span class="ot">Hello, World!</span><span class="co">](../index.md#hello-world)</span> on the parent page.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Code samples</strong></p>
+<p>In Sphinx, you introduce code samples with either a double colon <code>::</code> for Python samples, or the</p>
+<p>In MkDocs and Quarto, use fenced code samples with the following syntax:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode rst code-with-copy"><code class="sourceCode rest"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>```python</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>code sample</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="docstrings-in-python-files" class="level3">
+<h3 class="anchored" data-anchor-id="docstrings-in-python-files">Docstrings in Python files</h3>
+<p>In general, docstrings are parsed differently than RST or MD files and have specific formatting requirements. Both Quarto and MkDocs use the Griffe parser]() Therefore, many migration issues are found in docstrings.</p>
+<p><strong>Links to Python objects</strong></p>
+<p>In Sphinx, you link to Python objects using the syntax <code>:class:`package.module.ClassName`</code> or <code>:func:`package.module.function`</code>. You can prepend the package name with a tilde (~) to show only the class or function name.</p>
+<p>In Quarto, you link to Python objects using the syntax <code>[](`package.module.ClassName`)</code>. If you want to display only the class or function name, include the desired link text in the square brackets.</p>
+<p>In MkDocs, you link to Python objects using the syntax <code>[package.module.ClassName][]</code> If you want to display only the class or function name, use the syntax <code>[`ClassName`][package.module.ClassName]</code>. Note that the path is inside the first set of square brackets for the auto-populated link text and inside the second set of square brackets for the custom link text.</p>
+<p><strong>Code examples</strong></p>
+<p>Headings for code examples are not recognized as a section keyword by Sphinx, so our template indicated to use the syntax <code>**Example**</code> or <code>**Examples**</code> to make the section heading bold. If immediately followed by a code block follow by two colons <code>::</code>.</p>
+<p>In both Quarto and MkDocs, <code>Examples:</code> is recognized as as section keyword, but not the singular <code>Example:</code>. Note that these should be followed with only a single colon.</p>
+<p>The code or explanatory text that follows should be indented.</p>
+<p>Only precede the code samples with <code>&gt;&gt;&gt;</code> if you have implemented <a href="https://docs.python.org/3/library/doctest.html">doctest</a>. Otherwise, use fenced code blocks as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Examples:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ```python</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    code sample</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    ```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
