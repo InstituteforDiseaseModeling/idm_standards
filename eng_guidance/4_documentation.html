@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -601,16 +636,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#idm-documentation-style-guide" id="toc-idm-documentation-style-guide" class="nav-link active" data-scroll-target="#idm-documentation-style-guide">IDM documentation style guide</a>
+  <li><a href="#documentation-in-code" id="toc-documentation-in-code" class="nav-link active" data-scroll-target="#documentation-in-code">Documentation in code</a>
   <ul class="collapse">
-  <li><a href="#audience" id="toc-audience" class="nav-link" data-scroll-target="#audience">Audience</a></li>
-  <li><a href="#documentation-tools" id="toc-documentation-tools" class="nav-link" data-scroll-target="#documentation-tools">Documentation tools</a></li>
-  <li><a href="#documentation-contents" id="toc-documentation-contents" class="nav-link" data-scroll-target="#documentation-contents">Documentation contents</a>
+  <li><a href="#readmes" id="toc-readmes" class="nav-link" data-scroll-target="#readmes">READMEs</a>
   <ul class="collapse">
-  <li><a href="#readmes" id="toc-readmes" class="nav-link" data-scroll-target="#readmes">Readmes</a></li>
-  <li><a href="#api-reference" id="toc-api-reference" class="nav-link" data-scroll-target="#api-reference">API reference</a></li>
-  <li><a href="#tutorials" id="toc-tutorials" class="nav-link" data-scroll-target="#tutorials">Tutorials</a></li>
-  <li><a href="#user-guide" id="toc-user-guide" class="nav-link" data-scroll-target="#user-guide">User guide</a></li>
+  <li><a href="#folder-level-readmes" id="toc-folder-level-readmes" class="nav-link" data-scroll-target="#folder-level-readmes">Folder-level readmes</a></li>
+  </ul></li>
+  <li><a href="#api-reference" id="toc-api-reference" class="nav-link" data-scroll-target="#api-reference">API reference</a>
+  <ul class="collapse">
+  <li><a href="#type-hints" id="toc-type-hints" class="nav-link" data-scroll-target="#type-hints">Type hints</a></li>
+  <li><a href="#structure-of-a-good-docstring" id="toc-structure-of-a-good-docstring" class="nav-link" data-scroll-target="#structure-of-a-good-docstring">Structure of a good docstring</a></li>
+  <li><a href="#cross-references-to-other-python-objects" id="toc-cross-references-to-other-python-objects" class="nav-link" data-scroll-target="#cross-references-to-other-python-objects">Cross-references to other Python objects</a></li>
+  <li><a href="#researcher-workflow-context" id="toc-researcher-workflow-context" class="nav-link" data-scroll-target="#researcher-workflow-context">Researcher workflow context</a></li>
+  <li><a href="#usage-examples" id="toc-usage-examples" class="nav-link" data-scroll-target="#usage-examples">Usage examples</a></li>
+  <li><a href="#class-docstrings" id="toc-class-docstrings" class="nav-link" data-scroll-target="#class-docstrings">Class docstrings</a></li>
+  <li><a href="#what-to-omit" id="toc-what-to-omit" class="nav-link" data-scroll-target="#what-to-omit">What to omit</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -623,74 +663,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<section id="idm-documentation-style-guide" class="level1">
-<h1>IDM documentation style guide</h1>
+<section id="documentation-in-code" class="level1">
+<h1>Documentation in code</h1>
 <p>People are probably (…hopefully!) going to be spending much more time reading the docs you write than reading the code you write. So make them good! Good docs make the difference between a tool that people adopt versus one they try out but quickly abandon. And just because LLMs are now reading your docs too, that isn’t an excuse to be lazy and write something a human would find frustrating to wade through. Good docs should be succinct but comprehensive – a devilish tradeoff to say the least!</p>
-<section id="audience" class="level2">
-<h2 class="anchored" data-anchor-id="audience">Audience</h2>
-<p>We identify five different “personas” as the audience for IDM (and IDM-related) tools:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 40%">
-<col style="width: 46%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Who they are</th>
-<th>What they need</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Model builder</td>
-<td>People who design and implement new modeling frameworks and core methods</td>
-<td>Detailed how-to guides and comprehensive API references that describe the full functionality, plus ways to extend the code</td>
-</tr>
-<tr class="even">
-<td>Model extender</td>
-<td>People who adapt and calibrate existing models to new questions, countries, or datasets</td>
-<td>Tutorials, how-to guides, and easy-to-understand API references with examples</td>
-</tr>
-<tr class="odd">
-<td>Model user</td>
-<td>People who run pre-built models or dashboards to answer concrete questions, without changing the underlying code</td>
-<td>Simple tutorials and accessible how-to guides</td>
-</tr>
-<tr class="even">
-<td>Policy influencer</td>
-<td>People who shape which evidence and models are used and how they are interpreted</td>
-<td>Clear guidance about what this tool is useful for, accessible results (e.g.&nbsp;dashboards), and evidence that it’s trustworthy</td>
-</tr>
-<tr class="odd">
-<td>Policy maker</td>
-<td>People who hold formal authority to set policy and allocate public resources</td>
-<td>Clear, brief explanation of the tool’s purpose and why it can be trusted</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="documentation-tools" class="level2">
-<h2 class="anchored" data-anchor-id="documentation-tools">Documentation tools</h2>
-<p>Build your docs site using either:</p>
-<ul>
-<li><strong><a href="https://www.mkdocs.org/">MkDocs</a></strong> (with the <a href="https://squidfundamentals.com/mkdocs-material/">Material</a> theme) – slightly easier to set up, less control over layout and rendering.</li>
-<li><strong><a href="https://quarto.org/">Quarto</a></strong> – slightly higher startup cost, but more flexibility.</li>
-</ul>
-<p>Starsim itself uses Quarto, but most other projects use MkDocs. Either way, the docs should live in <code>docs/</code> and produce a static website. (Note: Please do not use Sphinx or rST unless you hate yourself and others.)</p>
-</section>
-<section id="documentation-contents" class="level2">
-<h2 class="anchored" data-anchor-id="documentation-contents">Documentation contents</h2>
-<p>This section describes what your documentation should actually consist of. It is based on the <a href="https://diataxis.fr/">Diátaxis</a> framework. Briefly, Diátaxis separates docs into four categories:</p>
-<ol type="1">
-<li><em>Tutorials</em> are <strong>learning-oriented, practical activity</strong> where students learn by doing meaningful tasks toward achievable goals. They’re lessons, not a task completion guide.</li>
-<li><em>How-to guides</em> are <strong>goal-oriented directions</strong> that help users accomplish specific tasks or solve real problems. They guide action through practical steps focused on what users want to achieve.</li>
-<li><em>Explanations</em> are <strong>understanding-oriented</strong> documentation that deepens reader comprehension through reflective, discursive treatment of topics. They answers: “Can you tell me about X?”</li>
-<li><em>Reference guides</em> provide <strong>information-oriented</strong> technical descriptions. They contain propositional/theoretical knowledge for users to consult during work, not to learn from sequentially.</li>
-</ol>
-<section id="readmes" class="level3">
-<h3 class="anchored" data-anchor-id="readmes">Readmes</h3>
+<p>For more information on stylistic standards, audience, supported doc tools, tutorials, and structuring your documentation, see the <a href="../docs_guidance/index.html">docs guidance</a>. This topic will focus on the repo READMEs and docstrings, documentation that lives directly in Python files and is rendered into API reference content. If migrating existing documentation from Sphinx, see <a href="../docs_guidance/tools/sphinx.html">migrate from Sphinx</a> for some formatting gotchas.</p>
+<section id="readmes" class="level2">
+<h2 class="anchored" data-anchor-id="readmes">READMEs</h2>
 <p>The repo-level <strong>README.md</strong> is one of the most important entry points for the project. It should typically include:</p>
 <ul>
 <li><strong>What the package does</strong> – a clear, concise description.</li>
@@ -707,44 +685,193 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><strong>Code of conduct</strong> – how to not be a jerk (e.g, by writing rST files).</li>
 </ul>
 <p>Except for the license, these should be standalone markdown files in the repo root.</p>
-<section id="folder-level-readmes" class="level4">
-<h4 class="anchored" data-anchor-id="folder-level-readmes">Folder-level readmes</h4>
+<section id="folder-level-readmes" class="level3">
+<h3 class="anchored" data-anchor-id="folder-level-readmes">Folder-level readmes</h3>
 <p>Every folder in the repo should have a <code>README.md</code> file – even if it’s just one or two sentences. It should explain why the folder exists, what it contains, and/or how its contents are organized. Someone browsing the repo on GitHub should never have to guess what a folder is for. The exception to this is if the folder structure is explained fully in the top-level README.</p>
 </section>
 </section>
-<section id="api-reference" class="level3">
-<h3 class="anchored" data-anchor-id="api-reference">API reference</h3>
-<p>The API reference should be <strong>auto-generated from docstrings</strong> – use <a href="https://machow.github.io/quartodoc/">quartodoc</a> (for Quarto) or <a href="https://mkdocstrings.github.io/">mkdocstrings</a> (for MkDocs).</p>
+<section id="api-reference" class="level2">
+<h2 class="anchored" data-anchor-id="api-reference">API reference</h2>
+<p>The API reference should be <strong>auto-generated from docstrings</strong> – use <a href="https://machow.github.io/quartodoc/">quartodoc</a> (for Quarto) or <a href="https://mkdocstrings.github.io/">mkdocstrings</a> (for MkDocs). Both templates in this repository include the config settings for these plugins. If using MkDocs, all local modules are automatically included in the TOC; if using Quarto, modules must be listed in the _quarto.yml config file.</p>
 <p>Expectations for docstrings:</p>
 <ul>
 <li>Every public module, class, and function should have a docstring.</li>
 <li>Use <a href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google-style</a> docstrings.</li>
 <li>Docstrings should include at least: a one-line summary, a description of parameters and return values, and ideally <strong>one usage example</strong>.</li>
 <li>Configure interlinks so that cross-references to standard libraries (Python, NumPy, Pandas, Sciris, etc.) resolve automatically.</li>
+<li>Provide enough context to help a disease-modeling researcher understand not just <em>what</em> the object does, but <em>where it fits</em> in their workflow. Link to related topics as appropriate.</li>
+<li>Use American English spelling and usage.</li>
 </ul>
+<section id="type-hints" class="level3">
+<h3 class="anchored" data-anchor-id="type-hints">Type hints</h3>
+<p>If type hints are included in the function or class signature, do not include them in the docstring itself–the parser will pull that information from the signature. Including them in both places can result in inconsistent documentation. If type hints are not in the signature or would result in a convoluted type in the rendered documentation, you may include them in the docstring. The example below include them in the docstring because IDM generally avoids type hints.</p>
 </section>
-<section id="tutorials" class="level3">
-<h3 class="anchored" data-anchor-id="tutorials">Tutorials</h3>
-<p>Notebook-based tutorials are strongly encouraged even for small projects. At minimum, try to provide:</p>
+<section id="structure-of-a-good-docstring" class="level3">
+<h3 class="anchored" data-anchor-id="structure-of-a-good-docstring">Structure of a good docstring</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_function(arg1, arg2):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" One-line summary ending with a period.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Two to four sentences of prose explaining what this does and why a researcher</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    would reach for it. Mention the disease model context — is this used during</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    initialization, timestep updates, or post-simulation analysis?</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    Link to related objects using MkDocs cross-reference syntax, for example,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    [`Model`][laser.generic.model.Model] or [`Susceptible`][laser.generic.components.Susceptible].</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">        arg1 (array): Description including shape, dtype, and units where</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">            relevant. For example, "Shape ``(nticks+1, num_nodes)``, dtype float32."</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">        arg2 (int): Description. State default values explicitly if they matter.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">        array: What is returned, its shape, dtype, and interpretation.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">            For None returns, omit this section entirely.</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">    Raises:</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">        ValueError: When and why this is raised.</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">    Examples:</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">        # Show the most common researcher workflow. Use a self-contained snippet</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">        # that a researcher can run or adapt directly:</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">        model = Model(scenario, params)</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">        result = some_function(model.nodes.S[0], model.params.nticks)</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">    Note:</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">        Reserve for non-obvious caveats — performance warnings, thread safety,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">        or behaviors that diverge from what the name implies.</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use the plural, unbolded <code>Examples:</code> section header. It must be a plain Google-style section header (not <code>**Example:**</code>) so that mkdocstrings/quartodoc parse it as a section — the bolded form was a Sphinx-only requirement and is not recognized by the MkDocs/Quarto toolchain. The example code is just an indented block under the header; do not wrap it in a <code>```python</code> fence (an indented block is already rendered as code).</p>
+</section>
+<section id="cross-references-to-other-python-objects" class="level3">
+<h3 class="anchored" data-anchor-id="cross-references-to-other-python-objects">Cross-references to other Python objects</h3>
+<section id="mkdocs-syntax" class="level4">
+<h4 class="anchored" data-anchor-id="mkdocs-syntax">MkDocs syntax</h4>
+<p>MkDocs projects use the <a href="https://mkdocstrings.github.io/autorefs/"><code>autorefs</code></a> plugin so you can link to any documented Python object directly from docstring prose.</p>
+<p><strong>Syntax:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you write</th>
+<th>What renders</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[`Model`][laser.generic.model.Model]</code></td>
+<td>clickable link labelled <code>Model</code></td>
+</tr>
+<tr class="even">
+<td><code>[`Susceptible`][laser.generic.components.Susceptible]</code></td>
+<td>link to the Susceptible class</td>
+</tr>
+<tr class="odd">
+<td><code>[`State`][laser.generic.shared.State]</code></td>
+<td>link to the State enum</td>
+</tr>
+<tr class="even">
+<td><code>[`ValuesMap`][laser.generic.utils.ValuesMap]</code></td>
+<td>link to ValuesMap</td>
+</tr>
+</tbody>
+</table>
+<p>Use these links in the <strong>description prose</strong> to guide a reader toward related components they will likely need next. Do not stuff links into Args or Returns sections — prose is the right place.</p>
+<p><strong>Common objects to link to:</strong></p>
 <ul>
-<li>A <strong>“hello world” tutorial</strong> – the simplest possible working example, with explanation.</li>
-<li>A <strong>slightly more advanced tutorial</strong> – demonstrating the core workflow end-to-end.</li>
+<li>[<code>Model</code>][laser.generic.model.Model] — the top-level simulation container</li>
+<li>[<code>Susceptible</code>][laser.generic.components.Susceptible] — must appear before transmission components</li>
+<li>[<code>Exposed</code>][laser.generic.components.Exposed] — incubation period component for SEIR models</li>
+<li>[<code>State</code>][laser.generic.shared.State] — enum of agent health states (SUSCEPTIBLE, EXPOSED, INFECTIOUS, RECOVERED)</li>
+<li>[<code>ValuesMap</code>][laser.generic.utils.ValuesMap] — time-varying per-node parameter container</li>
 </ul>
-<p>For larger projects, a progressive series of tutorials works well. Bonus points for including exercises/solutions.</p>
-<p><em>Note:</em> Historically, tutorials have been written as Jupyter notebooks for ease of sharing and execution. However, you may also use other formats, such as Quarto notebooks (<code>.qmd</code>), which are easier to edit by hand compared to Jupyter notebooks (which are encoded as a highly nested JSON file).</p>
 </section>
-<section id="user-guide" class="level3">
-<h3 class="anchored" data-anchor-id="user-guide">User guide</h3>
-<p>For complex projects where tutorials + API reference aren’t enough, add a <strong>user guide</strong> with deeper coverage of each topic. The user guide is explicitly framed as “more in-depth” than the corresponding tutorials.</p>
-<p>A good structure progresses from concepts to practice:</p>
+<section id="quarto-syntax" class="level4">
+<h4 class="anchored" data-anchor-id="quarto-syntax">Quarto syntax</h4>
+<p>Cross-references typically work directly, e.g.&nbsp;<code>ss.Arr</code> automatically links to <code>starsim.arrays.Arr</code>. If you need to customize, use the syntax: <a href="`starsim.arrays.Arr`">Arr</a>.</p>
+</section>
+</section>
+<section id="researcher-workflow-context" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-workflow-context">Researcher workflow context</h3>
+<p>A researcher using this library follows a predictable workflow. Your docstring should anchor the object to one of these stages:</p>
+<pre><code>1. Prepare scenario     →  GeoDataFrame with population, geometry, initial S/I/E/R counts
+2. Set parameters       →  PropertySet with nticks, beta, capacity_safety_factor, prng_seed, ...
+3. Build component list →  [Susceptible(model), Transmission(model, ...), ...]
+4. Initialize model     →  model = Model(scenario, params)
+5. Run simulation       →  model.run()
+6. Analyze results      →  model.nodes.S, model.nodes.I, component.plot()</code></pre>
+<p>In the description prose, state clearly: - <strong>Which stage</strong> this object belongs to (initialisation, per-timestep, post-run analysis) - <strong>What comes before it</strong> in the component list, if ordering matters - <strong>What it produces</strong> that downstream components or analysis code will consume</p>
+<p>Example phrasing: &gt; “Add this component to <code>model.components</code> <em>before</em> any transmission component. It initialises the <code>S</code> array consumed by [<code>SIR.Transmission</code>][laser.generic.SIR.Transmission] at every timestep.”</p>
+</section>
+<section id="usage-examples" class="level3">
+<h3 class="anchored" data-anchor-id="usage-examples">Usage examples</h3>
+<p>Every public class and every non-trivial function needs an <code>Example:</code> section. A good example:</p>
 <ol type="1">
-<li><strong>Introduction</strong> – what the package is, how models/workflows are structured.</li>
-<li><strong>Basics</strong> – the core objects and how they fit together.</li>
-<li><strong>Modules/Components</strong> – detailed coverage of each major subsystem.</li>
-<li><strong>Workflows</strong> – common end-to-end tasks (running, calibrating, deploying).</li>
-<li><strong>Advanced topics</strong> – performance, edge cases, internals.</li>
+<li><strong>Shows the full calling context</strong>, not just the function call in isolation.</li>
+<li><strong>Uses realistic variable names</strong> (<code>scenario</code>, <code>params</code>, <code>model</code>) that match the tutorials.</li>
+<li><strong>Demonstrates the most common researcher use case</strong> — not edge cases.</li>
+<li><strong>Is short</strong> — three to eight lines. If you need more, split into two examples.</li>
 </ol>
-<p>Like tutorials, user guide pages should be Jupyter (or Quarto) notebooks with executable examples.</p>
+<p><strong>Class example (component):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Example:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    Assemble a basic SIR model by listing components <span class="kw">in</span> execution order:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    ```python</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    model.components <span class="op">=</span> [</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        Susceptible(model),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        SIR.Transmission(model, beta<span class="op">=</span><span class="fl">0.3</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        SIR.Infectious(model, infdurdist, infdurmin<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        SIR.Recovered(model),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    model.run()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    model.nodes.S  <span class="co"># shape (nticks+1, num_nodes)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    ```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Function example:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Example:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    Compute gravity<span class="op">-</span>weighted migration rates between patches:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ```python</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    rates <span class="op">=</span> gravity(populations, distances, k<span class="op">=</span><span class="fl">1.0</span>, a<span class="op">=</span><span class="fl">1.0</span>, b<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    migration_matrix <span class="op">=</span> row_normalizer(rates)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    ```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="class-docstrings" class="level3">
+<h3 class="anchored" data-anchor-id="class-docstrings">Class docstrings</h3>
+<p>For classes, the docstring lives on the class body (not <code>__init__</code>), because <code>merge_init_into_class: true</code> is set in <code>mkdocs.yml</code>. Structure it as:</p>
+<pre><code>One-line summary.
+
+Two to four sentences of context: what disease model states this manages,
+which stage of the researcher workflow it belongs to, and what it produces.
+Link to closely related components.
+
+Args:
+    model (Model): The simulation model this component is attached to.
+    some_dist (Callable): Brief description including expected signature.
+    some_min (int): Minimum value in days. Defaults to 1.
+    validating (bool): If True, runs pre/post validation hooks each tick.
+        Enable during development; disable for production runs.
+
+Example:
+    ...
+
+Note:
+    ...</code></pre>
+<p>Do not repeat the class name in the one-line summary. Write “Manages the susceptible compartment” not “Susceptible manages the susceptible compartment.”</p>
+</section>
+<section id="what-to-omit" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-omit">What to omit</h3>
+<ul>
+<li><strong>Do not document private methods</strong> (<code>_check_flow_vs_census</code>, <code>nb_timer_update</code>, etc.) unless there is a strong reason.</li>
+<li><strong>Do not add a docstring to <code>__init__</code></strong> — put everything on the class.</li>
+<li><strong>Do not restate the type annotation</strong> in the description (“arg1 is a numpy array” when the type is already <code>np.ndarray</code>). Use the prose to explain <em>meaning</em>, not <em>type</em>.</li>
+<li><strong>Do not write “This function/class …”</strong> — just say what it does directly.</li>
+<li><strong>Do not add a <code>Returns:</code> section for <code>None</code></strong>.</li>
+</ul>
 
 
 </section>
