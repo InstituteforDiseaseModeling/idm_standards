@@ -291,7 +291,7 @@ Before writing, compute the following:
 - **Tier**: <tier> (<tier name>)
 - **Strictness**: <strictness> (<"strict" or "material only">)
 - **Config**: <config file(s) and directive counts, e.g. `.claude/idm-standards.md (5 directives)`, or "none">
-- **Overall Score**: <overall_score>/100
+- **Overall score**: <overall_score>/100
 - **Status**: <PASS or FAIL — FAIL if failed=true>
 - **Date**: <YYYY-MM-DD>
 - **Version**: idm-standards:audit-code <version>
