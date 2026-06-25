@@ -17,16 +17,16 @@ Even when our software is the end product, our users are typically scientists, n
 
 Finally, note that these are **guidelines**, not requirements. Different people on different teams (especially research vs. software) will have different ideas of what counts as "clear", "simple" and "powerful". There are legitimate reasons to break almost every guideline under some circumstances (often because it must be weighed against another guideline). These guidelines should encourage *you* to think about *your* project, not be used by someone else to judge it.
 
-| Definitions: "Project" is the general term for each body of work, and typically maps onto a single GitHub repository. "Code" is the software component of a project, e.g. the files checked into GitHub; it may include documentation (e.g. docstrings and notebooks), but excludes other components of a project such as the spec, roadmap, etc. "UIs" (user interfaces) are how users interact with your code: this may be a webapp or chatbot, but for us this is most often a set of scripts, and/or your code's APIs ("application programming interfaces", the classes and functions your code provides). |
+| Definitions: "Project" is the general term for each body of work, and typically maps onto a single GitHub repository. "Code" is the software component of a project, for example, the files checked into GitHub; it may include documentation (for example, docstrings and notebooks), but excludes other components of a project such as the spec, roadmap, etc. "UIs" (user interfaces) are how users interact with your code: this may be a webapp or chatbot, but for us this is most often a set of scripts, and/or your code's APIs ("application programming interfaces", the classes and functions your code provides). |
 | :---- |
 
 # Guidelines
 
 This section lists the full set of guidelines for Tier 1 code. Not all guidelines apply to Tier 2 and Tier 3 code, as described [below](#code-tiers). The guidelines assume code is written in Python or R, but most guidelines apply to any language. These guidelines should be used in conjunction with a detailed style guide, such as those from [Google](https://google.github.io/styleguide/pyguide.html) (Python), [Starsim](https://github.com/starsimhub/styleguide) (Python), or [Tidyverse](https://style.tidyverse.org/) (R).
 
-If there is a conflict between two guidelines, the order of the sections and order in each subsection takes precedence (e.g., correct code is more important than clear code and performant code; simple code is more important than powerful code and reproducible code). However, before making these tradeoffs: (a) use your judgement (e.g. a simpler loop syntax does not justify a 5x performance penalty); (b) if you are weighing two options that each conflict with a guideline, look for a third option that satisfies both.
+If there is a conflict between two guidelines, the order of the sections and order in each subsection takes precedence (for example, correct code is more important than clear code and performant code; simple code is more important than powerful code and reproducible code). However, before making these tradeoffs: (a) use your judgement (for example, a simpler loop syntax does not justify a 5x performance penalty); (b) if you are weighing two options that each conflict with a guideline, look for a third option that satisfies both.
 
-While code may contain minor bugs ("Quality: Correct") or have minor potential security issues ("Safety: Compliant"), major bugs (e.g., scientifically incorrect results) or security/legal issues (e.g., data used without approval) mean the code should not be used at all until the issues are addressed.
+While code may contain minor bugs ("Quality: Correct") or have minor potential security issues ("Safety: Compliant"), major bugs (for example, scientifically incorrect results) or security/legal issues (for example, data used without approval) mean the code should not be used at all until the issues are addressed.
 
 ## The list
 
@@ -55,9 +55,9 @@ Numbers refer to which tiers the guideline is applicable to. "SG" means that fur
         3. Assumptions are explicit and documented; there are no "magic numbers" (all scientific parameters are linked to a source). \[1,2,3\]  
         4. Code has been validated through real-world or representative usage, ideally coupled with external peer review. \[1,2,3\]  
         5. Tests and test coverage are sufficient to be confident that (a) there are no major bugs, (b) changes will not accidentally introduce new major bugs. \[1,2\]  
-        6. Unit tests are used where appropriate, but tests primarily check for end-to-end scientific correctness (e.g. parameter behavior), including edge cases. \[1,2\]  
+        6. Unit tests are used where appropriate, but tests primarily check for end-to-end scientific correctness (for example, parameter behavior), including edge cases. \[1,2\]  
         7. Tests are so clear and readable that they double as documentation. \[1,2\]  
-        8. Tests are incorporated in an automated pipeline (e.g., GitHub Actions). \[1\]  
+        8. Tests are incorporated in an automated pipeline (for example, GitHub Actions). \[1\]  
         9. Code is difficult to misuse; users are guided towards writing good code because correct usage is also the easiest, and incorrect usage raises warnings. \[1\]  
     2. **Clear:** If the code is not clear, it is hard to maintain and increases the risk of bugs.  
         1. Code is structured appropriately in terms of files and folders. \[1,2,3; SG\]  
@@ -76,7 +76,7 @@ Numbers refer to which tiers the guideline is applicable to. "SG" means that fur
     1. **Simple:** If the code's scripts/classes/functions ("UIs") are not simple to use, users will make mistakes or not use them.  
         1. UIs have sensible defaults where possible, so things "just work". \[1,2; SG\]  
         2. APIs have as few arguments as possible (but no fewer, since they should also be powerful). \[1,2; SG\]  
-        3. Arguments are standard types if possible (e.g. numbers/strings), but more complex types are used where it adds important clarity or rigor. \[1; SG\]  
+        3. Arguments are standard types if possible (for example, numbers/strings), but more complex types are used where it adds important clarity or rigor. \[1; SG\]  
         4. Arguments are documented (via docstrings and/or type hints) and explicitly validated. \[1,2; SG\]  
         5. Common workflows require minimal configuration, and/or are encapsulated in one-line scripts or commands. \[1,2\]  
         6. Exceptions are anticipated, and error messages for common mistakes help the user fix the problem. \[1; SG\]  
@@ -84,12 +84,12 @@ Numbers refer to which tiers the guideline is applicable to. "SG" means that fur
         1. APIs have as many arguments as needed (but no more, since they should also be simple). \[1,2; SG\]  
         2. Most use cases can be met with input arguments, without the user needing to modify the code. \[1,2\]  
         3. All assumptions are modifiable by the user. \[1,2\]  
-        4. Classes can be easily [composed](https://en.wikipedia.org/wiki/Composition_over_inheritance) and/or subclassed (e.g., by being small and modular, and by avoiding complex interdependencies). \[1\]  
+        4. Classes can be easily [composed](https://en.wikipedia.org/wiki/Composition_over_inheritance) and/or subclassed (for example, by being small and modular, and by avoiding complex interdependencies). \[1\]  
     3. **Performant:** If the code is not performant, it wastes the user's time and resources.  
         1. All algorithms are appropriate for the task they are being used for. \[1,2,3\]  
         2. End-to-end code runs in negligible time (\<10 seconds) if possible. \[1,2\]  
         3. Code that does not run in negligible time is performance profiled, with bottlenecks identified; performance regressions are identified and fixed. \[1,2\]  
-        4. There are no obvious, major inefficiencies (e.g. loops when vectors can be used). \[1,2\]  
+        4. There are no obvious, major inefficiencies (for example, loops when vectors can be used). \[1,2\]  
         5. Slow (\>30 s), frequently run, [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) tasks can be run in parallel. \[1,2\]  
     4. **Documented:** If the code is not documented, users will struggle to use it correctly (or at all).  
         1. It is clear what UIs the user is supposed to interact with. \[1,2,3; SG\]  
@@ -103,7 +103,7 @@ Numbers refer to which tiers the guideline is applicable to. "SG" means that fur
         2. Key files are present (MIT license and changelog; optionally contributing guidelines, code of conduct, and future roadmap). \[1,2,3; SG\]  
         3. Installation does not require special environments and is doable via 1-3 commands. \[1,2\]  
         4. Users know how to get support and feel comfortable doing so. \[1,2\]  
-        5. Code has been optimized for use with AI assistants (e.g. skills, MCP servers, etc). \[1\]  
+        5. Code has been optimized for use with AI assistants (for example, skills, MCP servers, etc). \[1\]  
 3. **Safety**  
     1. **Compliant:** If the code is noncompliant, it should not be used.  
         1. Any data from external sources is used with permission, and this permission is documented in the repo (if applicable). \[1,2,3\]  
@@ -111,7 +111,7 @@ Numbers refer to which tiers the guideline is applicable to. "SG" means that fur
         3. Code does not have any dependencies that have proprietary/restrictive licenses that our use violates. \[1,2,3\]  
     2. **Reproducible:** If the results cannot be reproduced later, it wastes time and harms reputation.  
         1. Dependencies are specified (in `pyproject.toml` or `DESCRIPTION`), as loosely as possible; library code should *not* include a lock file (though an optional `pylock.toml` is acceptable). \[1,2,3\]  
-        2. If reproducibility of results is important (e.g. for research projects / non-library code), exact versions are captured: for simple projects, via `pip freeze > requirements_locked.txt`; for more advanced projects, via `pip lock` (producing `pylock.toml`) or `renv.lock` (R). Which to use — including "none" — is the project owner's choice. \[2,3\]  
+        2. If reproducibility of results is important (for example, for research projects / non-library code), exact versions are captured: for simple projects, via `pip freeze > requirements_locked.txt`; for more advanced projects, via `pip lock` (producing `pylock.toml`) or `renv.lock` (R). Which to use — including "none" — is the project owner's choice. \[2,3\]  
         3. If random numbers are used, the same seeds give numerically identical results (where possible). \[1,2,3\]  
         4. Semantic versioning is used, including git tags for each release. \[1,2\]  
         5. Releases are published on PyPI or CRAN. \[1\]
@@ -122,22 +122,22 @@ This section provides more detail on the minimum software engineering expectatio
 
 |  | Tier 1 | Tier 2 | Tier 3 |
 | :---- | :---- | :---- | :---- |
-| **What is it?** | "Library" or "digital public good" (DPG) code that we share globally as one of IDM's flagship outputs, expecting considerable use internally and externally. | Solves a specific problem in a reusable way, e.g. a model calibrated to a specific disease in a specific country or a set of utilities used by a handful of internal projects. | One-off code that may be used repeatedly, but only within the context of a single project, e.g. code to produce the results for a paper or presentation. |
+| **What is it?** | "Library" or "digital public good" (DPG) code that we share globally as one of IDM's flagship outputs, expecting considerable use internally and externally. | Solves a specific problem in a reusable way, for example, a model calibrated to a specific disease in a specific country or a set of utilities used by a handful of internal projects. | One-off code that may be used repeatedly, but only within the context of a single project, for example, code to produce the results for a paper or presentation. |
 | **Number of expected users** | Many (\>10), including internal and external | Several (2-10), potentially including some external | Often only one, but sometimes several |
 | **Timeline** | Long (\>12 months) | Medium (\>3 months) | Short (typically \<3 months) |
-| **Public repo?** | Yes | Usually, but not always | Sometimes (e.g. code for a paper), but often not. |
+| **Public repo?** | Yes | Usually, but not always | Sometimes (for example, code for a paper), but often not. |
 | **Downstream dependencies?** | Always some, typically many (\>5) | Usually some, but not always | No |
-| **Examples** | Modeling frameworks ([EMOD](https://github.com/EMOD-Hub/EMOD), [LASER](https://github.com/laser-base/laser-core), [Starsim](https://github.com/starsimhub/starsim)), disease models (e.g. [EMOD-Malaria](https://github.com/EMOD-Hub/emodpy-malaria), [LASER-Measles](https://github.com/InstituteforDiseaseModeling/laser-measles), [HPVsim](https://github.com/starsimhub/hpvsim), [MOSAIC](https://github.com/InstituteforDiseaseModeling/MOSAIC-pkg)), core utilities (e.g. [Sciris](https://github.com/sciris/sciris), [Starsim-AI](https://github.com/starsimhub/starsim_ai)) | Calibrated models (e.g. [HIVsim-Kenya](https://github.com/starsimhub/hiv_kenya), [LASER-Polio-Nigeria](https://github.com/InstituteforDiseaseModeling/laser-polio-nigeria)); internally used utilities (e.g. [idmtools](https://github.com/InstituteforDiseaseModeling/idmtools), [RasterToolkit](https://github.com/InstituteforDiseaseModeling/RasterToolkit), [Calabaria](https://github.com/InstituteforDiseaseModeling/modelops-calabaria)) | Code for presentations (e.g. [Bridging the Gap](https://github.com/InstituteforDiseaseModeling/Bridging-the-Gap-Low-Resource-African-Languages), [VMB-Dashboard](https://github.com/starsimhub/vmb-dashboard)), code for papers (e.g. [Zimbabwe-Syphilis](https://github.com/starsimhub/syph_dx_zim)), experiments or validations (e.g. [Malaria-Validation](https://github.com/InstituteforDiseaseModeling/malaria-model_validation)) |
+| **Examples** | Modeling frameworks ([EMOD](https://github.com/EMOD-Hub/EMOD), [LASER](https://github.com/laser-base/laser-core), [Starsim](https://github.com/starsimhub/starsim)), disease models (for example, [EMOD-Malaria](https://github.com/EMOD-Hub/emodpy-malaria), [LASER-Measles](https://github.com/InstituteforDiseaseModeling/laser-measles), [HPVsim](https://github.com/starsimhub/hpvsim), [MOSAIC](https://github.com/InstituteforDiseaseModeling/MOSAIC-pkg)), core utilities (for example, [Sciris](https://github.com/sciris/sciris), [Starsim-AI](https://github.com/starsimhub/starsim_ai)) | Calibrated models (for example, [HIVsim-Kenya](https://github.com/starsimhub/hiv_kenya), [LASER-Polio-Nigeria](https://github.com/InstituteforDiseaseModeling/laser-polio-nigeria)); internally used utilities (for example, [idmtools](https://github.com/InstituteforDiseaseModeling/idmtools), [RasterToolkit](https://github.com/InstituteforDiseaseModeling/RasterToolkit), [Calabaria](https://github.com/InstituteforDiseaseModeling/modelops-calabaria)) | Code for presentations (for example, [Bridging the Gap](https://github.com/InstituteforDiseaseModeling/Bridging-the-Gap-Low-Resource-African-Languages), [VMB-Dashboard](https://github.com/starsimhub/vmb-dashboard)), code for papers (for example, [Zimbabwe-Syphilis](https://github.com/starsimhub/syph_dx_zim)), experiments or validations (for example, [Malaria-Validation](https://github.com/InstituteforDiseaseModeling/malaria-model_validation)) |
 
 In addition to these tiers, there is also "Tier ∞" code, which consists of quick experiments/explorations. It is never seen by anyone other than the author and will likely never be used after the day (or hour) it was written. It is typically not pushed to GitHub, or if it is, it's in a private repo. Examples of Tier ∞ code include a short script for plotting simulation outputs to help diagnose a bug, or a statistical test on a dataset to check if further analyses are worth pursuing. This code can be arbitrarily lousy, and it will not be discussed further.
 
 Tier 1 requirements are similar to industry-standard "engineering quality" guidelines. Why not just enforce these for all tiers? Because when you're just trying to plot some data, some "best practices" like a CI/CD pipeline are not only not helpful, they actively create technical debt and maintenance burden.
 
-## Tier 1: Large-scale project (e.g. modeling framework)
+## Tier 1: Large-scale project (for example, modeling framework)
 
 1. All requirements listed above.
 
-## Tier 2: Small-scale project (e.g. calibrated country model)
+## Tier 2: Small-scale project (for example, calibrated country model)
 
 1. Quality  
     1. Correct: works as intended, with basic test coverage  
@@ -153,12 +153,12 @@ Tier 1 requirements are similar to industry-standard "engineering quality" guide
     1. Compliant: as above (no legal or security vulnerabilities)  
     2. Reproducible: as above (different people at different times can get the same results)
 
-## Tier 3: One-off/exploratory project (e.g. analysis script)
+## Tier 3: One-off/exploratory project (for example, analysis script)
 
 1. Quality  
     1. Correct: works as intended; tested through usage with no tests expected  
     2. Clear: code still make sense to the author and at least one other person in 1-3 months  
-    3. Concise: no egregious code duplication (e.g., copied files with small modifications)  
+    3. Concise: no egregious code duplication (for example, copied files with small modifications)  
 2. Usability  
     1. Simple: common workflows are not too painful  
     2. Powerful: N/A (no flexibility is expected)  

@@ -21,7 +21,7 @@ VS Code is by far the most commonly used editor among IDM team members due to it
 2. Install the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 3. VS Code will prompt you to install Python if it's not already on your system. Alternatively, download Python from [python.org](https://www.python.org/downloads/).
 4. From the terminal inside VS Code, install your project's dependencies: `pip install -r requirements.txt` (or similar).
-5. Check that it worked: create a file called e.g. `demo.py` with a simple script, and then click on the play button at the top right of the editor.
+5. Check that it worked: create a file (for example, `demo.py`) with a simple script, and then click on the play button at the top right of the editor.
 
 More info: [VS Code Python tutorial](https://code.visualstudio.com/docs/python/python-tutorial)
 
@@ -63,4 +63,4 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv pip install somepackage
 ```
 
-`uv` is much faster than `pip`, but if you're reading this guide, the difference is almost certainly going to be negligble to you since you are unlikely to be creating new Python environments multiple times a day. The two tools are interchangeable, so use whichever you prefer.
+`uv` is much faster than `pip`, but if you're reading this guide, the difference is almost certainly going to be negligible to you since you are unlikely to be creating new Python environments multiple times a day. The two tools are interchangeable, so use whichever you prefer.

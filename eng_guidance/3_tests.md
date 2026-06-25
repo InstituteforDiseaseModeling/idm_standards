@@ -15,7 +15,7 @@ A test is often the first piece of working code that a new contributor (or user)
 
 ### Write for humans
 
-While you definitely _should_ include `assert` statements in your tests, you should also include human-digestible output: summary results printed to the terminal, plots, or both. This is so the person running the test can notice things that would be impossible to write an `assert` statement for (e.g. "Huh, I don't remember the infections peak looking like that").
+While you definitely _should_ include `assert` statements in your tests, you should also include human-digestible output: summary results printed to the terminal, plots, or both. This is so the person running the test can notice things that would be impossible to write an `assert` statement for (for example, "Huh, I don't remember the infections peak looking like that").
 
 
 ### Tests, not analyses
@@ -125,7 +125,7 @@ Key elements, in order:
 
 1. **Module docstring** -- a brief description of what the file tests.
 2. **`sc.options(interactive=False)`** -- can set at module level so pytest doesn't open plot windows, to avoid the need for lots of `plot=False` arguments.
-3. **Helper functions** (e.g. `make_sim()`, `make_sim_pars()`) -- shared setup logic used by multiple tests.
+3. **Helper functions** (for example, `make_sim()`, `make_sim_pars()`) -- shared setup logic used by multiple tests.
 4. **Test functions** -- each decorated with `@sc.timer()` (showing how long it took) and named `test_*`.
 5. **`if __name__ == '__main__':`** block -- enables standalone script execution with plotting.
 
@@ -147,7 +147,7 @@ small  = 100
 medium = 1000
 ```
 
-Use the smallest agent count that still produces meaningful test results. Integration tests (`test_baselines.py`) use larger populations (e.g. `10e3`); unit-level tests use `100`--`1000`.
+Use the smallest agent count that still produces meaningful test results. Integration tests (`test_baselines.py`) use larger populations (for example, `10e3`); unit-level tests use `100`--`1000`.
 
 
 ## Test functions
@@ -253,7 +253,7 @@ rtol = 0.2  # Generous to avoid random failures with small populations
 
 ## Test coverage
 
-Test coverage should be checked periodically (e.g., after a major release), typically by a `check_coverage` script. We don't aim for 100% test coverage, but anything below 80% starts to get concerning. If a block of code is hard to cover in tests, ask yourself: do we really need to keep it?
+Test coverage should be checked periodically (for example, after a major release), typically by a `check_coverage` script. We don't aim for 100% test coverage, but anything below 80% starts to get concerning. If a block of code is hard to cover in tests, ask yourself: do we really need to keep it?
 
 
 ## What NOT to test

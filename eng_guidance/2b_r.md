@@ -28,7 +28,7 @@ The R equivalents of the [Python dependency guidance](2_python.md#managing-pytho
 
 - One repo = one project: never `setwd()` or `rm(list = ls())` in committed code; build all paths with [here](https://here.r-lib.org/)`::here()` relative to the project root, never absolute paths.
 - Factor reusable functions into `R/`, separate from the scripts that run the analysis; number run scripts if order matters, or use a [targets](https://docs.ropensci.org/targets/) pipeline (`_targets.R`) for anything with multiple slow, interdependent steps.
-- Keep raw data immutable and separate from derived data (e.g. `data/raw/` vs `data/derived/`).
+- Keep raw data immutable and separate from derived data (for example, `data/raw/` vs `data/derived/`).
 - `set.seed()` wherever randomness affects results; keep credentials in `.Renviron` (gitignored), accessed via `Sys.getenv()`.
 
 ## Documentation

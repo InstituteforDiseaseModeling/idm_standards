@@ -10,7 +10,7 @@ pagetitle: "Communication and culture"
 
 ## Teams
 
-Teams is our primary means of rapid back-and-forth communication, when it would be impractical to use GitHub (e.g. many messages back and forth discussing a bug or potential feature). Use it for quick questions, status updates, sharing links, and informal discussion. Keep conversations in the appropriate channels rather than DMs when possible so others can benefit.
+Teams is our primary means of rapid back-and-forth communication, when it would be impractical to use GitHub (for example, many messages back and forth discussing a bug or potential feature). Use it for quick questions, status updates, sharing links, and informal discussion. Keep conversations in the appropriate channels rather than DMs when possible so others can benefit.
 
 ## Email
 
@@ -20,10 +20,10 @@ Use email for communication with external collaborators, formal requests, and an
 
 - **Stand-ups**: Brief daily or weekly check-ins to share progress and flag blockers.
 - **Sprint planning**: Periodic meetings to prioritize and assign work.
-- **Ad hoc**: Scheduled as needed for design discussions, debugging sessions, or onboarding.
+- **As needed**: Scheduled for design discussions, debugging sessions, or onboarding.
 
 ## General tips
 
 - If you're stuck on something for more than ~30 minutes, ask for help.
 - Document decisions and context in GitHub issues or PRs, not just in Teams (where messages get buried).
-- When in doubt about process or conventions, check the [engineering guidance](https://github.com/InstituteforDiseaseModeling/idm_standards/eng_guidance) or ask a teammate.
+- When in doubt about process or conventions, check the [engineering guidance](../eng_guidance/index.md) or ask a teammate.
