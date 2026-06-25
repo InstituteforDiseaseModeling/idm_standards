@@ -49,7 +49,7 @@ If the tier was **not** supplied as an argument (and is not already confirmed by
 - Mostly scripts/notebooks, single author → suggest Tier 3
 
 Then **confirm with the user** using a single AskUserQuestion call with two questions:
-1. **Tier**: present the three tiers (with the definitions above) as options, with the inferred tier as the recommended option.
+1. **Tier**: present the three tiers (with the definitions above) as options, with the inferred tier as the recommended option. **Tier 1 is the strictest (large reusable library / DPG); Tier 3 is the loosest (one-off / exploratory).** Keep each tier number glued to its definition above: when the recommended option is moved to the top, the number must move with its own definition — never relabel a definition with a different tier number. A published/packaged library is **Tier 1**, not Tier 3.
 2. **Strictness** (only if not supplied as an argument): "1 — strict: report everything (default)" vs "2 — material only: skip purely stylistic/convention findings".
 
 If the config file (Step 1) set `tier` or `strictness` in its frontmatter, use those as the pre-filled/recommended values (an explicit argument still wins). In non-interactive contexts (no user available to answer), use the config values if present, otherwise the inferred tier and strictness 1, and note this in the report.
