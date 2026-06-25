@@ -623,10 +623,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 class="anchored" data-anchor-id="writing-for-the-right-audience">Writing for the right audience</h2>
 <p>The audience for IDM is <em>scientists</em>, not software developers. Assume that the average IDM user dislikes coding and wants something that <em>just works</em>. Implications of this include:</p>
 <ul>
-<li>Commands should be short, simple, and obvious, e.g.&nbsp;<code>cv.Sim().run().plot()</code>.</li>
+<li>Commands should be short, simple, and obvious, for example, <code>cv.Sim().run().plot()</code>.</li>
 <li>Be as flexible as possible with user inputs. If a user could only mean one thing, do that. If the user provides <code>[0, 7, 14]</code> but the function needs an array instead of a list, convert the list to an array automatically (<code>sc.toarray()</code> exists for exactly this reason).</li>
 <li>If there’s a “sensible” default value for something, use it. Users shouldn’t <em>have</em> to think about false positivity rate or influenza-like illness prevalence if they just want to quickly add testing to their simulation via <code>cv.test_prob(0.1)</code>.</li>
-<li>However, hard-code as little as possible. For example, rather than defining a variable at the top of the function, make it a keyword argument with a default value so the user can modify it if needed. As another example, pass keyword arguments where possible – e.g., <code>to_json(..., **kwargs)</code> can pass arbitrary extra arguments via <code>json.dump(**kwargs)</code>.</li>
+<li>However, hard-code as little as possible. For example, rather than defining a variable at the top of the function, make it a keyword argument with a default value so the user can modify it if needed. As another example, pass keyword arguments where possible – for example, <code>to_json(..., **kwargs)</code> can pass arbitrary extra arguments via <code>json.dump(**kwargs)</code>.</li>
 <li>Ensure the logic, especially the scientific logic, of the code is as clear as possible. If something is “bad” coding style but good science, you should probably do it anyway.</li>
 </ul>
 </section>
@@ -648,7 +648,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Common mistakes are to overemphasize <em>p</em> = 0 (you) over <em>p</em> &gt; 0, and <em>e</em> (edit time) over <em>u</em> (ramp-up time) and <em>r</em> (read time).</li>
 <li>Assume people of different backgrounds and skill levels will be using/interacting with this code. You might be comfortable with lambda functions and overriding dunder methods, but assume others are not. Use these “advanced features” only as a last resort.</li>
-<li>Similarly, try to avoid complex dependencies (e.g.&nbsp;nested class inheritance) as they increase ramp-up time, and make it more likely something will break. (But equally, don’t repeat yourself – it’s a tradeoff.)</li>
+<li>Similarly, try to avoid complex dependencies (for example, nested class inheritance) as they increase ramp-up time, and make it more likely something will break. (But equally, don’t repeat yourself – it’s a tradeoff.)</li>
 <li>Err on the side of more comments, including line comments. Logic that is clear to you now might not be clear to anyone else (or yourself 3 months from now). If you use a number that came from a scientific paper, please for the love of all that is precious put a link to that paper in a comment.</li>
 </ul>
 

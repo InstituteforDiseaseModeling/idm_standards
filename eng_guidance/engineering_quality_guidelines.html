@@ -610,9 +610,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </ul></li>
   <li><a href="#code-tiers" id="toc-code-tiers" class="nav-link" data-scroll-target="#code-tiers">Code tiers</a>
   <ul class="collapse">
-  <li><a href="#tier-1-large-scale-project-e.g.-modeling-framework" id="toc-tier-1-large-scale-project-e.g.-modeling-framework" class="nav-link" data-scroll-target="#tier-1-large-scale-project-e.g.-modeling-framework">Tier 1: Large-scale project (e.g.&nbsp;modeling framework)</a></li>
-  <li><a href="#tier-2-small-scale-project-e.g.-calibrated-country-model" id="toc-tier-2-small-scale-project-e.g.-calibrated-country-model" class="nav-link" data-scroll-target="#tier-2-small-scale-project-e.g.-calibrated-country-model">Tier 2: Small-scale project (e.g.&nbsp;calibrated country model)</a></li>
-  <li><a href="#tier-3-one-offexploratory-project-e.g.-analysis-script" id="toc-tier-3-one-offexploratory-project-e.g.-analysis-script" class="nav-link" data-scroll-target="#tier-3-one-offexploratory-project-e.g.-analysis-script">Tier 3: One-off/exploratory project (e.g.&nbsp;analysis script)</a></li>
+  <li><a href="#tier-1-large-scale-project-for-example-modeling-framework" id="toc-tier-1-large-scale-project-for-example-modeling-framework" class="nav-link" data-scroll-target="#tier-1-large-scale-project-for-example-modeling-framework">Tier 1: Large-scale project (for example, modeling framework)</a></li>
+  <li><a href="#tier-2-small-scale-project-for-example-calibrated-country-model" id="toc-tier-2-small-scale-project-for-example-calibrated-country-model" class="nav-link" data-scroll-target="#tier-2-small-scale-project-for-example-calibrated-country-model">Tier 2: Small-scale project (for example, calibrated country model)</a></li>
+  <li><a href="#tier-3-one-offexploratory-project-for-example-analysis-script" id="toc-tier-3-one-offexploratory-project-for-example-analysis-script" class="nav-link" data-scroll-target="#tier-3-one-offexploratory-project-for-example-analysis-script">Tier 3: One-off/exploratory project (for example, analysis script)</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a>
   <ul class="collapse">
@@ -649,7 +649,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Definitions: “Project” is the general term for each body of work, and typically maps onto a single GitHub repository. “Code” is the software component of a project, e.g.&nbsp;the files checked into GitHub; it may include documentation (e.g.&nbsp;docstrings and notebooks), but excludes other components of a project such as the spec, roadmap, etc. “UIs” (user interfaces) are how users interact with your code: this may be a webapp or chatbot, but for us this is most often a set of scripts, and/or your code’s APIs (“application programming interfaces”, the classes and functions your code provides).</th>
+<th style="text-align: left;">Definitions: “Project” is the general term for each body of work, and typically maps onto a single GitHub repository. “Code” is the software component of a project, for example, the files checked into GitHub; it may include documentation (for example, docstrings and notebooks), but excludes other components of a project such as the spec, roadmap, etc. “UIs” (user interfaces) are how users interact with your code: this may be a webapp or chatbot, but for us this is most often a set of scripts, and/or your code’s APIs (“application programming interfaces”, the classes and functions your code provides).</th>
 </tr>
 </thead>
 <tbody>
@@ -659,8 +659,8 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 <section id="guidelines" class="level1">
 <h1>Guidelines</h1>
 <p>This section lists the full set of guidelines for Tier 1 code. Not all guidelines apply to Tier 2 and Tier 3 code, as described <a href="#code-tiers">below</a>. The guidelines assume code is written in Python or R, but most guidelines apply to any language. These guidelines should be used in conjunction with a detailed style guide, such as those from <a href="https://google.github.io/styleguide/pyguide.html">Google</a> (Python), <a href="https://github.com/starsimhub/styleguide">Starsim</a> (Python), or <a href="https://style.tidyverse.org/">Tidyverse</a> (R).</p>
-<p>If there is a conflict between two guidelines, the order of the sections and order in each subsection takes precedence (e.g., correct code is more important than clear code and performant code; simple code is more important than powerful code and reproducible code). However, before making these tradeoffs: (a) use your judgement (e.g.&nbsp;a simpler loop syntax does not justify a 5x performance penalty); (b) if you are weighing two options that each conflict with a guideline, look for a third option that satisfies both.</p>
-<p>While code may contain minor bugs (“Quality: Correct”) or have minor potential security issues (“Safety: Compliant”), major bugs (e.g., scientifically incorrect results) or security/legal issues (e.g., data used without approval) mean the code should not be used at all until the issues are addressed.</p>
+<p>If there is a conflict between two guidelines, the order of the sections and order in each subsection takes precedence (for example, correct code is more important than clear code and performant code; simple code is more important than powerful code and reproducible code). However, before making these tradeoffs: (a) use your judgement (for example, a simpler loop syntax does not justify a 5x performance penalty); (b) if you are weighing two options that each conflict with a guideline, look for a third option that satisfies both.</p>
+<p>While code may contain minor bugs (“Quality: Correct”) or have minor potential security issues (“Safety: Compliant”), major bugs (for example, scientifically incorrect results) or security/legal issues (for example, data used without approval) mean the code should not be used at all until the issues are addressed.</p>
 <section id="the-list" class="level2">
 <h2 class="anchored" data-anchor-id="the-list">The list</h2>
 <ol type="1">
@@ -712,11 +712,11 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </li>
 <li>Tests and test coverage are sufficient to be confident that (a) there are no major bugs, (b) changes will not accidentally introduce new major bugs. [1,2]<br>
 </li>
-<li>Unit tests are used where appropriate, but tests primarily check for end-to-end scientific correctness (e.g.&nbsp;parameter behavior), including edge cases. [1,2]<br>
+<li>Unit tests are used where appropriate, but tests primarily check for end-to-end scientific correctness (for example, parameter behavior), including edge cases. [1,2]<br>
 </li>
 <li>Tests are so clear and readable that they double as documentation. [1,2]<br>
 </li>
-<li>Tests are incorporated in an automated pipeline (e.g., GitHub Actions). [1]<br>
+<li>Tests are incorporated in an automated pipeline (for example, GitHub Actions). [1]<br>
 </li>
 <li>Code is difficult to misuse; users are guided towards writing good code because correct usage is also the easiest, and incorrect usage raises warnings. [1]<br>
 </li>
@@ -758,7 +758,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </li>
 <li>APIs have as few arguments as possible (but no fewer, since they should also be powerful). [1,2; SG]<br>
 </li>
-<li>Arguments are standard types if possible (e.g.&nbsp;numbers/strings), but more complex types are used where it adds important clarity or rigor. [1; SG]<br>
+<li>Arguments are standard types if possible (for example, numbers/strings), but more complex types are used where it adds important clarity or rigor. [1; SG]<br>
 </li>
 <li>Arguments are documented (via docstrings and/or type hints) and explicitly validated. [1,2; SG]<br>
 </li>
@@ -775,7 +775,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </li>
 <li>All assumptions are modifiable by the user. [1,2]<br>
 </li>
-<li>Classes can be easily <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">composed</a> and/or subclassed (e.g., by being small and modular, and by avoiding complex interdependencies). [1]<br>
+<li>Classes can be easily <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">composed</a> and/or subclassed (for example, by being small and modular, and by avoiding complex interdependencies). [1]<br>
 </li>
 </ol></li>
 <li><strong>Performant:</strong> If the code is not performant, it wastes the user’s time and resources.
@@ -786,7 +786,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </li>
 <li>Code that does not run in negligible time is performance profiled, with bottlenecks identified; performance regressions are identified and fixed. [1,2]<br>
 </li>
-<li>There are no obvious, major inefficiencies (e.g.&nbsp;loops when vectors can be used). [1,2]<br>
+<li>There are no obvious, major inefficiencies (for example, loops when vectors can be used). [1,2]<br>
 </li>
 <li>Slow (&gt;30 s), frequently run, <a href="https://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallel</a> tasks can be run in parallel. [1,2]<br>
 </li>
@@ -816,7 +816,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </li>
 <li>Users know how to get support and feel comfortable doing so. [1,2]<br>
 </li>
-<li>Code has been optimized for use with AI assistants (e.g.&nbsp;skills, MCP servers, etc). [1]<br>
+<li>Code has been optimized for use with AI assistants (for example, skills, MCP servers, etc). [1]<br>
 </li>
 </ol></li>
 </ol></li>
@@ -835,7 +835,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 <ol type="1">
 <li>Dependencies are specified (in <code>pyproject.toml</code> or <code>DESCRIPTION</code>), as loosely as possible; library code should <em>not</em> include a lock file (though an optional <code>pylock.toml</code> is acceptable). [1,2,3]<br>
 </li>
-<li>If reproducibility of results is important (e.g.&nbsp;for research projects / non-library code), exact versions are captured: for simple projects, via <code>pip freeze &gt; requirements_locked.txt</code>; for more advanced projects, via <code>pip lock</code> (producing <code>pylock.toml</code>) or <code>renv.lock</code> (R). Which to use — including “none” — is the project owner’s choice. [2,3]<br>
+<li>If reproducibility of results is important (for example, for research projects / non-library code), exact versions are captured: for simple projects, via <code>pip freeze &gt; requirements_locked.txt</code>; for more advanced projects, via <code>pip lock</code> (producing <code>pylock.toml</code>) or <code>renv.lock</code> (R). Which to use — including “none” — is the project owner’s choice. [2,3]<br>
 </li>
 <li>If random numbers are used, the same seeds give numerically identical results (where possible). [1,2,3]<br>
 </li>
@@ -863,8 +863,8 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 <tr class="odd">
 <td style="text-align: left;"><strong>What is it?</strong></td>
 <td style="text-align: left;">“Library” or “digital public good” (DPG) code that we share globally as one of IDM’s flagship outputs, expecting considerable use internally and externally.</td>
-<td style="text-align: left;">Solves a specific problem in a reusable way, e.g.&nbsp;a model calibrated to a specific disease in a specific country or a set of utilities used by a handful of internal projects.</td>
-<td style="text-align: left;">One-off code that may be used repeatedly, but only within the context of a single project, e.g.&nbsp;code to produce the results for a paper or presentation.</td>
+<td style="text-align: left;">Solves a specific problem in a reusable way, for example, a model calibrated to a specific disease in a specific country or a set of utilities used by a handful of internal projects.</td>
+<td style="text-align: left;">One-off code that may be used repeatedly, but only within the context of a single project, for example, code to produce the results for a paper or presentation.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Number of expected users</strong></td>
@@ -882,7 +882,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 <td style="text-align: left;"><strong>Public repo?</strong></td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">Usually, but not always</td>
-<td style="text-align: left;">Sometimes (e.g.&nbsp;code for a paper), but often not.</td>
+<td style="text-align: left;">Sometimes (for example, code for a paper), but often not.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Downstream dependencies?</strong></td>
@@ -892,22 +892,22 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Examples</strong></td>
-<td style="text-align: left;">Modeling frameworks (<a href="https://github.com/EMOD-Hub/EMOD">EMOD</a>, <a href="https://github.com/laser-base/laser-core">LASER</a>, <a href="https://github.com/starsimhub/starsim">Starsim</a>), disease models (e.g.&nbsp;<a href="https://github.com/EMOD-Hub/emodpy-malaria">EMOD-Malaria</a>, <a href="https://github.com/InstituteforDiseaseModeling/laser-measles">LASER-Measles</a>, <a href="https://github.com/starsimhub/hpvsim">HPVsim</a>, <a href="https://github.com/InstituteforDiseaseModeling/MOSAIC-pkg">MOSAIC</a>), core utilities (e.g.&nbsp;<a href="https://github.com/sciris/sciris">Sciris</a>, <a href="https://github.com/starsimhub/starsim_ai">Starsim-AI</a>)</td>
-<td style="text-align: left;">Calibrated models (e.g.&nbsp;<a href="https://github.com/starsimhub/hiv_kenya">HIVsim-Kenya</a>, <a href="https://github.com/InstituteforDiseaseModeling/laser-polio-nigeria">LASER-Polio-Nigeria</a>); internally used utilities (e.g.&nbsp;<a href="https://github.com/InstituteforDiseaseModeling/idmtools">idmtools</a>, <a href="https://github.com/InstituteforDiseaseModeling/RasterToolkit">RasterToolkit</a>, <a href="https://github.com/InstituteforDiseaseModeling/modelops-calabaria">Calabaria</a>)</td>
-<td style="text-align: left;">Code for presentations (e.g.&nbsp;<a href="https://github.com/InstituteforDiseaseModeling/Bridging-the-Gap-Low-Resource-African-Languages">Bridging the Gap</a>, <a href="https://github.com/starsimhub/vmb-dashboard">VMB-Dashboard</a>), code for papers (e.g.&nbsp;<a href="https://github.com/starsimhub/syph_dx_zim">Zimbabwe-Syphilis</a>), experiments or validations (e.g.&nbsp;<a href="https://github.com/InstituteforDiseaseModeling/malaria-model_validation">Malaria-Validation</a>)</td>
+<td style="text-align: left;">Modeling frameworks (<a href="https://github.com/EMOD-Hub/EMOD">EMOD</a>, <a href="https://github.com/laser-base/laser-core">LASER</a>, <a href="https://github.com/starsimhub/starsim">Starsim</a>), disease models (for example, <a href="https://github.com/EMOD-Hub/emodpy-malaria">EMOD-Malaria</a>, <a href="https://github.com/InstituteforDiseaseModeling/laser-measles">LASER-Measles</a>, <a href="https://github.com/starsimhub/hpvsim">HPVsim</a>, <a href="https://github.com/InstituteforDiseaseModeling/MOSAIC-pkg">MOSAIC</a>), core utilities (for example, <a href="https://github.com/sciris/sciris">Sciris</a>, <a href="https://github.com/starsimhub/starsim_ai">Starsim-AI</a>)</td>
+<td style="text-align: left;">Calibrated models (for example, <a href="https://github.com/starsimhub/hiv_kenya">HIVsim-Kenya</a>, <a href="https://github.com/InstituteforDiseaseModeling/laser-polio-nigeria">LASER-Polio-Nigeria</a>); internally used utilities (for example, <a href="https://github.com/InstituteforDiseaseModeling/idmtools">idmtools</a>, <a href="https://github.com/InstituteforDiseaseModeling/RasterToolkit">RasterToolkit</a>, <a href="https://github.com/InstituteforDiseaseModeling/modelops-calabaria">Calabaria</a>)</td>
+<td style="text-align: left;">Code for presentations (for example, <a href="https://github.com/InstituteforDiseaseModeling/Bridging-the-Gap-Low-Resource-African-Languages">Bridging the Gap</a>, <a href="https://github.com/starsimhub/vmb-dashboard">VMB-Dashboard</a>), code for papers (for example, <a href="https://github.com/starsimhub/syph_dx_zim">Zimbabwe-Syphilis</a>), experiments or validations (for example, <a href="https://github.com/InstituteforDiseaseModeling/malaria-model_validation">Malaria-Validation</a>)</td>
 </tr>
 </tbody>
 </table>
 <p>In addition to these tiers, there is also “Tier ∞” code, which consists of quick experiments/explorations. It is never seen by anyone other than the author and will likely never be used after the day (or hour) it was written. It is typically not pushed to GitHub, or if it is, it’s in a private repo. Examples of Tier ∞ code include a short script for plotting simulation outputs to help diagnose a bug, or a statistical test on a dataset to check if further analyses are worth pursuing. This code can be arbitrarily lousy, and it will not be discussed further.</p>
 <p>Tier 1 requirements are similar to industry-standard “engineering quality” guidelines. Why not just enforce these for all tiers? Because when you’re just trying to plot some data, some “best practices” like a CI/CD pipeline are not only not helpful, they actively create technical debt and maintenance burden.</p>
-<section id="tier-1-large-scale-project-e.g.-modeling-framework" class="level2">
-<h2 class="anchored" data-anchor-id="tier-1-large-scale-project-e.g.-modeling-framework">Tier 1: Large-scale project (e.g.&nbsp;modeling framework)</h2>
+<section id="tier-1-large-scale-project-for-example-modeling-framework" class="level2">
+<h2 class="anchored" data-anchor-id="tier-1-large-scale-project-for-example-modeling-framework">Tier 1: Large-scale project (for example, modeling framework)</h2>
 <ol type="1">
 <li>All requirements listed above.</li>
 </ol>
 </section>
-<section id="tier-2-small-scale-project-e.g.-calibrated-country-model" class="level2">
-<h2 class="anchored" data-anchor-id="tier-2-small-scale-project-e.g.-calibrated-country-model">Tier 2: Small-scale project (e.g.&nbsp;calibrated country model)</h2>
+<section id="tier-2-small-scale-project-for-example-calibrated-country-model" class="level2">
+<h2 class="anchored" data-anchor-id="tier-2-small-scale-project-for-example-calibrated-country-model">Tier 2: Small-scale project (for example, calibrated country model)</h2>
 <ol type="1">
 <li>Quality
 <ol type="1">
@@ -939,8 +939,8 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </ol></li>
 </ol>
 </section>
-<section id="tier-3-one-offexploratory-project-e.g.-analysis-script" class="level2">
-<h2 class="anchored" data-anchor-id="tier-3-one-offexploratory-project-e.g.-analysis-script">Tier 3: One-off/exploratory project (e.g.&nbsp;analysis script)</h2>
+<section id="tier-3-one-offexploratory-project-for-example-analysis-script" class="level2">
+<h2 class="anchored" data-anchor-id="tier-3-one-offexploratory-project-for-example-analysis-script">Tier 3: One-off/exploratory project (for example, analysis script)</h2>
 <ol type="1">
 <li>Quality
 <ol type="1">
@@ -948,7 +948,7 @@ Jeremy Manson4, Jen Schripsema1, Mandy Izzo1, Jennifer Simeon1, Paul Saxman1</p>
 </li>
 <li>Clear: code still make sense to the author and at least one other person in 1-3 months<br>
 </li>
-<li>Concise: no egregious code duplication (e.g., copied files with small modifications)<br>
+<li>Concise: no egregious code duplication (for example, copied files with small modifications)<br>
 </li>
 </ol></li>
 <li>Usability

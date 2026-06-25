@@ -697,7 +697,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <section id="write-for-humans" class="level3">
 <h3 class="anchored" data-anchor-id="write-for-humans">Write for humans</h3>
-<p>While you definitely <em>should</em> include <code>assert</code> statements in your tests, you should also include human-digestible output: summary results printed to the terminal, plots, or both. This is so the person running the test can notice things that would be impossible to write an <code>assert</code> statement for (e.g.&nbsp;“Huh, I don’t remember the infections peak looking like that”).</p>
+<p>While you definitely <em>should</em> include <code>assert</code> statements in your tests, you should also include human-digestible output: summary results printed to the terminal, plots, or both. This is so the person running the test can notice things that would be impossible to write an <code>assert</code> statement for (for example, “Huh, I don’t remember the infections peak looking like that”).</p>
 </section>
 <section id="tests-not-analyses" class="level3">
 <h3 class="anchored" data-anchor-id="tests-not-analyses">Tests, not analyses</h3>
@@ -798,7 +798,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ol type="1">
 <li><strong>Module docstring</strong> – a brief description of what the file tests.</li>
 <li><strong><code>sc.options(interactive=False)</code></strong> – can set at module level so pytest doesn’t open plot windows, to avoid the need for lots of <code>plot=False</code> arguments.</li>
-<li><strong>Helper functions</strong> (e.g.&nbsp;<code>make_sim()</code>, <code>make_sim_pars()</code>) – shared setup logic used by multiple tests.</li>
+<li><strong>Helper functions</strong> (for example, <code>make_sim()</code>, <code>make_sim_pars()</code>) – shared setup logic used by multiple tests.</li>
 <li><strong>Test functions</strong> – each decorated with <code>@sc.timer()</code> (showing how long it took) and named <code>test_*</code>.</li>
 <li><strong><code>if __name__ == '__main__':</code></strong> block – enables standalone script execution with plotting.</li>
 </ol>
@@ -812,7 +812,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Use underscore separators for large numbers (<code>1_000</code>, <code>10_000</code>). Some files use named size tiers for clarity:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>small  <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>medium <span class="op">=</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use the smallest agent count that still produces meaningful test results. Integration tests (<code>test_baselines.py</code>) use larger populations (e.g.&nbsp;<code>10e3</code>); unit-level tests use <code>100</code>–<code>1000</code>.</p>
+<p>Use the smallest agent count that still produces meaningful test results. Integration tests (<code>test_baselines.py</code>) use larger populations (for example, <code>10e3</code>); unit-level tests use <code>100</code>–<code>1000</code>.</p>
 </section>
 <section id="test-functions" class="level2">
 <h2 class="anchored" data-anchor-id="test-functions">Test functions</h2>
@@ -889,7 +889,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <section id="test-coverage" class="level2">
 <h2 class="anchored" data-anchor-id="test-coverage">Test coverage</h2>
-<p>Test coverage should be checked periodically (e.g., after a major release), typically by a <code>check_coverage</code> script. We don’t aim for 100% test coverage, but anything below 80% starts to get concerning. If a block of code is hard to cover in tests, ask yourself: do we really need to keep it?</p>
+<p>Test coverage should be checked periodically (for example, after a major release), typically by a <code>check_coverage</code> script. We don’t aim for 100% test coverage, but anything below 80% starts to get concerning. If a block of code is hard to cover in tests, ask yourself: do we really need to keep it?</p>
 </section>
 <section id="what-not-to-test" class="level2">
 <h2 class="anchored" data-anchor-id="what-not-to-test">What NOT to test</h2>

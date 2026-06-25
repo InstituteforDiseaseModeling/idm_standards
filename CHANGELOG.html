@@ -603,8 +603,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul>
   <li><a href="#changelog" id="toc-changelog" class="nav-link active" data-scroll-target="#changelog">Changelog</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2026-05-06</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2026-04-20</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2026-06-10</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2026-05-06</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2026-04-20</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InstituteforDiseaseModeling/idm_standards/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -619,14 +620,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <section id="changelog" class="level1">
 <h1>Changelog</h1>
 <section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2026-05-06</h2>
+<h2 class="anchored" data-anchor-id="section">2026-06-10</h2>
+<ul>
+<li>Consolidated the three former plugins (<code>idm-eng-plugin</code>, <code>idm-docs-plugin</code>, <code>idm-uplifter-plugin</code>) into a single plugin, <code>idm-standards</code> (v2.0). One install now provides all skills.</li>
+<li>Renamed the skills verb-first: for example, <code>eng-quality-checker</code> → <code>audit-code</code>. The plugin now ships <code>audit-code</code>, <code>fix-code</code>, <code>audit-code-exhaustive</code>, <code>audit-docs</code> (composing <code>audit-docs-structure</code>, <code>audit-personas</code>, and <code>audit-docstrings</code>), <code>audit-project</code>, and <code>fix-project</code>; <code>audit-code</code> routes to <code>audit-r-code</code> for R projects.</li>
+<li>Updated the root README and <code>plugins_readme.md</code> for the new plugin name and structure. Users on v1.x should uninstall the old three plugins and install <code>idm-standards</code>.</li>
+</ul>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2026-05-06</h2>
 <ul>
 <li>Added <code>idm_uplifter_plugin</code> (v0.2): fan-out per-file code review with parallel waves, a concurrent repo-level reviewer, resumable runs via <code>.uplifter_cache/</code>, and a synthesized top-of-report summary. See <a href="idm_uplifter_plugin/CHANGELOG.md">idm_uplifter_plugin/CHANGELOG.md</a> for details.</li>
 <li>Updated root README and <code>plugins_readme.md</code> to list the new plugin and refresh the version numbers for the engineering (v1.3) and docs (v1.1) plugins.</li>
 </ul>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2026-04-20</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">2026-04-20</h2>
 <ul>
 <li>Expanded <code>eng_process/public_release.md</code> with manager/director-facing guidance covering project tiers, quality assessment, effort estimation, the release process, and ongoing maintenance commitments.</li>
 </ul>

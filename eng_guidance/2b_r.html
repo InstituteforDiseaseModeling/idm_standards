@@ -656,7 +656,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>One repo = one project: never <code>setwd()</code> or <code>rm(list = ls())</code> in committed code; build all paths with <a href="https://here.r-lib.org/">here</a><code>::here()</code> relative to the project root, never absolute paths.</li>
 <li>Factor reusable functions into <code>R/</code>, separate from the scripts that run the analysis; number run scripts if order matters, or use a <a href="https://docs.ropensci.org/targets/">targets</a> pipeline (<code>_targets.R</code>) for anything with multiple slow, interdependent steps.</li>
-<li>Keep raw data immutable and separate from derived data (e.g.&nbsp;<code>data/raw/</code> vs <code>data/derived/</code>).</li>
+<li>Keep raw data immutable and separate from derived data (for example, <code>data/raw/</code> vs <code>data/derived/</code>).</li>
 <li><code>set.seed()</code> wherever randomness affects results; keep credentials in <code>.Renviron</code> (gitignored), accessed via <code>Sys.getenv()</code>.</li>
 </ul>
 </section>
