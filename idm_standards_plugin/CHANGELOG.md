@@ -2,6 +2,11 @@
 
 This document tracks updates to the IDM-Standards plugin (formerly three separate plugins: IDM-Eng-Plugin, IDM-Docs-Plugin, and IDM-Uplifter-Plugin; their pre-merge histories are preserved below).
 
+## Version 2.1 (2026.06.26)
+
+- **`audit-docs` now ships its own Vale config, style rules, and doc templates.** Previously the Vale (grammar/style) and template-comparison passes couldn't run because the canonical `vale.ini`, `.github/styles/`, and `docs_templates/` lived at the repo root and aren't distributed with an installed plugin. They're now bundled under `skills/audit-docs/assets/` and reached via `$CLAUDE_PLUGIN_ROOT`. The grammar/style pass falls back to the bundled IDM config when the audited project has no Vale setup of its own, and the template audit diffs against the bundled mkdocs/quarto templates.
+- The bundled assets are generated copies of the repo-root sources; the `update-docs-plugin` skill now re-syncs them whenever those sources change (new step 6b).
+
 ## Version 2.0 (2026.06.10)
 
 - **Merged the three IDM plugins into one**: `idm-eng-plugin`, `idm-docs-plugin`, and `idm-uplifter-plugin` are now a single `idm-standards` plugin, so one install provides the full suite while every skill remains individually invocable.

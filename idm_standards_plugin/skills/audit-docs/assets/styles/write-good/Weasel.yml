@@ -1,0 +1,20 @@
+extends: existence
+message: "'%s' is a weasel word!"
+ignorecase: true
+level: warning
+# Removed tokens that duplicate other active rules:
+#   clearly, obviously       -> covered by IDM.Hedging
+#   extremely, fairly, interestingly, quite, surprisingly, very
+#                            -> covered by Microsoft.Adverbs
+tokens:
+  - completely
+  - exceedingly
+  - excellent
+  - huge
+  - is a number
+  - largely
+  - mostly
+  - remarkably
+  - substantially
+  - tiny
+  - vast

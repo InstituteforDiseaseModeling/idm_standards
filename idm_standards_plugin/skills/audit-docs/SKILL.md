@@ -103,11 +103,17 @@ Invoke the `audit-docstrings` skill. Read all public modules, classes, and funct
 
 #### 3d: Template audit
 
-Evaluate the `mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml` configuration file against the template provided in docs_templates and note divergences. If Jupyter notebooks are not set to execute during the doc build or if errors are allowed to pass, this is a high priority to fix. 
+Evaluate the `mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml` configuration file against the reference templates bundled with this skill at `$CLAUDE_PLUGIN_ROOT/skills/audit-docs/assets/docs_templates/` (use `mkdocs_template/mkdocs.yml` for MkDocs projects and `quarto_template/` for Quarto projects), and note divergences. If Jupyter notebooks are not set to execute during the doc build or if errors are allowed to pass, this is a high priority to fix.
 
 ### 3e: Grammar and style audit
 
-Run the Vale linter using the vale.ini configuration and styles under .github/styles. Evaluate how well the documentation follows the style and grammar rules, particularly where violated rules are considered errors. If a config directive names a Vale rule to skip (e.g. "Skip Vale rule Google.Passive"), omit violations of that rule from the findings.
+Run the Vale linter to evaluate how well the documentation follows the style and grammar rules, particularly where violated rules are considered errors.
+
+- If the target project ships its own `vale.ini`/`.vale.ini` and `.github/styles`, lint with that — it reflects the project's chosen rules.
+- Otherwise, fall back to the bundled IDM config at `$CLAUDE_PLUGIN_ROOT/skills/audit-docs/assets/vale.ini` (its `StylesPath` already points at the co-located `styles/` directory): `vale --config "$CLAUDE_PLUGIN_ROOT/skills/audit-docs/assets/vale.ini" <docs paths>`.
+- State in the report which config was used (the project's own or the bundled IDM default). If the `vale` binary is not installed, note that the style pass could not run rather than failing the audit.
+
+If a config directive names a Vale rule to skip (e.g. "Skip Vale rule Google.Passive"), omit violations of that rule from the findings.
 
 ### Step 4: Assemble the report
 
