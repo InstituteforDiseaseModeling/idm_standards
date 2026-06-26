@@ -7,6 +7,8 @@ description: Use when docs_guidance/ has changed and the idm-standards plugin's 
 
 The documentation skills in `idm_standards_plugin/skills/` (`audit-docs`, `audit-docs-structure`, `audit-personas`, `audit-docstrings`) are derived from, and must stay consistent with, the source documentation in `docs_guidance/`. When the guidance changes, these skills need to learn those changes — otherwise the plugin drifts from the project's actual documentation standards and the audit/review skills give stale advice.
 
+The `audit-docs` skill also bundles generated copies of repo-root assets — `vale.ini`, `.github/styles/`, and `docs_templates/` — under `idm_standards_plugin/skills/audit-docs/assets/`. An installed plugin only ships the `idm_standards_plugin/` directory, so the skill cannot read the repo-root sources at runtime; these bundled copies are how it reaches them. When any of those sources change, the bundled copies must be re-synced too (step 6b).
+
 This skill walks you through that sync: identify what changed, figure out which plugin skills need updating, propose the edits, apply them, bump the version, and update the changelog.
 
 ## Workflow
@@ -36,6 +38,12 @@ Also list files that were added or deleted in the range:
 
 ```bash
 git diff --name-status <range> -- docs_guidance/
+```
+
+Also check whether the bundled-asset sources changed in the range — if any of these are non-empty, step 6b applies:
+
+```bash
+git diff --name-status <range> -- vale.ini .github/styles/ docs_templates/
 ```
 
 **Notebook files**: `docs_guidance/topic-types/notebook.ipynb` produces noisy JSON diffs. For notebooks, inspect the current file content directly rather than relying on the diff — or use `git diff --stat` to see whether it changed meaningfully, then read the current notebook if it did.
@@ -85,6 +93,26 @@ Edit each affected `SKILL.md` using the `Edit` tool. When editing:
 - Match the voice and structure of the existing skill — these skills read as a coherent set and shouldn't diverge stylistically.
 - Reference `docs_guidance/` files by relative path rather than pasting whole sections. The plugin skills are pointers to the authoritative guidance, not duplicates. Duplication creates drift.
 - If a new guidance file was added that a skill should reference, add the pointer; don't inline the content.
+
+### 6b. Sync bundled audit-docs assets
+
+Only if the asset-source check in step 2 showed changes to `vale.ini`, `.github/styles/`, or `docs_templates/` (or if the bundled copies are missing entirely). Re-generate the copies under `idm_standards_plugin/skills/audit-docs/assets/`:
+
+```bash
+ASSETS=idm_standards_plugin/skills/audit-docs/assets
+rm -rf "$ASSETS/styles" "$ASSETS/docs_templates"
+cp -r .github/styles "$ASSETS/styles"
+cp -r docs_templates "$ASSETS/docs_templates"
+cp vale.ini "$ASSETS/vale.ini"
+```
+
+Then re-point the bundled `vale.ini` `StylesPath` at the co-located styles dir — the repo-root copy uses `.github/styles`, the bundled copy must use `styles`:
+
+```bash
+sed -i 's|^StylesPath = .github/styles|StylesPath = styles|' "$ASSETS/vale.ini"
+```
+
+These copies are generated artifacts — never hand-edit them; edit the repo-root sources and re-run this step. The `assets/README.md` records this. A change here is a behavior change to `audit-docs`, so it counts toward the version bump and changelog below.
 
 ### 7. Bump the version
 
