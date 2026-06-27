@@ -19,14 +19,14 @@ If desired, you can configure a GitHub action to run Vale on all pull requests i
 
 1. Open the VS Code Marketplace or use the Extensions view (Ctrl+Shift+X).
 2. Search for and install "Vale VSCode" by Chris Chinchilla.
-3. Under **File > Preferences > Settings > Extensions > Vale** set **Vale CLI:Config** to your path to idm_standards/vale.ini.
+3. Under **File > Preferences > Settings > Extensions > Vale** set **Vale CLI:Config** to your path to idm_standards/idm_standards_plugin/skills/audit-docs/assets/vale.ini.
 4. Add the path to the vale.exe in Program Files to your global VSCode settings.json.
 5. Restart VSCode after installation.
 6. Open any supported file type (.qmd, .md, and .ipynb) and Vale will automatically highlight issues with wavy lines in the editor.
 
 **Run at the command line:**
 
-1. Set the environment variables for `VALE_CONFIG_PATH` and `VALE_STYLES_PATH` to vale.ini and .github/styles in the idm_standards repo.
+1. Set the environment variables for `VALE_CONFIG_PATH` and `VALE_STYLES_PATH` to the `vale.ini` and `styles` paths under `idm_standards_plugin/skills/audit-docs/assets/` in the idm_standards repo.
 2. Navigate to the location where you saved the vale.exe.
 3. Run `vale ls-vars` to verify that the styles and configuration paths are correct.
 4. Run `vale my_file.md` to inspect individual files and generate a report. See full CLI options at [vale.sh](https://vale.sh/docs/cli).

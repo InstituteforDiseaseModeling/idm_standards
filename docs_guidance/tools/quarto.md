@@ -2,7 +2,7 @@
 
 For Quarto, the `_quarto.yml` file controls most aspects of the documentation build, style, table of contents, and extension functionality. Avoid adding custom CSS or JavaScript as it makes the doc build fragile and difficult to maintain consistency.
 
-Use the [Quarto template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/docs_templates/quarto_template) provided in this repository. For more information, see the [Quarto documentation](https://quarto.org/docs/guide/).
+Use the [Quarto template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/idm_standards_plugin/skills/audit-docs/assets/docs_templates/quarto_template) provided in this repository. For more information, see the [Quarto documentation](https://quarto.org/docs/guide/).
 
 ## Doc builds and previews
 
