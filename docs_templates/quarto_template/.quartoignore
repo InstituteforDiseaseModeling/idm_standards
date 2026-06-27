@@ -1,6 +1,0 @@
-site/
-_site/
-.github/
-.jupyter_cache
-.quarto/
-api/

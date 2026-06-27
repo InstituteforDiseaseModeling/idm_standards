@@ -2,7 +2,7 @@
 
 For MkDocs, the `mkdocs.yml` file controls most aspects of the documentation build, style, table of contents, and plug-in functionality. The minimal files under customization/ are needed to meet GF requirements and should not require frequent updates. Avoid adding any other CSS or JavaScript customization as it makes the doc build fragile and difficult to maintain consistency.
 
-Use the [MkDocs template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/docs_templates/mkdocs_template) provided in this repository. For more information, see the [MkDocs documentation](https://squidfunk.github.io/mkdocs-material/reference/).
+Use the [MkDocs template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/idm_standards_plugin/skills/audit-docs/assets/docs_templates/mkdocs_template) provided in this repository. For more information, see the [MkDocs documentation](https://squidfunk.github.io/mkdocs-material/reference/).
 
 ## Doc builds and previews
 

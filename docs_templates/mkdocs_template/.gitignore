@@ -1,5 +1,0 @@
-# mkdocs build files
-site/* 
-
-# vscode files
-.vscode/*

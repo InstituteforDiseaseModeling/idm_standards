@@ -5,7 +5,6 @@ project:
     - README.md
     - "*.md"
     - "*.ipynb"
-    - "!docs_templates/"
     - "!idm_standards_plugin/"
     - "!evals/"
     - "idm_standards_plugin/README.md"
