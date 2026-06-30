@@ -34,6 +34,7 @@ The [docs guidance](docs_guidance/) covers IDM's approach to documentation:
 - [Installation page](docs_guidance/topic-types/install.md) -- how to write a good installation page
 - [Topic types](docs_guidance/topic-types/) -- how to structure your content as tutorials, explanations, how-to guides, etc.
 - [Personas](docs_guidance/personas/) -- how to write for different audiences
+- [Templates](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/idm_standards_plugin/skills/audit-docs/assets/docs_templates) -- MkDocs and Quarto templates
 
 ## Claude Code plugin
 
