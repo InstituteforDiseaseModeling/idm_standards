@@ -20,7 +20,7 @@ Use email for communication with external collaborators, formal requests, and an
 
 - **Stand-ups**: Brief daily or weekly check-ins to share progress and flag blockers.
 - **Sprint planning**: Periodic meetings to prioritize and assign work.
-- **Ad hoc**: Scheduled for design discussions, debugging sessions, or onboarding.
+- **Ad hoc**: Scheduled as needed for design discussions, debugging sessions, or onboarding.
 
 ## General tips
 
