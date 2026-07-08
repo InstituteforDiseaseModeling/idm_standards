@@ -40,7 +40,7 @@ If acting on `docs_audit.md`, implement its recommendations directly (there is n
 | Category | Examples |
 |----------|----------|
 | **Can implement now** | README sections (installation, usage, structure), LICENSE, CHANGELOG scaffold, folder READMEs, docstring fixes, broken links, TOC reorganization per the audit-docs-structure findings, Vale errors |
-| **Will scaffold** | Tutorial/notebook skeletons, docs-site config (`mkdocs.yml`/`_quarto.yml` from the templates in `docs_templates/`), API reference setup |
+| **Will scaffold** | Tutorial/notebook skeletons, docs-site config (`mkdocs.yml`/`_quarto.yml` from the templates in `$CLAUDE_PLUGIN_ROOT/skills/audit-docs/assets/docs_templates/`), API reference setup |
 | **Cannot implement** | Writing full tutorials or user guides (domain knowledge), persona-targeted rewrites needing scientific content, anything requiring publication decisions |
 
 Present the combined plan (code + docs) to the user **before making any changes**, wait for confirmation, then work through items in priority order (the reports rank them). Apply the version-control strategy chosen in Step 1 to the docs changes too (same branching/commit/PR behavior). Respect the report's recorded strictness and any user decisions. Drop docs items a config directive suppresses, listing them under "Skipped per your config" rather than dropping silently.

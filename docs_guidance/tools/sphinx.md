@@ -4,7 +4,7 @@ In the past, IDM used [Sphinx](https://www.sphinx-doc.org/en/master/) to build d
 
 ## Migrate from Sphinx
 
-1. Prompt an AI agent to migrate the doc project and provide it with either the [MkDocs template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/docs_templates/mkdocs_template) or [Quarto template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/docs_templates/quarto_template), as appropriate.
+1. Prompt an AI agent to migrate the doc project and provide it with either the [MkDocs template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/idm_standards_plugin/skills/audit-docs/assets/docs_templates/mkdocs_template) or [Quarto template](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/idm_standards_plugin/skills/audit-docs/assets/docs_templates/quarto_template), as appropriate.
 1. Attempt to build the migrated content locally and troubleshoot any issues you identify.
 1. Review the HTML output to identify any styling issues that pass build validation but look incorrect.
 1. Remove all Sphinx files and references that are no longer needed, such as:

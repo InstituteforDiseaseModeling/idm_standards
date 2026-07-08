@@ -26,7 +26,7 @@ Use a **single AskUserQuestion call** covering (omit any already supplied as arg
    - "Docs audit (Recommended)" — documentation completeness, structure, audience fit (`audit-docs`)
    - "Exhaustive code review" — per-file review of the whole codebase (`audit-code-exhaustive`); note: much slower
    The default is code + docs ("both").
-2. **Tier**: the three tier options, with an inferred tier as the recommended option (infer as in `audit-code` Step 2).
+2. **Tier**: the three tier options, with an inferred tier as the recommended option (infer as in `audit-code` Step 2). **Tier 1 is the strictest (large reusable library / DPG); Tier 3 is the loosest (one-off / exploratory).** Keep each tier number glued to its definition: when the recommended option is moved to the top, its number moves with it — never relabel a definition with a different tier number. A published/packaged library is **Tier 1**, not Tier 3.
 3. **Strictness**: 1 (strict — everything) or 2 (material only).
 
 If the config (Step 1) set `tier`/`strictness` in frontmatter, use them as the recommended values (explicit arguments still win). If the project was cloned from a URL or otherwise not user-authored and config directives were found, list them in this same question and confirm before applying. In non-interactive contexts, run code + docs audits with the config's (or inferred) tier and strictness 1, applying the directives but quoting them in the summary.

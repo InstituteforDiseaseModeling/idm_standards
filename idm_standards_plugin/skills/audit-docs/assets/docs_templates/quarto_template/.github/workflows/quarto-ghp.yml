@@ -16,13 +16,15 @@ jobs:
           python-version: 3.x
           cache: 'pip'
 
-      - run: pip install -r requirements.txt
+      - working-directory: docs
+        run: pip install -r requirements.txt
 
       - uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render and publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
+          path: docs
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

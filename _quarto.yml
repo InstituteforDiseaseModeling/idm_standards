@@ -5,7 +5,6 @@ project:
     - README.md
     - "*.md"
     - "*.ipynb"
-    - "!docs_templates/"
     - "!idm_standards_plugin/"
     - "!evals/"
     - "idm_standards_plugin/README.md"
@@ -76,7 +75,7 @@ website:
         file: docs_guidance/index.md
         contents:
           - section: Doc tools
-            file: tools/index.md
+            file: docs_guidance/tools/index.md
             contents:
               - text: MkDocs overview
                 file: docs_guidance/tools/mkdocs.md

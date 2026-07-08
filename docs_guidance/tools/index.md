@@ -1,6 +1,8 @@
 # Doc tools
 
-Build your docs site using either MkDocs or Quarto, using the templates provided in this repository. Both tools use Markdown as the source file format. Generally, we recommend using the same tool for all tools in a modeling ecosystem to make interlinking easier. A quick comparison of the two tools is below:
+Build your docs site using either MkDocs or Quarto, using the templates provided in this repository under [idm_standards_plugin](https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/idm_standards_plugin/skills/audit-docs/assets/docs_templates).
+
+Both tools use Markdown as the source file format. Generally, we recommend using the same tool for all tools in a modeling ecosystem to make interlinking easier. A quick comparison of the two tools is below:
 
 | Tool                                                         | Pros                                                         | Cons                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
