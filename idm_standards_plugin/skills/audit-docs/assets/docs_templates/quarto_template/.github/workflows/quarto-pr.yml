@@ -19,10 +19,19 @@ jobs:
         cache: 'pip'
 
     - name: Install Python dependencies
+      working-directory: docs
       run: pip install -r requirements.txt
 
     - name: Set up Quarto
       uses: quarto-dev/quarto-actions/setup@v2
 
     - name: Build Quarto site
+      working-directory: docs
       run: quarto render
+
+    - name: Upload built site
+      uses: actions/upload-artifact@v4
+      with:
+        name: quarto-site-pr-${{ github.event.pull_request.number }}
+        path: docs/_site/
+        retention-days: 14
