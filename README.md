@@ -47,7 +47,7 @@ This repo includes the **[IDM-Standards plugin](idm_standards_plugin/)** (v2.0) 
 
 > **Migrating from v1.x?** The former `idm-eng-plugin`, `idm-docs-plugin`, and `idm-uplifter-plugin` are now this single plugin, and the skills were renamed (for example, `eng-quality-checker` → `audit-code`). Uninstall the old three and install `idm-standards`.
 
-Install via the Claude Code marketplace (configured in [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json)).
+Install via the Claude Code marketplace (configured in [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json)). Set `"autoUpdates": true` in your claude.json configuration file.
 
 ### Installation with Claude Code
 
