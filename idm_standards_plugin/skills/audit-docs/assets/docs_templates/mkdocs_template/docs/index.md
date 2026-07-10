@@ -1,8 +1,8 @@
 # Home or project/package name
 
-{% include-markdown "../README.md" %} to reuse the README file. 
+{% include-markdown "../README.md" %} to reuse the README file.
 
-## Learn more 
+## Learn more
 
 <div class="grid cards" markdown>
 
@@ -20,7 +20,7 @@
 
     Full details on all classes and functions. Update the path with the package name.
 
-    [:octicons-arrow-right-24: API reference](autoapi/package/index.md)
+    [:octicons-arrow-right-24: API reference](autoapi/<package>/index.md)
 
 -   :material-new-box:{ .lg .middle } __What's new__
 

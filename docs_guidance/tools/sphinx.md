@@ -63,7 +63,6 @@ In MkDocs, the syntax is as follows:
 
     My warning text.
 ```
-Use admonition markup for notes/warnings not plain text Single tab indent under admonitions, code samples
 
 **Anchor links**
 
@@ -103,7 +102,7 @@ Link to [Hello, World!](../index.md#hello-world) on the parent page.
 
 **Code samples**
 
-In Sphinx, you introduce code samples with either a double colon `::` for Python samples, or the
+In Sphinx, you introduce code samples with either a double colon `::` for Python samples, or the code directive `.. code-block:: <language>`.
 
 In MkDocs and Quarto, use fenced code samples with the following syntax:
 
@@ -114,7 +113,7 @@ code sample
 ````
 ### Docstrings in Python files
 
-In general, docstrings are parsed differently than RST or MD files and have specific formatting requirements. Both Quarto and MkDocs use the Griffe parser]() Therefore, many migration issues are found in docstrings.
+In general, docstrings are parsed differently than RST or MD files and have specific formatting requirements. Both Quarto and MkDocs use the [Griffe parser](https://mkdocstrings.github.io/griffe/guide/users/how-to/parse-docstrings/). Therefore, many migration issues occur in docstrings.
 
 **Links to Python objects**
 
