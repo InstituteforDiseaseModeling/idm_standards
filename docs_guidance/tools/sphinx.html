@@ -707,7 +707,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>!!! warning: Optional custom title</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">    My warning text.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use admonition markup for notes/warnings not plain text Single tab indent under admonitions, code samples</p>
 <p><strong>Anchor links</strong></p>
 <p>It can often be helpful to link to figures, sections, and other items in the docs. In Sphinx, linkable labels required anchors to be added before individual items using the following syntax:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode rst code-with-copy"><code class="sourceCode rest"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">.. _my-reference-label:</span></span>
@@ -732,14 +731,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Link to <span class="co">[</span><span class="ot">Hello, World!</span><span class="co">](../index.md#hello-world)</span> on the parent page.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Code samples</strong></p>
-<p>In Sphinx, you introduce code samples with either a double colon <code>::</code> for Python samples, or the</p>
+<p>In Sphinx, you introduce code samples with either a double colon <code>::</code> for Python samples, or the code directive <code>.. code-block:: &lt;language&gt;</code>.</p>
 <p>In MkDocs and Quarto, use fenced code samples with the following syntax:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode rst code-with-copy"><code class="sourceCode rest"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>```python</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>code sample</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="docstrings-in-python-files" class="level3">
 <h3 class="anchored" data-anchor-id="docstrings-in-python-files">Docstrings in Python files</h3>
-<p>In general, docstrings are parsed differently than RST or MD files and have specific formatting requirements. Both Quarto and MkDocs use the Griffe parser]() Therefore, many migration issues are found in docstrings.</p>
+<p>In general, docstrings are parsed differently than RST or MD files and have specific formatting requirements. Therefore, many migration issues occur in docstrings. Both Quarto and MkDocs use the <a href="https://mkdocstrings.github.io/griffe/guide/users/how-to/parse-docstrings/">Griffe parser</a>.</p>
 <p><strong>Links to Python objects</strong></p>
 <p>In Sphinx, you link to Python objects using the syntax <code>:class:`package.module.ClassName`</code> or <code>:func:`package.module.function`</code>. You can prepend the package name with a tilde (~) to show only the class or function name.</p>
 <p>In Quarto, you link to Python objects using the syntax <code>[](`package.module.ClassName`)</code>. If you want to display only the class or function name, include the desired link text in the square brackets.</p>
