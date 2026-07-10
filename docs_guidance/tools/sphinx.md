@@ -113,7 +113,7 @@ code sample
 ````
 ### Docstrings in Python files
 
-In general, docstrings are parsed differently than RST or MD files and have specific formatting requirements. Both Quarto and MkDocs use the [Griffe parser](https://mkdocstrings.github.io/griffe/guide/users/how-to/parse-docstrings/). Therefore, many migration issues occur in docstrings.
+In general, docstrings are parsed differently than RST or MD files and have specific formatting requirements. Therefore, many migration issues occur in docstrings. Both Quarto and MkDocs use the [Griffe parser](https://mkdocstrings.github.io/griffe/guide/users/how-to/parse-docstrings/).
 
 **Links to Python objects**
 
