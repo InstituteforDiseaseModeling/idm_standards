@@ -10,8 +10,9 @@ website:
   title: <Package name> # Update with package name
   repo-url: https://github.com/InstituteforDiseaseModeling/<repo>
   repo-actions: [issue]
+  plausible-analytics:
+    path: <customization/analytics.html> # update the analytics.html file for the subdomain your project is hosted on, remove brackets from path
   favicon: images/favicon.ico
-  google-analytics: "GTM-NK4K647"
   page-navigation: true
   search:
     type: overlay
