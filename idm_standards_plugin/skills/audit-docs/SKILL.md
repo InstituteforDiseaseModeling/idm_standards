@@ -107,8 +107,6 @@ Evaluate the `mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml` configuration file a
 .github/workflows files--it is acceptable for Jupyter notebook execution
 to be run only on some workflows and not for all documentation builds.
 
-For Quarto projects, also check `docs/customization/analytics.html`: it should contain exactly one Plausible snippet (not the multi-domain reference file shipped in the template), and its domain must match the project's own `website.repo-url` / hosted domain. Flag as high priority if more than one domain block remains, or if the surviving block's domain doesn't match the project's — this means the site is either not tracked or is sending traffic into a different IDM project's dashboard. For MkDocs projects, check that `extra.analytics.domain` in `mkdocs.yml` matches `site_url`.
-
 ### 3e: Grammar and style audit
 
 Run the Vale linter to evaluate how well the documentation follows the style and grammar rules, particularly where violated rules are considered errors.

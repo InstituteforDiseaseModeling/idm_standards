@@ -11,7 +11,7 @@ website:
   repo-url: https://github.com/InstituteforDiseaseModeling/<repo>
   repo-actions: [issue]
   plausible-analytics:
-    path: <customization/analytics.html> # update the analytics.html file for the subdomain your project is hosted on, remove brackets from path
+    path: customization/analytics.html
   favicon: images/favicon.ico
   page-navigation: true
   search:

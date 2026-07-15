@@ -146,7 +146,7 @@ extra:
 
   analytics:
     provider: plausible
-    domain: <docs.idmod.org> # update for your project
+    domain: idmod.org
     feedback:
       title: Was this page helpful?
       ratings:
