@@ -94,6 +94,7 @@ plugins:
       execute: true
       allow_errors: false # set to true to continue executing cells even if one fails
       include_source: true
+  - material-plausible # privacy-focused web analytics
   - api-autonav:
       modules: ['package_name'] # provide path to package
       module_options: {}
@@ -144,8 +145,8 @@ extra:
       link: https://linkedin.com/company/institute-disease-modeling
 
   analytics:
-    provider: custom
-    property: GTM-NK4K647
+    provider: plausible
+    domain: <docs.idmod.org> # update for your project
     feedback:
       title: Was this page helpful?
       ratings:

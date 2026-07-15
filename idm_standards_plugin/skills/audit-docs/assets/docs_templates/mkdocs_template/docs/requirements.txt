@@ -5,6 +5,7 @@ mkdocs-jupyter # jupyter notebooks
 mkdocstrings # generate API reference from docstrings
 mkdocstrings-python # python handler for mkdocstrings
 mkdocs-api-autonav # automatically add API ref to navigation
+material-plausible-plugin # plausible web analytics service
 
 # optional
 mkdocs-include-markdown-plugin # include files outside /docs
