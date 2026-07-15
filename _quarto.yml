@@ -137,8 +137,6 @@ format:
     toc-expand: true
     toc-depth: 3
     highlight-style: github
-    include-in-header:
-      - docs_guidance/customization/analytics.html
 
 execute:
   enabled: true
