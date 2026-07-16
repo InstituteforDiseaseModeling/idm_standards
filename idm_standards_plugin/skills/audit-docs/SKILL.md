@@ -103,9 +103,7 @@ Invoke the `audit-docstrings` skill. Read all public modules, classes, and funct
 
 #### 3d: Template audit
 
-Evaluate the `mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml` configuration file against the reference templates bundled with this skill at `$CLAUDE_PLUGIN_ROOT/skills/audit-docs/assets/docs_templates/` (use `mkdocs_template/mkdocs.yml` for MkDocs projects and `quarto_template/` for Quarto projects), and note divergences. If Jupyter notebooks are not set to execute during the doc build or if errors are allowed to pass, this is a high priority to fix. Check the
-.github/workflows files--it is acceptable for Jupyter notebook execution
-to be run only on some workflows and not for all documentation builds.
+Evaluate the `mkdocs.yml`, `_quarto.yml`, or `_pkgdown.yml` configuration file against the reference templates bundled with this skill at `$CLAUDE_PLUGIN_ROOT/skills/audit-docs/assets/docs_templates/` (use `mkdocs_template/mkdocs.yml` for MkDocs projects and `quarto_template/` for Quarto projects), and note divergences. If Jupyter notebooks are not set to execute during the doc build or if errors are allowed to pass, this is a high priority to fix. Check the .github/workflows files--it is acceptable for Jupyter notebook execution to be run only on some workflows and not for all documentation builds.
 
 ### 3e: Grammar and style audit
 
