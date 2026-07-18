@@ -13,6 +13,8 @@ website:
   title: IDM Standards
   repo-url: https://github.com/InstituteforDiseaseModeling/idm_standards
   repo-actions: [issue]
+  plausible-analytics:
+    path: docs_guidance/customization/analytics.html
   favicon: docs_guidance/images/favicon.ico
   page-footer:
     left: "Copyright &copy; 2026 Gates Foundation. All rights reserved."
@@ -135,8 +137,6 @@ format:
     toc-expand: true
     toc-depth: 3
     highlight-style: github
-    include-in-header:
-      - docs_guidance/customization/analytics.html
 
 execute:
   enabled: true

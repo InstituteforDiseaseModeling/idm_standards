@@ -10,8 +10,9 @@ website:
   title: <Package name> # Update with package name
   repo-url: https://github.com/InstituteforDiseaseModeling/<repo>
   repo-actions: [issue]
+  plausible-analytics:
+    path: customization/analytics.html
   favicon: images/favicon.ico
-  google-analytics: "GTM-NK4K647"
   page-navigation: true
   search:
     type: overlay
@@ -99,8 +100,6 @@ format:
     toc-depth: 3
     anchor-sections: true
     highlight-style: github
-    include-in-header:
-      - customization/analytics.html
 
 filters:
   - interlinks

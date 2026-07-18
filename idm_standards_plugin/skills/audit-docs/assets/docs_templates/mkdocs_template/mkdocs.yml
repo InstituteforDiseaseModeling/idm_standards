@@ -79,7 +79,6 @@ markdown_extensions:
 extra_javascript:
   - customization/javascript/mathjax.js # MathJax config: enables inline math and re-typesets on navigation
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  - customization/javascript/extra.js # fixes the feedback form display
 extra_css:
   - customization/css/extra.css # custom CSS for footer spacing
 
@@ -94,6 +93,7 @@ plugins:
       execute: true
       allow_errors: false # set to true to continue executing cells even if one fails
       include_source: true
+  - material-plausible # privacy-focused web analytics
   - api-autonav:
       modules: ['package_name'] # provide path to package
       module_options: {}
@@ -144,8 +144,8 @@ extra:
       link: https://linkedin.com/company/institute-disease-modeling
 
   analytics:
-    provider: custom
-    property: GTM-NK4K647
+    provider: plausible
+    domain: idmod.org
     feedback:
       title: Was this page helpful?
       ratings:
