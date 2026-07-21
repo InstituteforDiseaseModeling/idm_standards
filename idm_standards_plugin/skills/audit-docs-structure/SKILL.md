@@ -6,7 +6,7 @@ allowed-tools: Read, Grep, Glob, Bash, Edit, Write
 
 # Documentation skill
 
-Skill version: 1.2_2026.07.21
+Skill version: 1.1_2026.07.21
 
 Unifies all of IDM's topic-type documentation guidance (borrowed from Diátaxis) into one Skill. Claude activates this Skill whenever documentation is written, reviewed, or improved, and new topics are added within the table of contents. It then "lazy loads" the exact documentation type guidance by opening the reference docs linked below.
 
