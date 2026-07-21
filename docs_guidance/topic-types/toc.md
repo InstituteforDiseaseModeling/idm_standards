@@ -15,7 +15,7 @@ Whenever making decisions about documentation organization, aim to align structu
 3. Complete a few more complex tutorials to gain a broader understanding of using the tool.
 4. Switch from acquisition of knowledge to action, eventually getting stuck and needing to return to the docs. Usually readers consult how-to topics, troubleshooting, or reference to get unstuck. Lather, rinse, repeat.
 
-Users actively look for tutorials and reference as a topic type, so these should be in top-level sections in the TOC. However, how-to topics and explanations work best when contained in user guides grouped by subject matter. For example, users may want to learn more about demographics in a model and would seek out a demographics user guide with both explanation and how-to topics related to that subject. 
+Users actively look for tutorials and API reference as a topic type, so these should be in top-level sections in the TOC. However, how-to topics and explanations work best when contained in user guides grouped by subject matter. For example, users may want to learn more about demographics in a model and would seek out a demographics user guide with both explanation and how-to topics related to that subject. It can sometimes make sense to include reference topics, such as those describing file types or system architecture, in user guides.
 
 **Example TOC**
 
@@ -38,11 +38,11 @@ Users actively look for tutorials and reference as a topic type, so these should
 - Code of conduct (reference)
 - Contribution guide (how-to)
 
-Not every project needs all sections; omit any that don't apply. Depending on the complexity of installation, you may include it in the home page or break it out into a separate topic. The explanation or reference for more complex functionality follows once users have that hands-on grounding in the workflow through the tutorials. 
+Not every project needs all sections; omit any that don't apply. Depending on the complexity of installation, you may include it in the home page or break it out into a separate topic. The explanation or reference for more complex functionality follows once users have that hands-on grounding in the workflow through the tutorials.
 
-You may decide to have a top-level section for the model/software user guide with features/themes nested beneath or put individual features/themes at the top level. How-to topics for a particular feature always appear as subsections under a relevant parent section, never as a standalone top-level section. 
+You may decide to have a top-level section for the model/software user guide with features/themes nested beneath or put individual features/themes at the top level. How-to topics for a particular feature always appear as subsections under a relevant parent section, never as a standalone top-level section.
 
-Always let user needs drive your organizational decisions. For example, if model users and model extenders are primary personas but have different workflows, you may want to have two top-level user guide sections for "Use the model" and "Extend the model." 
+Always let user needs drive your organizational decisions. For example, if model users and model extenders are primary personas but have different workflows, you may want to have two top-level user guide sections for "Use the model" and "Extend the model."
 
 ### Reuse content
 
@@ -93,6 +93,8 @@ All repos should include CONTRIBUTING.md, CODE_OF_CONDUCT.md, CHANGELOG.md, and 
 ```
 
 ### Cross-references
+
+Make extensive use of cross-referencing to connect related information and do not rely only on TOC grouping. For example, API reference content may relate to conceptual explanations or tutorials or an explanation topic may relate to how-tos that live under several different sections. Do not assume proximity in the TOC is the only way readers navigate between related content.
 
 Add cross-references when:
 

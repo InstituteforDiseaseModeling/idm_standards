@@ -5,7 +5,7 @@ description: Guidelines for writing Python docstrings in this project. Always us
 
 # Python docstring guidelines
 
-Skill version: 1.0_2026.04.13
+Skill version: 1.1_2026.07.21
 
 Use **Google-style docstrings**. Every public class, method, and function should have a docstring that helps a disease-modeling researcher understand not just *what* the object does, but *where it fits* in their workflow. Use American English spelling and usage.
 
@@ -53,7 +53,6 @@ def some_function(arg1, arg2):
         model = Model(scenario, params)
         result = some_function(model.nodes.S[0], model.params.nticks)
 
-
     Note:
         Reserve for non-obvious caveats — performance warnings, thread safety,
         or behaviors that diverge from what the name implies.
@@ -65,6 +64,8 @@ section header (not `**Example:**`) so that mkdocstrings/quartodoc parse it as a
 the bolded form was a Sphinx-only requirement and is not recognized by the MkDocs/Quarto toolchain.
 The example code is just an indented block under the header; do not wrap it in a ```` ```python ````
 fence (an indented block is already rendered as code).
+
+Provide clear, precise descriptions to avoid ambiguity in ranges, units, paths, assumptions, etc. that can introduce silent scientific errors.
 
 ---
 
@@ -107,18 +108,18 @@ A researcher using this library follows a predictable workflow. Your docstring s
 1. Prepare scenario     →  GeoDataFrame with population, geometry, initial S/I/E/R counts
 2. Set parameters       →  PropertySet with nticks, beta, capacity_safety_factor, prng_seed, ...
 3. Build component list →  [Susceptible(model), Transmission(model, ...), ...]
-4. Initialise model     →  model = Model(scenario, params)
+4. Initialize model     →  model = Model(scenario, params)
 5. Run simulation       →  model.run()
-6. Analyse results      →  model.nodes.S, model.nodes.I, component.plot()
+6. Analyze results      →  model.nodes.S, model.nodes.I, component.plot()
 ```
 
 In the description prose, state clearly:
-- **Which stage** this object belongs to (initialisation, per-timestep, post-run analysis)
+- **Which stage** this object belongs to (initialization, per-timestep, post-run analysis)
 - **What comes before it** in the component list, if ordering matters
 - **What it produces** that downstream components or analysis code will consume
 
 Example phrasing:
-> "Add this component to `model.components` *before* any transmission component. It initialises the `S` array consumed by [`SIR.Transmission`][laser.generic.SIR.Transmission] at every timestep."
+> "Add this component to `model.components` *before* any transmission component. It initializes the `S` array consumed by [`SIR.Transmission`][laser.generic.SIR.Transmission] at every timestep."
 
 ---
 

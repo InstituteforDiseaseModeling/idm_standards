@@ -6,7 +6,7 @@ allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, Skill, AskUserQuestio
 
 # Documentation audit
 
-Skill version: 2.0_2026.06.10
+Skill version: 2.1_2026.07.21
 
 This skill performs a comprehensive documentation audit for an IDM project. It checks general completeness against the IDM documentation standards, then delegates to three specialized skills for deeper analysis, and assembles everything into a single prioritized report.
 
@@ -81,12 +81,13 @@ Invoke the `audit-docs-structure` skill. Evaluate:
 - Whether existing docs are correctly categorized (e.g., a "tutorial" that is actually a how-to)
 - Whether there is cross-contamination between types (e.g., reference material embedded in tutorials)
 - How well the table of contents / navigation organizes content — tutorials and reference at top level, how-to and explanation grouped into user guides (IDM's divergence from Diátaxis)
+- Whether related topics that live in *separate* TOC locations (not grouped into a shared user guide) still cross-reference each other. TOC grouping and cross-referencing are independent checks — flag missing links even when the grouping itself is reasonable (e.g., a how-to in a user guide and related explanation in an overview section that never link to one another or tutorials containing code examples that do not link to the relevant API reference topics).
 
 #### 3b: Persona audit
 
 Invoke the `audit-personas` skill. Evaluate:
 - Whether documentation sections are written for their target personas
-- Whether the landing page / top of README serves policy-maker and policy-influencer personas (for policy-relevant projects, e.g. Tier 1 projects)
+- Whether the landing page / top of README gives policy-maker and policy-influencer personas at least one or two plain-language sentences of real-world policy relevance (for policy-relevant projects, e.g. Tier 1 projects) — this is a light-touch check; do not recommend a dedicated section, case studies, or a full landing-page reframe for these two personas
 - Whether tutorials serve model-user, model-extender, and model-builder personas
 - Whether technical depth matches audience expectations
 - Whether LMIC context is acknowledged where appropriate

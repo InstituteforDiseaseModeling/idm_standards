@@ -7,6 +7,8 @@ description: Use when docs_guidance/ has changed and the idm-standards plugin's 
 
 The documentation skills in `idm_standards_plugin/skills/` (`audit-docs`, `audit-docs-structure`, `audit-personas`, `audit-docstrings`) are derived from, and must stay consistent with, the source documentation in `docs_guidance/`. When the guidance changes, these skills need to learn those changes — otherwise the plugin drifts from the project's actual documentation standards and the audit/review skills give stale advice.
 
+**Exception — `audit-docstrings`:** this skill's content is sourced from `eng_guidance/4_documentation.md`, not `docs_guidance/` (`docs_guidance/topic-types/reference.md` itself points there for docstring guidance). If you're doing a general sync pass, also diff `eng_guidance/4_documentation.md` over the same range and propagate changes to `audit-docstrings` alongside whatever `docs_guidance/` changes you find — don't skip it just because it's outside `docs_guidance/`. This is also covered from the other direction by `idm_standards_plugin/admin/update_prompt.md` (step 2c); if that pass already ran for this range, don't duplicate the edit.
+
 The `audit-docs` skill also ships the canonical Vale config and reference docs templates — `vale.ini`, `styles/`, and `docs_templates/` — under `idm_standards_plugin/skills/audit-docs/assets/`. An installed plugin only ships the `idm_standards_plugin/` directory, so these live inside it where the skill can read them at runtime. These are the only copies (the repo formerly duplicated them at the repo root, but those were removed); edit them directly in place. A change to any of them is a behavior change to `audit-docs` and counts toward the version bump and changelog (see step 6b).
 
 This skill walks you through that sync: identify what changed, figure out which plugin skills need updating, propose the edits, apply them, bump the version, and update the changelog.
@@ -46,18 +48,24 @@ Also check whether the bundled assets changed in the range — if this is non-em
 git diff --name-status <range> -- idm_standards_plugin/skills/audit-docs/assets/
 ```
 
+Also diff the docstring guidance, which lives outside `docs_guidance/`:
+
+```bash
+git diff <range> -- eng_guidance/4_documentation.md
+```
+
 **Notebook files**: `docs_guidance/topic-types/notebook.ipynb` produces noisy JSON diffs. For notebooks, inspect the current file content directly rather than relying on the diff — or use `git diff --stat` to see whether it changed meaningfully, then read the current notebook if it did.
 
 ### 3. Map changes to plugin skills
 
 The plugin has four documentation skills: `audit-docs-structure`, `audit-personas`, `audit-docstrings`, `audit-docs`. Use your judgment — read both the diff and the relevant `SKILL.md` files before deciding — but the typical mapping is:
 
-| `docs_guidance/` area | Likely affected plugin skill |
+| Source area | Likely affected plugin skill |
 |-----------------------|------------------------------|
-| `personas/` | `skills/audit-personas/` |
-| `topic-types/` (diataxis concepts, tutorial/howto/reference/explanation, TOC) | `skills/audit-docs-structure/` |
-| Docstring-specific guidance (wherever it lives) | `skills/audit-docstrings/` |
-| Broad structural or process changes | `skills/audit-docs/` |
+| `docs_guidance/personas/` | `skills/audit-personas/` |
+| `docs_guidance/topic-types/` (diataxis concepts, tutorial/howto/reference/explanation, TOC) | `skills/audit-docs-structure/` |
+| `eng_guidance/4_documentation.md` (not `docs_guidance/` — see the exception above) | `skills/audit-docstrings/` |
+| Broad structural or process changes in `docs_guidance/` | `skills/audit-docs/` |
 
 Files like `install.md`, `mkdocs.md`, `quarto.md`, `vale.md`, `home.md`, `index.md` are usually about tooling or landing pages, not skill content — but confirm with the user before dismissing them. A single guidance change can affect multiple plugin skills; note all of them.
 
