@@ -4,21 +4,21 @@ People who hold formal authority to set policy and allocate public resources, es
 
 ## Who they are
 
-Ministry of Health officials, regional health authorities, and national program managers making high-stakes decisions about strategy, budgets, and regulations. 
+Ministry of Health officials, regional health authorities, and national program managers making high-stakes decisions about strategy, budgets, and regulations.
 
-IDM doesn't often interact directly with policy makers. Instead, policy influencers use the output of IDM models to make policy recommendations to policy makers. 
+IDM doesn't often interact directly with policy makers. Instead, policy influencers use the output of IDM models to make policy recommendations to policy makers.
 
 ## What they do
 
-Approve or reject policies, define national plans and guidelines, allocate budgets, and take responsibility for outcomes; they rely on evidence from model builders/extenders/users and policy influencers but are accountable for final decisions. 
+Approve or reject policies, define national plans and guidelines, allocate budgets, and take responsibility for outcomes; they rely on evidence from model builders/extenders/users and policy influencers but are accountable for final decisions.
 
 ## Skills/tools
 
-Strong domain and systems expertise, but limited time and often limited tolerance for technical detail; prefer synthesized evidence—dashboards, short briefs, and clear options with trade-offs and uncertainty explained. 
+Strong domain and systems expertise, but limited time and often limited tolerance for technical detail; prefer synthesized evidence—dashboards, short briefs, and clear options with trade-offs and uncertainty explained.
 
 ## Key needs
 
-Locally relevant, validated models; interpretable outputs mapped to policy levers and budget lines; support in understanding implications, risks, and equity impacts of different choices. 
+Locally relevant, validated models; interpretable outputs mapped to policy levers and budget lines; support in understanding implications, risks, and equity impacts of different choices.
 
 ## Decision-making context
 
@@ -33,4 +33,5 @@ Key decision constraints include political feasibility, available budget, existi
 ## Targeted content
 
  It's important to address policy maker needs primarily in dashboards and in policy recommendations. They will likely not interact directly with software documentation. On the idmod.org website, the focus should be on conveying that our models can be trusted and have been applied to policy decisions in real-world contexts.
- 
+
+ In software documentation specifically, this means at most one or two sentences on the landing page or top of the README acknowledging real-world policy relevance — not a dedicated section, case study, or reframed landing page.

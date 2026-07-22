@@ -6,7 +6,7 @@ allowed-tools: Read, Grep, Glob, Edit, Write
 
 # Persona documentation check
 
-Skill version: 1.0_2026.04.13
+Skill version: 1.1_2026.07.21
 
 IDM documentation targets five distinct personas, each with different technical backgrounds, needs, and decision-making contexts. Different sections of documentation serve different personas. This skill checks whether each documentation section is written appropriately for its intended audience.
 
@@ -14,12 +14,14 @@ IDM documentation targets five distinct personas, each with different technical 
 
 | Doc section | Target personas |
 |---|---|
-| Docs landing page / beginning of README.md | policy-maker, policy-influencer |
+| Docs landing page / beginning of README.md | policy-maker, policy-influencer (brief acknowledgment only — see below) |
 | Rest of README.md | model-user, model-extender, model-builder |
 | Overview, case studies, etc. | policy-influencer, model-user |
 | Tutorials | model-user, model-extender, model-builder |
 | User guide | model-extender, model-builder |
 | API reference (docstrings) | model-extender, model-builder |
+
+Policy-maker and policy-influencer are the lightest-touch personas in software documentation. They are not the target audience for docs sites — at most, the landing page or top of the README should give them one or two sentences of real-world policy relevance. Do not expect or recommend a dedicated section, case studies, track-record framing, or a reframed landing page for these two personas; that content belongs in dashboards, briefs, or the idmod.org website, not the docs site.
 
 For technical projects without direct policy relevance, the docs landing page or beginning of the readme does NOT need to be accessible to policy-makers and policy-influencers, but should still be written in plain language where possible.
 
@@ -67,7 +69,7 @@ For each doc section, read the actual content and assess it against the persona 
 
 **Content focus**
 - Does the section address what the persona actually needs to know?
-- Landing pages should convey trust, applicability, and real-world policy relevance -- not implementation details.
+- Landing pages need only one or two sentences of real-world policy relevance for policy-maker/policy-influencer -- not a dedicated section, case studies, or full reframing. Don't recommend more than that; deeper policy content belongs in dashboards/briefs/idmod.org, not the docs site.
 - Tutorials should lead with workflow steps and concrete disease examples, not theory.
 - User guides should show calibration and extension under realistic conditions, including sparse data.
 - API reference should explain design intent, not just interface signatures.
@@ -93,11 +95,9 @@ Keep the report concise and actionable. Prioritize the most impactful issues -- 
 ## What good looks like per persona
 
 ### Policy-maker, policy-influencer (landing pages, overviews)
-- Plain language, no jargon or code
-- Frames models in terms of policy questions they can answer
-- Shows real-world applications and track record
-- Conveys trustworthiness and validation
-- Connects outputs to programmatic decisions and investment choices
+- One or two plain-language sentences acknowledging real-world policy relevance -- that's the whole bar
+- No jargon or code in those sentences
+- Nothing more is expected in software docs: no dedicated section, case studies, track-record framing, or landing-page reframe. Recommending those for a docs site is over-scoping this persona -- that content belongs in dashboards, briefs, or idmod.org
 
 ### Model-user (README body, overviews, tutorials)
 - Leads with workflow, not theory

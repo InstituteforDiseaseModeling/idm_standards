@@ -4,19 +4,19 @@ People who shape which evidence and models are used and how they are interpreted
 
 ## Who they are
 
-International program officers/implementers at NGOs, multilaterals, and foundations who design and fund programs across countries. 
+International program officers/implementers at NGOs, multilaterals, and foundations who design and fund programs across countries.
 
-Embedded Gates Foundation program teams (PST/RCO) who set investment strategy and framing for IDM work. 
+Embedded Gates Foundation program teams (PST/RCO) who set investment strategy and framing for IDM work.
 
-Strategic funders/investors who control large resource flows based on modeling and economic analysis. 
+Strategic funders/investors who control large resource flows based on modeling and economic analysis.
 
-Technical advisors (LMIC technical public health professionals, academic partners) when they translate model outputs into policy recommendations for governments. 
+Technical advisors (LMIC technical public health professionals, academic partners) when they translate model outputs into policy recommendations for governments.
 
 While policy influencers don't often directly use IDM models, they are a large portion of the overall global health community and their ability to translate modeling output to policy recommendations is essential to improving health outcomes.
 
 ## What they do
 
-Commission or select models, interpret outputs, compare options across countries or portfolios, and use evidence for funding decisions, guidelines, and advocacy with governments and boards. 
+Commission or select models, interpret outputs, compare options across countries or portfolios, and use evidence for funding decisions, guidelines, and advocacy with governments and boards.
 
 ## Skills/tools
 
@@ -24,7 +24,7 @@ Strong analytical and interpretive capacity; comfortable with dashboards, compar
 
 ## Key needs
 
-Trusted, standardized evidence products (dashboards, briefs), clear assumptions and limitations, rapid turnaround for “what-if” questions, and narratives that connect model results to programmatic and investment choices. 
+Trusted, standardized evidence products (dashboards, briefs), clear assumptions and limitations, rapid turnaround for “what-if” questions, and narratives that connect model results to programmatic and investment choices.
 
 ## Decision-making context
 
@@ -38,5 +38,5 @@ Timing is critical: funding cycles, board meetings, and planning processes creat
 
 ## Targeted content
 
- It's important to address policy influencer needs primarily in dashboards, presentations to GF program teams, and on the idmod.org website. In the software documentation, provide some context on the home page and modeling framework landing pages for policy influencers to understand broadly how the models apply to policy questions. However, policy influencers are not the target audience for software documentation.
- 
+ It's important to address policy influencer needs primarily in dashboards, presentations to GF program teams, and on the idmod.org website. In the software documentation, provide at most one or two sentences on the home page or landing page for policy influencers to understand broadly how the models apply to policy questions — not a dedicated section, case study, or reframed landing page. Policy influencers are not the target audience for software documentation.
+

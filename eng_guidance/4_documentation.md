@@ -36,14 +36,14 @@ Expectations for docstrings:
 - Every public module, class, and function should have a docstring.
 - Use [Google-style](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) docstrings.
 - Docstrings should include at least: a one-line summary, a description of parameters and return values, and ideally **one usage example**.
+- Provide clear, precise descriptions to avoid ambiguity in ranges, units, paths, assumptions, etc. that can introduce silent scientific errors.
 - Configure interlinks so that cross-references to standard libraries (Python, NumPy, Pandas, Sciris, etc.) resolve automatically.
 - Provide enough context to help a disease-modeling researcher understand not just *what* the object does, but *where it fits* in their workflow. Link to related topics as appropriate.
 - Use American English spelling and usage.
 
 ### Type hints
 
-If type hints are included in the function or class signature, do not include them in the docstring itself--the
-parser will pull that information from the signature. Including them in both places can result in inconsistent documentation. If type hints are not in the signature or would result in a convoluted type in the rendered documentation, you may include them in the docstring. The example below include them in the docstring because IDM generally avoids type hints.
+If type hints are included in the function or class signature, do not include them in the docstring itself--the parser will pull that information from the signature. Including them in both places can result in inconsistent documentation. If type hints are not in the signature or would result in a convoluted type in the rendered documentation, you may include them in the docstring. The example below includes them in the docstring because IDM generally avoids type hints.
 
 ### Structure of a good docstring
 

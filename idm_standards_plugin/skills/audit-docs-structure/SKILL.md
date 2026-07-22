@@ -6,7 +6,7 @@ allowed-tools: Read, Grep, Glob, Bash, Edit, Write
 
 # Documentation skill
 
-Skill version: 1.1_2026.04.20
+Skill version: 1.2_2026.07.21
 
 Unifies all of IDM's topic-type documentation guidance (borrowed from Diátaxis) into one Skill. Claude activates this Skill whenever documentation is written, reviewed, or improved, and new topics are added within the table of contents. It then "lazy loads" the exact documentation type guidance by opening the reference docs linked below.
 
@@ -111,8 +111,6 @@ Both provide knowledge, but for different contexts:
 3. Improve it according to that type's principles
 4. Repeat
 
-**Let structure emerge:** As you improve individual pieces, patterns will emerge that suggest organizational structure. The top-level structure forms from the inside out. For guidance on organizing the TOC, read `references/toc.md`.
-
 ## IDM TOC organization (divergence from Diátaxis)
 
 IDM's TOC structure follows the user journey rather than strictly separating the four topic types at the top level:
@@ -121,6 +119,12 @@ IDM's TOC structure follows the user journey rather than strictly separating the
 - **User guides**: how-to and explanation topics grouped by subject matter (e.g., "Demographics user guide", "Calibration user guide"), with explanation topics typically serving as the parent page for a group
 
 This is the **key divergence from Diátaxis** and is intentional: researcher workflows are less predictable than typical software workflows, and grouping by subject matter helps users find related conceptual and task-oriented content together. When organizing a TOC, always read `references/toc.md` for full guidance.
+
+**Grouping and cross-referencing are two separate practices, not one.** Grouping how-to and explanation topics into a subject-matter user guide is the *preferred* way to put related content side by side, but it is not always possible or desirable — sometimes reference, how-to, and explanation content for the same subject legitimately belong in different top-level sections (e.g., reference material generated separately, or explanation that spans several how-tos). When reviewing or auditing a TOC:
+
+- If related topics are grouped together, check they also cross-link to each other within the group.
+- If related topics are **not** grouped together, check they still cross-link to each other across sections. A how-to under "Software" and its explanation under "Model" that never reference one another is a real gap even though the TOC placement itself may be fine.
+- Never treat "the TOC is well-organized" as evidence that cross-references exist, or the reverse. Evaluate both independently.
 
 ## Documentation type references (load on demand)
 
