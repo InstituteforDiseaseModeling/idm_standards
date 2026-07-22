@@ -80,9 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-55c6935be178fb43985d4612b80e47a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9864740bd051f65c0eb0fe30181c27f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-55c6935be178fb43985d4612b80e47a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4d4f1408a011b4c47b1bff8040430f76.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-ec92d4ea36cd3b28e994273a721a38dc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-4d4f1408a011b4c47b1bff8040430f76.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -691,13 +691,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Every public module, class, and function should have a docstring.</li>
 <li>Use <a href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google-style</a> docstrings.</li>
 <li>Docstrings should include at least: a one-line summary, a description of parameters and return values, and ideally <strong>one usage example</strong>.</li>
+<li>Provide clear, precise descriptions to avoid ambiguity in ranges, units, paths, assumptions, etc. that can introduce silent scientific errors.</li>
 <li>Configure interlinks so that cross-references to standard libraries (Python, NumPy, Pandas, Sciris, etc.) resolve automatically.</li>
 <li>Provide enough context to help a disease-modeling researcher understand not just <em>what</em> the object does, but <em>where it fits</em> in their workflow. Link to related topics as appropriate.</li>
 <li>Use American English spelling and usage.</li>
 </ul>
 <section id="type-hints" class="level3">
 <h3 class="anchored" data-anchor-id="type-hints">Type hints</h3>
-<p>If type hints are included in the function or class signature, do not include them in the docstring itself–the parser will pull that information from the signature. Including them in both places can result in inconsistent documentation. If type hints are not in the signature or would result in a convoluted type in the rendered documentation, you may include them in the docstring. The example below include them in the docstring because IDM generally avoids type hints.</p>
+<p>If type hints are included in the function or class signature, do not include them in the docstring itself–the parser will pull that information from the signature. Including them in both places can result in inconsistent documentation. If type hints are not in the signature or would result in a convoluted type in the rendered documentation, you may include them in the docstring. The example below includes them in the docstring because IDM generally avoids type hints.</p>
 </section>
 <section id="structure-of-a-good-docstring" class="level3">
 <h3 class="anchored" data-anchor-id="structure-of-a-good-docstring">Structure of a good docstring</h3>
