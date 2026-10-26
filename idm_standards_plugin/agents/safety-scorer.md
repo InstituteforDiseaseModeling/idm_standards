@@ -27,15 +27,21 @@ Read these files from `plugin_root`; they define what you check and how you repo
 3. The `schema` file: the rubric for your two metrics at the audited tier.
 4. `reference/user-config.md`, the "Hard floor" section. You own the hard floor: no exclusion can stop you reporting a critical compliance finding.
 
+If you can't read any of these files, don't guess their contents: return only `error: cannot read <path>`.
+
 ## How much to read
 
-The secret and license checks below are project-wide searches and run at every effort level. At **max effort**, also read `file_findings` (findings from agents that read every source file): cite the ones under your metrics in your scores, or dismiss with a reason any you check and find wrong; don't restate them as new findings.
+The secret, private-material and license checks below are project-wide searches and run at every effort level. At **max effort**, also read `file_findings` (findings from agents that read every source file): cite the ones under your metrics in your scores, or dismiss with a reason any you check and find wrong; don't restate them as new findings.
 
 ## What to look for
 
 **compliant**
 - **Secrets** (critical if found): search every tracked text file (`git -C <project> ls-files`, falling back to a recursive search if it isn't a git repo) for API keys, tokens, passwords, private keys (`BEGIN .*PRIVATE KEY`), cloud credentials (e.g. `AKIA[0-9A-Z]{16}`), and connection strings with embedded passwords. Check for committed `.env`, `.Renviron` or credentials files. Placeholders (`"your-api-key-here"`) and keys read from the environment are fine.
-- **Data**: committed data files that look like personal or patient-level data (names, addresses, dates of birth, medical records) are critical unless the repo documents permission. Data from external sources should have its permission documented.
+- **Private and sensitive material**: check every tracked file, not just data files. This is easy to miss and matters as much as secrets:
+  - Personal or patient-level data (names, addresses, dates of birth, medical records) is critical unless the repo documents permission.
+  - Internal documents not meant to be published: draft proposals, project plans, budgets, contracts, reviews, emails, or notes about named people. Look at the names and folders of committed documents (`git -C <project> ls-files | grep -iE '\.(pdf|docx?|xlsx?|pptx?|eml|msg)$'`) and skim the notes folders. High severity, or critical if the repo is public.
+  - Personal information about the developers: home-directory paths with usernames (`git -C <project> ls-files -z | xargs -0 grep -I -o -h -E '(/Users|/home)/[A-Za-z0-9._-]+' | sort | uniq -c`, and the Windows `C:\Users\<name>` equivalent), personal email addresses, machine names. Report the count and the main files. Medium severity (it is also a portability problem), high if the repo is public.
+  - Data from external sources should have its permission or license documented.
 - **Licenses**: identify the project's license (missing license is a finding). Check dependencies for licenses the project's use would violate (e.g. a GPL dependency in an MIT library that bundles it). Common scientific Python and R packages (numpy, scipy, pandas, matplotlib, sciris, starsim, tidyverse) are permissive.
 - Any critical finding here sets `failed: true` and scores `compliant` 0.
 

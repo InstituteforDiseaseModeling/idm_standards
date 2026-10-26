@@ -26,6 +26,8 @@ Read these three files from `plugin_root`; they define what you check and how yo
 2. `reference/criteria.yaml`: your criteria are under `quality:` (`correct.*`, `clear.*`, `concise.*`). Skip any criterion whose `tiers` don't include the audited tier.
 3. The `schema` file: the rubric for your three metrics at the audited tier.
 
+If you can't read any of these files, don't guess their contents: return only `error: cannot read <path>`.
+
 ## How much to read
 
 - **Standard effort**: read the README, the packaging files, the test suite, the main entry points, and the core scientific code (the modules that compute results) in full. Skim or grep the rest as needed to judge each criterion. Report honestly what you read in full in `files_read`.
@@ -42,7 +44,7 @@ Read these three files from `plugin_root`; they define what you check and how yo
 - Evidence of validation or peer review (papers, validation scripts, comparison with data).
 - If a bug would make key scientific results wrong, it is critical: set `failed: true` and score `correct` 0.
 
-**clear**: file and folder structure; division into functions and classes; names; readability; clever or dense constructs; needless abstractions; docstrings and comments where the code isn't self-explanatory.
+**clear**: file and folder structure, starting with the **repo root**: list it (`ls -A`) and check `git status --porcelain` for untracked files. A root cluttered with one-off scripts, scratch notes, generated outputs (CSVs, plots, logs), obsolete folders, or dozens of top-level scripts that belong in subfolders is a `clear.1` finding; say what should move where or be deleted. Then the division into functions and classes; names; readability; clever or dense constructs; needless abstractions; docstrings and comments where the code isn't self-explanatory.
 
 **concise**: duplicated code (near-identical functions or copied files); reimplementing what a standard library already does; heavy dependencies pulled in for trivial savings; dead code. Tier 1 only: style-guide consistency.
 

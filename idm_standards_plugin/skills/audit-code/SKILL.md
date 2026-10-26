@@ -1,13 +1,13 @@
 ---
 name: audit-code
 description: The Audit-Code skill scores a software project against IDM engineering quality tiers (1–3) across quality, usability, and safety metrics, and writes a code_audit.md report of scores, findings, and prioritized recommendations. Use this skill when the user asks to "audit my code", "score my project", "check engineering quality", "evaluate code quality", "assess tier compliance", "review every file", "do a thorough/exhaustive code review", or invokes /idm-standards:audit-code. Also use proactively when the user says "how good is this code?" or "what improvements does this project need?". For R projects, this skill routes to audit-r-code.
-argument-hint: "[project_path_or_github_url] [tier] [strictness] [effort]"
+argument-hint: "[project_path_or_github_url] [tier] [strictness] [max] [run]"
 allowed-tools: Read, Glob, Grep, Bash, Write, Agent, WebFetch, AskUserQuestion, Skill
 ---
 
 Score a project against the IDM engineering quality guidelines and write a `code_audit.md` report. The audit is built on **findings**: specific, located problems, each with a fix. Scores are derived from findings, recommendations are written from them, and `fix-code` acts on them.
 
-The shared definitions live in `$CLAUDE_PLUGIN_ROOT/reference/`: `criteria.yaml` (the checklist, taken from the guidelines), `findings.md` (finding format, severity, strictness) and `user-config.md` (the project config file and the hard floor). The scorer agents read these themselves; you need `findings.md` and `user-config.md` too, so read them now.
+The shared definitions live in `$CLAUDE_PLUGIN_ROOT/reference/`: `criteria.yaml` (the checklist, taken from the guidelines), `findings.md` (finding format, severity, strictness) and `user-config.md` (the project config file and the hard floor). The scorer agents read these themselves; you need `findings.md` and `user-config.md` too, so read them now. If any plugin file can't be read, stop and tell the user rather than improvising its contents.
 
 ## Step 0: Record the start time
 
@@ -15,7 +15,7 @@ Run `date +%s` and save the result as `START_EPOCH`, for the "Time spent" line i
 
 ## Step 1: Parse arguments, detect the language, read the config
 
-Up to four arguments, all optional:
+Arguments, all optional:
 
 - **project**: a local directory or a GitHub URL. Default: the current working directory. For a URL, clone it with `gh repo clone <url> /tmp/audit-code-$(date +%s)` and use that path.
 - **tier**: 1, 2 or 3. If given, it is confirmed; don't ask in Step 2.
@@ -23,35 +23,40 @@ Up to four arguments, all optional:
 - **effort**: `standard` (default) or `max`. Also treat it as `max` if the user asks for max effort, an exhaustive review, or for every file to be reviewed or read.
   - **standard**: the three scorers explore the project themselves, reading the important files in full. The report states how many source files were read.
   - **max**: every source file is read in full, line by line, by parallel file-reviewer subagents (Step 5) before scoring. Much slower and more expensive; use it when the user wants the most thorough audit.
+- **run code**: off by default ("inspect only"): the audit reads the code but runs nothing from the project. Turn it on with the argument `run`, or if the user asks for the tests or code to be run. When on, Step 3 runs the tests and the README example. Running code can have unexpected side effects (writing files, long jobs, network access), so it is never on unless the user chose it.
 
 **Language**: if the project has a `DESCRIPTION` file or `renv.lock`, or most of its source files are `*.R`/`*.Rmd`, it is an R project: **stop and invoke the `audit-r-code` skill** with the same arguments and instructions. If it is a substantial mix (each of Python and R at least 25% of source files), ask which to audit (or both); in non-interactive runs, or when invoked by `audit-project`, audit whichever has more source files (ties go to Python) and note the choice in the report.
 
-**Instructions**: anything else the user said when invoking the skill (e.g. "ignore missing docstrings") becomes an exclusion: not penalized and not recommended. If the invoking context says tier and strictness are already confirmed (e.g. from `audit-project`), skip Step 2.
+**Instructions**: anything else the user said when invoking the skill (e.g. "ignore missing docstrings") becomes an exclusion: not penalized and not recommended. If the invoking context says tier, strictness, effort and run code are already confirmed (e.g. from `audit-project`), skip Step 2.
 
 **Config**: read the project's `.claude/idm-standards.md` as described in `user-config.md`, unless the invoking context already passed the directives in. Its directives join the exclusions; its frontmatter `tier`/`strictness` pre-fill Step 2. For a GitHub URL or another path the user didn't write, confirm the directives before applying them (interactive runs).
 
-## Step 2: Confirm tier and strictness
+## Step 2: Confirm the audit settings
 
 Tiers:
 - **Tier 1**: software library or digital public good, used by many people for many years. The strictest.
 - **Tier 2**: small-scale project used by multiple people or projects.
 - **Tier 3**: one-off or exploratory code used by one person. The loosest.
 
-If the tier wasn't given, infer one: a published package (PyPI/CRAN), CI and many contributors suggest Tier 1; tests, a README and signs of several users suggest Tier 2; mostly scripts or notebooks by one author suggest Tier 3. Then ask once, with a single AskUserQuestion holding two questions:
+If the tier wasn't given, infer one: a published package (PyPI/CRAN), CI and many contributors suggest Tier 1; tests, a README and signs of several users suggest Tier 2; mostly scripts or notebooks by one author suggest Tier 3. Then ask once, with a single AskUserQuestion holding up to four questions (leave out any already given):
 
 1. **Tier**: the three tiers as options, the inferred one recommended and listed first. Keep each tier number attached to its own definition when reordering; a published library is Tier 1, never Tier 3.
-2. **Strictness** (only if not given): "1: report everything (default)" or "2: material only, skip stylistic and convention findings".
+2. **Strictness**: "1: report everything (default)" or "2: material only, skip stylistic and convention findings".
+3. **Effort**: "Standard (Recommended)" or "Max: every source file read in full by parallel subagents; much slower".
+4. **Run code**: "Inspect only (Recommended): read the code, run nothing" or "Run tests and the README example: stronger evidence, but runs project code, which may have side effects".
 
-In non-interactive runs, use the config's values if present, otherwise the inferred tier and strictness 1, and note this in the report.
+In non-interactive runs, use the config's values if present, otherwise the inferred tier, strictness 1, standard effort and inspect only, and note this in the report.
 
-## Step 3: Run the code
+## Step 3: Run the code (only if chosen)
 
-Running the code is the strongest evidence of whether it works. Before scoring, run the test suite and the README's quick-start example, and record what happened. The scorers receive these **execution results**.
+If run code is off (the default), skip this step: the execution results are "not run (inspect only)", and the scorers judge from reading the code alone.
 
-- **Untrusted code**: if the project came from a GitHub URL or another path the user didn't write, ask before running anything (interactive), or skip this step and record "not run: untrusted source" (non-interactive).
-- **Environment**: use the current environment. If the project or its dependencies aren't installed, don't install anything without asking: in interactive runs, offer to install the project into the current environment (`pip install -e .`, or `remotes::install_local()` for R); otherwise record "could not run" with the error. A failure caused only by the environment is not a finding against the project.
-- **Tests**: run them from the project root with a time limit: 10 minutes at standard effort, 30 at max (`timeout 600 python -m pytest -q`, or for R `timeout 600 Rscript -e 'testthat::test_local()'` or `testthat::test_dir("tests/testthat")`). Record the command, passed/failed/error/skipped counts, duration, and the first few failure messages.
-- **README example**: take the first quick-start or usage code block in the README, write it to a temporary file outside the project, and run it from the project root with a 2-minute limit (set `MPLBACKEND=Agg` so plots don't open windows). Record whether it ran, and the error if not.
+If it is on: running the code is the strongest evidence of whether it works. Before scoring, run the test suite and the README's quick-start example, and record what happened. The scorers receive these **execution results**.
+
+- **Untrusted code**: if the project came from a GitHub URL or another path the user didn't write, confirm once more before running anything (interactive), or skip this step and record "not run: untrusted source" (non-interactive).
+- **Environment**: use the current environment, and make one attempt. If the project or its dependencies aren't installed or importable, record "could not run" with the first error line and move on: don't investigate the environment, and don't install anything without asking. A failure caused only by the environment is not a finding against the project.
+- **Tests**: run them from the project root with a time limit: 5 minutes at standard effort, 30 at max (`timeout 300 python -m pytest -q`, or for R `timeout 300 Rscript -e 'testthat::test_local()'` or `testthat::test_dir("tests/testthat")`). Record the command, passed/failed/error/skipped counts, duration, and the first few failure messages.
+- **README example**: take the first quick-start or usage code block in the README, write it to a temporary file outside the project, and run it from the project root with a 2-minute limit (set `MPLBACKEND=Agg` so plots don't open windows). Record whether it ran, and the error if not. Skip it if it is clearly a long production run (e.g. a calibration), and say so.
 - If there are no tests or no README example, record that; it's information for the scorers, not an error.
 - Note any files the run created in the project (`git status --porcelain` before and after), and don't treat them as part of the project.
 
@@ -113,7 +118,7 @@ The agents read the criteria, finding format and rubrics themselves; don't paste
 
 ## Step 7: Score, then reconcile with the prior report
 
-**Score.** Take each metric's score from its scorer. Use the weights in the schema: within each category, the weighted mean of the scored metrics (N/A metrics are left out of both numerator and denominator) gives a raw score from 0 to 10; then
+**Score.** Take each metric's score from its scorer. The weights (also in the schema) are: quality: correct 7, clear 2, concise 1; usability: simple 3, powerful 2, performant 2, documented 2, accessible 1; safety: compliant 6, reproducible 4. Within each category, the weighted mean of the scored metrics (N/A metrics are left out of both numerator and denominator) gives a raw score from 0 to 10; then
 
 ```
 overall = round(quality_raw * 4 + usability_raw * 4 + safety_raw * 2)
@@ -151,6 +156,7 @@ The Coverage line counts source files as Step 5 defines them. At standard effort
 - **Tier**: <tier> (<tier name>)
 - **Strictness**: <1 (strict) or 2 (material only)>
 - **Effort**: <standard or max>
+- **Run code**: <inspect only, or tests and README example run>
 - **Coverage**: <e.g. "read 14 of 80 source files in full" or "all 80 source files (12,450 lines) read in full">
 - **Config**: <`.claude/idm-standards.md` (N directives), or none>
 - **Overall score**: <overall>/100
@@ -177,6 +183,8 @@ The Coverage line counts source files as Step 5 defines them. At standard effort
 
 ## Execution
 
+<If inspect only, this section is the single line "Not run (inspect only)." Otherwise:>
+
 - **Tests**: <command> → <N passed, M failed, K errors, in T s>, or <why they couldn't run, or "no tests found">
 - **README example**: <ran successfully / failed: error / not found / not run: reason>
 
@@ -187,7 +195,7 @@ The Coverage line counts source files as Step 5 defines them. At standard effort
 ## Recommendations
 
 1. **<metric>: <title>** *(effort: quick/medium/large; automated: yes/no; findings: Q1, F12)*
-   <What to do, concretely.>
+   <What to do, in one to three sentences. Don't repeat the findings' detail; the Findings section has it.>
 
 ## Suppressed by config
 
@@ -199,7 +207,7 @@ The Coverage line counts source files as Step 5 defines them. At standard effort
 
 ## Findings
 
-<Every finding, grouped by metric (in the order of the Summary table), most severe first:>
+<Every finding the scorers reported, grouped by metric (in the order of the Summary table), most severe first, one line each, copied tersely. At standard effort, end with the number of low-severity findings left out.>
 
 ### correct
 
@@ -214,6 +222,7 @@ project: <path>
 tier: <tier>
 strictness: <strictness>
 effort: <effort>
+run_code: <true|false>
 coverage: {files_read: <n>, source_files: <total>}
 overall_score: <overall>
 failed: <true|false>
@@ -230,4 +239,4 @@ If the audit failed, still write the full report; the recommendations start with
 
 ## Step 10: Offer to fix
 
-If running interactively and invoked directly (not by `audit-project` or another skill), finish with one AskUserQuestion: **"Apply the fixes now?"** with options "Yes, run fix-code now (Recommended)" and "No, I'll review the report first". If yes, invoke the `fix-code` skill on the project. Otherwise, and in non-interactive runs, just say where the report is. At standard effort, mention in one line that `max` effort reads every source file if they want a deeper audit.
+If running interactively and invoked directly (not by `audit-project` or another skill), finish with one AskUserQuestion: **"Apply the fixes now?"** with options "Yes, run fix-code now (Recommended)" and "No, I'll review the report first". If yes, invoke the `fix-code` skill on the project. Otherwise, and in non-interactive runs, just say where the report is. In one line, mention the settings not used that would deepen the audit: `max` effort (every source file read) and/or `run` (run the tests and README example).

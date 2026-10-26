@@ -26,7 +26,7 @@ quality:
     8: {tiers: [1], scope: repo, text: "Tests are incorporated in an automated pipeline (e.g. GitHub Actions)."}
     9: {tiers: [1], scope: file, text: "Code is difficult to misuse; correct usage is also the easiest, and incorrect usage raises warnings."}
   clear:
-    1: {tiers: [1, 2, 3], scope: repo, text: "Code is structured appropriately in terms of files and folders."}
+    1: {tiers: [1, 2, 3], scope: repo, text: "Code is structured appropriately in terms of files and folders (including a tidy repo root, without scratch files, outputs or obsolete code)."}
     2: {tiers: [1, 2, 3], scope: file, text: "Within each file, the code is appropriately divided into classes, methods, and functions."}
     3: {tiers: [1, 2, 3], scope: file, text: "Variables, functions, and classes have clear, descriptive names that follow consistent conventions."}
     4: {tiers: [1, 2], scope: file, text: "Code is easy to read and understand; someone looking at it can quickly explain what it is doing and why."}

@@ -18,8 +18,9 @@ findings:
     automatable: yes             # yes if an AI agent could make the fix without domain input
 ```
 
-- **problem** states what is wrong and why it matters, citing the evidence (the code, the test output, the missing file). Not "error handling could be improved", but which input fails and how.
-- **fix** is a concrete change. If the fix needs domain knowledge (e.g. the correct parameter value), say what decision is needed.
+- **problem** states what is wrong and why it matters, citing the evidence (the code, the test output, the missing file), in one or two sentences. Not "error handling could be improved", but which input fails and how.
+- **fix** is a concrete change, in one sentence. If the fix needs domain knowledge (e.g. the correct parameter value), say what decision is needed.
+- Keep findings short: they are copied into the report, and every extra sentence slows the audit down.
 - One finding per distinct problem. A pattern repeated across many places is one finding with all locations listed (or the first few plus a count), not dozens of copies.
 - Only report concrete, observable problems, not theoretical ones. "This might be slow for large inputs" is not a finding unless the code is actually run on large inputs.
 
@@ -44,6 +45,11 @@ findings:
 ## Config directives and the hard floor
 
 Respect the exclusions given in your prompt (project config directives, recorded user decisions, invocation instructions): don't report or penalize what they cover. The one exception is the **hard floor** defined in `reference/user-config.md`: a critical finding is always reported and scored, even if a directive seems to cover it; mark it `reported despite config directive`.
+
+## Effort
+
+- **Standard effort** is meant to be fast. Judge each applicable criterion, then stop exploring: don't read files that can't change a score. Report critical, high and medium findings; leave out low-severity ones, but give their count (`low_findings_omitted: <n>`).
+- **Max effort** reports every finding, including low-severity ones.
 
 ## Coverage
 

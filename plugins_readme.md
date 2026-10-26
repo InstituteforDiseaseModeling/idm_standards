@@ -10,7 +10,7 @@ This repo publishes the **IDM-Standards** Claude Code plugin, which applies IDM'
 
 **Code**
 
-- **audit-code** — runs the project's tests, scores it, and writes `code_audit.md` with findings and prioritized recommendations (routes to **audit-r-code** for R projects). At max effort, parallel subagents read every source file in full.
+- **audit-code** — scores a project and writes `code_audit.md` with findings and prioritized recommendations (routes to **audit-r-code** for R projects). Options: max effort (parallel subagents read every source file in full) and run code (run the tests and README example; off by default).
 - **fix-code** — implements the recommendations from that report.
 
 **Docs**

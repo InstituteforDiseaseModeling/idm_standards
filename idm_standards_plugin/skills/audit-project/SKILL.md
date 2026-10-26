@@ -1,7 +1,7 @@
 ---
 name: audit-project
 description: The Audit-Project skill runs IDM code and/or documentation audits on a project with a single set of questions, and summarizes the results in project_audit.md. Use this skill when the user asks to "audit my project", "audit everything", "check code and docs", "run a full audit", or invokes /idm-standards:audit-project. For code-only or docs-only audits requested explicitly, use audit-code or audit-docs directly instead.
-argument-hint: "[project_path_or_github_url] [tier] [strictness] [effort]"
+argument-hint: "[project_path_or_github_url] [tier] [strictness] [max] [run]"
 allowed-tools: Read, Glob, Grep, Bash, Write, Agent, WebFetch, AskUserQuestion, Skill
 ---
 
@@ -9,7 +9,7 @@ Run the IDM code and/or documentation audits on a project, asking the user's pre
 
 ## Step 1: Parse arguments and resolve the project
 
-The user provides up to four arguments: **project** (local path or GitHub URL; default current directory), **tier** (1–3), **strictness** (1–2), and **effort** (`standard` or `max`). Tier, strictness and effort mean the same as in `audit-code`.
+The user provides up to four arguments: **project** (local path or GitHub URL; default current directory), **tier** (1–3), **strictness** (1–2), **effort** (`max` for max effort; standard otherwise), and **run code** (`run` to run the tests and README example; inspect only otherwise). These mean the same as in `audit-code`.
 
 **If a GitHub URL is given**: clone it **once** with `gh repo clone <url> /tmp/audit-project-$(date +%s)` and use that local path for every sub-audit (the docs audit has no URL support of its own).
 
@@ -25,13 +25,15 @@ Use a **single AskUserQuestion call** covering (omit any already supplied as arg
    The default is both.
 2. **Tier**: the three tier options, with an inferred tier as the recommended option (infer as in `audit-code` Step 2). **Tier 1 is the strictest (large reusable library / DPG); Tier 3 is the loosest (one-off / exploratory).** Keep each tier number glued to its definition: when the recommended option is moved to the top, its number moves with it — never relabel a definition with a different tier number. A published/packaged library is **Tier 1**, not Tier 3.
 3. **Strictness**: 1 (strict — everything) or 2 (material only).
-4. **Effort** (code audit only): standard (Recommended) or max (every source file read in full by parallel subagents; much slower).
+4. **Code audit options** (multiSelect; leave both unchecked for the default of standard effort, inspect only):
+   - "Max effort": every source file read in full by parallel subagents; much slower.
+   - "Run code": run the tests and README example; stronger evidence, but runs project code, which may have side effects.
 
-If the config (Step 1) set `tier`/`strictness` in frontmatter, use them as the recommended values (explicit arguments still win). If the project was cloned from a URL or otherwise not user-authored and config directives were found, list them in this same question and confirm before applying. In non-interactive contexts, run code + docs audits with the config's (or inferred) tier and strictness 1, applying the directives but quoting them in the summary.
+If the config (Step 1) set `tier`/`strictness` in frontmatter, use them as the recommended values (explicit arguments still win). If the project was cloned from a URL or otherwise not user-authored and config directives were found, list them in this same question and confirm before applying. In non-interactive contexts, do both the code and docs audits with the config's (or inferred) tier, strictness 1, standard effort and inspect only, applying the directives but quoting them in the summary.
 
 ## Step 3: Run the selected audits
 
-Invoke each selected skill via the Skill tool, passing the **local project path** and the confirmed **tier**, **strictness** and **effort**, with the instruction: *"tier and strictness already confirmed — do not re-ask, and do not offer to fix at the end (audit-project will handle that)"*. Also append the config directives (Step 1) to that instruction — e.g. *"user config directives already discovered and confirmed; apply these and do not re-read the config: <directives>"* — so each sub-audit applies them without re-discovering the file.
+Invoke each selected skill via the Skill tool, passing the **local project path** and the confirmed **tier**, **strictness**, **effort** and **run code** setting, with the instruction: *"tier, strictness, effort and run code already confirmed — do not re-ask, and do not offer to fix at the end (audit-project will handle that)"*. Also append the config directives (Step 1) to that instruction — e.g. *"user config directives already discovered and confirmed; apply these and do not re-read the config: <directives>"* — so each sub-audit applies them without re-discovering the file.
 
 - **Code audit**: invoke `audit-code` (it routes to `audit-r-code` automatically if the project is R). Output: `code_audit.md`.
 - **Docs audit**: invoke `audit-docs`. Output: `docs_audit.md`.
@@ -47,6 +49,7 @@ Write `project_audit.md` to the project directory:
 - **Tier**: <tier>
 - **Strictness**: <strictness>
 - **Effort**: <effort>
+- **Run code**: <inspect only, or run>
 - **Config**: <config file(s) and directive counts, or "none">
 - **Audits run**: <list>
 - **Date**: <YYYY-MM-DD>

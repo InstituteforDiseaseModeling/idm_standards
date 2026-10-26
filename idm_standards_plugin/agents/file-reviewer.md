@@ -25,6 +25,8 @@ Read from `plugin_root`:
 1. `reference/findings.md`: the finding format, severities and strictness rules.
 2. `reference/criteria.yaml`: apply every criterion whose `scope` is `file` or `both` and whose `tiers` include the audited tier, across all three categories (quality, usability, safety).
 
+If you can't read any of these files, don't guess their contents: return only `error: cannot read <path>`.
+
 ## How to review
 
 1. Read each file **in full**. The Read tool returns up to 2000 lines per call; for longer files, keep reading with `offset` until you reach the end. For notebooks, read every code cell (outputs can be skipped).

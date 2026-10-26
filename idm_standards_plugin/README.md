@@ -8,7 +8,7 @@ A Claude Code plugin that audits and improves scientific research code and docum
 
 | Skill | What it does | Replaces |
 | --- | --- | --- |
-| `audit-code` | Runs the project's tests and README example, scores it across 10 metrics (quality, usability, safety), and writes `code_audit.md` with findings and prioritized recommendations. At max effort, every source file is read in full by parallel subagents | `eng-quality-checker`, `idm-code-uplifter` |
+| `audit-code` | Scores a project across 10 metrics (quality, usability, safety), and writes `code_audit.md` with findings and prioritized recommendations. Options: max effort (every source file read in full by parallel subagents) and run code (run the tests and README example) | `eng-quality-checker`, `idm-code-uplifter` |
 | `audit-r-code` | The same audit, specialized for R projects (renv, testthat, Tidyverse style); invoked automatically when the project is R | *(new)* |
 | `fix-code` | Reads `code_audit.md` and implements the recommendations | `eng-quality-fixer` |
 | `audit-docs` | Comprehensive documentation audit, producing `docs_audit.md` | `docs_audit` |
@@ -56,11 +56,12 @@ The audits ask you to confirm the tier (suggesting one based on the codebase), a
 /idm-standards:audit-code https://github.com/org/repo 2    # audit a GitHub repo
 /idm-standards:audit-code . 2 2                            # tier 2, strictness 2 (material findings only)
 /idm-standards:audit-code . 1 1 max                        # tier 1, max effort: every source file read in full
+/idm-standards:audit-code . 2 1 run                        # tier 2, also run the tests and README example
 ```
 
 Output: `code_audit.md` written to the project directory. R projects are automatically routed to `audit-r-code`. Each audit ends by offering to apply the fixes immediately.
 
-How it works: the audit first runs the project's tests and README example (asking first if the code isn't yours), then three scorer agents (quality, usability, safety) look for **findings**: specific problems with a location and a fix. Scores are derived from the findings, and the report lists them all, so every score can be traced to evidence.
+How it works: three scorer agents (quality, usability, safety) look for **findings**: specific problems with a location and a fix. Scores are derived from the findings, and the report lists them all, so every score can be traced to evidence. By default the audit only reads the code (**inspect only**); with **run code** (the `run` argument, or the option in the audit's questions) it first runs the project's tests and README example and gives the scorers the results. Running code is off by default because it can have side effects.
 
 - **Standard effort** (default): the scorers read the important files (README, tests, entry points, core scientific code) in full and report how many source files they read.
 - **Max effort**: before scoring, the project's source files are split into batches and parallel file-reviewer agents read every line of every file. Much slower and more expensive; use it for a release, a handover, or a model about to inform a decision.

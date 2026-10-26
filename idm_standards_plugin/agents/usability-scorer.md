@@ -27,6 +27,8 @@ Read these three files from `plugin_root`; they define what you check and how yo
 2. `reference/criteria.yaml`: your criteria are under `usability:`. Skip any criterion whose `tiers` don't include the audited tier.
 3. The `schema` file: the rubric for your five metrics at the audited tier. A metric whose rubric is "N/A" (Tier 3: `powerful`, `accessible`) is reported as `N/A` and not scored.
 
+If you can't read any of these files, don't guess their contents: return only `error: cannot read <path>`.
+
 ## How much to read
 
 - **Standard effort**: read every README, the docs index and tutorials list, the packaging files, the main entry points (the scripts, classes and functions a user calls) and their signatures and docstrings in full. Skim or grep the rest as needed. Report honestly what you read in full in `files_read`.
