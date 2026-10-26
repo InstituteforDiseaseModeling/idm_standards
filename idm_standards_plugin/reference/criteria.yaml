@@ -1,0 +1,87 @@
+# IDM engineering quality criteria
+#
+# The single checklist used by every code-audit agent (the three scorers and, at max effort,
+# the file reviewers). Derived directly from "The details" in
+# eng_guidance/engineering_quality_guidelines.md: each criterion's ID is <metric>.<number>, the
+# number matching its position in the guidelines. Keep the two in sync.
+#
+#   tiers: tiers the criterion applies to (from the [1,2,3] tags in the guidelines)
+#   scope: "file" = judged by reading individual source files; "repo" = judged from the project
+#          as a whole (README, tests, CI, packaging, git history); "both" = either
+#   owner: which scorer is responsible for it
+#
+# Rubrics (what a given score means at each tier) live in the scoring schemas:
+# skills/audit-code/scoring-schema.yaml (Python) and skills/audit-r-code/r-scoring-schema.yaml (R).
+
+quality:
+  owner: quality-scorer
+  correct:
+    1: {tiers: [1, 2, 3], scope: repo, text: "The software spec is clear, matches the problem being solved, and is scientifically correct (ideally with validation by peer review)."}
+    2: {tiers: [1, 2, 3], scope: file, text: "Code is implemented correctly according to the spec."}
+    3: {tiers: [1, 2, 3], scope: file, text: "Assumptions are explicit and documented; there are no 'magic numbers' (all scientific parameters are linked to a source)."}
+    4: {tiers: [1, 2, 3], scope: repo, text: "Code has been validated through real-world or representative usage, ideally coupled with external peer review."}
+    5: {tiers: [1, 2], scope: repo, text: "Tests and test coverage are sufficient to be confident that (a) there are no major bugs, (b) changes will not accidentally introduce new major bugs."}
+    6: {tiers: [1, 2], scope: repo, text: "Unit tests are used where appropriate, but tests primarily check for end-to-end scientific correctness (e.g. parameter behavior), including edge cases."}
+    7: {tiers: [1, 2], scope: file, text: "Tests are so clear and readable that they double as documentation."}
+    8: {tiers: [1], scope: repo, text: "Tests are incorporated in an automated pipeline (e.g. GitHub Actions)."}
+    9: {tiers: [1], scope: file, text: "Code is difficult to misuse; correct usage is also the easiest, and incorrect usage raises warnings."}
+  clear:
+    1: {tiers: [1, 2, 3], scope: repo, text: "Code is structured appropriately in terms of files and folders."}
+    2: {tiers: [1, 2, 3], scope: file, text: "Within each file, the code is appropriately divided into classes, methods, and functions."}
+    3: {tiers: [1, 2, 3], scope: file, text: "Variables, functions, and classes have clear, descriptive names that follow consistent conventions."}
+    4: {tiers: [1, 2], scope: file, text: "Code is easy to read and understand; someone looking at it can quickly explain what it is doing and why."}
+    5: {tiers: [1, 2], scope: file, text: "Clever or dense constructs are avoided."}
+    6: {tiers: [1, 2], scope: file, text: "Abstractions are introduced only when they reduce complexity."}
+    7: {tiers: [1, 2], scope: file, text: "There are sufficient docstrings and line comments to make it clear what the code is doing."}
+  concise:
+    1: {tiers: [1, 2], scope: file, text: "Code is written in an efficient way, but without compromising clarity."}
+    2: {tiers: [1], scope: file, text: "Code is consistent with the style guide, with automatic linting where possible."}
+    3: {tiers: [1, 2], scope: file, text: "External libraries are used appropriately to avoid reimplementing features (but a large dependency is not introduced to save a few lines of code)."}
+    4: {tiers: [1, 2, 3], scope: both, text: "There is minimal duplication within the codebase (Tier 2: no excessive duplication; Tier 3: no egregious duplication, e.g. copied files with small modifications)."}
+
+usability:
+  owner: usability-scorer
+  simple:
+    1: {tiers: [1, 2], scope: file, text: "UIs (scripts/classes/functions) have sensible defaults where possible, so things 'just work'."}
+    2: {tiers: [1, 2], scope: file, text: "APIs have as few arguments as possible (but no fewer, since they should also be powerful)."}
+    3: {tiers: [1], scope: file, text: "Arguments are standard types if possible (e.g. numbers/strings), but more complex types are used where it adds important clarity or rigor."}
+    4: {tiers: [1, 2], scope: file, text: "Arguments are documented (via docstrings and/or type hints) and explicitly validated."}
+    5: {tiers: [1, 2, 3], scope: repo, text: "Common workflows require minimal configuration, and/or are encapsulated in one-line scripts or commands (Tier 3: common workflows are not too painful)."}
+    6: {tiers: [1], scope: file, text: "Exceptions are anticipated, and error messages for common mistakes help the user fix the problem."}
+  powerful:
+    1: {tiers: [1, 2], scope: file, text: "APIs have as many arguments as needed (but no more, since they should also be simple)."}
+    2: {tiers: [1, 2], scope: both, text: "Most use cases can be met with input arguments, without the user needing to modify the code."}
+    3: {tiers: [1, 2], scope: file, text: "All assumptions are modifiable by the user."}
+    4: {tiers: [1], scope: file, text: "Classes can be easily composed and/or subclassed (e.g. by being small and modular, and by avoiding complex interdependencies)."}
+  performant:
+    1: {tiers: [1, 2, 3], scope: file, text: "All algorithms are appropriate for the task they are being used for."}
+    2: {tiers: [1, 2], scope: repo, text: "End-to-end code runs in negligible time (<10 seconds) if possible."}
+    3: {tiers: [1, 2], scope: repo, text: "Code that does not run in negligible time is performance profiled, with bottlenecks identified; performance regressions are identified and fixed."}
+    4: {tiers: [1, 2], scope: file, text: "There are no obvious, major inefficiencies (e.g. loops when vectors can be used)."}
+    5: {tiers: [1, 2], scope: file, text: "Slow (>30 s), frequently run, embarrassingly parallel tasks can be run in parallel."}
+  documented:
+    1: {tiers: [1, 2, 3], scope: repo, text: "It is clear what UIs the user is supposed to interact with."}
+    2: {tiers: [1, 2, 3], scope: repo, text: "Docs are meaningful to users of different levels of expertise, including a non-technical introduction (for external-facing projects), information for users, and information for contributors."}
+    3: {tiers: [1, 2, 3], scope: repo, text: "The main readme explains the project purpose, plus installation, basic usage, and project structure."}
+    4: {tiers: [1, 2], scope: repo, text: "Large projects have a detailed readme (and/or a readme in each folder), interactive tutorials, and a user guide."}
+    5: {tiers: [1, 2], scope: file, text: "Docstrings clearly explain what the UIs do, including runnable examples where relevant."}
+    6: {tiers: [1], scope: repo, text: "If there are multiple ways to perform a task, the documentation makes it clear what the tradeoffs of each approach are."}
+  accessible:
+    1: {tiers: [1, 2, 3], scope: repo, text: "Code is on GitHub (in a public repo if possible), in an appropriate GitHub org."}
+    2: {tiers: [1, 2, 3], scope: repo, text: "Key files are present (MIT license and changelog; optionally contributing guidelines, code of conduct, and future roadmap)."}
+    3: {tiers: [1, 2], scope: repo, text: "Installation does not require special environments and is doable via 1-3 commands."}
+    4: {tiers: [1, 2], scope: repo, text: "Users know how to get support and feel comfortable doing so."}
+    5: {tiers: [1], scope: repo, text: "Code has been optimized for use with AI assistants (e.g. skills, MCP servers)."}
+
+safety:
+  owner: safety-scorer
+  compliant:
+    1: {tiers: [1, 2, 3], scope: repo, text: "Any data from external sources is used with permission, and this permission is documented in the repo (if applicable)."}
+    2: {tiers: [1, 2, 3], scope: both, text: "No API keys or secrets are exposed in the repository."}
+    3: {tiers: [1, 2, 3], scope: repo, text: "Code does not have any dependencies that have proprietary/restrictive licenses that our use violates."}
+  reproducible:
+    1: {tiers: [1, 2, 3], scope: repo, text: "Dependencies are specified (in pyproject.toml or DESCRIPTION), as loosely as possible. Library (Tier 1) code should NOT include a lock file; never recommend one for it (an existing pylock.toml is acceptable but not expected)."}
+    2: {tiers: [2, 3], scope: repo, text: "If reproducibility of results matters, exact versions are captured: requirements_locked.txt via pip freeze (simple), pylock.toml via pip lock (advanced), or renv.lock (R). Which to use, including 'none', is the project owner's choice: present options, never insist. '>=' bounds are guidance, not pins."}
+    3: {tiers: [1, 2, 3], scope: file, text: "If random numbers are used, the same seeds give numerically identical results (where possible)."}
+    4: {tiers: [1, 2], scope: repo, text: "Semantic versioning is used, including git tags for each release."}
+    5: {tiers: [1], scope: repo, text: "Releases are published on PyPI or CRAN."}

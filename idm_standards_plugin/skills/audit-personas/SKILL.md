@@ -6,8 +6,6 @@ allowed-tools: Read, Grep, Glob, Edit, Write
 
 # Persona documentation check
 
-Skill version: 1.1_2026.07.21
-
 IDM documentation targets five distinct personas, each with different technical backgrounds, needs, and decision-making contexts. Different sections of documentation serve different personas. This skill checks whether each documentation section is written appropriately for its intended audience.
 
 ## Persona-to-section mapping
@@ -40,15 +38,15 @@ If the user has asked about a specific section, focus there. Otherwise, check al
 
 ### Step 2: Load the relevant persona definitions
 
-Before evaluating any section, read the persona file(s) for that section's target audience. The persona files are in the `idm_standards` repo:
+Before evaluating any section, read the persona file(s) for that section's target audience. They ship with this skill, in `$CLAUDE_PLUGIN_ROOT/skills/audit-personas/personas/`:
 
-- `docs_guidance/personas/policy-maker.md`
-- `docs_guidance/personas/policy-influencer.md`
-- `docs_guidance/personas/model-user.md`
-- `docs_guidance/personas/model-extender.md`
-- `docs_guidance/personas/model-builder.md`
+- `policy-maker.md`
+- `policy-influencer.md`
+- `model-user.md`
+- `model-extender.md`
+- `model-builder.md`
 
-If these files are not in the current repo, read them from the `idm_standards` repo at https://github.com/InstituteforDiseaseModeling/idm_standards/tree/main/docs_guidance/personas. Each persona file contains sections on who they are, what they do, their skills/tools, key needs, decision-making context, and targeted content guidance.
+(These are the persona definitions from `docs_guidance/personas/` in the idm_standards repo.) Each persona file contains sections on who they are, what they do, their skills/tools, key needs, decision-making context, and targeted content guidance.
 
 Pay close attention to:
 - **Skills/tools** -- what technical level can you assume?

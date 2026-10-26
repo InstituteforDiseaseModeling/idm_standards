@@ -67,6 +67,8 @@ The plugin has four documentation skills: `audit-docs-structure`, `audit-persona
 | `eng_guidance/4_documentation.md` (not `docs_guidance/` — see the exception above) | `skills/audit-docstrings/` |
 | Broad structural or process changes in `docs_guidance/` | `skills/audit-docs/` |
 
+`audit-personas` reads the persona files through a symlink (`skills/audit-personas/personas` → `docs_guidance/personas`), and `audit-docs-structure` reads the topic-type files the same way (`references` → `docs_guidance/topic-types`), so edits to those files reach the plugin automatically; update the SKILL.md only if what the skill says about them needs to change.
+
 Files like `install.md`, `mkdocs.md`, `quarto.md`, `vale.md`, `home.md`, `index.md` are usually about tooling or landing pages, not skill content — but confirm with the user before dismissing them. A single guidance change can affect multiple plugin skills; note all of them.
 
 ### 4. Read the current plugin skills

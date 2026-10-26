@@ -6,8 +6,6 @@ allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, Skill, AskUserQuestio
 
 # Documentation audit
 
-Skill version: 2.1_2026.07.21
-
 This skill performs a comprehensive documentation audit for an IDM project. It checks general completeness against the IDM documentation standards, then delegates to three specialized skills for deeper analysis, and assembles everything into a single prioritized report.
 
 ## Workflow
@@ -20,7 +18,7 @@ The invocation may also supply a **tier** (1–3, per the IDM code tiers: 1 = li
 
 If the user provided any specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "focus on the API reference" or "pay special attention to the README", make sure to emphasize those areas in your audit.
 
-**Discover the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now), unless the invoking context (e.g. `audit-project`) already passed the directives in. Apply directives scoped to docs (`audit-docs`, `audit-docs-structure`, `audit-personas`, `audit-docstrings`, or untagged "all audits" directives) — a suppressed item is neither flagged as a weakness nor recommended. Directives can never waive a license violation or other hard-floor finding (see the reference). Exclude any config file and `.claude/` from the docs being audited.
+**Read the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now), unless the invoking context (e.g. `audit-project`) already passed the directives in. Apply directives that concern documentation (including any under a docs heading, and general ones) — a suppressed item is neither flagged as a weakness nor recommended. Directives can never waive a license violation or other hard-floor finding (see the reference). Exclude any config file and `.claude/` from the docs being audited.
 
 Scan for documentation artifacts:
 
@@ -128,7 +126,7 @@ Produce a single structured report and write it to `docs_audit.md` **in the proj
 - **Strictness**: <strictness>
 - **Config**: <config file(s) and directive counts, or "none">
 - **Date**: <YYYY-MM-DD>
-- **Version**: idm-standards:audit-docs <skill version>
+- **Version**: idm-standards:audit-docs <plugin version, from $CLAUDE_PLUGIN_ROOT/.claude-plugin/plugin.json>
 ```
 
 Apply config directives when assembling the Weaknesses and Recommendations sections: drop any item a directive suppresses (never a hard-floor item). If a config file was found, add a short **Suppressed by config** note listing each active directive and what it matched (or "nothing matched this run"); never drop an item silently.

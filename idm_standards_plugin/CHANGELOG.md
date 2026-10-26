@@ -2,6 +2,18 @@
 
 This document tracks updates to the IDM-Standards plugin (formerly three separate plugins: IDM-Eng-Plugin, IDM-Docs-Plugin, and IDM-Uplifter-Plugin; their pre-merge histories are preserved below).
 
+## Version 3.0 (2026.10.26)
+
+- **Audits are built on findings.** The scorer agents now return a list of findings (a specific problem, its location, severity, and a concrete fix) and score each metric from them, instead of a score and a one-sentence reason. Recommendations are written from the findings and cite their IDs, the report lists every finding, and `fix-code` works from them directly. Scores can now be traced to evidence.
+- **The audit runs the code.** Before scoring, `audit-code` runs the project's tests and the README's quick-start example (asking first if the code came from elsewhere), and the scorers use the results. A new **Execution** report section records what happened. `fix-code` re-runs the tests after its changes and never leaves more failures than it found.
+- **Max effort replaces `audit-code-exhaustive`.** `/idm-standards:audit-code . <tier> <strictness> max` splits the project's source files into batches and has parallel file-reviewer agents read every line of every file before scoring, with a coverage check that every file was read. The old `audit-code-exhaustive` skill, its agents, `code_audit_exhaustive.md` and `.audit_cache/` are removed. Every report now has a **Coverage** line saying how many source files were read in full.
+- **Fairer score changes between runs.** A score change is accepted only if the findings behind it changed (new or resolved findings, cited in "Score changes since last run"); otherwise it is treated as noise and the prior score kept, in either direction. Previously only decreases were checked, so scores could drift up but not down.
+- **One source of truth.** The checklist now lives in `reference/criteria.yaml`, mirroring the guidelines item by item, and the finding format in `reference/findings.md`. `audit-code` dispatches the named scorer agents, which read these and the scoring schema themselves, instead of pasting long prompts whose rubrics had drifted from the schema. The scorers inherit the session's model instead of being pinned to Sonnet.
+- **Simpler config file.** The config is read only from `.claude/idm-standards.md` (the flexible file-name matching and the `.local.md` overlay are gone). The hard floor is defined once.
+- **`audit-docstrings` is no longer LASER-specific.** Its examples, cross-reference list and researcher workflow were LASER's; they are now generic, and the workflow stages are taken from the audited project's own docs. It also no longer contradicts itself about `Examples:` sections (plural, no code fence). The same change is made in `eng_guidance/4_documentation.md`. `audit-docstrings` and `audit-docs-structure` gained a review mode with a defined output.
+- **`audit-personas` ships its persona definitions** (it previously pointed at files not included in the installed plugin).
+- Smaller fixes: N/A metrics are shown as N/A rather than 10/10; the score formula in the schema headers was wrong by a factor of 10; per-skill version lines are gone (reports use the plugin version).
+
 ## Version 2.2 (2026.07.21)
 
 - **`audit-docstrings` now checks parameter semantics.** A docstring can pass every other check and still leave a parameter's meaning ambiguous — e.g. a threshold with no stated bound direction, or a path with no stated absolute/relative form. The skill now flags gaps like these. This guidance is sourced from `eng_guidance/4_documentation.md`, which the sync skills now know to treat as `audit-docstrings`' canonical source even though it lives outside `docs_guidance/`.
