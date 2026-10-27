@@ -5,9 +5,7 @@ argument-hint: "[project_path]"
 allowed-tools: Read, Glob, Grep, Bash, Write, Edit, AskUserQuestion
 ---
 
-Read recommendations from `code_audit.md` and implement prioritized improvements to the project.
-
-Skill version: 2.0_2026.06.10
+Read the recommendations and findings from `code_audit.md` and implement prioritized improvements to the project.
 
 ## Step 1: Find and Read the Audit Report
 
@@ -17,17 +15,17 @@ Skill version: 2.0_2026.06.10
 4. If neither file exists, stop and tell the user:
    > "No `code_audit.md` found. Please run `/idm-standards:audit-code` first to generate the report."
 
-Read the full contents of the report — particularly the **Recommendations**, **Proposed solutions**, and **Full Results** sections, and the **Tier** and **Strictness** fields in the header.
+Read the full report, particularly the **Recommendations**, **Findings**, **Execution**, **Proposed solutions** and **Full results** sections, and the **Tier** and **Strictness** fields in the header. Each recommendation cites the IDs of the findings it covers (e.g. `Q1`, `F12`); the Findings section gives each one's exact location and suggested fix, so use it rather than re-deriving the problem. (Reports from plugin versions before 3.0 have no Findings section; work from the recommendations alone.)
 
 Respect what the report records:
 - **Strictness**: if the report was generated at strictness 2 (material only), don't introduce fixes for stylistic issues the audit deliberately excluded.
 - **User decisions** in the Proposed solutions section (e.g. "Lock artifact: none — user opted out"): do not re-raise them.
-- **User config**: discover the project's idm-standards config following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Never implement a fix that a config directive suppresses — and the config **wins over the report**: if an older `code_audit.md` (generated before the config existed) still lists a now-suppressed recommendation, skip it. The hard floor still applies: directives can't stop you from fixing a serious finding (exposed secret, license violation, etc.) — those remain fix-or-flag.
+- **User config**: discover the project's idm-standards config following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Never implement a fix that a config directive suppresses — and the config **wins over the report**: if an older `code_audit.md` (generated before the config existed) still lists a now-suppressed recommendation, skip it. The hard floor still applies: directives can't stop you from fixing a critical finding (exposed secret, license violation, etc.); those remain fix-or-flag.
 - **Version-control strategy**: if the invoking context (e.g. `fix-project`) passed a version-control strategy, use it and skip the question in Step 3. Otherwise ask it at the start of Step 3.
 
 ## Step 2: Create a Prioritized Implementation Plan
 
-Parse the recommendations and classify each as:
+Parse the recommendations, with their findings, and classify each as:
 
 | Category | What it means |
 |----------|---------------|
@@ -66,7 +64,9 @@ Estimated score improvement: +12 to +18 points (depending on test coverage achie
 Proceed? (yes/no)
 ```
 
-If config directives suppressed any recommendations from the report, list them under a **"Skipped per your config"** heading in the plan (quoting the directive) rather than dropping them silently — but never skip a serious safety/correctness fix on account of a directive. Wait for the user to confirm before making any changes.
+If config directives suppressed any recommendations from the report, list them under a **"Skipped per your config"** heading in the plan (quoting the directive) rather than dropping them silently, but never skip a critical fix on account of a directive.
+
+Findings that no recommendation covers (typically low-severity ones, which can be numerous after a max-effort audit) go in one optional line of the plan, e.g. "Also fix the 23 other automatable low/medium findings (F31–F58)?", so the user can include or skip them as a batch. Wait for the user to confirm before making any changes.
 
 ## Step 3: Implement Approved Changes
 
@@ -83,7 +83,9 @@ Confirm branch name(s) before creating them, and confirm before pushing or openi
 
 ### Then implement
 
-Work through the "Will implement" items **one at a time**, in priority order (impact = score x weight, highest first).
+Work through the "Will implement" items **one at a time**, in the report's priority order. When fixing a correctness bug, add a test that would have caught it, where the project has tests.
+
+**Check your work.** Only if the report's Execution section records a test command that ran (the audit was run at run or max effort), run it before your first change (as a baseline) and again after each group of changes. A test that newly fails because of your change must be fixed or the change reverted; never leave the project with more failures than you found it with.
 
 ### Before each change:
 - State what you are about to do in one sentence
@@ -247,14 +249,14 @@ If implementing one recommendation would negatively impact another metric, **sto
 
 **Update the audit report** (`code_audit.md`): for every item you classified as "Requires human input" or "Cannot implement" — and any item the user chose to skip — write an entry in the report's **Proposed solutions** section (creating the section if it doesn't exist). Each entry should contain:
 
-- The issue and the metric it affects
+- The issue, the metric it affects, and its finding IDs
 - A **concrete proposed approach** the user could follow: steps, an outline, or a code sketch — not just a restatement of the title
 - The estimated effort, and why it can't be automated
 - Any user decisions made during this run (e.g. "Lock artifact: none — user opted out (YYYY-MM-DD). Do not re-recommend."), so future audit and fix runs respect them
 
 Do not modify the report's scores or other sections.
 
-**Offer to persist durable preferences.** If during this run the user made a decision that should apply to *every* future audit (not just this report) — e.g. "stop recommending type hints", or a permanent opt-out — offer to save it as a directive in `.claude/idm-standards.md` (create the file from the template in `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` if absent). Per-run-only decisions stay in the report's Proposed solutions, as above; durable ones belong in the config. If you create a `.local.md` overlay, offer to add `.claude/*.local.md` to the project's `.gitignore`.
+**Offer to persist durable preferences.** If during this run the user made a decision that should apply to *every* future audit (not just this report) — e.g. "stop recommending type hints", or a permanent opt-out — offer to save it as a directive in `.claude/idm-standards.md` (create the file from the template in `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` if absent). Per-run-only decisions stay in the report's Proposed solutions, as above; durable ones belong in the config.
 
 Then provide a concise summary in chat:
 
@@ -266,6 +268,9 @@ Then provide a concise summary in chat:
 ✅ Created requirements_locked.txt via pip freeze (user's choice)
 ✅ Expanded README with Installation, Usage, and Project Structure sections
 ✅ Scaffolded tests/test_model.py (fill in test logic to complete)
+✅ Fixed births-before-deaths ordering in model.py (Q1) and added a regression test
+
+Tests: 41 passed before, 42 passed after (1 new test)
 
 ⏭ Skipped: user guide (human effort required — proposed outline added to code_audit.md)
 ⏭ Skipped: CI/CD pipeline (human effort required — proposed workflow added to code_audit.md)

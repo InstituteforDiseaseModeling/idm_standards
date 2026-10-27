@@ -1,13 +1,11 @@
 ---
 name: fix-project
-description: The Fix-Project skill reads whichever IDM audit reports exist in a project (code_audit.md, docs_audit.md, code_audit_exhaustive.md) and implements prioritized fixes across code and documentation. Use this skill when the user asks to "fix my project", "apply the audit recommendations", "fix the code and docs", says "now fix it" after running audit-project, or invokes /idm-standards:fix-project. For code-only fixes from code_audit.md, fix-code can be used directly instead.
+description: The Fix-Project skill reads whichever IDM audit reports exist in a project (code_audit.md, docs_audit.md) and implements prioritized fixes across code and documentation. Use this skill when the user asks to "fix my project", "apply the audit recommendations", "fix the code and docs", says "now fix it" after running audit-project, or invokes /idm-standards:fix-project. For code-only fixes from code_audit.md, fix-code can be used directly instead.
 argument-hint: "[project_path]"
 allowed-tools: Read, Glob, Grep, Bash, Write, Edit, AskUserQuestion, Skill
 ---
 
 Apply fixes from whichever IDM audit reports exist in a project — dispatching `fix-code` for the code report and implementing documentation fixes directly.
-
-Skill version: 2.0_2026.06.10
 
 ## Step 1: Find the audit reports
 
@@ -15,7 +13,6 @@ In the project directory (argument, or current working directory), look for:
 
 - `code_audit.md` (or, for compatibility with earlier plugin versions, `engineering_score.md`)
 - `docs_audit.md`
-- `code_audit_exhaustive.md`
 
 If the invoking context restricts scope (e.g. `audit-docs` chained here with "act on docs_audit.md only"), honor that. If **none** of the reports exist, stop and tell the user:
 
@@ -23,15 +20,13 @@ If the invoking context restricts scope (e.g. `audit-docs` chained here with "ac
 
 If more than one report exists and the scope wasn't restricted, confirm with the user via one AskUserQuestion (multiSelect) which reports to act on — default: all found.
 
-**Discover the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Apply its directives across both the code and docs fixes below: never implement a suppressed item (config wins over a stale report), but never skip a hard-floor fix (secrets, license, serious correctness).
+**Read the user config** following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Apply its directives across both the code and docs fixes below: never implement a suppressed item (config wins over a stale report), but never skip a hard-floor fix (a critical finding: secrets, license, results-breaking bugs).
 
 **Choose a version-control strategy once.** Before any changes, ask the user with a single AskUserQuestion how to manage version control for this run, offering the same four options `fix-code` does: **one branch + PR for everything**, **a branch + PR per priority group** (smaller, easier-to-review PRs), **commit on the current branch with no PR**, or **edit only, no git**. Pass the chosen strategy into `fix-code` (Step 2) so it doesn't re-ask, and apply the same choice to the docs fixes (Step 3). Confirm branch name(s) before creating them and confirm before pushing or opening any PR. If the project is not a git repository, edit files directly and tell the user.
 
 ## Step 2: Fix the code
 
-If acting on `code_audit.md`: invoke the **`fix-code`** skill via the Skill tool, passing the project path and the version-control strategy chosen in Step 1 (so fix-code doesn't re-ask). fix-code discovers and applies the config itself, and handles its own planning, confirmation, implementation, and recording of proposed solutions (including the Tier 2/3 lock-artifact question).
-
-If acting on `code_audit_exhaustive.md`: treat its CRITICAL and HIGH findings as additional fix candidates. Fold them into the plan below (or into fix-code's plan where they overlap with `code_audit.md` recommendations), fixing the clearly safe ones and recording the rest. Drop any folded finding a config directive suppresses (except hard-floor findings, which are always addressed).
+If acting on `code_audit.md`: invoke the **`fix-code`** skill via the Skill tool, passing the project path and the version-control strategy chosen in Step 1 (so fix-code doesn't re-ask). fix-code reads and applies the config itself, and handles its own planning, confirmation, implementation, and recording of proposed solutions (including the Tier 2/3 lock-artifact question).
 
 ## Step 3: Fix the docs
 

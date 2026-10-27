@@ -38,12 +38,11 @@ The [docs guidance](docs_guidance/) covers IDM's approach to documentation:
 
 ## Claude Code plugin
 
-This repo includes the **[IDM-Standards plugin](idm_standards_plugin/)** (v2.0) for automating quality checks against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md) and IDM documentation standards. Its skills:
+This repo includes the **[IDM-Standards plugin](idm_standards_plugin/)** (v3.0) for automating quality checks against the [engineering quality guidelines](eng_guidance/engineering_quality_guidelines.md) and IDM documentation standards. Its skills:
 
-- `/idm-standards:audit-code` -- score a project and write `code_audit.md` (routes to `audit-r-code` for R projects); `/idm-standards:fix-code` applies the recommendations.
+- `/idm-standards:audit-code` -- score a project and write `code_audit.md` with findings and recommendations (routes to `audit-r-code` for R projects); effort levels inspect (default), run (also runs the tests and README example) and max (also reads every source file in full). `/idm-standards:fix-code` applies the recommendations.
 - `/idm-standards:audit-docs` -- full documentation audit (`docs_audit.md`), composing `audit-docs-structure`, `audit-personas`, and `audit-docstrings`.
-- `/idm-standards:audit-project` -- run code and/or docs audits with one set of questions; `/idm-standards:fix-project` applies fixes across both.
-- `/idm-standards:audit-code-exhaustive` -- fan-out per-file review aggregated into `code_audit_exhaustive.md`.
+- `/idm-standards:audit-project` -- run the code audit, docs audit, or both with one set of questions; `/idm-standards:fix-project` applies fixes across both.
 
 > **Migrating from v1.x?** The former `idm-eng-plugin`, `idm-docs-plugin`, and `idm-uplifter-plugin` are now this single plugin, and the skills were renamed (for example, `eng-quality-checker` → `audit-code`). Uninstall the old three and install `idm-standards`.
 

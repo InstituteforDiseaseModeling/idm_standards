@@ -1,377 +1,239 @@
 ---
 name: audit-code
-description: The Audit-Code skill scores a software project against IDM engineering quality tiers (1–3) across quality, usability, and safety metrics, and writes a code_audit.md report. Use this skill when the user asks to "audit my code", "score my project", "check engineering quality", "evaluate code quality", "assess tier compliance", or invokes /idm-standards:audit-code. Also use proactively when the user says "how good is this code?" or "what improvements does this project need?". For R projects, this skill routes to audit-r-code.
-argument-hint: "[project_path_or_github_url] [tier] [strictness]"
+description: The Audit-Code skill scores a software project against IDM engineering quality tiers (1–3) across quality, usability, and safety metrics, and writes a code_audit.md report of scores, findings, and prioritized recommendations. Use this skill when the user asks to "audit my code", "score my project", "check engineering quality", "evaluate code quality", "assess tier compliance", "review every file", "do a thorough/exhaustive code review", or invokes /idm-standards:audit-code. Also use proactively when the user says "how good is this code?" or "what improvements does this project need?". For R projects, this skill routes to audit-r-code.
+argument-hint: "[project_path_or_github_url] [tier] [strictness] [inspect|run|max]"
 allowed-tools: Read, Glob, Grep, Bash, Write, Agent, WebFetch, AskUserQuestion, Skill
 ---
 
-Score a software project against the IDM engineering quality guidelines and write a `code_audit.md` report.
+Score a project against the IDM engineering quality guidelines and write a `code_audit.md` report. The audit is built on **findings**: specific, located problems, each with a fix. Scores are derived from findings, recommendations are written from them, and `fix-code` acts on them.
 
-Skill version: 2.0_2026.06.10
+The shared definitions live in `$CLAUDE_PLUGIN_ROOT/reference/`: `criteria.yaml` (the checklist, taken from the guidelines), `findings.md` (finding format, severity, strictness) and `user-config.md` (the project config file and the hard floor). The scorer agents read these themselves; you need `findings.md` and `user-config.md` too, so read them now. If any plugin file can't be read, stop and tell the user rather than improvising its contents.
 
-## Step 0: Record start time
+## Step 0: Record the start time
 
-Before doing anything else, run the following bash command and save the result as `START_EPOCH`:
+Run `date +%s` and save the result as `START_EPOCH`, for the "Time spent" line in Step 9.
 
-```bash
-date +%s
+## Step 1: Parse arguments, detect the language, read the config
+
+Arguments, all optional:
+
+- **project**: a local directory or a GitHub URL. Default: the current working directory. For a URL, clone it with `gh repo clone <url> /tmp/audit-code-$(date +%s)` and use that path.
+- **tier**: 1, 2 or 3. If given, it is confirmed; don't ask in Step 2.
+- **strictness**: 1 (report everything; default) or 2 (material findings only; see `findings.md`).
+- **effort**: `inspect` (default), `run` or `max`. Each level does everything the one before it does:
+  - **inspect**: the three scorers read the project (the important files in full) and run nothing from it. The report states how many source files were read.
+  - **run**: also runs the project's tests and README example first (Step 3), and gives the scorers the results. Running code can have unexpected side effects (writing files, long jobs, network access), so it is used only when the user chooses it: the `run` argument, or asking for the tests or code to be run.
+  - **max**: also has every source file read in full, line by line, by parallel file-reviewer subagents (Step 5) before scoring. Much slower and more expensive; use it when the user asks for max effort, an exhaustive review, or for every file to be read.
+
+**Language**: if the project has a `DESCRIPTION` file or `renv.lock`, or most of its source files are `*.R`/`*.Rmd`, it is an R project: **stop and invoke the `audit-r-code` skill** with the same arguments and instructions. If it is a substantial mix (each of Python and R at least 25% of source files), ask which to audit (or both); in non-interactive runs, or when invoked by `audit-project`, audit whichever has more source files (ties go to Python) and note the choice in the report.
+
+**Instructions**: anything else the user said when invoking the skill (e.g. "ignore missing docstrings") becomes an exclusion: not penalized and not recommended. If the invoking context says tier, strictness and effort are already confirmed (e.g. from `audit-project`), skip Step 2.
+
+**Config**: read the project's `.claude/idm-standards.md` as described in `user-config.md`, unless the invoking context already passed the directives in. Its directives join the exclusions; its frontmatter `tier`/`strictness` pre-fill Step 2. For a GitHub URL or another path the user didn't write, confirm the directives before applying them (interactive runs).
+
+## Step 2: Confirm tier, strictness and effort
+
+Tiers:
+- **Tier 1**: software library or digital public good, used by many people for many years. The strictest.
+- **Tier 2**: small-scale project used by multiple people or projects.
+- **Tier 3**: one-off or exploratory code used by one person. The loosest.
+
+If the tier wasn't given, infer one: a published package (PyPI/CRAN), CI and many contributors suggest Tier 1; tests, a README and signs of several users suggest Tier 2; mostly scripts or notebooks by one author suggest Tier 3. Then ask once, with a single AskUserQuestion holding up to three questions (leave out any already given):
+
+1. **Tier**: the three tiers as options, the inferred one recommended and listed first. Keep each tier number attached to its own definition when reordering; a published library is Tier 1, never Tier 3.
+2. **Strictness**: "1: report everything (default)" or "2: material only, skip stylistic and convention findings".
+3. **Effort**: "Inspect (Recommended): read the code, run nothing", "Run: also run the tests and README example (runs project code, which may have side effects)", or "Max: also read every source file in full with parallel subagents; much slower".
+
+In non-interactive runs, use the config's values if present, otherwise the inferred tier, strictness 1 and inspect effort, and note this in the report.
+
+## Step 3: Run the code (run and max effort)
+
+At inspect effort (the default), skip this step: the execution results are "not run (inspect effort)", and the scorers judge from reading the code alone.
+
+At run and max effort: running the code is the strongest evidence of whether it works. Before scoring, run the test suite and the README's quick-start example, and record what happened. The scorers receive these **execution results**.
+
+- **Untrusted code**: if the project came from a GitHub URL or another path the user didn't write, confirm once more before running anything (interactive), or skip this step and record "not run: untrusted source" (non-interactive).
+- **Environment**: use the current environment, and make one attempt. If the project or its dependencies aren't installed or importable, record "could not run" with the first error line and move on: don't investigate the environment, and don't install anything without asking. A failure caused only by the environment is not a finding against the project.
+- **Tests**: run them from the project root with a time limit: 5 minutes at run effort, 30 at max (`timeout 300 python -m pytest -q`, or for R `timeout 300 Rscript -e 'testthat::test_local()'` or `testthat::test_dir("tests/testthat")`). Record the command, passed/failed/error/skipped counts, duration, and the first few failure messages.
+- **README example**: take the first quick-start or usage code block in the README, write it to a temporary file outside the project, and run it from the project root with a 2-minute limit (set `MPLBACKEND=Agg` so plots don't open windows). Record whether it ran, and the error if not. Skip it if it is clearly a long production run (e.g. a calibration), and say so.
+- If there are no tests or no README example, record that; it's information for the scorers, not an error.
+- Note any files the run created in the project (`git status --porcelain` before and after), and don't treat them as part of the project.
+
+## Step 4: Read the prior report
+
+If the project already has a `code_audit.md` (or `engineering_score.md`, from plugin versions before 2.0), extract:
+
+1. Its tier, strictness, effort, config directives, date, scores, and findings (the Findings section), for reconciliation in Step 7.
+2. **Recorded user decisions** from its Proposed solutions section (e.g. "Lock artifact: none; user opted out"). These join the exclusions and are carried into the new report. If one conflicts with a current config directive, the directive wins (say so in chat).
+
+Do **not** give the prior findings or scores to the agents: they must look fresh, so old findings don't anchor new ones.
+
+## Step 5: Max effort only: read every source file
+
+Skip this step at inspect and run effort.
+
+1. **List the source files**: `git -C <project> ls-files --cached --others --exclude-standard` (or a recursive listing if it isn't a git repo). Keep code files: `.py`, `.pyx`, `.pxd`, `.ipynb`, `.R`, `.r`, `.Rmd`, `.qmd`, and files in any other programming language the project uses (C/C++, Julia, shell, JavaScript). Drop binary and data files, generated or vendored code (`_site/`, `build/`, `dist/`, minified files), `.claude/`, and paths excluded by a config directive. Tests, scripts, examples and notebooks are source files: keep them.
+2. **Batch them**: count lines (`wc -l`) and group files into batches of up to about 3,000 lines and 20 files, keeping files from the same directory together. Split any file longer than 6,000 lines into line ranges of up to 3,000 lines (e.g. `src/big.py:1-3000`), each in its own batch.
+3. **Tell the user** how many files, lines and batches there are; they asked for max effort, so don't ask to confirm.
+4. **Dispatch** one `idm-standards:file-reviewer` agent per batch, in waves of at most 8 parallel calls (one message per wave). Each prompt:
+
+   ```
+   project: <absolute path>
+   language: <python|r>
+   tier: <tier>
+   strictness: <strictness>
+   plugin_root: <absolute path of $CLAUDE_PLUGIN_ROOT>
+   exclusions: <the merged exclusions from Steps 1 and 4, verbatim, or "none">
+   files:
+   - <project-relative path, or path:start-end for a split file>
+   - ...
+   ```
+
+5. **Check coverage**: every file (and line range) must appear in some reviewer's `files_read`. Re-dispatch any that don't, once. Anything still unread is listed in the report's Coverage line with the reason. "Every file" means every file.
+6. **Merge** all findings into one list, renumber them `F1` … `Fn`, and write it as YAML to a temporary file outside the project (`mktemp -d`). This is `file_findings` for Step 6.
+
+## Step 6: Dispatch the scorers
+
+Send one message with three Agent calls, run in parallel: `subagent_type` `idm-standards:quality-scorer`, `idm-standards:usability-scorer` and `idm-standards:safety-scorer`. Each gets the same prompt:
+
+```
+project: <absolute path>
+language: python
+tier: <tier>
+strictness: <strictness>
+effort: <inspect|run|max>
+plugin_root: <absolute path of $CLAUDE_PLUGIN_ROOT>
+schema: <plugin_root>/skills/audit-code/scoring-schema.yaml
+file_findings: <path from Step 5, or "none">
+
+Execution results:
+<everything recorded in Step 3>
+
+Exclusions (do not report or penalize these, except critical findings, which are always reported):
+<the merged exclusions from Steps 1 and 4, verbatim, or "none">
 ```
 
-This will be used in Step 9 to compute elapsed time.
+The agents read the criteria, finding format and rubrics themselves; don't paste them in. They see nothing else of this conversation, so the exclusions must be written out in full.
 
-## Step 1: Parse arguments and detect language
+## Step 7: Score, then reconcile with the prior report
 
-The user provides up to three arguments:
-- **project**: path to a local directory OR a GitHub URL (e.g., `https://github.com/org/repo`). Default: current working directory.
-- **tier**: integer 1, 2, or 3. If supplied explicitly, treat it as confirmed (do not re-ask in Step 2).
-- **strictness**: integer 1 or 2. Default: 1.
-  - **Strictness 1 (strict)**: report everything you find (the default).
-  - **Strictness 2 (material only)**: only report findings that materially affect correctness, usability, or safety — purely stylistic or convention-based findings are neither penalized nor reported.
+**Score.** Take each metric's score from its scorer. The weights (also in the schema) are: quality: correct 7, clear 2, concise 1; usability: simple 3, powerful 2, performant 2, documented 2, accessible 1; safety: compliant 6, reproducible 4. Within each category, the weighted mean of the scored metrics (N/A metrics are left out of both numerator and denominator) gives a raw score from 0 to 10; then
 
-**If a GitHub URL is given**: Use `gh repo clone <url> /tmp/audit-code-$(date +%s)` to clone to a temporary directory. Set `project` to that path.
-
-**Language detection**: determine the project's main language. If the project has a `DESCRIPTION` file, an `renv.lock`, or a majority of its source files are `*.R`/`*.Rmd`, it is an **R project — stop and invoke the `audit-r-code` skill instead**, passing along the project path, tier, strictness, and any other user instructions. If the project is a substantial mix of Python and R (each ≥25% of source files), ask the user which audit to run (or both) — but in non-interactive contexts, or when invoked by `audit-project`, default to auditing whichever language has more source files (ties → Python) and note the choice in the report.
-
-If the user provided any other specific instructions when invoking this skill, integrate them into the workflow. For example, if they said "ignore missing docstrings", make sure to not penalize the project for that in the scoring and omit it from the recommendations. If the invoking context says the tier and strictness are **already confirmed** (e.g., this skill was invoked by `audit-project`), skip the questions in Step 2.
-
-**Discover the user config.** After resolving the project path (including any `/tmp` clone), discover the project's idm-standards config file following `$CLAUDE_PLUGIN_ROOT/reference/user-config.md` (read it now). Collect its directives into the same set as the invocation instructions above — directives suppress matching findings (not penalized, not recommended) but, per the hard floor in that reference, can never waive serious safety/correctness findings. If the project came from a GitHub URL or a path the user didn't author, confirm the directives before applying them (interactive runs). Frontmatter `tier`/`strictness` pre-fill Step 2. When this skill is invoked by `audit-project`, the config has already been discovered and its directives are passed in the invocation instructions — do not re-read it.
-
-## Step 2: Confirm tier and strictness
-
-**Tier definitions (brief)**:
-- Tier 1: Software library or digital public good used by many people for many years
-- Tier 2: Small-scale project used by multiple people or projects
-- Tier 3: One-off or exploratory code used by one person
-
-If the tier was **not** supplied as an argument (and is not already confirmed by the invoking context), infer a suggested tier from a quick inspection:
-- Published package (PyPI/CRAN), CI workflows, many contributors → suggest Tier 1
-- Tests, a README, evidence of multiple users/projects → suggest Tier 2
-- Mostly scripts/notebooks, single author → suggest Tier 3
-
-Then **confirm with the user** using a single AskUserQuestion call with two questions:
-1. **Tier**: present the three tiers (with the definitions above) as options, with the inferred tier as the recommended option. **Tier 1 is the strictest (large reusable library / DPG); Tier 3 is the loosest (one-off / exploratory).** Keep each tier number glued to its definition above: when the recommended option is moved to the top, the number must move with its own definition — never relabel a definition with a different tier number. A published/packaged library is **Tier 1**, not Tier 3.
-2. **Strictness** (only if not supplied as an argument): "1 — strict: report everything (default)" vs "2 — material only: skip purely stylistic/convention findings".
-
-If the config file (Step 1) set `tier` or `strictness` in its frontmatter, use those as the pre-filled/recommended values (an explicit argument still wins). In non-interactive contexts (no user available to answer), use the config values if present, otherwise the inferred tier and strictness 1, and note this in the report.
-
-## Step 3: Read the scoring schema
-
-Read the full schema from:
-`$CLAUDE_PLUGIN_ROOT/skills/audit-code/scoring-schema.yaml`
-
-This file contains:
-- Category weights (quality 40%, usability 40%, safety 20%)
-- Per-metric weights within each category
-- Tier-specific rubrics with 0/mid/10 anchor descriptions
-
-## Step 4: Read the prior report (if any)
-
-Look in the project directory for a prior `code_audit.md` (or, for compatibility with earlier plugin versions, `engineering_score.md`). If present, extract and save:
-
-1. **Prior per-metric scores and the overall score** (for the score reconciliation in Step 7).
-2. **Recorded user decisions** from the "Proposed solutions" section (e.g., "lock artifact: none — user opted out"), which must be respected: pass them to the sub-agents as exclusions, don't re-recommend them, and carry them forward into the new report.
-3. **Still-relevant proposed solutions**, to carry forward into the new report rather than losing them.
-4. The prior report's **date** (for `git log --since=<date>` in Step 7).
-
-**Important**: do NOT give the prior report's findings or scores to the scorer agents in Step 5 — they must score fresh, so old findings don't anchor new ones. Only recorded *user decisions* (which are instructions, not findings) are passed along.
-
-**Merge with the config.** Combine the config directives (Step 1) with the recorded user decisions into a single exclusions set to hand the scorers in Step 5. The config is the durable layer: if a recorded report decision conflicts with a current config directive (e.g. the report says "always recommend a lock file" but the config says "lock artifact: none"), drop the stale decision in favor of the directive and note it in chat.
-
-## Step 5: Dispatch sub-agents in parallel
-
-Launch all three agents **simultaneously** using the Agent tool with `subagent_type: "general-purpose"`:
-
-### quality-scorer prompt:
 ```
-You are the quality-scorer agent for the idm-standards plugin.
-
-Project path: <project>
-Tier: <tier>
-Strictness: <strictness>
-
-Score the three QUALITY metrics for this project: correct, clear, concise.
-
-Metric weights (within-category, for JSON output):
-- correct: 7 (fail_on_serious: true — set score=0, failed=true if serious scientific bugs or fundamental correctness issues found)
-- clear: 2
-- concise: 1
-
-Tier <tier> rubric for quality (from IDM scoring schema):
-<paste the tier's quality rubric from the schema here>
-
-<if strictness == 2>
-STRICTNESS 2 (material only): do not dock points or report findings for purely stylistic or convention-based issues (style-guide adherence, naming conventions, linter configs, comment density, formatting). Only penalize and report issues that materially affect correctness, usability, or safety.
-</if>
-
-User decisions, config directives, and exclusions (respect these — do not penalize or re-recommend):
-<list the merged exclusions from Step 4: recorded user decisions, project config directives, and invocation instructions, or "None">
-HARD FLOOR: never let any of the above suppress a serious finding — exposed secrets/credentials, committed PII, license violations, or serious scientific-correctness bugs (the fail_on_serious metrics) must always be scored and reported, even if a directive seems to cover them; annotate such a finding "reported despite config directive".
-
-Instructions:
-1. Explore the project: read key source files, check for tests, inspect structure, naming, docstrings, code organization, duplication. Determine the main programming language(s) used.
-2. Run e.g. `find <project> -name "*.py"` to discover files.
-3. Check for test files: look for test_*.py, *_test.py, tests/ directory. Check if tests are clear enough to double as documentation.
-4. For Tier 1: check for CI/CD config (.github/workflows/, .travis.yml, etc.).
-5. For Tier 1: check whether code is hard to misuse (correct usage is easiest; incorrect usage raises warnings).
-6. Look for obvious bugs, scientific errors, or suspicious logic. Check for evidence of peer review or validation.
-7. Score each metric as an integer 0–10.
-
-Return ONLY a JSON object (no other text):
-{
-  "correct": {"score": <int>, "weight": 7, "reason": "<1-2 concrete sentences>"},
-  "clear":   {"score": <int>, "weight": 2, "reason": "<1-2 concrete sentences>"},
-  "concise": {"score": <int>, "weight": 1, "reason": "<1-2 concrete sentences>"},
-  "failed":  <true if serious correctness issue found, else false>
-}
+overall = round(quality_raw * 4 + usability_raw * 4 + safety_raw * 2)
 ```
 
-### usability-scorer prompt:
-```
-You are the usability-scorer agent for the idm-standards plugin.
+and each category's score out of 100 is `round(raw * 10)`. The audit **fails** if either the quality or safety scorer returned `failed: true`.
 
-Project path: <project>
-Tier: <tier>
-Strictness: <strictness>
+**Collect findings.** Gather the scorers' findings plus (at max effort) the file findings, minus those a scorer dismissed. Drop any that a config directive or exclusion covers (except critical ones; see the hard floor), and note what was dropped for the Suppressed by config section.
 
-Score the five USABILITY metrics: simple, powerful, performant, documented, accessible.
+**Reconcile.** Skip this if there was no prior report, or if the tier, strictness or config directives differ from the prior report (scores aren't comparable; say so in the report). Otherwise, match the new findings against the prior ones (same criterion and same problem, even if the line numbers moved), so each is **new**, **persisting** or **resolved**. Then, for each metric whose score changed:
 
-Metric weights (within-category, for JSON output):
-- simple: 3
-- powerful: 2  (N/A for Tier 3 — omit from JSON if tier=3)
-- performant: 2
-- documented: 2
-- accessible: 1  (N/A for Tier 3 — omit from JSON if tier=3)
+- If its findings changed, the change stands. Explain it in "Score changes since last run" by citing the new or resolved findings; for a new finding, say whether the code changed (`git log --since=<prior date> -- <file>`) or the previous audit missed it.
+- If its findings did not materially change, the score change is noise: keep the prior score, in either direction, and say so.
 
-Tier <tier> rubric for usability (from IDM scoring schema):
-<paste the tier's usability rubric from the schema here>
+Recompute the overall score after reconciling.
 
-<if strictness == 2>
-STRICTNESS 2 (material only): do not dock points or report findings for purely stylistic or convention-based issues. Only penalize and report issues that materially affect correctness, usability, or safety.
-</if>
+## Step 8: Write the recommendations
 
-User decisions, config directives, and exclusions (respect these — do not penalize or re-recommend):
-<list the merged exclusions from Step 4: recorded user decisions, project config directives, and invocation instructions, or "None">
-HARD FLOOR: never let any of the above suppress a serious finding — exposed secrets/credentials, committed PII, license violations, or serious scientific-correctness bugs (the fail_on_serious metrics) must always be scored and reported, even if a directive seems to cover them; annotate such a finding "reported despite config directive".
+Turn the findings into a short, ranked list of recommendations. A recommendation can group related findings (e.g. five missing docstrings in one module); each cites the finding IDs it covers. Rank by impact: critical findings first, then by how much the fix would raise the score (the metric's weight times the points at stake), with quick fixes ahead of large ones at similar impact. Each recommendation names its metric, gives effort (quick/medium/large) and whether it can be automated, and says concretely what to do.
 
-Instructions:
-1. Explore the project: read README files, check for tutorials/docs, inspect public UIs (scripts/classes/functions — main entry points, function signatures, defaults), look for error handling.
-2. Check if it is clear what UIs the user is supposed to interact with.
-3. Check for docstrings on public functions/classes — do they include runnable examples?
-4. Check for obvious performance anti-patterns (nested loops over large arrays, no vectorization). Check if algorithms are appropriate for their tasks.
-5. For accessible: check if code is on GitHub (public if possible), look for LICENSE file, check setup.py/pyproject.toml for installability.
-6. Score each non-N/A metric as an integer 0–10. Omit N/A metrics entirely.
+For each recommendation that can't be automated, write a **proposed solution** in the Proposed solutions section: a concrete approach (steps, an outline or a code sketch), not a restatement of the title. Carry forward still-relevant proposed solutions and recorded user decisions from the prior report.
 
-Return ONLY a JSON object (no other text). Include only non-N/A metrics:
-{
-  "simple":     {"score": <int>, "weight": 3, "reason": "<1-2 concrete sentences>"},
-  "powerful":   {"score": <int>, "weight": 2, "reason": "<1-2 concrete sentences>"},  // omit if N/A
-  "performant": {"score": <int>, "weight": 2, "reason": "<1-2 concrete sentences>"},
-  "documented": {"score": <int>, "weight": 2, "reason": "<1-2 concrete sentences>"},
-  "accessible": {"score": <int>, "weight": 1, "reason": "<1-2 concrete sentences>"}   // omit if N/A
-}
-```
-
-### safety-scorer prompt:
-```
-You are the safety-scorer agent for the idm-standards plugin.
-
-Project path: <project>
-Tier: <tier>
-Strictness: <strictness>
-
-Score the two SAFETY metrics: compliant, reproducible.
-
-Metric weights (within-category, for JSON output):
-- compliant: 6  (fail_on_serious: true — set score=0, failed=true if serious violations found)
-- reproducible: 4
-
-Tier <tier> rubric for safety (from IDM scoring schema):
-<paste the tier's safety rubric from the schema here>
-
-<if strictness == 2>
-STRICTNESS 2 (material only): do not dock points or report findings for purely stylistic or convention-based issues. Only penalize and report issues that materially affect correctness, usability, or safety.
-</if>
-
-User decisions, config directives, and exclusions (respect these — do not penalize or re-recommend):
-<list the merged exclusions from Step 4: recorded user decisions, project config directives, and invocation instructions, or "None">
-HARD FLOOR: never let any of the above suppress a serious finding — exposed secrets/credentials, committed PII, license violations, or serious scientific-correctness bugs (the fail_on_serious metrics) must always be scored and reported, even if a directive seems to cover them; annotate such a finding "reported despite config directive".
-
-Lock-artifact rules (for the reproducible metric):
-- Tier 1 (library code): dependencies should be specified loosely in pyproject.toml; NEVER suggest adding a lock file or pinned versions. A pylock.toml is acceptable if present, but its absence is not a deficiency.
-- Tier 2/3 (research/non-library code): if reproducibility of results matters, exact versions should be captured — via `pip freeze > requirements_locked.txt` (simple; typical for Tier 3) or `pip lock` producing pylock.toml (advanced; typical for Tier 2). Present these as options for the user to choose between; "none" is also acceptable, especially if recorded as a user decision.
-- Do not call `>=` version bounds "pins" — bounds are guidance; pins are exact (`==`) versions.
-
-Instructions:
-1. Check for exposed secrets: scan for .env files, hardcoded API keys/tokens/passwords using grep patterns like (api_key|secret|password|token)\s*=\s*['\"][^'"]{8,}.
-2. Check for LICENSE file and identify license type.
-3. Inspect dependency files (pyproject.toml, requirements.txt, setup.py) for restrictive licenses (GPL, AGPL, proprietary).
-4. Check dependency specification: are dependencies specified in pyproject.toml? For Tier 2/3 projects that produce final results, are exact versions captured (requirements_locked.txt, pylock.toml) or has the user recorded a decision not to?
-5. Check random seed handling: if random numbers are used, do same seeds give identical results?
-6. For Tier 1 and 2: check version control — git tags, semantic versioning.
-7. For Tier 1: check if package is on PyPI (curl -I https://pypi.org/pypi/<package>/json), look for CHANGELOG.
-8. Score each metric as an integer 0–10.
-
-Return ONLY a JSON object (no other text):
-{
-  "compliant":    {"score": <int>, "weight": 6, "reason": "<1-2 concrete sentences>"},
-  "reproducible": {"score": <int>, "weight": 4, "reason": "<1-2 concrete sentences>"},
-  "failed": <true if serious compliance violation found, else false>
-}
-```
-
-**Important**: Before dispatching, replace `<project>`, `<tier>`, `<strictness>`, the strictness block, the user-decisions block (expanding the merged exclusions from Step 4, including the config directives, verbatim — the subagents do not see the config file or any CLAUDE.md, so anything not pasted here is invisible to them), and `<paste ... rubric here>` with actual values from Steps 1–4.
-
-## Step 6: Compute overall score
-
-After all three agents return results, calculate:
-
-```python
-# Within-category scores (0-10 each)
-quality_weights = {"correct": 7, "clear": 2, "concise": 1}
-usability_weights = {"simple": 3, "powerful": 2, "performant": 2, "documented": 2, "accessible": 1}
-safety_weights = {"compliant": 6, "reproducible": 4}
-
-# For N/A metrics (omitted from JSON): exclude from both numerator and denominator
-quality_raw    = sum(score * w for m, w in quality_weights.items()   if m in quality_results)   / sum(w for m, w in quality_weights.items()   if m in quality_results)
-usability_raw  = sum(score * w for m, w in usability_weights.items() if m in usability_results) / sum(w for m, w in usability_weights.items() if m in usability_results)
-safety_raw     = sum(score * w for m, w in safety_weights.items()    if m in safety_results)    / sum(w for m, w in safety_weights.items()    if m in safety_results)
-
-# Category scores out of 100 (for the summary table)
-quality_score   = round(quality_raw   * 10)
-usability_score = round(usability_raw * 10)
-safety_score    = round(safety_raw    * 10)
-
-# Overall score: category weights are 40%, 40%, 20% of a 0-100 scale
-overall_score = round(quality_raw * 4 + usability_raw * 4 + safety_raw * 2)
-```
-
-Set `failed: true` in the final JSON if either `quality.correct.failed` or `safety.compliant.failed` is true.
-
-## Step 7: Reconcile scores against the prior report
-
-Skip this step if there was no prior report in Step 4. If the prior report used a different tier or strictness, **or a different config digest** (compare the directive list recorded in the prior report's Full Results against the current one), skip reconciliation and note the changed settings in the report instead (scores are not comparable across settings or config).
-
-For **each metric whose new score is lower than the prior score**, you must justify the decrease with concrete evidence before accepting it. There are exactly two valid justifications:
-
-- **(a) Something actually got worse**: cite the specific change, using history where available (`git log --since=<prior report date>`, `git diff`) — e.g., "three new functions added to model.py since 2026-05-01 with no tests".
-- **(b) The previous run missed something**: name the specific finding the previous audit should have caught — e.g., "`fit()` mutates its input array; present in the prior version but not previously reported".
-
-If **neither** can be substantiated, the drop is stochastic scoring noise: **retain the prior (higher) score** and adjust the metric's reason accordingly. This is the existing scoring principle — "don't dock points for theoretical issues, only concrete observable problems" — applied across runs.
-
-Record every score change (increases and justified decreases alike) for the "Score changes since last run" section of the report, then recompute the overall score with the reconciled values.
-
-## Step 8: Generate recommendations and proposed solutions
-
-**Config backstop**: before ranking, drop any recommendation that matches a config directive (Step 1) — a scorer may surface one anyway. The hard floor still holds: never drop a serious safety/correctness finding; report it annotated "reported despite config directive".
-
-Write concrete, actionable recommendations ranked by impact (score x weight). Every time you give a score below 10, write the specific improvement that would raise it. Each recommendation should:
-
-- Name the specific metric it improves
-- Be specific and implementable (e.g., "Add a `tests/` directory with pytest tests for the three main functions" not "add tests")
-- Note if it is quick (minutes), medium (hours), or large (days) effort
-- Note if it cannot be automated (e.g., "Write a user guide" — human effort required)
-
-**For every recommendation marked `automated: no`**, also write a **proposed solution**: a concrete approach the user could follow (steps, an outline, or a code sketch — not just a restatement of the title). These go in the report's "Proposed solutions" section, together with any items carried forward from the prior report (Step 4) and any recorded user decisions.
-
-For reproducibility recommendations on Tier 2/3 projects, present the lock-artifact choice as options (`requirements_locked.txt` via `pip freeze`, `pylock.toml` via `pip lock`, or none) rather than prescribing one — the fixer will ask the user which they want.
+For Tier 2–3 reproducibility, present the lock-artifact options (`requirements_locked.txt`, `pylock.toml`, or none) rather than choosing one; `fix-code` asks the user.
 
 ## Step 9: Write code_audit.md
 
-Write this file to the **project directory** (not the current working directory if different).
+Write the report to the **project directory**. Get the date with `date +%Y-%m-%d`, the plugin version from `$CLAUDE_PLUGIN_ROOT/.claude-plugin/plugin.json`, and the time spent as `$(date +%s) - START_EPOCH` seconds.
 
-Before writing, compute the following:
-- **Date**: run `date +%Y-%m-%d` to get the current date.
-- **Version**: Add this skill's name and version (listed at the top of this file) to the report header, e.g., "**Version**: idm-standards:audit-code v2.0_2026.06.10".
-- **Time spent**: run `date +%s` to get `END_EPOCH`, then compute `END_EPOCH - START_EPOCH` (recorded in Step 0). Format as an integer number of seconds.
+The Coverage line counts source files as Step 5 defines them. At inspect and run effort, it is the number of distinct files the scorers list in `files_read` out of the total; at max effort, it should be all of them (list any that couldn't be read).
 
-```markdown
+````markdown
 # Code audit
 
-- **Project**: `<project_path>`
+- **Project**: `<project path>`
 - **Tier**: <tier> (<tier name>)
-- **Strictness**: <strictness> (<"strict" or "material only">)
-- **Config**: <config file(s) and directive counts, e.g. `.claude/idm-standards.md (5 directives)`, or "none">
-- **Overall score**: <overall_score>/100
-- **Status**: <PASS or FAIL — FAIL if failed=true>
+- **Strictness**: <1 (strict) or 2 (material only)>
+- **Effort**: <inspect, run or max>
+- **Coverage**: <e.g. "read 14 of 80 source files in full" or "all 80 source files (12,450 lines) read in full">
+- **Config**: <`.claude/idm-standards.md` (N directives), or none>
+- **Overall score**: <overall>/100
+- **Status**: <PASS, or FAIL if failed>
 - **Date**: <YYYY-MM-DD>
-- **Version**: idm-standards:audit-code <version>
+- **Version**: idm-standards:audit-code <plugin version>
 - **Time spent**: <seconds>s
 
 ## Summary
 
 | Category | Score | Weight |
 | -- | -- | -- |
-| Quality | <quality_score>/100 | 40% |
-| Usability | <usability_score>/100 | 40% |
-| Safety | <safety_score>/100 | 20% |
-| **Total** | **<overall_score>/100** | 100% |
+| Quality | <score>/100 | 40% |
+| Usability | <score>/100 | 40% |
+| Safety | <score>/100 | 20% |
+| **Total** | **<overall>/100** | 100% |
 
 | Metric | Score | Notes |
 | -- | -- | -- |
-| correct | <score>/10 | <brief reason> |
-| clear | <score>/10 | <brief reason> |
-| concise | <score>/10 | <brief reason> |
-| simple | <score>/10 | <brief reason> |
-| powerful | <score>/10 | <brief reason> |
-| performant | <score>/10 | <brief reason> |
-| documented | <score>/10 | <brief reason> |
-| accessible | <score>/10 | <brief reason> |
-| compliant | <score>/10 | <brief reason> |
-| reproducible | <score>/10 | <brief reason> |
+| correct | <score>/10 | <reason> |
+| ... one row per metric; N/A metrics show `N/A` in the Score column ... |
 
-<2–4 sentences plain-language summary. Mention the strongest areas and the biggest gaps.
-If failed=true, clearly state which metric caused the failure and why.>
+<2–4 plain-language sentences: strongest areas, biggest gaps, and, if the audit failed, which finding caused it.>
+
+## Execution
+
+<At inspect effort, this section is the single line "Not run (inspect effort)." Otherwise:>
+
+- **Tests**: <command> → <N passed, M failed, K errors, in T s>, or <why they couldn't run, or "no tests found">
+- **README example**: <ran successfully / failed: error / not found / not run: reason>
 
 ## Score changes since last run
 
-<Include this section only if a prior report existed. One line per changed metric:
-- **[metric]**: <prior>/10 → <new>/10 — <reason: what improved; or for decreases, justification (a) or (b) from Step 7>
-If a decrease was reverted as unjustifiable noise, note: "scored <x> this run but retained prior <y> (no concrete regression or missed finding identified)".>
+<Only if reconciled (Step 7). One line per changed metric: prior → new, with the finding IDs that explain it. Also list resolved findings. If a score change was treated as noise, say "scored <x> this run but kept the prior <y>: findings unchanged".>
 
 ## Recommendations
 
-<List of recommendations, most impactful first. For each:>
-1. **[Metric] — [Title]** *(effort: quick/medium/large; automated: yes/no)*
-   <One or more concrete sentences describing exactly what to do.>
+1. **<metric>: <title>** *(effort: quick/medium/large; automated: yes/no; findings: Q1, F12)*
+   <What to do, in one to three sentences. Don't repeat the findings' detail; the Findings section has it.>
 
 ## Suppressed by config
 
-<Include this section only if a config file was found (Step 1). One bullet per active
-directive, quoting it and noting what it matched this run, e.g.:
-- "Don't recommend renaming classes to CamelCase" — matched 1 clarity finding (suppressed).
-- "Lock artifact: none" — nothing matched this run.
-If a serious safety/correctness finding fell under a directive, list it here too, flagged
-"reported despite config directive — serious finding cannot be suppressed". Never drop a
-finding silently.>
+<Only if a config was found. One bullet per directive, quoted, with what it matched this run (or "nothing matched"). Critical findings a directive seemed to cover are listed as "reported despite config directive".>
 
 ## Proposed solutions
 
-<For each recommendation marked automated: no — a concrete proposed approach (steps, outline, or code sketch). Also:
-- Items carried forward from the prior report that are still relevant.
-- Recorded user decisions, e.g. "Lock artifact: none — user opted out (2026-06-10). Do not re-recommend."
-The fixer also appends to this section for items it cannot implement.
-Do NOT duplicate config-file directives here — they live in the config file, which is the
-single source of truth; this section records only per-run interactive decisions.>
+<For each recommendation marked automated: no, a concrete proposed approach. Then carried-forward items and recorded user decisions, e.g. "Lock artifact: none; user opted out (2026-06-10). Do not re-recommend." fix-code adds to this section. Config directives are not repeated here.>
 
-## Full Results
+## Findings
+
+<Every finding the scorers reported, grouped by metric (in the order of the Summary table), most severe first, one line each, copied tersely. Below max effort, end with the number of low-severity findings left out.>
+
+### correct
+
+- **Q1** · high · `sim/model.py:42-68` · correct.2: <problem> **Fix**: <fix> *(quick; automatable)*
+
+<...one subsection per metric with findings. At max effort, end with a "Dismissed on review" list: each file-review finding a scorer rejected, with the reason.>
+
+## Full results
 
 ```yaml
-<the assembled YAML: project, tier, strictness, overall_score, failed, then per-category metrics with score/weight/reason. Also include a `config:` block listing the discovered config file path(s) and the active directives verbatim (or `config: none`), so a later run can detect the config changed.>
+project: <path>
+tier: <tier>
+strictness: <strictness>
+effort: <effort>
+coverage: {files_read: <n>, source_files: <total>}
+overall_score: <overall>
+failed: <true|false>
+execution: {tests: <short summary>, readme_example: <short summary>}
+scores:
+  quality: {correct: <score>, clear: <score>, concise: <score>}
+  usability: {simple: <score>, powerful: <score or N/A>, performant: <score>, documented: <score>, accessible: <score or N/A>}
+  safety: {compliant: <score>, reproducible: <score>}
+config: <list of directives verbatim, or none>
 ```
-```
+````
 
-Give N/A metrics (Tier 3: `powerful`, `accessible`) a score of 10 in the assembled YAML.
+If the audit failed, still write the full report; the recommendations start with how to fix the failure.
 
 ## Step 10: Offer to fix
 
-If running interactively and this skill was invoked directly (not by `audit-project` or another skill), finish with a single AskUserQuestion: **"Apply the fixes now?"** — options: "Yes — run fix-code now (Recommended)" / "No — I'll review the report first". If the user says yes, invoke the `fix-code` skill on the project via the Skill tool. In non-interactive contexts, skip this question.
-
-## Notes
-
-- **General scoring principle**: If no specific improvements can be identified for a metric, score 10/10. If scoring below 10, always list the specific improvements that would raise the score. Don't dock points for theoretical issues — only for concrete, observable problems.
-- **Skip large and binary files**: Do not read files larger than 100 KB, or files with extensions `.csv`, `.pdf`, `.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.svg`, `.ico`, `.tiff`, `.webp`. These are too large or not human-readable source code.
-- Always read every source file (typically `*.py`) for the project. If there are large documentation files (e.g. `*.ipynb`), only read those if they are smaller than 100 KB.
-- For Python projects: look for `pyproject.toml`, `setup.py`, `src/`, `tests/`, `.github/`.
-- For R projects: do not score with this skill — route to `audit-r-code` (Step 1).
-- Scientific correctness (quality.correct) is the most heavily weighted metric (28/100 points). Pay particular attention to this.
-- If `failed=true`, still complete the full report — the recommendations should include how to address the failure.
+If running interactively and invoked directly (not by `audit-project` or another skill), finish with one AskUserQuestion: **"Apply the fixes now?"** with options "Yes, run fix-code now (Recommended)" and "No, I'll review the report first". If yes, invoke the `fix-code` skill on the project. Otherwise, and in non-interactive runs, just say where the report is. Below max effort, mention in one line the higher effort levels: `run` (also runs the tests and README example) and `max` (also reads every source file).

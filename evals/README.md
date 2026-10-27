@@ -25,6 +25,8 @@ With `--roundtrip`, each fixture also runs **audit → fix-code → audit** and 
 ./run_evals python_tier1         # one fixture
 ./run_evals --cli "claude --model claude-fable-5"
 ./run_evals --quiet              # suppress the live activity log
+./run_evals --effort run         # also run each fixture's tests and README example
+./run_evals --effort max         # also read every source file with subagents
 
 # run_evals just wraps the underlying script, so this is equivalent:
 python evals/run_evals.py
@@ -36,7 +38,7 @@ Requires PyYAML (`pip install pyyaml`) and the `claude` CLI on PATH with the `id
 
 ## Cost and runtime
 
-Each audit dispatches three scorer subagents over a small project, so a single fixture audit is roughly **3–6 subagent invocations** and completes in a couple of minutes. The full audit-only suite is well under ten minutes. `--roundtrip` roughly triples that (audit + fix + re-audit per fixture) and consumes meaningfully more tokens.
+Each audit dispatches three scorer subagents over a small project (plus one file-reviewer per batch of source files at `--effort max`; the fixtures are small enough for one batch), so a single fixture audit is roughly **3–6 subagent invocations** and completes in a couple of minutes. The full audit-only suite is well under ten minutes. `--roundtrip` roughly triples that (audit + fix + re-audit per fixture) and consumes meaningfully more tokens.
 
 Because scoring is **nondeterministic**, the assertions are deliberately loose (bounds and substring patterns). An occasional borderline failure on a tight bound is expected noise — re-run before treating it as a regression. This is why the harness is run **on demand, not in CI**.
 

@@ -5,10 +5,11 @@
 #   quality_raw    = (correct*7 + clear*2 + concise*1) / 10
 #   usability_raw  = (simple*3 + powerful*2 + performant*2 + documented*2 + accessible*1) / 10
 #   safety_raw     = (compliant*6 + reproducible*4) / 10
-#   overall_score  = round(quality_raw*40 + usability_raw*40 + safety_raw*20)
+#   overall_score  = round(quality_raw*4 + usability_raw*4 + safety_raw*2)   (each raw score is 0-10)
 #
-# N/A metrics (Tier 3: powerful, accessible): omit from JSON; normalize weights within category.
-# FAILURE: Set failed=true and score=0 if quality.correct or safety.compliant has a serious violation.
+# N/A metrics (Tier 3: powerful, accessible): reported as N/A; left out of both numerator and denominator.
+# The criteria being scored are in reference/criteria.yaml; the finding format is in reference/findings.md.
+# FAILURE: a critical finding under quality.correct or safety.compliant scores that metric 0 and fails the audit.
 
 category_weights:
   quality: 0.40

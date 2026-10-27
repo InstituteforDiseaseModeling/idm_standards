@@ -1,12 +1,10 @@
 ---
 name: audit-docs-structure
-description: Centralizes IDM's documentation topic-type guidance (borrowed from Diátaxis) so Claude can write, review, or improve documentation following the four distinct topic types (tutorials, how-tos, reference, explanation). Also includes guidance on how to organize those topics within the table of contents (TOC), including IDM's "user guide" grouping of how-to and explanation topics by subject matter.
+description: Centralizes IDM's documentation topic-type guidance (borrowed from Diátaxis) so Claude can write, review, or improve documentation following the four distinct topic types (tutorials, how-tos, reference, explanation). Also includes guidance on how to organize those topics within the table of contents (TOC), including IDM's "user guide" grouping of how-to and explanation topics by subject matter. Use when writing or reorganizing docs, and when the user asks to check or audit a project's documentation structure or invokes /idm-standards:audit-docs-structure.
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write
 ---
 
 # Documentation skill
-
-Skill version: 1.2_2026.07.21
 
 Unifies all of IDM's topic-type documentation guidance (borrowed from Diátaxis) into one Skill. Claude activates this Skill whenever documentation is written, reviewed, or improved, and new topics are added within the table of contents. It then "lazy loads" the exact documentation type guidance by opening the reference docs linked below.
 
@@ -141,3 +139,11 @@ This is the **key divergence from Diátaxis** and is intentional: researcher wor
 3. **User-centered approach** - Consider what the user is trying to accomplish and in what context
 4. **Iterative improvement** - Enhance documentation incrementally by applying IDM's topic-type principles
 5. **Purpose-driven structure** - Each type has specific characteristics that make it effective for its intended purpose
+
+## Reviewing a documentation set
+
+When asked to check or audit a project's documentation structure (directly, or by `audit-docs`):
+
+1. Read the docs build config (`mkdocs.yml`, `_quarto.yml` or `_pkgdown.yml`) to get the TOC, then read the pages.
+2. Classify each page with the compass, and load the reference file for each type you find.
+3. Report: which of the four types are present or missing (relative to the project's size), pages that are the wrong type or mix types (with the fix: split, move or rewrite), how well the TOC follows IDM's organization, and missing cross-links between related topics. Give each problem's page and a concrete fix, most important first. When invoked directly, report in chat; when invoked by `audit-docs`, return the findings for its report.

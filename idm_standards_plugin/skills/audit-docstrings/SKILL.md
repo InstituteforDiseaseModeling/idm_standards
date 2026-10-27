@@ -1,11 +1,9 @@
 ---
 name: audit-docstrings
-description: Guidelines for writing Python docstrings in this project. Always use when writing, updating, editing, or reviewing docstrings for components, functions, or classes. Covers Google-style format, MkDocs cross-references, usage examples, and researcher workflow context.
+description: IDM guidelines for writing and reviewing Python docstrings. Always use when writing, updating, editing, or reviewing docstrings for components, functions, or classes, and when the user asks to check or audit a project's docstrings or invokes /idm-standards:audit-docstrings. Covers Google-style format, MkDocs/Quarto cross-references, usage examples, and researcher workflow context.
 ---
 
 # Python docstring guidelines
-
-Skill version: 1.1_2026.07.21
 
 Use **Google-style docstrings**. Every public class, method, and function should have a docstring that helps a disease-modeling researcher understand not just *what* the object does, but *where it fits* in their workflow. Use American English spelling and usage.
 
@@ -27,15 +25,15 @@ def some_function(arg1, arg2):
     """ One-line summary ending with a period.
 
     Two to four sentences of prose explaining what this does and why a researcher
-    would reach for it. Mention the disease model context — is this used during
-    initialization, timestep updates, or post-simulation analysis?
+    would reach for it. Say where it fits in their workflow: is it used when
+    setting up a model, at each timestep, or when analyzing results?
 
-    Link to related objects using MkDocs cross-reference syntax, e.g.
-    [`Model`][laser.generic.model.Model] or [`Susceptible`][laser.generic.components.Susceptible].
+    Link to related objects using cross-reference syntax (see below), for
+    example the main simulation class that this function operates on.
 
     Args:
         arg1 (array): Description including shape, dtype, and units where
-            relevant. E.g. "Shape ``(nticks+1, num_nodes)``, dtype float32."
+            relevant. For example, "Daily new infections, shape ``(n_days,)``."
         arg2 (int): Description. State default values explicitly if they matter.
 
     Returns:
@@ -47,11 +45,11 @@ def some_function(arg1, arg2):
 
     Examples:
 
-        # Show the most common researcher workflow. Use a self-contained snippet
-        # that a researcher can run or adapt directly:
-
-        model = Model(scenario, params)
-        result = some_function(model.nodes.S[0], model.params.nticks)
+        # Show the most common researcher workflow, as a self-contained
+        # snippet that a researcher can run or adapt directly
+        sim = Sim(pars)
+        sim.run()
+        result = some_function(sim.results.new_infections, sim.pars.n_days)
 
     Note:
         Reserve for non-obvious caveats — performance warnings, thread safety,
@@ -59,145 +57,117 @@ def some_function(arg1, arg2):
     """
 ```
 
-Use the plural, unbolded `Examples:` section header. It must be a plain Google-style
-section header (not `**Example:**`) so that mkdocstrings/quartodoc parse it as a section —
-the bolded form was a Sphinx-only requirement and is not recognized by the MkDocs/Quarto toolchain.
-The example code is just an indented block under the header; do not wrap it in a ```` ```python ````
-fence (an indented block is already rendered as code).
-
-Provide clear, precise descriptions to avoid ambiguity in ranges, units, paths, assumptions, etc. that can introduce silent scientific errors.
-
----
+Use the plural, unbolded `Examples:` section header. It must be a plain Google-style section header (not `**Example:**`) so that mkdocstrings/quartodoc parse it as a section — the bolded form was a Sphinx-only requirement and is not recognized by the MkDocs/Quarto toolchain. The example code is just an indented block under the header; do not wrap it in a ```` ```python ```` fence (an indented block is already rendered as code). Put any explanation in code comments, as above.
 
 ## Cross-references to other Python objects
 
-### MkDocs syntax
+## MkDocs syntax
 
-MkDocs projects use the [`autorefs`](https://mkdocstrings.github.io/autorefs/) plugin so you can link to any documented Python object directly from docstring prose.
-
-**Syntax:**
+MkDocs projects use the [`autorefs`](https://mkdocstrings.github.io/autorefs/) plugin so you can link to any documented Python object directly from docstring prose, using its full import path:
 
 | What you write | What renders |
 |---|---|
-| `` [`Model`][laser.generic.model.Model] `` | clickable link labelled `Model` |
-| `` [`Susceptible`][laser.generic.components.Susceptible] `` | link to the Susceptible class |
-| `` [`State`][laser.generic.shared.State] `` | link to the State enum |
-| `` [`ValuesMap`][laser.generic.utils.ValuesMap] `` | link to ValuesMap |
+| `` [`Sim`][mypackage.sim.Sim] `` | clickable link labeled `Sim` |
+| `` [`Sim.run`][mypackage.sim.Sim.run] `` | link to the `run` method |
+| `` [`numpy.ndarray`][] `` | link to an external object (via interlinks) |
 
-Use these links in the **description prose** to guide a reader toward related components they will likely need next. Do not stuff links into Args or Returns sections — prose is the right place.
+Use these links in the **description prose** to guide a reader toward related objects they will likely need next: the main class this object belongs to, components that must come before or after it, and the functions that consume its output. Do not stuff links into Args or Returns sections — prose is the right place.
 
-**Common objects to link to:**
-
-- [`Model`][laser.generic.model.Model] — the top-level simulation container
-- [`Susceptible`][laser.generic.components.Susceptible] — must appear before transmission components
-- [`Exposed`][laser.generic.components.Exposed] — incubation period component for SEIR models
-- [`State`][laser.generic.shared.State] — enum of agent health states (SUSCEPTIBLE, EXPOSED, INFECTIOUS, RECOVERED)
-- [`ValuesMap`][laser.generic.utils.ValuesMap] — time-varying per-node parameter container
-
-### Quarto syntax
+## Quarto syntax
 
 Cross-references typically work directly, e.g. `ss.Arr` automatically links to `starsim.arrays.Arr`. If you need to customize, use the syntax: [Arr](`starsim.arrays.Arr`).
 
----
-
 ## Researcher workflow context
 
-A researcher using this library follows a predictable workflow. Your docstring should anchor the object to one of these stages:
+Researchers using a modeling library follow a typical workflow, for example:
 
 ```
-1. Prepare scenario     →  GeoDataFrame with population, geometry, initial S/I/E/R counts
-2. Set parameters       →  PropertySet with nticks, beta, capacity_safety_factor, prng_seed, ...
-3. Build component list →  [Susceptible(model), Transmission(model, ...), ...]
-4. Initialize model     →  model = Model(scenario, params)
-5. Run simulation       →  model.run()
-6. Analyze results      →  model.nodes.S, model.nodes.I, component.plot()
+1. Define parameters    →  population size, duration, disease parameters, random seed
+2. Build the model      →  choose its components (diseases, networks, interventions, ...)
+3. Run the simulation   →  sim.run()
+4. Analyze results      →  plot, summarize, compare scenarios
 ```
 
-In the description prose, state clearly:
-- **Which stage** this object belongs to (initialization, per-timestep, post-run analysis)
-- **What comes before it** in the component list, if ordering matters
+The stages differ between libraries: take them from the project's own README and tutorials, and use the project's own names for things. The docstring should anchor the object to one of these stages. In the description prose, state clearly:
+
+- **Which stage** this object belongs to (setup, per-timestep, post-run analysis)
+- **What comes before it**, if ordering matters
 - **What it produces** that downstream components or analysis code will consume
 
 Example phrasing:
-> "Add this component to `model.components` *before* any transmission component. It initializes the `S` array consumed by [`SIR.Transmission`][laser.generic.SIR.Transmission] at every timestep."
 
----
+> "Add this intervention to the sim's `interventions` list. It runs each timestep after transmission, and records the doses given in `sim.results.vaccine.doses`."
 
 ## Usage examples
 
-Every public class and every non-trivial function needs an `Example:` section. A good example:
+Every public class and every non-trivial function needs an `Examples:` section. A good example:
 
 1. **Shows the full calling context**, not just the function call in isolation.
-2. **Uses realistic variable names** (`scenario`, `params`, `model`) that match the tutorials.
+2. **Uses realistic variable names** that match the project's tutorials (e.g. `sim`, `pars`, `results`).
 3. **Demonstrates the most common researcher use case** — not edge cases.
 4. **Is short** — three to eight lines. If you need more, split into two examples.
+5. **Runs**: it uses the current API and would work if pasted into a session.
 
-**Class example (component):**
+**Class example:**
 
 ```python
-Example:
-    Assemble a basic SIR model by listing components in execution order:
+Examples:
 
-    ```python
-    model.components = [
-        Susceptible(model),
-        SIR.Transmission(model, beta=0.3),
-        SIR.Infectious(model, infdurdist, infdurmin=1),
-        SIR.Recovered(model),
-    ]
-    model.run()
-    model.nodes.S  # shape (nticks+1, num_nodes)
-    ```
+    # Create a simple SIR model and run it
+    sim = Sim(diseases=SIR(beta=0.3), networks=RandomNet(n_contacts=4))
+    sim.run()
+    sim.results.sir.prevalence  # one value per timestep
 ```
 
 **Function example:**
 
 ```python
-Example:
-    Compute gravity-weighted migration rates between patches:
+Examples:
 
-    ```python
+    # Compute gravity-weighted migration rates between patches
     rates = gravity(populations, distances, k=1.0, a=1.0, b=2.0)
-    migration_matrix = row_normalizer(rates)
-    ```
+    migration = row_normalize(rates)
 ```
-
----
 
 ## Class docstrings
 
-For classes, the docstring lives on the class body (not `__init__`), because `merge_init_into_class: true` is set in `mkdocs.yml`. Structure it as:
+For classes, the docstring lives on the class body (not `__init__`), with `merge_init_into_class: true` set in `mkdocs.yml`. Structure it as:
 
 ```
 One-line summary.
 
-Two to four sentences of context: what disease model states this manages,
+Two to four sentences of context: what part of the model this represents,
 which stage of the researcher workflow it belongs to, and what it produces.
-Link to closely related components.
+Link to closely related classes.
 
 Args:
-    model (Model): The simulation model this component is attached to.
-    some_dist (Callable): Brief description including expected signature.
-    some_min (int): Minimum value in days. Defaults to 1.
-    validating (bool): If True, runs pre/post validation hooks each tick.
+    pars (dict): Parameters to override the defaults, e.g. ``dict(beta=0.3)``.
+    dur_inf (float): Mean duration of infection, in days. Defaults to 10.
+    validate (bool): If True, checks the state of each agent every timestep.
         Enable during development; disable for production runs.
 
-Example:
+Examples:
+
     ...
 
 Note:
     ...
 ```
 
-Do not repeat the class name in the one-line summary. Write "Manages the
-susceptible compartment" not "Susceptible manages the susceptible compartment."
-
----
+Do not repeat the class name in the one-line summary. Write "Manages the susceptible compartment" not "Susceptible manages the susceptible compartment."
 
 ## What to omit
 
-- **Do not document private methods** (`_check_flow_vs_census`, `nb_timer_update`, etc.) unless there is a strong reason.
+- **Do not document private methods** (`_update_cache`, `_check_inputs`, etc.) unless there is a strong reason.
 - **Do not add a docstring to `__init__`** — put everything on the class.
 - **Do not restate the type annotation** in the description ("arg1 is a numpy array" when the type is already `np.ndarray`). Use the prose to explain *meaning*, not *type*.
 - **Do not write "This function/class ..."** — just say what it does directly.
 - **Do not add a `Returns:` section for `None`**.
+
+## Reviewing docstrings
+
+When asked to check or audit docstrings (directly, or by `audit-docs`), apply this guide to the project's public modules, classes and functions:
+
+1. Find the public API: what the package exports, plus the classes and functions its README and tutorials use. Review these first; they matter most.
+2. For each, check: a docstring exists; Google style; a one-line summary; every argument described with its meaning (and units, shape or range where relevant, so it can't be misread); return value; a runnable `Examples:` section on non-trivial objects that uses the current API; where it fits in the workflow; links to related objects. Ignore private and trivial objects.
+3. Report: rough coverage (e.g. "31 of 40 public objects have adequate docstrings"), then the problems grouped by file, most important objects first, each with the object, what is missing or wrong, and the fix. When invoked directly, report in chat; when invoked by `audit-docs`, return the findings for its report.
