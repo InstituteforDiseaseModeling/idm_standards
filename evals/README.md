@@ -25,8 +25,8 @@ With `--roundtrip`, each fixture also runs **audit → fix-code → audit** and 
 ./run_evals python_tier1         # one fixture
 ./run_evals --cli "claude --model claude-fable-5"
 ./run_evals --quiet              # suppress the live activity log
-./run_evals --effort max         # audit at max effort (every source file read by subagents)
-./run_evals --run-code           # let the audit run each fixture's tests and README example
+./run_evals --effort run         # also run each fixture's tests and README example
+./run_evals --effort max         # also read every source file with subagents
 
 # run_evals just wraps the underlying script, so this is equivalent:
 python evals/run_evals.py

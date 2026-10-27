@@ -21,8 +21,8 @@ Usage:
     python run_evals.py --roundtrip      # also run the audit→fix→audit round-trip check
     python run_evals.py --quiet          # suppress the live activity log
     python run_evals.py --cli "claude"   # override the CLI command
-    python run_evals.py --effort max     # audit at max effort (every source file read)
-    python run_evals.py --run-code       # let the audit run the fixtures' tests and README examples
+    python run_evals.py --effort run     # also run the fixtures' tests and README examples
+    python run_evals.py --effort max     # also read every source file with subagents
 """
 
 import argparse
@@ -207,7 +207,7 @@ def check(expected, report, scope_key=None):
     return (not failures), failures
 
 
-def run_fixture(name, cli, roundtrip, verbose=True, effort="standard", run_code=False):
+def run_fixture(name, cli, roundtrip, verbose=True, effort="inspect"):
     """Run one fixture; return True if all assertions pass."""
     fixture = FIXTURES / name
     expected = yaml.safe_load((fixture / "expected.yaml").read_text())
@@ -216,7 +216,6 @@ def run_fixture(name, cli, roundtrip, verbose=True, effort="standard", run_code=
     strictness = expected.get("strictness", 1)
     skill = AUDIT_SKILL.get(expected["language"], "audit-code")
 
-    opts = " ".join(["max"] * (effort == "max") + ["run"] * run_code)
     all_ok = True
     with tempfile.TemporaryDirectory(prefix=f"eval-{name}-") as tmp:
         proj = Path(tmp) / "project"
@@ -230,7 +229,7 @@ def run_fixture(name, cli, roundtrip, verbose=True, effort="standard", run_code=
 
         # --- Primary audit ---
         print(f"[{name}] audit at tier {tier}, strictness {strictness}, {effort} effort via {skill} ...")
-        run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness} {opts}",
+        run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness} {effort}",
                   label="audit", verbose=verbose)
         report_path = proj / "code_audit.md"
         if not report_path.exists():
@@ -246,7 +245,7 @@ def run_fixture(name, cli, roundtrip, verbose=True, effort="standard", run_code=
         if "strictness2" in expected:
             s2 = expected["strictness2"]["strictness"]
             print(f"[{name}] re-audit at strictness {s2} ...")
-            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {s2} {opts}",
+            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {s2} {effort}",
                       label=f"strictness-{s2} audit", verbose=verbose)
             report2 = parse_report(report_path)
             ok2, failures2 = check(expected, report2, scope_key="strictness2")
@@ -265,7 +264,7 @@ def run_fixture(name, cli, roundtrip, verbose=True, effort="standard", run_code=
             print(f"[{name}] fix-code, then re-audit ...")
             run_skill(cli, proj, "/idm-standards:fix-code .",
                       label="fix-code", verbose=verbose)
-            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness} {opts}",
+            run_skill(cli, proj, f"/idm-standards:{skill} . {tier} {strictness} {effort}",
                       label="re-audit", verbose=verbose)
             after = parse_report(report_path)
             rt_failures = []
@@ -304,17 +303,15 @@ def main():
     ap.add_argument("--cli", default="claude", help="Claude CLI command (default: claude)")
     ap.add_argument("--roundtrip", action="store_true",
                     help="also run the audit→fix→audit round-trip check (slow, costly)")
-    ap.add_argument("--effort", default="standard", choices=["standard", "max"],
-                    help="audit effort level (default: standard)")
-    ap.add_argument("--run-code", action="store_true",
-                    help="let the audit run the fixtures' tests and README examples (default: inspect only)")
+    ap.add_argument("--effort", default="inspect", choices=["inspect", "run", "max"],
+                    help="audit effort level (default: inspect)")
     ap.add_argument("--quiet", action="store_true",
                     help="suppress the live per-event activity log (only print phase results)")
     args = ap.parse_args()
 
     names = args.fixtures or sorted(p.name for p in FIXTURES.iterdir() if p.is_dir())
     results = {
-        n: run_fixture(n, args.cli, args.roundtrip, verbose=not args.quiet, effort=args.effort, run_code=args.run_code)
+        n: run_fixture(n, args.cli, args.roundtrip, verbose=not args.quiet, effort=args.effort)
         for n in names
     }
 

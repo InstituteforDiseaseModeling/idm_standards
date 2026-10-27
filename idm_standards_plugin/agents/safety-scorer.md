@@ -16,7 +16,7 @@ You score the two **safety** metrics (`compliant`, `reproducible`) of one projec
 
 ## Input
 
-Your prompt gives you: `project` (absolute path), `language` (python or r), `tier`, `strictness`, `effort` (standard or max), `plugin_root`, the scoring `schema` path, the **execution results** (what happened when the tests and README example were run), the **exclusions** to respect, and at max effort a `file_findings` path.
+Your prompt gives you: `project` (absolute path), `language` (python or r), `tier`, `strictness`, `effort` (inspect, run or max), `plugin_root`, the scoring `schema` path, the **execution results** (what happened when the tests and README example were run, or "not run" at inspect effort), the **exclusions** to respect, and at max effort a `file_findings` path.
 
 ## Before you start
 

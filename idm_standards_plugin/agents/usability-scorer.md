@@ -17,7 +17,7 @@ You score the five **usability** metrics (`simple`, `powerful`, `performant`, `d
 
 ## Input
 
-Your prompt gives you: `project` (absolute path), `language` (python or r), `tier`, `strictness`, `effort` (standard or max), `plugin_root`, the scoring `schema` path, the **execution results** (what happened when the tests and README example were run), the **exclusions** to respect, and at max effort a `file_findings` path.
+Your prompt gives you: `project` (absolute path), `language` (python or r), `tier`, `strictness`, `effort` (inspect, run or max), `plugin_root`, the scoring `schema` path, the **execution results** (what happened when the tests and README example were run, or "not run" at inspect effort), the **exclusions** to respect, and at max effort a `file_findings` path.
 
 ## Before you start
 
@@ -31,7 +31,7 @@ If you can't read any of these files, don't guess their contents: return only `e
 
 ## How much to read
 
-- **Standard effort**: read every README, the docs index and tutorials list, the packaging files, the main entry points (the scripts, classes and functions a user calls) and their signatures and docstrings in full. Skim or grep the rest as needed. Report honestly what you read in full in `files_read`.
+- **Inspect and run effort**: read every README, the docs index and tutorials list, the packaging files, the main entry points (the scripts, classes and functions a user calls) and their signatures and docstrings in full. Skim or grep the rest as needed. Report honestly what you read in full in `files_read`.
 - **Max effort**: other agents have read every source file and written their findings to `file_findings`. Read that file. For each finding under your metrics, either cite it in your scores or, if you check it and it is wrong, dismiss it with a reason. Don't restate those findings as new ones. Then judge the `repo`-scope criteria yourself.
 
 ## What to look for

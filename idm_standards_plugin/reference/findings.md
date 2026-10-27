@@ -48,7 +48,7 @@ Respect the exclusions given in your prompt (project config directives, recorded
 
 ## Effort
 
-- **Standard effort** is meant to be fast. Judge each applicable criterion, then stop exploring: don't read files that can't change a score. Report critical, high and medium findings; leave out low-severity ones, but give their count (`low_findings_omitted: <n>`).
+- **Inspect and run effort** are meant to be fast. Judge each applicable criterion, then stop exploring: don't read files that can't change a score. Report critical, high and medium findings; leave out low-severity ones, but give their count (`low_findings_omitted: <n>`).
 - **Max effort** reports every finding, including low-severity ones.
 
 ## Coverage

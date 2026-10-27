@@ -85,7 +85,7 @@ Confirm branch name(s) before creating them, and confirm before pushing or openi
 
 Work through the "Will implement" items **one at a time**, in the report's priority order. When fixing a correctness bug, add a test that would have caught it, where the project has tests.
 
-**Check your work.** Only if the report's Execution section records a test command that ran (the user chose to run code during the audit), run it before your first change (as a baseline) and again after each group of changes. A test that newly fails because of your change must be fixed or the change reverted; never leave the project with more failures than you found it with.
+**Check your work.** Only if the report's Execution section records a test command that ran (the audit was run at run or max effort), run it before your first change (as a baseline) and again after each group of changes. A test that newly fails because of your change must be fixed or the change reverted; never leave the project with more failures than you found it with.
 
 ### Before each change:
 - State what you are about to do in one sentence
